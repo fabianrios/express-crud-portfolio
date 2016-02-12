@@ -27,7 +27,7 @@ var config = {
       name: 'aram'
     },
     port: 3000,
-    db: 'postgres://localhost/aram-production'
+    db: 'process.env.HEROKU_POSTGRESQL_DBNAME_URL'
   }
 };
 
