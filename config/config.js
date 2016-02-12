@@ -27,8 +27,8 @@ var config = {
       name: 'aram'
     },
     port: 3000,
-    db: 'postgres://dxabqydxmjzqcl:QcwfWUa-aOBC8QTr5Y_wFWR3fb@ec2-54-225-223-40.compute-1.amazonaws.com:5432/db4e85r5ehsd6n'
+    db: process.env.DATABASE_URL
   }
 };
-
+console.log(process.env.DATABASE_URL);
 module.exports = config[env];
