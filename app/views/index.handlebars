@@ -1,0 +1,13 @@
+
+
+  <h1>{{title }}</h1>
+  <h6>Welcome to {{title }}</h6>
+  <ul class="no-bullet">
+  {{#each articles}}
+  <li>
+    <h4><a href="/article/{{this.id}}">{{this.title}}</a></h4>
+    <div class="conten">{{{this.text}}}</div>
+  </li>
+  {{/each}}
+  </ul>
+
