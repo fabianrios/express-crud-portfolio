@@ -27,14 +27,3 @@ router.get('/article/:id', function (req, res, next) {
   });
 });
 
-
-router.post('/articles', function (req, res, next) {
-  var id = req.params.id
-  db.Article.create({ title: 'fort knox', text: 'amibille', url: 'fort-knox' }).then(function (article) {
-    console.log(article);
-    res.render('show', {
-      title: "Pantalla individual",
-      article: article
-    });
-  });
-});
