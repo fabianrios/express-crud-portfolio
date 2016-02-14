@@ -1,13 +1,15 @@
-
-
-  <h1>{{title }}</h1>
-  <h6>Welcome to {{title }}</h6>
-  <ul class="no-bullet">
-  {{#each articles}}
-  <li>
-    <h4><a href="/article/{{this.id}}">{{this.title}}</a></h4>
-    <div class="conten">{{{this.text}}}</div>
-  </li>
-  {{/each}}
-  </ul>
-
+<div class="row">
+  <div class="large-12 columns">
+      <h1>{{title }}</h1>
+      <ul class="no-bullet">
+      {{#each articles}}
+      <li>
+        <h4><a href="/article/{{this.id}}">{{this.title}}</a></h4>
+        <div class="content">{{{this.text}}}</div>
+        <a class="secondary button small" href="article/{{this.id}}/edit">Editar</a>
+        <a class="alert button small" href="/article/{{this.id}}/destroy">Borrar</a>
+      </li>
+      {{/each}}
+      </ul>
+    </div>
+</div>

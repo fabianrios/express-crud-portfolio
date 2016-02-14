@@ -1,3 +1,13 @@
-  <a href="/">Volver</a>
-  <h1>{{article.title}}</h1>
-  <div class="content">{{{article.text}}}</div>
+<div class="row expanded">
+  <div class="large-12 columns">
+    <a href="/">Volver</a>
+    <h1>{{article.title}}</h1>
+    <div class="content">{{{article.text}}}</div>
+    <h1>Crear uno nuevo</h1>
+    <form action="/articles" method="post">
+      <input type="text" name="title" />
+      <textarea name="text" id="text" cols="30" rows="10"></textarea>
+      <input type="submit" value="Enviar nuevo" />
+    </form>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="large-12 columns">
+    <a href="/">Volver</a>
+    <h1>Actualizar</h1>
+    <form action="/article/{{article.id}}/editar" method="post">
+      <input type="text" name="title" value="{{article.title}}" />
+      <textarea name="text" id="text" cols="30" rows="10">{{article.text}}</textarea>
+      <input type="submit" value="Actualizar" />
+    </form>
+  </div>
+</div>

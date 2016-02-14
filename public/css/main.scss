@@ -1,0 +1,27 @@
+@charset 'UTF-8';
+@import "main_settings";
+
+@import "../../node_modules/foundation/scss/foundation";
+
+input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"]{
+  -webkit-box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+  height: 48px;
+  border: 1px solid lightgray;
+  padding-left: 16px;
+  color: #d4d4d4;
+  &:focus{
+    -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    background: white;
+    border: 1px solid white;
+  }
+}
+textarea{
+  border: 1px solid lightgray;
+  padding-left: 16px;
+  color: #d4d4d4;
+  min-height: 200px;
+}
