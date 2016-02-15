@@ -43,7 +43,7 @@ router.get('/article/:id/edit', function (req, res, next) {
 router.post('/articles', function (req, res, next) {
   var body = req.body
   console.log(body);
-  db.Article.create({ title: body.title, text: body.text, url: 'fort-knox' }).then(function () {
+  db.Article.create({ title: body.title, text: body.text, url: 'fort-knox', fulltext: body.fulltext }).then(function () {
    res.redirect('/');
   });
 });
@@ -52,7 +52,7 @@ router.post('/article/:id/editar', function (req, res, next) {
   var id = req.params.id
   var body = req.body
   db.Article.findById(id).then(function (article) {
-    article.update({ title: body.title, text: body.text, url: 'edited' }).then(function () {
+    article.update({ title: body.title, text: body.text, url: 'edited', fulltext: body.fulltext }).then(function () {
      res.redirect('/');
     });
   });

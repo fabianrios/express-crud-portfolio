@@ -16,9 +16,11 @@
     "glob": "^6.0.4",
     "method-override": "^2.3.0",
     "morgan": "^1.6.1",
+    "papercut": "0.0.6",
     "pg": "^4.4.1",
     "pg-hstore": "2.3.2",
     "sequelize": "^3.5.1",
+    "sequelize-cli": "^2.3.1",
     "serve-favicon": "^2.3.0"
   },
   "devDependencies": {

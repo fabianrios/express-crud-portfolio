@@ -5,6 +5,7 @@ var path = require('path'),
 var config = {
   development: {
     root: rootPath,
+    dialect: 'postgresql',
     app: {
       name: 'aram'
     },
