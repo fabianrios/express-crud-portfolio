@@ -7,7 +7,15 @@ module.exports = function (sequelize, DataTypes) {
     title: DataTypes.STRING,
     url: DataTypes.STRING,
     text: DataTypes.STRING,
-    fulltext: DataTypes.TEXT
+    fulltext: DataTypes.TEXT,
+    images: DataTypes.JSON,
+    cover: DataTypes.JSON,
+    category: DataTypes.STRING,
+    publish: {
+       type: DataTypes.BOOLEAN,
+       defaultValue: false,
+       allowNull: false
+     }
   }, {
     classMethods: {
       associate: function (models) {

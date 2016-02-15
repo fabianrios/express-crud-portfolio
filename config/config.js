@@ -6,6 +6,8 @@ var config = {
   development: {
     root: rootPath,
     dialect: 'postgresql',
+    username: 'fabianrios',
+    password: '774_fab',
     app: {
       name: 'aram'
     },
