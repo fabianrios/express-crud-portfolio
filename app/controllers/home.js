@@ -10,10 +10,28 @@ router.get('/', function (req, res, next) {
   db.Article.findAll().then(function (articles) {
     // console.log(articles);
     res.render('index', {
-      title: 'wtf?',
+      title: 'root',
       articles: articles
     });
   });
+});
+
+router.get('/article/create', function (req, res, next) {
+    res.render('create', {
+      title: 'Create new article',
+    });
+});
+
+router.get('/experiences', function (req, res, next) {
+    res.render('experiences', {
+      title: 'Experiencias',
+    });
+});
+
+router.get('/contact', function (req, res, next) {
+    res.render('contact', {
+      title: 'Contacto',
+    });
 });
 
 router.get('/article/:id', function (req, res, next) {
