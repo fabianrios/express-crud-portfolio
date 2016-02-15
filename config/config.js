@@ -8,7 +8,7 @@ var config = {
     app: {
       name: 'aram'
     },
-    port: 3000,
+    port: process.env.PORT || 3000,
     db: 'postgres://localhost/aram-development'
   },
 
@@ -17,7 +17,7 @@ var config = {
     app: {
       name: 'aram'
     },
-    port: 3000,
+    port: process.env.PORT || 3000,
     db: 'postgres://localhost/aram-test'
   },
 
@@ -26,7 +26,7 @@ var config = {
     app: {
       name: 'aram'
     },
-    port: 3000,
+    port: process.env.PORT || 3000,
     db: process.env.DATABASE_URL
   }
 };
