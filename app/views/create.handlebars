@@ -2,13 +2,15 @@
 <div class="row">
   <div class="large-12 columns">
     <a href="/" class="button tiny"><span class="fa fa-undo"></span> Volver</a>
-    <form action="/articles" method="post" enctype="multipart/form-data">
+    <form action="/articles" method="post">
       <div class="row">
         <div class="large-6 columns">
           <input type="text" name="title" placeholder="título"  />
         </div>
         <div class="large-4 columns">
-          <input type="file" class="inline-file" name="images" id="images" />
+          <img id="preview" src="/images/default.png" />
+          <input type="file" class="inline-file" name="image" id="image" />
+          <input type="hidden" id="image_url" name="image_url" value="/img/default.png" />
         </div>
         <div class="large-2 columns">
           <select name="category" id="category" multiple size=3>
