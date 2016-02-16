@@ -55,12 +55,57 @@
 ul.posts {
   padding: 0;
   margin: 0; }
-  ul.posts li {
-    width: 33%;
-    display: inline-block; }
+  ul.posts li.all {
+    background: white;
+    -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    width: 31.5%;
+    display: inline-block;
+    margin: 10px;
+    vertical-align: top; }
+    ul.posts li.all .index-cover {
+      width: 100%;
+      position: relative; }
+      ul.posts li.all .index-cover .title {
+        position: absolute;
+        bottom: 10px;
+        left: 18px;
+        margin: 0; }
+      ul.posts li.all .index-cover img {
+        width: 100%; }
+    ul.posts li.all .index-content {
+      padding: 15px 18px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+      ul.posts li.all .index-content p {
+        max-height: 45px;
+        overflow: hidden;
+        margin: 0; }
+    ul.posts li.all:first-child, ul.posts li.all:nth-child(4n+4) {
+      margin-left: 0; }
+    ul.posts li.all:nth-child(3n+3) {
+      margin-right: 0; }
+
+.gradient {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.45+100 */
+  background: -moz-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.45) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.45) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.45) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#73000000',GradientType=0 );
+  /* IE6-9 */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0px; }
 
 ul.centerize {
-  margin: 0 auto;
+  margin: 0 auto !important;
   text-align: center;
   list-style-type: none; }
   ul.centerize.info li span {
@@ -73,6 +118,12 @@ ul.centerize {
     margin: 0 20px; }
     ul.centerize.filter li a {
       font-weight: 500; }
+  ul.centerize.tips li {
+    margin: 0 25px;
+    padding: 15px 0; }
+    ul.centerize.tips li a {
+      color: #70e8d7;
+      text-transform: uppercase; }
 
 .footer {
   height: 56px;

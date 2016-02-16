@@ -9,12 +9,24 @@
       <br />
       <ul class="no-bullet posts">
       {{#each articles}}
-      <li>
-        <h4><a class="bluetxt" href="/article/{{this.id}}">{{this.title}}</a> </h4>
-        <div class="actions right">
-          <a href="article/{{this.id}}/edit"><span class="fa fa-edit"></span></a> <a class="redtxt" href="/article/{{this.id}}/destroy"><span class="fa fa-trash"></span></a>
+      <li class="all">
+        <div class="index-cover">
+          <a href="/article/{{this.id}}"><img src="{{this.cover}}" alt="" /></a>
+          <div class="gradient">
+            <h4 class="title"><a class="whitetxt" href="/article/{{this.id}}">{{this.title}}</a> </h4>
+          </div>
         </div>
-        <div class="content">{{{this.text}}}</div>
+        {{!-- <div class="actions right">
+          <a href="article/{{this.id}}/edit"><span class="fa fa-edit"></span></a> <a class="redtxt" href="/article/{{this.id}}/destroy"><span class="fa fa-trash"></span></a>
+        </div> --}}
+        <div class="index-content"><p>{{this.text}}</p></div>
+        <ul class="centerize tips">
+          {{#each this.category}}
+            <li><a href="/articles/#{{this}}">{{this}}</a></li>
+          {{else}}
+            <li><a href="/articles/#{{this.category}}">{{this.category}}</a></li>
+          {{/each}}
+        </ul>
       </li>
       {{/each}}
       </ul>
