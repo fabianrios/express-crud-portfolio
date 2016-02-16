@@ -10,12 +10,15 @@
 .full {
   width: 100%; }
 
+.nm {
+  margin: 0; }
+
 .spacing {
   padding-bottom: 50px; }
 
 .main-body {
   background: #f5f5f5;
-  min-height: 90vh;
+  min-height: 83.5vh;
   padding-top: 100px; }
 
 .nav {
@@ -37,6 +40,8 @@
       text-align: right;
       display: inline-block;
       margin: 0 20px; }
+      .nav ul.navigation li a {
+        font-weight: 500; }
   .nav ul.social {
     list-style-type: none;
     display: inline-block;
@@ -46,6 +51,13 @@
     .nav ul.social li {
       display: inline-block;
       margin: 0 16px; }
+
+ul.posts {
+  padding: 0;
+  margin: 0; }
+  ul.posts li {
+    width: 33%;
+    display: inline-block; }
 
 ul.centerize {
   margin: 0 auto;
@@ -57,6 +69,10 @@ ul.centerize {
     margin: 0 50px;
     display: inline-block;
     text-align: center; }
+  ul.centerize.filter li {
+    margin: 0 20px; }
+    ul.centerize.filter li a {
+      font-weight: 500; }
 
 .footer {
   height: 56px;

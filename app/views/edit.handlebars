@@ -1,9 +1,20 @@
 <div class="row">
   <div class="large-12 columns">
-    <a href="/">Volver</a>
-    <h1>Actualizar</h1>
+    <a href="/" class="button tiny"><span class="fa fa-undo"></span> Volver</a>
+    <h1>{{title}}</h1>
     <form action="/article/{{article.id}}/editar" method="post">
-      <input type="text" name="title" value="{{article.title}}" />
+    <div class="row">
+      <div class="large-7 columns">
+        <input type="text" name="title" value="{{article.title}}" />
+      </div>
+      <div class="large-5 columns">
+        <select name="category" id="category" multiple size=3>
+          <option value="tips">Tips</option>
+          <option value="viajes">Viajes</option>
+          <option value="datos">Datos</option>
+        </select>
+      </div>
+    </div>
       <input type="text" name="text" value="{{article.text}}" />
       <textarea name="fulltext" id="fulltext">{{article.fulltext}}</textarea>
       <input type="submit" value="Actualizar" class="button success" />

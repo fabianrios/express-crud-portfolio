@@ -4,6 +4,8 @@
 @import "../../node_modules/zurb-foundation-5/scss/foundation";
 @import "../../node_modules/font-awesome/scss/font-awesome";
 
+$inputcolor:#7B7B7B;
+
 @mixin border-radius($foo:5px){
 	-webkit-border-radius: $foo;
 	-moz-border-radius: $foo;
@@ -16,12 +18,23 @@
   box-shadow: $x $y $off $color;
 }
 
+.cke_dialog_body{
+  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"]{
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    border:1px solid lightgray;
+    @include border-radius(2px);
+    @include box-shadow(0 1px 1px rgba(0,0,0,0.1));
+  }  
+}
+
 input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"]{
   @include box-shadow();
   height: 48px;
   border: 1px solid lightgray;
   padding-left: 16px;
-  color: #d4d4d4;
+  color: $inputcolor;
   @include border-radius(2px);
   &:focus{
     @include box-shadow(0 2px 1px rgba(0,0,0,0.4));
@@ -34,7 +47,7 @@ textarea{
   border: 1px solid lightgray;
   padding-left: 16px;
   padding-top: 16px;
-  color: #d4d4d4;
+  color: $inputcolor;
   min-height: 200px;
   @include border-radius(2px);
   &:focus{
@@ -43,7 +56,9 @@ textarea{
     border: 1px solid white;
   }
 }
-
+select{
+  height: 45px;
+}
 .fa-large{
   font-size: 21px;
 }
@@ -51,4 +66,8 @@ textarea{
 .button{
   @include border-radius(2px);
   @include box-shadow();
+}
+
+.cke.cke_reset{
+  margin: 20px 0;
 }

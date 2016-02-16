@@ -1,6 +1,8 @@
 var express = require('express'),
   router = express.Router(),
   db = require('../models');
+  
+var friendlyUrl = require('friendly-url');
 
 module.exports = function (app) {
   app.use('/', router);
@@ -60,8 +62,8 @@ router.get('/article/:id/edit', function (req, res, next) {
 
 router.post('/articles', function (req, res, next) {
   var body = req.body
-  console.log(body);
-  db.Article.create({ title: body.title, text: body.text, url: 'fort-knox', fulltext: body.fulltext }).then(function () {
+  var urlbody = friendlyUrl(body.title);
+  db.Article.create({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category }).then(function () {
    res.redirect('/');
   });
 });
@@ -69,8 +71,10 @@ router.post('/articles', function (req, res, next) {
 router.post('/article/:id/editar', function (req, res, next) {
   var id = req.params.id
   var body = req.body
+  var urlbody = friendlyUrl(body.title);
+  console.log(urlbody);
   db.Article.findById(id).then(function (article) {
-    article.update({ title: body.title, text: body.text, url: 'edited', fulltext: body.fulltext }).then(function () {
+    article.update({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category }).then(function () {
      res.redirect('/');
     });
   });

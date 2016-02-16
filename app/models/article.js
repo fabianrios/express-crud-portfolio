@@ -9,8 +9,8 @@ module.exports = function (sequelize, DataTypes) {
     text: DataTypes.STRING,
     fulltext: DataTypes.TEXT,
     images: DataTypes.JSON,
-    cover: DataTypes.JSON,
-    category: DataTypes.STRING,
+    cover: DataTypes.STRING,
+    category: DataTypes.JSON,
     publish: {
        type: DataTypes.BOOLEAN,
        defaultValue: false,

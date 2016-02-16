@@ -17721,6 +17721,18 @@ th.hide-for-touch {
 .fa-percent:before {
   content: ""; }
 
+.cke_dialog_body input[type="text"], .cke_dialog_body input[type="password"], .cke_dialog_body input[type="date"], .cke_dialog_body input[type="datetime"], .cke_dialog_body input[type="datetime-local"], .cke_dialog_body input[type="month"], .cke_dialog_body input[type="week"], .cke_dialog_body input[type="email"], .cke_dialog_body input[type="number"], .cke_dialog_body input[type="search"], .cke_dialog_body input[type="tel"], .cke_dialog_body input[type="time"], .cke_dialog_body input[type="url"] {
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid lightgray;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) 2px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) 2px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) 2px 2px rgba(0, 0, 0, 0.2); }
+
 input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"] {
   -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
@@ -17728,7 +17740,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   height: 48px;
   border: 1px solid lightgray;
   padding-left: 16px;
-  color: #d4d4d4;
+  color: #7B7B7B;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px; }
@@ -17746,7 +17758,7 @@ textarea {
   border: 1px solid lightgray;
   padding-left: 16px;
   padding-top: 16px;
-  color: #d4d4d4;
+  color: #7B7B7B;
   min-height: 200px;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -17758,6 +17770,9 @@ textarea {
     background: white;
     border: 1px solid white; }
 
+select {
+  height: 45px; }
+
 .fa-large {
   font-size: 21px; }
 
@@ -17768,3 +17783,6 @@ textarea {
   -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); }
+
+.cke.cke_reset {
+  margin: 20px 0; }

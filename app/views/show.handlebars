@@ -1,14 +1,7 @@
 <div class="row expanded">
   <div class="large-12 columns">
-    <a href="/">Volver</a>
+    <a href="/" class="button tiny"><span class="fa fa-undo"></span> Volver</a>
     <h1>{{article.title}}</h1>
-    <div class="content">{{{article.text}}}</div>
-    <h1>Crear uno nuevo</h1>
-    <form action="/articles" method="post">
-      <input type="text" name="title" />
-      <input type="text" name="text" />
-      <textarea name="fulltext" id="fulltext"></textarea>
-      <input type="submit" value="Enviar nuevo" />
-    </form>
+    <div class="content">{{{article.fulltext}}}</div>
   </div>
 </div>
