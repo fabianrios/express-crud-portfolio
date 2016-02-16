@@ -15,10 +15,10 @@
           <div class="gradient">
             <h4 class="title"><a class="whitetxt" href="/article/{{this.id}}">{{this.title}}</a> </h4>
           </div>
+          <div class="actions">
+            <a href="article/{{this.id}}/edit"><span class="fa fa-edit"></span></a> <a class="redtxt" href="/article/{{this.id}}/destroy"><span class="fa fa-trash"></span></a>
+          </div>
         </div>
-        {{!-- <div class="actions right">
-          <a href="article/{{this.id}}/edit"><span class="fa fa-edit"></span></a> <a class="redtxt" href="/article/{{this.id}}/destroy"><span class="fa fa-trash"></span></a>
-        </div> --}}
         <div class="index-content"><p>{{this.text}}</p></div>
         <ul class="centerize tips">
           {{#each this.category}}
