@@ -9,14 +9,6 @@ var compress = require('compression');
 var methodOverride = require('method-override');
 var exphbs  = require('express-handlebars');
 
-var http = require('http');
-var path = require('path');
-var aws = require('aws-sdk');
-
-var AWS_ACCESS_KEY = process.env.S3_BUCKET_NAME;
-var AWS_SECRET_KEY = process.env.S3_ACCESS_KEY;
-var S3_BUCKET = process.env.S3_SECRET_ACCESS_KEY
-
 module.exports = function(app, config) {
   var env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;
@@ -40,6 +32,7 @@ module.exports = function(app, config) {
   app.use(compress());
   app.use(express.static(config.root + '/public'));
   app.use('/scripts', express.static(config.root + '/node_modules'));
+  app.use('/fonts', express.static(config.root + '/node_modules/font-awesome/fonts'));
   app.use(methodOverride());
 
   var controllers = glob.sync(config.root + '/app/controllers/*.js');

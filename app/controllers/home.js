@@ -4,6 +4,17 @@ var express = require('express'),
   
 var friendlyUrl = require('friendly-url');
 
+var http = require('http');
+var path = require('path');
+var aws = require('aws-sdk');
+var assert = require('assert');
+var env = require('node-env-file');
+env(path.dirname(require.main.filename) + '/.env');
+
+var AWS_ACCESS_KEY =  process.env.S3_ACCESS_KEY;
+var AWS_SECRET_KEY =process.env.S3_SECRET_ACCESS_KEY;
+var S3_BUCKET = process.env.S3_BUCKET_NAME;
+
 module.exports = function (app) {
   app.use('/', router);
 };
@@ -30,7 +41,7 @@ router.get('/sign_s3', function(req, res){
     };
     s3.getSignedUrl('putObject', s3_params, function(err, data){
         if(err){
-            console.log(err);
+            console.log("sign_err",err);
         }
         else{
             var return_data = {
