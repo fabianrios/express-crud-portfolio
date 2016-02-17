@@ -36,7 +36,7 @@
           {{#each article.category}}
             <li><a href="/articles/#{{this}}">{{this}}</a></li>
           {{else}}
-            <li><a href="/articles/#{{this.category}}">{{this.category}}</a></li>
+            <li><a href="/articles/#{{article.category}}">{{article.category}}</a></li>
           {{/each}}
         </ul>
       </div>

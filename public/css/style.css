@@ -96,7 +96,10 @@
   display: block;
   position: relative;
   text-align: center;
-  top: 250px; }
+  top: 100px; }
+  @media only screen and (min-width: 90.063em) and (max-width: 120em) {
+    #like {
+      top: 250px; } }
   #like:hover {
     color: rgba(255, 255, 255, 0.7); }
 
