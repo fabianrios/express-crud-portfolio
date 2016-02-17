@@ -1,6 +1,7 @@
- CKEDITOR.replace( 'fulltext' );
- 
  (function() {
+   if ($("#fulltext").length){
+     CKEDITOR.replace( 'fulltext' );
+     
      document.getElementById("image_upload").onchange = function(){
          var files = document.getElementById("image_upload").files;
          var file = files[0];
@@ -11,6 +12,8 @@
              get_signed_request(file);
          }
      };
+     
+    }
      
      function get_signed_request(file){
          var xhr = new XMLHttpRequest();
@@ -44,6 +47,15 @@
          };
          xhr.send(file);
      }
+     
+     $('#like').click(function(e){
+       e.preventDefault();
+       $id = $(this).attr("data-id");
+       console.log($id);
+       $.post('like/', { 'id': $id }, function(data){
+         $("#increment").html(data);
+       });
+     });
      
  })();
  

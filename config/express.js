@@ -9,6 +9,7 @@ var compress = require('compression');
 var methodOverride = require('method-override');
 var exphbs  = require('express-handlebars');
 
+
 module.exports = function(app, config) {
   var env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;
@@ -17,7 +18,15 @@ module.exports = function(app, config) {
   app.engine('handlebars', exphbs({
     layoutsDir: config.root + '/app/views/layouts/',
     defaultLayout: 'main',
-    partialsDir: [config.root + '/app/views/partials/']
+    partialsDir: [config.root + '/app/views/partials/'],
+    helpers: {
+      ifCond: function (v1, v2, options) { 
+        if(v1 == v2) {
+          return options.fn(this);
+        }
+        return options.inverse(this);
+      }
+    }
   }));
   app.set('views', config.root + '/app/views');
   app.set('view engine', 'handlebars');
@@ -64,6 +73,14 @@ module.exports = function(app, config) {
         error: {},
         title: 'error'
       });
+  });
+  
+  app.use(function (req, res, next) {
+     res.locals = {
+       pageTitle: "The Home Page",
+       author: "Fabián Ríos",
+       description: "Aram's website"
+     };
   });
 
 };

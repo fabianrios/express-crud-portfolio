@@ -15,7 +15,8 @@ module.exports = function (sequelize, DataTypes) {
        type: DataTypes.BOOLEAN,
        defaultValue: false,
        allowNull: false
-     }
+     },
+     like: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function (models) {

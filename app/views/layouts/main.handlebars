@@ -15,9 +15,8 @@
   {{/if}}
 </head>
 <body>
-
-  <div class="nav">
-    <a class="logo" href="/"><img src="/img/group-2.png" alt="" /></a>
+   <div class="nav {{pageTitle}}">
+    <a class="logo" href="/"><img src="/img/{{logo}}" alt="" /></a>
     <ul class="navigation">
       <li><a href="">BLOG</a></li>
       <li><a href="/experiences">EXPERIENCIAS</a></li>
@@ -28,6 +27,22 @@
       <li><a href=""><span class="fa fa-facebook fa-large"></span></a></li>
       <li><a href=""><span class="fa fa-instagram fa-large"></span></a></li>
     </ul>
+    {{#ifCond pageTitle "articles"}}
+    <div class="br_after"></div>
+    <div class="text-center">
+      <div class="block">
+        <h2 class="upper">{{article.title}}</h2>
+        <ul class="centerize article-show">
+          {{#each article.category}}
+            <li><a href="/articles/#{{this}}">{{this}}</a></li>
+          {{else}}
+            <li><a href="/articles/#{{this.category}}">{{this.category}}</a></li>
+          {{/each}}
+        </ul>
+      </div>
+      <a id="like" data-id="{{article.id}}" class="whitetxt"><span class="fa fa-heart fa-2x"></span></a>
+    </div>
+    {{/ifCond}}
   </div>
   <div class="main-body">{{{body}}}</div>
   <div class="footer">

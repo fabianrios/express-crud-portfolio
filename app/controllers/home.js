@@ -24,7 +24,8 @@ router.get('/', function (req, res, next) {
     // console.log(articles);
     res.render('index', {
       title: 'root',
-      articles: articles
+      articles: articles,
+      logo: "group-2.png"
     });
   });
 });
@@ -57,28 +58,37 @@ router.get('/sign_s3', function(req, res){
 router.get('/article/create', function (req, res, next) {
     res.render('create', {
       title: 'Create new article',
+      logo: "group-2.png"
     });
 });
 
 router.get('/experiences', function (req, res, next) {
     res.render('experiences', {
       title: 'Experiencias',
+      logo: "group-2.png"
     });
 });
 
 router.get('/contact', function (req, res, next) {
     res.render('contact', {
       title: 'Contacto',
+      logo: "group-2.png"
     });
 });
 
 router.get('/article/:id', function (req, res, next) {
   var id = req.params.id
   db.Article.findById(id).then(function (article) {
-    // console.log(article);
+    // console.log(article)
+    
+    res.locals = {
+      pageTitle: "articles",
+    };
+    
     res.render('show', {
-      title: "Pantalla individual",
-      article: article
+      title: article.title,
+      article: article,
+      logo: "logo_white.png"
     });
   });
 });
@@ -92,6 +102,19 @@ router.get('/article/:id/edit', function (req, res, next) {
       title: "Edición",
       article: article
     });
+  });
+});
+
+
+router.post('/article/like', function (req, res, next) {
+  var id = req.body.id
+  db.Article.findById(id).then(function (article) {
+   var like = article.like || 0
+   like++;
+   article.update({like: like }).then(function () {
+      res.write(JSON.stringify(like));
+      res.end();
+   });
   });
 });
 
