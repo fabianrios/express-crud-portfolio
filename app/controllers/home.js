@@ -23,6 +23,13 @@ module.exports = function (app) {
 };
 
 router.get('/', function (req, res, next) {
+    res.render('index', {
+      title: 'root',
+      logo: "group-2.png"
+    });
+});
+
+router.get('/blog', function (req, res, next) {
   db.Article.findAll().then(function (articles) {
     // console.log(articles);
     res.render('index', {

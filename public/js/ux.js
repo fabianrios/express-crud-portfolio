@@ -57,6 +57,12 @@
        });
      });
      
+     if($("#map")){
+       L.mapbox.accessToken = 'pk.eyJ1IjoiZmFiaWFucmlvcyIsImEiOiJjaWc3ZDFhMjMwczFvdjRrcHF4bXliMzNoIn0.PTi-JKyYhEaQknlR6iGCoA';
+       var map = L.mapbox.map('map', 'mapbox.streets')
+           .setView([40, -74.50], 4);
+       L.mapbox.tileLayer('mapbox://styles/fabianrios/cigv12n40000c9kkk9351bc60').addTo(map);
+     }
  })();
  
  

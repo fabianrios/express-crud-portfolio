@@ -16,6 +16,7 @@
     "font-awesome": "^4.5.0",
     "friendly-url": "^1.0.2",
     "glob": "^6.0.4",
+    "mapbox.js": "^2.3.0",
     "method-override": "^2.3.0",
     "morgan": "^1.6.1",
     "node-env-file": "^0.1.8",
