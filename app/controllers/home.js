@@ -8,8 +8,11 @@ var http = require('http');
 var path = require('path');
 var aws = require('aws-sdk');
 var assert = require('assert');
-var env = require('node-env-file');
-env(path.dirname(require.main.filename) + '/.env');
+var enviroment = process.env.NODE_ENV || 'development';
+if (enviroment == 'development'){
+  var env = require('node-env-file');
+  env(path.dirname(require.main.filename) + '/.env');
+}
 
 var AWS_ACCESS_KEY =  process.env.S3_ACCESS_KEY;
 var AWS_SECRET_KEY =process.env.S3_SECRET_ACCESS_KEY;
