@@ -23,9 +23,12 @@ module.exports = function (app) {
 };
 
 router.get('/', function (req, res, next) {
+    res.locals = {
+      pageTitle: "map",
+    };
     res.render('index', {
       title: 'root',
-      logo: "group-2.png"
+      logo: "logo_white.png"
     });
 });
 

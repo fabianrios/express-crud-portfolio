@@ -64,6 +64,9 @@
 
        // Use styleLayer to add a Mapbox style created in Mapbox Studio
        L.mapbox.styleLayer('mapbox://styles/fabianrios/cikqb97u2001qaplyggo25dgu').addTo(map);
+       map.touchZoom.disable();
+       map.doubleClickZoom.disable();
+       map.scrollWheelZoom.disable();
      }
  })();
  
