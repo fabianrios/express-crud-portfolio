@@ -35,8 +35,8 @@ router.get('/', function (req, res, next) {
 router.get('/blog', function (req, res, next) {
   db.Article.findAll().then(function (articles) {
     // console.log(articles);
-    res.render('index', {
-      title: 'root',
+    res.render('blog', {
+      title: 'blog',
       articles: articles,
       logo: "group-2.png"
     });
