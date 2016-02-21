@@ -2,12 +2,21 @@ var express = require('express'),
   router = express.Router(),
   db = require('../models');
   
+var multer = require('multer');
+var upload = multer({dest:'./img/uploads/'});
 var friendlyUrl = require('friendly-url');
+var cloudinary = require('cloudinary');
+cloudinary.config({ 
+  cloud_name: 'fabianrios', 
+  api_key: '993579761283834', 
+  api_secret: 'rkFGhUYg0shUm4m7Qtnb1qWSlEQ' 
+});
+
 
 var http = require('http');
 var path = require('path');
-var aws = require('aws-sdk');
 var assert = require('assert');
+
 var enviroment = process.env.NODE_ENV || 'development';
 if (enviroment == 'development'){
   var env = require('node-env-file');
@@ -43,30 +52,14 @@ router.get('/blog', function (req, res, next) {
   });
 });
 
-router.get('/sign_s3', function(req, res){
-    aws.config.update({accessKeyId: AWS_ACCESS_KEY, secretAccessKey: AWS_SECRET_KEY});
-    var s3 = new aws.S3();
-    var s3_params = {
-        Bucket: S3_BUCKET,
-        Key: req.query.file_name,
-        Expires: 60,
-        ContentType: req.query.file_type,
-        ACL: 'public-read'
-    };
-    s3.getSignedUrl('putObject', s3_params, function(err, data){
-        if(err){
-            console.log("sign_err",err);
-        }
-        else{
-            var return_data = {
-                signed_request: data,
-                url: 'https://'+S3_BUCKET+'.s3.amazonaws.com/'+req.query.file_name
-            };
-            res.write(JSON.stringify(return_data));
-            res.end();
-        }
-    });
-});
+// router.post('/upload_image',upload.single('image_upload'), function(req, res){
+//   console.log(req.file);
+//   cloudinary.uploader.upload(req.file.path, function(result) {
+//     console.log("result",result);
+//     res.write(JSON.stringify(result));
+//     res.end();
+//   });
+// });
 
 router.get('/article/create', function (req, res, next) {
     res.render('create', {
@@ -132,11 +125,13 @@ router.post('/article/like', function (req, res, next) {
 });
 
 
-router.post('/articles', function (req, res, next) {
-  var body = req.body
+router.post('/articles',upload.single('image_upload'), function (req, res, next) {
+  var body = req.body;
   var urlbody = friendlyUrl(body.title);
-  db.Article.create({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category }).then(function () {
-   res.redirect('/');
+  cloudinary.uploader.upload(req.file.path, function(result) {
+    db.Article.create({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, images: result }).then(function () {
+     res.redirect('/');
+    });
   });
 });
 
@@ -144,10 +139,9 @@ router.post('/article/:id/editar', function (req, res, next) {
   var id = req.params.id
   var body = req.body
   var urlbody = friendlyUrl(body.title);
-  console.log(urlbody);
   db.Article.findById(id).then(function (article) {
     article.update({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category }).then(function () {
-     res.redirect('/');
+     res.redirect('/blog');
     });
   });
 });
@@ -161,3 +155,4 @@ router.get('/article/:id/destroy', function (req, res, next) {
       res.redirect('/');
     });
 });
+

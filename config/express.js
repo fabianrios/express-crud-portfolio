@@ -9,7 +9,6 @@ var compress = require('compression');
 var methodOverride = require('method-override');
 var exphbs  = require('express-handlebars');
 
-
 module.exports = function(app, config) {
   var env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;
