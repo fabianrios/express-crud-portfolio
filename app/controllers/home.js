@@ -129,8 +129,8 @@ router.post('/articles',upload.single('image_upload'), function (req, res, next)
   var body = req.body;
   var urlbody = friendlyUrl(body.title);
   cloudinary.uploader.upload(req.file.path, function(result) {
-    db.Article.create({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, images: result }).then(function () {
-     res.redirect('/');
+    db.Article.create({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, cover: result.public_id }).then(function () {
+     res.redirect('/blog');
     });
   });
 });
@@ -152,7 +152,7 @@ router.get('/article/:id/destroy', function (req, res, next) {
         id: req.params.id
       }
     }).then(function() {
-      res.redirect('/');
+      res.redirect('/blog');
     });
 });
 
