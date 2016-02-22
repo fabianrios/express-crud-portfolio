@@ -1,13 +1,16 @@
 <div class="row">
   <div class="large-12 columns">
-    <a href="/" class="button tiny"><span class="fa fa-undo"></span> Volver</a>
+    <a href="/blog" class="button tiny"><span class="fa fa-undo"></span> Volver</a>
     <h1>{{title}}</h1>
-    <form action="/article/{{article.id}}/editar" method="post">
+    <form action="/article/{{article.id}}/editar" method="post" enctype='multipart/form-data'>
     <div class="row">
-      <div class="large-7 columns">
+      <div class="large-6 columns">
         <input type="text" name="title" value="{{article.title}}" />
       </div>
-      <div class="large-5 columns">
+      <div class="large-4 columns">
+        <input type="file" class="inline-file" name="image_upload" id="image_upload" />
+      </div>
+      <div class="large-2 columns">
         <select name="category" id="category" multiple size=3>
           <option value="tips">Tips</option>
           <option value="viajes">Viajes</option>

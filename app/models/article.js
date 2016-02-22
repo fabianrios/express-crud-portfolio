@@ -10,6 +10,7 @@ module.exports = function (sequelize, DataTypes) {
     fulltext: DataTypes.TEXT,
     images: DataTypes.JSON,
     cover: DataTypes.STRING,
+    version: DataTypes.INTEGER,
     category: DataTypes.JSON,
     publish: {
        type: DataTypes.BOOLEAN,

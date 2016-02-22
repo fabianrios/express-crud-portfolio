@@ -129,20 +129,30 @@ router.post('/articles',upload.single('image_upload'), function (req, res, next)
   var body = req.body;
   var urlbody = friendlyUrl(body.title);
   cloudinary.uploader.upload(req.file.path, function(result) {
-    db.Article.create({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, cover: result.public_id }).then(function () {
+    db.Article.create({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, cover: result.public_id, version: result.version }).then(function () {
      res.redirect('/blog');
     });
   });
 });
 
-router.post('/article/:id/editar', function (req, res, next) {
+router.post('/article/:id/editar', upload.single('image_upload'), function (req, res, next) {
   var id = req.params.id
   var body = req.body
   var urlbody = friendlyUrl(body.title);
+  var file = req.file;
   db.Article.findById(id).then(function (article) {
-    article.update({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category }).then(function () {
-     res.redirect('/blog');
-    });
+    if(typeof file !== 'undefined'){
+    cloudinary.uploader.upload(file.path, function(result) {
+      console.log(result);
+      article.update({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, cover: result.public_id, version: result.version }).then(function () {
+       res.redirect('/blog');
+      });
+    },{ public_id: article.cover_version, invalidate: true });
+    } else{
+      article.update({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category }).then(function () {
+       res.redirect('/blog');
+      });
+    }
   });
 });
 
