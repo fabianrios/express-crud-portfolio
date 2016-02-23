@@ -21,6 +21,10 @@
   margin: 0;
 }
 
+.db{
+  display: inline-block;
+}
+
 .upper{
  text-transform: uppercase; 
 }
@@ -270,6 +274,12 @@ ul.centerize{
       a{
         font-weight: 500;
       }
+    }
+  }
+  &.country{
+    li{
+      position: relative;
+      margin: 0 10px;
     }
   }
   &.tips{

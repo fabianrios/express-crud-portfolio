@@ -1,0 +1,43 @@
+<div class="admin-form">
+  <div class="row">
+    <div class="large-12 columns">
+      <a href="/countries_search" class="button tiny"><span class="fa fa-undo"></span> Volver</a>
+    </div>
+  </div>
+  <form action="/country/{{country.id}}/editar" id="articles-form" method="post" enctype='multipart/form-data'>
+  <div class="row">
+    <div class="large-8 columns">
+      <h1>{{title}}</h1>
+      <input type="text" name="pais" placeholder="País" value="{{country.title}}" />
+    <div class="row">
+      <div class="large-4 columns">
+        <input type="text" class="currency" id="vip" name="vip" placeholder="VIP" value="{{country.vip}}" />
+      </div>
+      <div class="large-4 columns">
+        <input type="text" class="currency" name="incognito" placeholder="Incognito" value="{{country.incognito}}" />
+      </div>
+      <div class="large-4 columns">
+        <input type="text" class="currency" name="corporate" placeholder="Corporativo" value="{{country.corporate}}" />
+      </div>
+    </div>
+      <label for="texto">Descripción</label>
+      <textarea name="texto" id="texto">{{country.text}}</textarea>
+      <div class="row">
+        <div class="large-6 columns">
+          <input type="text" name="lat" placeholder="Latitud" value="{{country.lat}}" />
+        </div>
+        <div class="large-6 columns">
+          <input type="text" name="long" placeholder="Longitud" value="{{country.long}}" />
+        </div>
+      </div>
+    </div>
+    <div class="large-4 columns">
+      <label for="image_upload">Imagen</label>
+      <div class="file">
+        <input type="file" class="inline-file" name="image_upload" id="image_upload" />
+      </div>
+      <button class="button success full">Actualizar {{country.title}}</button>
+    </div>
+  </div>
+  </form>
+</div>

@@ -3,18 +3,18 @@
 
 module.exports = function (sequelize, DataTypes) {
 
-  var Article = sequelize.define('Article', {
+  var Country = sequelize.define('Country', {
     title: DataTypes.STRING,
     url: DataTypes.STRING,
-    text: DataTypes.STRING,
-    fulltext: DataTypes.TEXT,
-    images: DataTypes.JSON,
+    text: DataTypes.TEXT,
     cover: DataTypes.STRING,
     version: DataTypes.INTEGER,
+    lat: DataTypes.FLOAT,
+    long: DataTypes.FLOAT,
     category: DataTypes.JSON,
     vip: DataTypes.INTEGER,
-    incognito: DataTypes.INTEGER,
-    corporate: DataTypes.INTEGER,
+    incognito: DataTypes.STRING,
+    corporate: DataTypes.STRING,
     publish: {
        type: DataTypes.BOOLEAN,
        defaultValue: false,
@@ -25,11 +25,11 @@ module.exports = function (sequelize, DataTypes) {
     classMethods: {
       associate: function (models) {
         // example on how to add relations
-        // Article.hasMany(models.Comments);
+        Country.hasMany(models.Article);
       }
     }
   });
 
-  return Article;
+  return Country;
 };
 

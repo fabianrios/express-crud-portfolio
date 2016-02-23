@@ -1,26 +1,34 @@
-
-<div class="row">
-  <div class="large-12 columns">
-    <a href="/blog" class="button tiny"><span class="fa fa-undo"></span> Volver</a>
-    <form action="/articles" method="post" enctype='multipart/form-data'>
-      <div class="row">
-        <div class="large-6 columns">
-          <input type="text" name="title" placeholder="título"  />
-        </div>
-        <div class="large-4 columns">
-          <input type="file" class="inline-file" name="image_upload" id="image_upload" />
-        </div>
-        <div class="large-2 columns">
-          <select name="category" id="category" multiple size=3>
-            <option value="tips">Tips</option>
-            <option value="viajes">Viajes</option>
-            <option value="datos">Datos</option>
-          </select>
-        </div>
-      </div>
-      <input type="text" name="text" placeholder="previsualización" />
-      <textarea name="fulltext" id="fulltext" placeholder="texto"></textarea>
-      <button class="button success">Crear articulo</button>
-    </form>
+<div class="admin-form">
+  <div class="row">
+    <div class="large-12 columns">
+      <a href="/blog" class="button tiny"><span class="fa fa-undo"></span> Volver</a>
+    </div>
   </div>
+  <form action="/articles" id="articles-form" method="post" enctype='multipart/form-data'>
+  <div class="row">
+    <div class="large-8 columns">
+      <h1>{{title}}</h1>
+      <input type="text" name="text" placeholder="texto" />
+      <textarea name="fulltext" id="fulltext"></textarea>
+    </div>
+    <div class="large-4 columns">
+      <button class="button success full">Crear articulo</button>
+      <input type="text" name="title" placeholder="título"  />
+      <select name="category" id="category" multiple size=3>
+        <option value="tips">Tips</option>
+        <option value="viajes">Viajes</option>
+        <option value="datos">Datos</option>
+      </select>
+      <input type="text" class="currency" id="vip" name="vip" placeholder="VIP" />
+      <input type="text" class="currency" name="incognito" placeholder="Incognito" />
+      <input type="text" class="currency" name="corporate" placeholder="Corporativo" />
+      <label for="image_upload">Imagen destacada</label>
+      <div class="file">
+        <input type="file" class="inline-file" name="image_upload" id="image_upload" />
+      </div>
+      <label for="image_upload">Galleria</label>
+      <input type="file" class="inline-file" multiple="true" name="image_upload" id="image_upload" />
+    </div>
+  </div>
+  </form>
 </div>

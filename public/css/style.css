@@ -13,6 +13,9 @@
 .nm {
   margin: 0; }
 
+.db {
+  display: inline-block; }
+
 .upper {
   text-transform: uppercase; }
 
@@ -217,6 +220,9 @@ ul.centerize {
     margin: 0 20px; }
     ul.centerize.filter li a {
       font-weight: 500; }
+  ul.centerize.country li {
+    position: relative;
+    margin: 0 10px; }
   ul.centerize.tips li {
     margin: 0 25px;
     padding: 15px 0; }

@@ -6,6 +6,7 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "autonumeric": "^1.9.43",
     "body-parser": "^1.13.3",
     "ckeditor": "^4.5.7",
     "cloudinary": "^1.3.0",

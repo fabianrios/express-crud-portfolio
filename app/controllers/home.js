@@ -37,8 +37,89 @@ router.get('/', function (req, res, next) {
     };
     res.render('index', {
       title: 'root',
-      logo: "logo_white.png"
+      logo: "group-2.png"
     });
+});
+
+router.get('/country/create', function (req, res, next) {
+    res.render('create_country', {
+      title: 'Crear nuevo país',
+      logo: "group-2.png"
+    });
+});
+
+router.get('/country/:id/edit', function (req, res, next) {
+  var id = req.params.id
+  db.Country.findById(id).then(function (country) {
+    res.render('edit_country', {
+      title: "Edición de país",
+      country: country,
+      logo: "group-2.png"
+    });
+  });
+});
+
+router.post('/country/:id/editar', upload.single('image_upload'), function (req, res, next) {
+  var id = req.params.id
+  var body = req.body
+  var urlbody = friendlyUrl(body.title);
+  var file = req.file;
+  console.log("body",body, parseFloat(body.lat));
+  db.Country.findById(id).then(function (country) {
+    if(typeof file !== 'undefined'){
+    cloudinary.uploader.upload(file.path, function(result) {
+      country.update({ title: body.pais, text: body.texto, url: urlbody, cover: result.public_id, version: result.version, vip: body.vip, incognito: body.incognito, corporate: body.corporate, lat: body.lat, long: body.long }).then(function () {
+       res.redirect('/countries_search');
+      });
+    },{ public_id: article.cover_version, invalidate: true });
+    } else{
+      country.update({ title: body.pais, text: body.texto, url: urlbody, vip: body.vip, incognito: body.incognito, corporate: body.corporate, lat: body.lat, long: body.long }).then(function () {
+       res.redirect('/countries_search');
+      });
+    }
+  });
+});
+
+router.post('/countries',upload.single('image_upload'), function (req, res, next) {
+  var body = req.body;
+  var urlbody = friendlyUrl(body.pais);
+  if(typeof req.file !== 'undefined'){
+    cloudinary.uploader.upload(req.file.path, function(result) {
+      db.Country.create({ title: body.pais, text: body.texto, url: urlbody, cover: result.public_id, version: result.version, vip: body.vip, incognito: body.incognito, corporate: body.corporate }).then(function () {
+       res.redirect('/countries_search');
+      });
+    });
+  }else{
+    db.Country.create({title: body.pais, text: body.texto, url: urlbody, vip: body.vip, incognito: body.incognito, corporate: body.corporate}).then(function () {
+     res.redirect('/countries_search');
+    });
+  }
+});
+
+router.get('/countries_search', function (req, res, next) {
+  db.Country.findAll().then(function (countries) {
+    
+    res.render('countries_search', {
+      title: 'Buscador de paises',
+      countries: countries,
+      logo: "group-2.png"
+    });
+    
+  });
+});
+
+router.get('/countries_all', function (req, res, next) {
+  db.Country.findAll().then(function (countries) {
+    var geo = [];
+    for (var i = 0; i < countries.length; i++){
+      geo.push([countries[i].lat,countries[i].long])
+    }
+    var json = JSON.stringify({ 
+        coord: geo
+      });
+    res.write(json);
+    res.end();
+  });
 });
 
 router.get('/blog', function (req, res, next) {
@@ -52,21 +133,13 @@ router.get('/blog', function (req, res, next) {
   });
 });
 
-// router.post('/upload_image',upload.single('image_upload'), function(req, res){
-//   console.log(req.file);
-//   cloudinary.uploader.upload(req.file.path, function(result) {
-//     console.log("result",result);
-//     res.write(JSON.stringify(result));
-//     res.end();
-//   });
-// });
-
 router.get('/article/create', function (req, res, next) {
     res.render('create', {
-      title: 'Create new article',
+      title: 'Crear nuevo articulo',
       logo: "group-2.png"
     });
 });
+
 
 router.get('/experiences', function (req, res, next) {
     res.render('experiences', {
@@ -89,6 +162,8 @@ router.get('/article/:id', function (req, res, next) {
     
     res.locals = {
       pageTitle: "articles",
+      background: true,
+      logo: "group-2.png"
     };
     
     res.render('show', {
@@ -106,7 +181,8 @@ router.get('/article/:id/edit', function (req, res, next) {
   db.Article.findById(id).then(function (article) {
     res.render('edit', {
       title: "Edición",
-      article: article
+      article: article,
+      logo: "group-2.png"
     });
   });
 });
@@ -128,11 +204,17 @@ router.post('/article/like', function (req, res, next) {
 router.post('/articles',upload.single('image_upload'), function (req, res, next) {
   var body = req.body;
   var urlbody = friendlyUrl(body.title);
-  cloudinary.uploader.upload(req.file.path, function(result) {
-    db.Article.create({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, cover: result.public_id, version: result.version }).then(function () {
+  if(typeof req.file !== 'undefined'){
+    cloudinary.uploader.upload(req.file.path, function(result) {
+      db.Article.create({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, cover: result.public_id, version: result.version, vip: body.vip, incognito: body.incognito, corporate: body.corporate }).then(function () {
+       res.redirect('/blog');
+      });
+    });
+  }else{
+    db.Article.create({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, vip: body.vip, incognito: body.incognito, corporate: body.corporate }).then(function () {
      res.redirect('/blog');
     });
-  });
+  }
 });
 
 router.post('/article/:id/editar', upload.single('image_upload'), function (req, res, next) {
@@ -143,13 +225,12 @@ router.post('/article/:id/editar', upload.single('image_upload'), function (req,
   db.Article.findById(id).then(function (article) {
     if(typeof file !== 'undefined'){
     cloudinary.uploader.upload(file.path, function(result) {
-      console.log(result);
-      article.update({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, cover: result.public_id, version: result.version }).then(function () {
+      article.update({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, cover: result.public_id, version: result.version, vip: body.vip, incognito: body.incognito, corporate: body.corporate }).then(function () {
        res.redirect('/blog');
       });
     },{ public_id: article.cover_version, invalidate: true });
     } else{
-      article.update({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category }).then(function () {
+      article.update({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, vip: body.vip, incognito: body.incognito, corporate: body.corporate }).then(function () {
        res.redirect('/blog');
       });
     }
