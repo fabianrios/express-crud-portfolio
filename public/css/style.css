@@ -230,6 +230,22 @@ ul.centerize {
       color: #70e8d7;
       text-transform: uppercase; }
 
+.content {
+  padding: 10px; }
+
+.title {
+  position: absolute;
+  top: 230px;
+  left: 20px; }
+
+#info {
+  position: absolute;
+  width: 400px;
+  height: auto;
+  background: white;
+  right: 40px;
+  top: 40px; }
+
 .footer {
   height: 56px;
   background-color: #3b3b3b;

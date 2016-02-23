@@ -294,6 +294,25 @@ ul.centerize{
   }
 }
 
+.content{
+  padding: 10px;
+}
+
+.title{
+  position: absolute;
+  top: 230px;
+  left: 20px;
+}
+
+#info{
+  position:absolute;
+  width:400px;
+  height:auto;
+  background:white;
+  right:40px;
+  top:40px;
+}
+
 //FOOTER
 .footer{
   height: 56px;

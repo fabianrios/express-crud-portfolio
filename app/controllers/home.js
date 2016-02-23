@@ -34,10 +34,11 @@ module.exports = function (app) {
 router.get('/', function (req, res, next) {
     res.locals = {
       pageTitle: "map",
+      background: true,
+      logo: "group-2.png"
     };
     res.render('index', {
-      title: 'root',
-      logo: "group-2.png"
+      title: 'root'
     });
 });
 
@@ -110,13 +111,25 @@ router.get('/countries_search', function (req, res, next) {
 
 router.get('/countries_all', function (req, res, next) {
   db.Country.findAll().then(function (countries) {
-    var geo = [];
+    info = [];
     for (var i = 0; i < countries.length; i++){
-      geo.push([countries[i].lat,countries[i].long])
-    }
-    var json = JSON.stringify({ 
-        coord: geo
+      
+      info.push({
+            type: "Feature",
+            geometry: {
+              type: "Point",
+              coordinates: [countries[i].long,countries[i].lat]
+            },
+            properties: {
+              title: countries[i].title,
+              description: countries[i].text,
+              cover: countries[i].cover,
+              version: countries[i].version
+            } 
       });
+    }
+    var json = JSON.stringify(info);
+      
     res.write(json);
     res.end();
   });
