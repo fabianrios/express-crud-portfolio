@@ -74,7 +74,7 @@ router.get('/', function (req, res, next) {
     });
 });
 
-router.get('/login', function (req, res, next) {
+router.get(['/login', '/admin'], function (req, res, next) {
     res.render('login', {
       title: 'Inicio de sesión',
       logo: "group-2.png"
