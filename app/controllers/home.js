@@ -50,6 +50,14 @@ router.get('/', function (req, res, next) {
     });
 });
 
+router.get('/login', function (req, res, next) {
+    res.render('login', {
+      title: 'Inicio de sesión',
+      logo: "group-2.png"
+    });
+});
+
+
 router.get('/country/create', function (req, res, next) {
     res.render('create_country', {
       title: 'Crear nuevo país',
