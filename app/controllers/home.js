@@ -13,6 +13,14 @@ cloudinary.config({
 });
 
 
+var authorize = function(req, res, next) {
+   if (req.session && req.session.admin){
+     return next();
+    } else{
+       return res.send( 401)
+    }
+}
+
 var http = require('http');
 var path = require('path');
 var assert = require('assert');
