@@ -14,10 +14,15 @@ cloudinary.config({
 
 
 var authorize = function(req, res, next) {
+   console.log(req.session);
    if (req.session && req.session.admin){
      return next();
     } else{
-       return res.send( 401)
+      res.render('login', {
+        title: 'Inicio de sesión',
+        logo: "group-2.png",
+        error: "No esta autorizado inicie sesión"
+      });
     }
 }
 
@@ -57,11 +62,40 @@ router.get('/login', function (req, res, next) {
     });
 });
 
+router.post('/login', function (req, res, next) {
+  if (!req.body.username || !req.body.password){
+    return res.render('login',{
+       error: 'los campos no pueden estar vacios',
+       title: 'Inicio de sesión',
+       logo: "group-2.png"
+    });
+  }
+  db.User.findOne({ where: {username: req.body.username, password: req.body.password} }).then(function(user) {
+    
+    if (!user) {
+      return res.render("login", {
+         error: "No se encontro nadie con esas credenciales.",
+         title: "Inicio de sesión",
+         logo: "group-2.png" 
+      });
+    }
+    req.session.user = user; 
+    req.session.admin = user.admin;
+    res.redirect('/country/create');
+    
+  });
+});
 
-router.get('/country/create', function (req, res, next) {
+router.get('/logout', function (req, res, next) {
+   req.session.destroy(); 
+   res.redirect('/');
+});
+
+router.get('/country/create', authorize, function (req, res, next) {
     res.render('create_country', {
       title: 'Crear nuevo país',
-      logo: "group-2.png"
+      logo: "group-2.png",
+      user: req.session.user
     });
 });
 
@@ -81,7 +115,6 @@ router.post('/country/:id/editar', upload.single('image_upload'), function (req,
   var body = req.body
   var urlbody = friendlyUrl(body.title);
   var file = req.file;
-  console.log("body",body, parseFloat(body.lat));
   db.Country.findById(id).then(function (country) {
     if(typeof file !== 'undefined'){
     cloudinary.uploader.upload(file.path, function(result) {

@@ -51,7 +51,22 @@
     </div>
     {{/ifCond}}
   </div>
-  <div class="main-body">{{{body}}}</div>
+  <div class="main-body">
+    {{#if error}}
+      <div class="row">
+        <div class="large-8 columns large-centered">
+          <div data-alert class="alert-box alert round">
+            {{{error}}}
+            <a href="#" class="close">&times;</a>
+          </div>
+        </div>
+      </div>
+    {{/if}}
+    {{#if user}}
+      Bienvenido {{user.username}} <a href="/logout">cerrar sesión</a>
+    {{/if}}
+    {{{body}}}
+  </div>
   <div class="footer">
     <p>Copyright © 2016 Aram’s SAS. Todos los derechos reservados</p>
   </div>

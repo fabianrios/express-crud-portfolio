@@ -9,6 +9,8 @@ var compress = require('compression');
 var methodOverride = require('method-override');
 var exphbs  = require('express-handlebars');
 
+var session = require('express-session');
+
 module.exports = function(app, config) {
   var env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;
@@ -41,6 +43,7 @@ module.exports = function(app, config) {
   app.use(express.static(config.root + '/public'));
   app.use('/scripts', express.static(config.root + '/node_modules'));
   app.use('/fonts', express.static(config.root + '/node_modules/font-awesome/fonts'));
+  app.use(session({ secret: 'babyiloveu' }));
   app.use(methodOverride());
 
   var controllers = glob.sync(config.root + '/app/controllers/*.js');
