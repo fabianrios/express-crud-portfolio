@@ -258,3 +258,23 @@ ul.centerize {
 
 .maxrow {
   width: 90vw; }
+
+.admin-body {
+  width: 69%;
+  background: white;
+  min-height: 90vh;
+  display: inline-block;
+  padding: 20px; }
+
+.sidebar-menu {
+  float: left;
+  height: 100%;
+  min-height: 100vh;
+  width: 30%;
+  max-width: 253px;
+  display: inline-block;
+  background: #0058a0; }
+  .sidebar-menu ul {
+    list-style-type: none; }
+    .sidebar-menu ul li a {
+      color: #fff; }

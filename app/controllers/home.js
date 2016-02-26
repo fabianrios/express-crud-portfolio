@@ -77,7 +77,8 @@ router.get('/', function (req, res, next) {
 router.get(['/login', '/admin'], function (req, res, next) {
     res.render('login', {
       title: 'Inicio de sesión',
-      logo: "group-2.png"
+      logo: "group-2.png",
+      query: true
     });
 });
 
@@ -118,7 +119,7 @@ router.get('/country/create', authorize, function (req, res, next) {
     });
 });
 
-router.get('/country/:id/edit', function (req, res, next) {
+router.get('/country/:id/edit', authorize, function (req, res, next) {
   var id = req.params.id
   db.Country.findById(id).then(function (country) {
     res.render('edit_country', {
@@ -129,7 +130,7 @@ router.get('/country/:id/edit', function (req, res, next) {
   });
 });
 
-router.post('/country/:id/editar', upload.single('image_upload'), function (req, res, next) {
+router.post('/country/:id/editar', authorize, upload.single('image_upload'), function (req, res, next) {
   var id = req.params.id
   var body = req.body
   var urlbody = friendlyUrl(body.title);
@@ -149,7 +150,7 @@ router.post('/country/:id/editar', upload.single('image_upload'), function (req,
   });
 });
 
-router.post('/countries',upload.single('image_upload'), function (req, res, next) {
+router.post('/countries', authorize, upload.single('image_upload'), function (req, res, next) {
   var body = req.body;
   var urlbody = friendlyUrl(body.pais);
   if(typeof req.file !== 'undefined'){
@@ -165,7 +166,7 @@ router.post('/countries',upload.single('image_upload'), function (req, res, next
   }
 });
 
-router.get('/countries_search', function (req, res, next) {
+router.get('/countries_search', authorize, function (req, res, next) {
   db.Country.findAll().then(function (countries) {
     
     res.render('countries_search', {
@@ -214,7 +215,7 @@ router.get('/blog', function (req, res, next) {
   });
 });
 
-router.get('/article/create', function (req, res, next) {
+router.get('/article/create', authorize, function (req, res, next) {
     res.render('create', {
       title: 'Crear nuevo articulo',
       logo: "group-2.png"
@@ -257,7 +258,7 @@ router.get('/article/:id', function (req, res, next) {
 
 
 
-router.get('/article/:id/edit', function (req, res, next) {
+router.get('/article/:id/edit', authorize, function (req, res, next) {
   var id = req.params.id
   db.Article.findById(id).then(function (article) {
     res.render('edit', {
@@ -298,7 +299,7 @@ router.post('/articles',upload.single('image_upload'), function (req, res, next)
   }
 });
 
-router.post('/article/:id/editar', upload.single('image_upload'), function (req, res, next) {
+router.post('/article/:id/editar', authorize, upload.single('image_upload'), function (req, res, next) {
   var id = req.params.id
   var body = req.body
   var urlbody = friendlyUrl(body.title);
@@ -318,7 +319,7 @@ router.post('/article/:id/editar', upload.single('image_upload'), function (req,
   });
 });
 
-router.get('/article/:id/destroy', function (req, res, next) {
+router.get('/article/:id/destroy', authorize, function (req, res, next) {
   db.Article.destroy({
       where: {
         id: req.params.id

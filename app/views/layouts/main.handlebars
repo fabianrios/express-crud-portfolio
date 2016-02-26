@@ -18,57 +18,101 @@
   {{/if}}
 </head>
 <body>
-  {{#if background}}
-   <div class="nav {{pageTitle}}" style="background-image:url(http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_720,w_1920/{{article.cover}});">
+  
+  {{#query}} {{!-- login  public --}}
+  
+     <div class="main-body" style="background:white;">  
+         {{#if error}}
+           <div class="row">
+             <div class="large-8 columns large-centered">
+               <div data-alert class="alert-box alert round">
+                 {{{error}}}
+                 <a href="#" class="close">&times;</a>
+               </div>
+             </div>
+           </div>
+         {{/if}}
+         {{#if user}}
+            <h6 class="subheader">Bienvenido <a href="/profile" class="profile">{{user.username}}</a> <a href="/logout"><span class="fa fa-sign-out"></span></a></h6>
+         {{/if}}
+         {{{body}}}
+       </div>
+  
   {{else}}
-   <div class="nav">
-  {{/if}}
-    <a  href="/" class="logo"><img src="/img/{{logo}}" alt="" /></a>
-    <ul class="navigation">
-      <li><a href="/blog">BLOG</a></li>
-      <li><a href="/experiences">EXPERIENCIAS</a></li>
-      <li><a href="/contact">CONTACTO</a></li>
-    </ul>
-    <ul class="social">
-      <li><a href=""><span class="fa fa-twitter fa-large"></span></a></li>
-      <li><a href=""><span class="fa fa-facebook fa-large"></span></a></li>
-      <li><a href=""><span class="fa fa-instagram fa-large"></span></a></li>
-    </ul>
-    {{#ifCond pageTitle "articles"}}
-    <div class="br_after"></div>
-    <div class="text-center">
-      <div class="block">
-        <h2 class="upper">{{article.title}}</h2>
-        <ul class="centerize article-show">
-          {{#each article.category}}
-            <li><a href="/articles/#{{this}}">{{this}}</a></li>
-          {{else}}
-            <li><a href="/articles/#{{article.category}}">{{article.category}}</a></li>
-          {{/each}}
-        </ul>
-      </div>
-      <a id="like" data-id="{{article.id}}" class="whitetxt"><span class="fa fa-heart fa-2x"></span></a>
-    </div>
-    {{/ifCond}}
-  </div>
-  <div class="main-body">
-    {{#if error}}
-      <div class="row">
-        <div class="large-8 columns large-centered">
-          <div data-alert class="alert-box alert round">
-            {{{error}}}
-            <a href="#" class="close">&times;</a>
-          </div>
-        </div>
-      </div>
-    {{/if}}
-    {{#if user}}
-      <div class="maxrow">
-        <h6 class="subheader text-right">Bienvenido <a href="/profile" class="profile">{{user.username}}</a> <a href="/logout"><span class="fa fa-sign-out"></span></a></h6>
-      </div>
-    {{/if}}
-    {{{body}}}
-  </div>
+  
+     {{#if user}}
+         
+         <div class="sidebar-menu">
+           <h6 class="subheader text-right">Bienvenido <a href="/profile" class="profile">{{user.username}}</a> <a href="/logout"><span class="fa fa-sign-out"></span></a></h6>
+           <ul class="admin">
+             <li><a href="/"><span class="fa fa-home fa-2x"></span> HOME</a></li>
+             <li><a href="/country"><span class="fa fa-location fa-2x"></span> PAISES</a></li>
+             <li><a href="/experiences"><span class="fa fa-news fa-2x"></span> BLOG</a></li>
+             <li><a href="/contact"><span class="fa fa-user fa-2x"></span> INTERESADOS <span class="number">3</span></a></li>
+             <li><a href="/contact"><span class="fa fa-phone fa-2x"></span> CONTACTO <span class="number">1</span></a></li>
+           </ul>
+         </div>
+         <div class="admin-body">
+           {{{body}}}
+         </div>
+         
+     {{else}}
+         
+         <div class="main-body">
+           {{#if background}}
+            <div class="nav {{pageTitle}}" style="background-image:url(http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_720,w_1920/{{article.cover}});">
+           {{else}}
+            <div class="nav">
+           {{/if}}
+             <a  href="/" class="logo"><img src="/img/{{logo}}" alt="" /></a>
+             <ul class="navigation">
+               <li><a href="/blog">BLOG</a></li>
+               <li><a href="/experiences">EXPERIENCIAS</a></li>
+               <li><a href="/contact">CONTACTO</a></li>
+             </ul>
+             <ul class="social">
+               <li><a href=""><span class="fa fa-twitter fa-large"></span></a></li>
+               <li><a href=""><span class="fa fa-facebook fa-large"></span></a></li>
+               <li><a href=""><span class="fa fa-instagram fa-large"></span></a></li>
+             </ul>
+             {{#ifCond pageTitle "articles"}}
+             <div class="br_after"></div>
+             <div class="text-center">
+               <div class="block">
+                 <h2 class="upper">{{article.title}}</h2>
+                 <ul class="centerize article-show">
+                   {{#each article.category}}
+                     <li><a href="/articles/#{{this}}">{{this}}</a></li>
+                   {{else}}
+                     <li><a href="/articles/#{{article.category}}">{{article.category}}</a></li>
+                   {{/each}}
+                 </ul>
+               </div>
+               <a id="like" data-id="{{article.id}}" class="whitetxt"><span class="fa fa-heart fa-2x"></span></a>
+             </div>
+             {{/ifCond}}
+           </div>
+           <div class="main-body">  
+             {{#if error}}
+               <div class="row">
+                 <div class="large-8 columns large-centered">
+                   <div data-alert class="alert-box alert round">
+                     {{{error}}}
+                     <a href="#" class="close">&times;</a>
+                   </div>
+                 </div>
+               </div>
+             {{/if}}
+             {{{body}}}
+           </div>
+     
+     {{/if}}
+ 
+
+   
+  {{/query}} {{!-- /login public --}}
+  
+  
   <div class="footer">
     <p>Copyright © 2016 Aram’s SAS. Todos los derechos reservados</p>
   </div>

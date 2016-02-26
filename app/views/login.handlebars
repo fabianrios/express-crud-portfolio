@@ -1,17 +1,24 @@
 <div class="row">
-  <div class="large-6 columns large-centered">
-    <form action="/login" method="post">
-        <div>
-            <label>Username:</label>
-            <input type="text" name="username" required/>
-        </div>
-        <div>
-            <label>Password:</label>
-            <input type="password" name="password"/>
-        </div>
-        <div>
-            <input type="submit" value="Log In" class="button success full"/>
-        </div>
-    </form>
+  <div class="large-5 columns large-centered">
+    <br /><br /><br />
+    <div class="text-center">
+      <a href="/" class="logo"><img src="/img/{{logo}}" alt="" /></a>
+    </div>
+    <br />
+    <div class="panel">
+      <form action="/login" method="post">
+          <div>
+              <label for="username">Usuario:</label>
+              <input type="text" name="username" required/>
+          </div>
+          <div>
+              <label for="password">Contraseña:</label>
+              <input type="password" name="password"/>
+          </div>
+          <div>
+              <input type="submit" value="INGRESAR AL ADMINISTRADOR" class="button success full"/>
+          </div>
+      </form>
+    </div>
   </div>
 </div>
