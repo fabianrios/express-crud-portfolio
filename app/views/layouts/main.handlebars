@@ -63,7 +63,9 @@
       </div>
     {{/if}}
     {{#if user}}
-      Bienvenido {{user.username}} <a href="/logout">cerrar sesión</a>
+      <div class="maxrow">
+        <h6 class="subheader text-right">Bienvenido <a href="/profile" class="profile">{{user.username}}</a> <a href="/logout"><span class="fa fa-sign-out"></span></a></h6>
+      </div>
     {{/if}}
     {{{body}}}
   </div>

@@ -6,15 +6,34 @@ var multer = require('multer');
 var upload = multer({dest:'./img/uploads/'});
 var friendlyUrl = require('friendly-url');
 var cloudinary = require('cloudinary');
+
 cloudinary.config({ 
   cloud_name: 'fabianrios', 
   api_key: '993579761283834', 
   api_secret: 'rkFGhUYg0shUm4m7Qtnb1qWSlEQ' 
 });
 
+var crypto = require('crypto'),
+    algorithm = 'aes-256-ctr',
+    password = 'mormon';
+
+    
+function encrypt(text){
+  var cipher = crypto.createCipher(algorithm,password)
+  var crypted = cipher.update(text,'utf8','hex')
+  crypted += cipher.final('hex');
+  return crypted;
+}
+
+function decrypt(text){
+  var decipher = crypto.createDecipher(algorithm,password)
+  var dec = decipher.update(text,'hex','utf8')
+  dec += decipher.final('utf8');
+  return dec;
+}
+
 
 var authorize = function(req, res, next) {
-   console.log(req.session);
    if (req.session && req.session.admin){
      return next();
     } else{
@@ -70,7 +89,7 @@ router.post('/login', function (req, res, next) {
        logo: "group-2.png"
     });
   }
-  db.User.findOne({ where: {username: req.body.username, password: req.body.password} }).then(function(user) {
+  db.User.findOne({ where: {username: req.body.username, password: encrypt(req.body.password)} }).then(function(user) {
     
     if (!user) {
       return res.render("login", {

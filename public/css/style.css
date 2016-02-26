@@ -255,3 +255,6 @@ ul.centerize {
     color: rgba(255, 255, 255, 0.5);
     font-size: 12px;
     margin: 0; }
+
+.maxrow {
+  width: 90vw; }
