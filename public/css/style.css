@@ -16,6 +16,9 @@
 .db {
   display: inline-block; }
 
+.inner-padding {
+  padding: 0 20px; }
+
 .upper {
   text-transform: uppercase; }
 
@@ -25,8 +28,7 @@
 .main-body {
   position: relative;
   background: #f5f5f5;
-  min-height: 83.5vh;
-  padding-top: 50px; }
+  min-height: 83.5vh; }
 
 #map {
   position: absolute;
@@ -64,7 +66,8 @@
     height: 374px;
     background: url("../img/australia-sydney.jpg") no-repeat center center;
     -webkit-background-size: cover;
-    background-size: cover; }
+    background-size: cover;
+    margin-bottom: 40px; }
     @media only screen and (min-width: 90.063em) and (max-width: 120em) {
       .nav.articles {
         height: 574px; } }
@@ -233,7 +236,7 @@ ul.centerize {
 .content {
   padding: 10px; }
 
-.title {
+.show-title {
   position: absolute;
   top: 230px;
   left: 20px; }
@@ -262,9 +265,9 @@ ul.centerize {
 .admin-body {
   width: 69%;
   background: white;
-  min-height: 90vh;
+  min-height: 94vh;
   display: inline-block;
-  padding: 20px; }
+  padding: 50px 0; }
 
 .sidebar-menu {
   float: left;
@@ -274,7 +277,54 @@ ul.centerize {
   max-width: 253px;
   display: inline-block;
   background: #0058a0; }
+  .sidebar-menu .logo {
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+    text-align: center; }
+    .sidebar-menu .logo img {
+      text-align: center;
+      margin: 30px 0 100px 0; }
   .sidebar-menu ul {
     list-style-type: none; }
     .sidebar-menu ul li a {
+      position: relative;
+      padding: 10px 0;
+      display: block;
+      width: 100%;
       color: #fff; }
+      .sidebar-menu ul li a:before {
+        content: " ";
+        background: #70e8d7;
+        display: inline-block;
+        position: relative;
+        top: -5px;
+        left: -10px;
+        width: 7px;
+        height: 7px;
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 100%;
+        border-radius: 100%;
+        opacity: 0; }
+      .sidebar-menu ul li a span.fa {
+        margin-right: 10px;
+        min-width: 40px; }
+      .sidebar-menu ul li a span.number {
+        position: absolute;
+        right: 20px;
+        top: 17px;
+        width: 24px;
+        height: 24px;
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 100%;
+        border-radius: 100%;
+        display: inline-block;
+        background: #70e8d7;
+        line-height: 24px;
+        text-align: center; }
+      .sidebar-menu ul li a:hover {
+        color: #70e8d7; }
+        .sidebar-menu ul li a:hover span.number {
+          color: #fff; }
+        .sidebar-menu ul li a:hover:before {
+          opacity: 1; }

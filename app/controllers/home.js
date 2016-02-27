@@ -35,6 +35,7 @@ function decrypt(text){
 
 var authorize = function(req, res, next) {
    if (req.session && req.session.admin){
+     console.log(req.session);
      return next();
     } else{
       res.render('login', {
@@ -101,7 +102,9 @@ router.post('/login', function (req, res, next) {
     }
     req.session.user = user; 
     req.session.admin = user.admin;
-    res.redirect('/country/create');
+    var url = req.url;
+    console.log(url);
+    res.redirect('/countries_search');
     
   });
 });
@@ -172,7 +175,8 @@ router.get('/countries_search', authorize, function (req, res, next) {
     res.render('countries_search', {
       title: 'Buscador de paises',
       countries: countries,
-      logo: "group-2.png"
+      logo: "group-2.png",
+      user: req.session.user
     });
     
   });
@@ -218,7 +222,8 @@ router.get('/blog', function (req, res, next) {
 router.get('/article/create', authorize, function (req, res, next) {
     res.render('create', {
       title: 'Crear nuevo articulo',
-      logo: "group-2.png"
+      logo: "group-2.png",
+      user: req.session.user
     });
 });
 
@@ -264,7 +269,8 @@ router.get('/article/:id/edit', authorize, function (req, res, next) {
     res.render('edit', {
       title: "Edición",
       article: article,
-      logo: "group-2.png"
+      logo: "group-2.png",
+      user: req.session.user
     });
   });
 });

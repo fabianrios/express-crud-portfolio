@@ -25,6 +25,10 @@
   display: inline-block;
 }
 
+.inner-padding{
+  padding:0 20px;
+}
+
 .upper{
  text-transform: uppercase; 
 }
@@ -38,7 +42,6 @@
   position: relative;
   background: #f5f5f5;
   min-height: 83.5vh;
-  padding-top: 50px;
 }
 
 #map { position:absolute; top:0; bottom:0; width:100%; height: 84vh;}
@@ -84,6 +87,7 @@
     background: url('../img/australia-sydney.jpg') no-repeat center center;
     -webkit-background-size: cover;
     background-size: cover;
+    margin-bottom: 40px;
     .br_after{
       display: block;
       height: 1px;
@@ -298,7 +302,7 @@ ul.centerize{
   padding: 10px;
 }
 
-.title{
+.show-title{
   position: absolute;
   top: 230px;
   left: 20px;
@@ -335,9 +339,9 @@ ul.centerize{
 .admin-body{
   width: 69%;
   background: white;
-  min-height: 90vh;
+  min-height: 94vh;
   display: inline-block;
-  padding: 20px;
+  padding: 50px 0;
 }
 
 .sidebar-menu{
@@ -348,11 +352,64 @@ ul.centerize{
   max-width: 253px;
   display: inline-block;
   background: #0058a0;
+  
+  .logo{
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+    text-align: center;
+    img{
+      text-align: center;
+      margin:30px 0 100px 0;
+    }
+  }
+  
   ul{
     list-style-type: none;
     li{
       a{
+        &:before{
+          content:" ";
+          background: #70e8d7;
+          display: inline-block;
+          position: relative;
+          top: -5px;
+          left: -10px;
+          width: 7px;
+          height: 7px;
+          @include border-radius(100%);
+          opacity: 0;
+        }
+        position: relative;
+        padding: 10px 0;
+        display: block;
+        width: 100%;
         color: #fff;
+        span.fa{
+          margin-right: 10px;
+          min-width: 40px;
+        }
+        span.number{
+          position: absolute;
+          right: 20px;
+          top: 17px;
+          width: 24px;
+          height: 24px;
+          @include border-radius(100%);
+          display: inline-block;
+          background: #70e8d7;
+          line-height: 24px;
+          text-align: center;
+        }
+        &:hover{
+          color: #70e8d7;
+          span.number{
+            color: #fff;
+          }
+          &:before{
+            opacity: 1;
+          }
+        }
       }
     }
   }

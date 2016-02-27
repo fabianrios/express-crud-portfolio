@@ -21,7 +21,7 @@
   
   {{#query}} {{!-- login  public --}}
   
-     <div class="main-body" style="background:white;">  
+     <div class="main-body" style="background:white;padding-top: 50px;">  
          {{#if error}}
            <div class="row">
              <div class="large-8 columns large-centered">
@@ -43,11 +43,14 @@
      {{#if user}}
          
          <div class="sidebar-menu">
-           <h6 class="subheader text-right">Bienvenido <a href="/profile" class="profile">{{user.username}}</a> <a href="/logout"><span class="fa fa-sign-out"></span></a></h6>
+           <a  href="/" class="logo"><img src="/img/logo_white.png" alt="" /></a>
+           <div class="inner-padding">
+             <h6 class="subheader text-right">Bienvenido <a href="/profile" class="profile">{{user.username}}</a> <a href="/logout"><span class="fa fa-sign-out"></span></a></h6>
+           </div>
            <ul class="admin">
              <li><a href="/"><span class="fa fa-home fa-2x"></span> HOME</a></li>
-             <li><a href="/country"><span class="fa fa-location fa-2x"></span> PAISES</a></li>
-             <li><a href="/experiences"><span class="fa fa-news fa-2x"></span> BLOG</a></li>
+             <li><a href="/countries_search"><span class="fa fa-map-marker fa-2x"></span> PAISES</a></li>
+             <li><a href="/blog"><span class="fa fa-file-text fa-2x"></span> BLOG</a></li>
              <li><a href="/contact"><span class="fa fa-user fa-2x"></span> INTERESADOS <span class="number">3</span></a></li>
              <li><a href="/contact"><span class="fa fa-phone fa-2x"></span> CONTACTO <span class="number">1</span></a></li>
            </ul>

@@ -63,6 +63,18 @@
     return true;
   });
   
+  $("#country-search").keyup(function(event) {
+    var str = $(this).val().toLowerCase();
+    $("ul.country li").hide();
+    $("ul.country li h5.country-names").each(function( index ) {
+      var txt = $(this).text().toLowerCase();
+      if (txt.indexOf(str) >= 0){
+        $(this).parent().show();
+      }
+    });
+  });
+    
+  
 })();
  
  
