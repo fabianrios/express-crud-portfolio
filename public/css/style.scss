@@ -414,3 +414,52 @@ ul.centerize{
     }
   }
 }
+
+$distance: 140px;
+.pos-steps{
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+}
+ul.steps{
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+  margin: 0 auto;
+  li{
+    display: inline-block;
+    margin:0 $distance;
+    position: relative;
+    span{
+      display: block;
+      color: rgb(140,145,158); 
+      margin-bottom: 15px;
+    }
+    .circle{
+      width: 25px;
+      height: 25px;
+      @include border-radius(100%);
+      border: 2px solid #70e8d7;
+      background: black;
+      z-index: 9;
+      margin: 0 auto;
+      &:hover{
+        border: 0;
+        background: rgb(140,145,158); 
+      }
+    }
+  }
+}
+
+.line{
+  display: inline-block;
+  width: 288px;
+  position: absolute;
+  top: 55px;
+  height: 2px;
+  background: #70e8d7;
+  z-index: 1;
+  overflow: hidden;
+  left: 24px;
+  cursor:pointer;
+}

@@ -328,3 +328,47 @@ ul.centerize {
           color: #fff; }
         .sidebar-menu ul li a:hover:before {
           opacity: 1; }
+
+.pos-steps {
+  position: absolute;
+  bottom: 20px;
+  width: 100%; }
+
+ul.steps {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+  margin: 0 auto; }
+  ul.steps li {
+    display: inline-block;
+    margin: 0 140px;
+    position: relative; }
+    ul.steps li span {
+      display: block;
+      color: #8c919e;
+      margin-bottom: 15px; }
+    ul.steps li .circle {
+      width: 25px;
+      height: 25px;
+      -webkit-border-radius: 100%;
+      -moz-border-radius: 100%;
+      border-radius: 100%;
+      border: 2px solid #70e8d7;
+      background: black;
+      z-index: 9;
+      margin: 0 auto; }
+      ul.steps li .circle:hover {
+        border: 0;
+        background: #8c919e; }
+
+.line {
+  display: inline-block;
+  width: 288px;
+  position: absolute;
+  top: 55px;
+  height: 2px;
+  background: #70e8d7;
+  z-index: 1;
+  overflow: hidden;
+  left: 24px;
+  cursor: pointer; }
