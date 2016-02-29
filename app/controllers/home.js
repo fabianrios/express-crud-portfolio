@@ -66,11 +66,42 @@ module.exports = function (app) {
 
 router.get('/', function (req, res, next) {
     res.locals = {
-      pageTitle: "map",
+      pageTitle: "form",
       background: true,
-      logo: "group-2.png"
+      logo: "logo_white.png",
+      bg: "http://cdn.pcwallart.com/images/empty-city-street-wallpaper-3.jpg"
     };
     res.render('index', {
+      experiences: true,
+      title: 'root'
+    });
+});
+
+router.post('/info', function (req, res, next) {
+  var body = req.body;
+  console.log(body);
+  return res.render('map', {
+    experiences: true,
+    inlineform: true,
+    know: body.know,
+    where: body.where,
+    budget: body.budget,
+    title: 'check',
+    pageTitle: "map",
+    background: true,
+    logo: "logo_white.png"
+  });
+});
+
+router.get('/map', function (req, res, next) {
+    res.locals = {
+      pageTitle: "map",
+      background: true,
+      logo: "logo_white.png",
+      experiences: true,
+      inlineform: true
+    };
+    res.render('map', {
       title: 'root'
     });
 });

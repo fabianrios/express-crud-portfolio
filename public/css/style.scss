@@ -21,6 +21,14 @@
   margin: 0;
 }
 
+.normal{
+  font-weight: normal;
+}
+
+.light{
+  font-weight: 300;
+}
+
 .db{
   display: inline-block;
 }
@@ -71,6 +79,17 @@
   padding: 0 30px;
   &.map{
     background: #325595;
+    ul{
+      li{
+        a{
+          color: #fff;
+        }
+      }
+    }
+  }
+  &.form{
+    background: transparent;
+    border: 1px solid rgb(69,98,137);
     ul{
       li{
         a{
@@ -426,13 +445,14 @@ ul.steps{
   padding: 0;
   text-align: center;
   margin: 0 auto;
+  margin-bottom: 30px;
   li{
     display: inline-block;
     margin:0 $distance;
     position: relative;
     span{
       display: block;
-      color: rgb(140,145,158); 
+      color: #70e8d7; 
       margin-bottom: 15px;
     }
     .circle{
@@ -440,12 +460,12 @@ ul.steps{
       height: 25px;
       @include border-radius(100%);
       border: 2px solid #70e8d7;
-      background: black;
+      background: rgba(0,0,0,.3);
       z-index: 9;
       margin: 0 auto;
       &:hover{
         border: 0;
-        background: rgb(140,145,158); 
+        background: #70e8d7; 
       }
     }
   }
@@ -462,4 +482,51 @@ ul.steps{
   overflow: hidden;
   left: 24px;
   cursor:pointer;
+}
+
+
+.big-form{
+  padding-top: 100px;
+}
+
+#where{
+  display: none;
+}
+
+.exp{
+  padding: 40px 0;
+  background: white;
+  .type{
+    position: relative;
+    &:hover{
+      .inf{
+        display: block; 
+      }
+    }
+    img{
+      width: 100%;
+    }
+    .inf{
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 20px;
+      height: 100%;
+      width: 100%;
+      background: rgba(#70e8d7,.8);
+    }
+  }
+  h5{
+    color: #0058a0;
+  }
+}
+
+.inline-form{
+  padding: 20px 0;
+  background: rgb(31,38,60);
+  select,input[type="text"], input.button.success{
+    margin-bottom: 0;
+    height: 45px;
+  }
 }

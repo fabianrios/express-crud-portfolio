@@ -6,7 +6,7 @@
   <title>{{title }}</title>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/main.css">
-  <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic' rel='stylesheet' type='text/css'>
   <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
   <script src="/scripts/zurb-foundation-5/js/foundation/foundation.js"></script>
   <script src="/scripts/ckeditor/ckeditor.js"></script>
@@ -60,8 +60,11 @@
          </div>
          
      {{else}}
-         
-         <div class="main-body">
+         {{#if bg}}
+           <div class="main-body" style="background-image:url({{bg}});background-size:cover;background-color:rgb(42,64,104);background-blend-mode:color-dodge;">  
+         {{else}}
+           <div class="main-body">  
+         {{/if}}
            {{#if background}}
             <div class="nav {{pageTitle}}" style="background-image:url(http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_720,w_1920/{{article.cover}});">
            {{else}}
@@ -95,7 +98,7 @@
              </div>
              {{/ifCond}}
            </div>
-           <div class="main-body">  
+             <div class="inside-body">
              {{#if error}}
                <div class="row">
                  <div class="large-8 columns large-centered">
@@ -115,6 +118,68 @@
    
   {{/query}} {{!-- /login public --}}
   
+  {{#if inlineform}}
+  <div class="inline-form">
+    <form action="/info" method="post">
+      <div class="row">
+        <div class="large-3 columns">
+          <select name="know" id="know">
+            <option value="no">No</option>
+            <option value="si">Si</option>
+          </select>
+        </div>
+        <div class="large-3 columns">
+          <input type="text" name="budget" id="budget" value="{{budget}}"/>
+        </div>
+        <div class="large-3 columns">
+          <select name="travel" id="travel">
+            <option selected="selected" disabled="disabled">Tipo de viaje</option>
+            <option value="vip">VIP</option>
+            <option value="incognito">Incognito</option>
+            <option value="corporativo">Corporativo</option>
+          </select>
+        </div>
+        <div class="large-3 columns">
+          <input type="submit" value="VER PAISES" class="button success full" />
+        </div>
+      </div>
+    </form>
+  </div>
+  {{/if}}
+  
+  {{#if experiences}}
+  <div class="exp">
+    <div class="row">
+      <div class="large-4 columns">
+        <div class="type">
+          <img src="img/vip_root.jpg" alt="" />
+          <div class="inf">
+            <h5>Vip</h5>
+            <p>So strongly and metaphysically did I conceive of my situation then, that while earnestly watching his motions.</p>
+          </div>
+        </div>
+      </div>
+      <div class="large-4 columns">
+        <div class="type">
+          <img src="img/incognit.jpg" alt="" />
+          <div class="inf">
+            <h5>Incognito</h5>
+            <p>So strongly and metaphysically did I conceive of my situation then, that while earnestly watching his motions.</p>
+          </div>
+        </div>
+      </div>
+      <div class="large-4 columns">
+        <div class="type">
+          <img src="img/corporate.jpg" alt="" />
+          <div class="inf">
+            <h5>Corporativo</h5>
+            <p>So strongly and metaphysically did I conceive of my situation then, that while earnestly watching his motions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/if}}
   
   <div class="footer">
     <p>Copyright © 2016 Aram’s SAS. Todos los derechos reservados</p>

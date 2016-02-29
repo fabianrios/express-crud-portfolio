@@ -73,7 +73,18 @@
       }
     });
   });
-    
+ 
+  $("#know").change(function(e){
+    var val = $(this).val();
+    if (val == "si"){
+      $("#where").show();
+      $(".plane").css({"background":"#70e8d7"});
+    }else{
+      $("#where").hide();
+      $(".plane").css({"background":"rgba(0,0,0,.3)"});
+    }
+  });
+     
   
 })();
  

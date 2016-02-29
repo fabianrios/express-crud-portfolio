@@ -1,9 +1,34 @@
-<div id='map'></div>
-<div id="info"></div>
+<div class="big-form">
+<div class="text-center">
+  <h1 class="whitetxt">TURISMO EXPERENCIAL</h1>
+  <h5 class="whitetxt light"><i>Dinos a donde quiere ir o danos tu presupuesto y te armamos el plan</i></h5>
+  <br /><br />
+</div>
+<div class="row">
+  <div class="large-6 columns large-centered">
+    <form action="/info" method="post">
+        <label for="know" class="whitetxt">¿Ya sabes a donde quieres ir?</label>
+        <select name="know" id="know">
+          <option value="no">No</option>
+          <option value="si">Si</option>
+        </select>
+        <input type="text" name="where" id="where" placeholder="¿A donde?" />
+        <input type="text" name="budget" id="budget" placeholder="¿Que presupuesto tienes? 1000 USD" />
+        <select name="travel" id="travel">
+          <option selected="selected" disabled="disabled">Tipo de viaje</option>
+          <option value="vip">VIP</option>
+          <option value="incognito">Incognito</option>
+          <option value="corporativo">Corporativo</option>
+        </select>
+        <input type="submit" value="VER LISTA DE PAISES" class="button success full" />
+    </form>
+  </div>
+</div>
+</div>
 <div class="pos-steps">
   <ul class="steps">
-    <li><span class="fa fa-plane fa-2x"></span><div class="circle"></div> <div class="line"></div> </li>
-    <li><span class="fa fa-check-square-o fa-2x"></span><div class="circle"></div><div class="line"></div></li>
-    <li><span class="fa fa-envelope fa-2x"></span><div class="circle"></div></li>
+    <li><span class="fa fa-plane fa-2x"></span><div class="circle plane"></div> <div class="line"></div> </li>
+    <li><span class="fa fa-check-square-o fa-2x"></span><div class="circle check"></div><div class="line"></div></li>
+    <li><span class="fa fa-envelope fa-2x"></span><div class="circle envelope"></div></li>
   </ul>
 </div>
