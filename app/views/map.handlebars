@@ -1,9 +1,33 @@
 <div id='map'></div>
-<div id="info"></div>
+<div id="info">
+  {{#if country}}
+  <div class="country-post">
+    <img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_275,w_400/v{{country.version}}/{{country.cover}}.jpg" />
+    <div class="gradientbg">
+      <h4 class="title-map whitetxt"> {{country.title}} </h4> 
+      <h6 class="whitetxt price-map">{{country.corporate}} a {{country.vip}}</h6>
+    </div>
+    <div class="content">
+      <p class="nm"> {{country.text}}</p>
+    </div>
+    <a href="{{country.url}}" class="blog">BLOG</a>
+    <form action="/email_country" method="post" class="inliner" id="email_country">
+      <input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/>
+      <i class="fa fa-envelope fix-inline"></i>
+      <input type="submit" value="ENVIARME MAS INFO" class="button full success" />
+    </form>
+    <a href="#" class="ferme"><span>X</span></a>
+  </div>
+  {{else}}
+  <br />
+  <h6 class="subheader text-center">No encontramos una experiencia <strong>{{travel}}</strong> con ${{budget}}</h6>
+  <br />
+  {{/if}}
+</div>
 <div class="pos-steps">
   <ul class="steps">
-    <li><span class="fa fa-plane fa-2x"></span><div class="circle"></div> <div class="line"></div> </li>
-    <li><span class="fa fa-check-square-o fa-2x"></span><div class="circle"></div><div class="line"></div></li>
-    <li><span class="fa fa-envelope fa-2x"></span><div class="circle"></div></li>
+    <li><span class="fa fa-plane fa-2x"></span><div class="circle plane"></div> <div class="line"></div> </li>
+    <li><span class="fa fa-check-square-o fa-2x"></span><div class="circle check always"></div><div class="line"></div></li>
+    <li><span class="fa fa-envelope fa-2x"></span><div class="circle envelope"></div></li>
   </ul>
 </div>

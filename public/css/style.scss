@@ -77,6 +77,7 @@
 .nav{
   height: 110px;
   padding: 0 30px;
+  background: white;
   &.map{
     background: #325595;
     ul{
@@ -252,7 +253,7 @@ ul.centerize{
   text-align: center;
   list-style-type: none;
   &.sub-social{
-    margin-bottom: 50px !important;
+    margin: 50px 0 !important;
     li{
       margin: 0 20px;
       a{
@@ -319,6 +320,7 @@ ul.centerize{
 
 .content{
   padding: 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
 .show-title{
@@ -528,5 +530,100 @@ ul.steps{
   select,input[type="text"], input.button.success{
     margin-bottom: 0;
     height: 45px;
+  }
+//  #know{
+//    max-width: 28%;
+//    display: inline-block;
+//  }
+//  #where{
+//    max-width: 68%;
+//    display: inline-block;
+//  }
+}
+
+.title-map{
+  position: relative;
+  top: 10px;
+  float: left;
+  margin: 0;
+}
+.price-map{
+  position: relative;
+  top: 15px;
+  float: right;
+  margin: 0;
+  min-width: 110px;
+}
+
+.gradientbg{
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
+  background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+  width: 100%;
+  height: 70px;
+  padding: 20px;
+  position: absolute;
+  top: 205px;
+}
+
+input[type="email"].unflashy{
+  @include box-shadow(0, 0, 0, transparent);
+  margin: 0;
+  height: 55px;
+  border: 1px solid 1px solid rgba(0, 0, 0, 0.1);
+  &:focus{
+    @include box-shadow(0, 0, 0, transparent);
+    border: 1px solid 1px solid rgba(0, 0, 0, 0.1);
+  }
+}
+
+.fix-inline{
+  position: absolute;
+  top: 20px;
+  right: 10px;
+}
+
+.inliner{
+  position: relative;
+  i.fa{
+    color: rgb(77,77,77);
+  }
+  input.button.success{
+    @include box-shadow(0, 0, 0, transparent);
+    margin: 0;
+  }
+}
+
+.circle.check.always{
+  background: #70e8d7;
+}
+
+.blog{
+  color: #0058a0;
+  padding: 15px 10px;
+  font-size: 14px;
+  display: block;
+  font-weight: bold;
+}
+
+.ferme{
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  span{
+    display: block;
+    height: 25px;
+    width: 25px;
+    font-weight: normal;
+    line-height: 22px;
+    text-align: center;
+    @include border-radius(100%);
+    color: #fff;
+    background: red;
+    border: 2px solid white;
+    font-family: "Arial";
+    font-size: 12px;
   }
 }

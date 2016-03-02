@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="large-12 columns">
+      <br />
+      <ul class="no-bullet posts">
+      <li>
+        <a href="/article/create" class="button medium">Crear un articulo nuevo</a>
+      </li>
+      {{#each articles}}
+      <li class="all">
+        <div class="index-cover">
+          {{#if this.cover}}
+            <img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_175,w_300/v{{this.version}}/{{this.cover}}" alt="" />
+          {{else}}
+            <img src="http://placehold.it/300x176/2C00BA" alt="" />
+          {{/if}}
+            <h4 class="text-center">{{this.title}}</h4>
+          <div class="actions">
+            <a href="/article/{{this.id}}/edit"><span class="fa fa-edit"></span></a> <a class="redtxt" href="/article/{{this.id}}/destroy" onclick="return confirm('Seguro quieres borrarlo?');"><span class="fa fa-trash"></span></a>
+          </div>
+        </div>
+      </li>
+      {{/each}}
+      </ul>
+    </div>
+</div>
+

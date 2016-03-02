@@ -1,9 +1,11 @@
 <div class="row">
   <div class="large-8 columns">
     <a href="/blog" class="button tiny"><span class="fa fa-undo"></span> Volver</a>
+    {{#if user}}
     <div class="actions">
       <a href="/article/{{article.id}}/edit"><span class="fa fa-edit"></span></a> <a class="redtxt" onclick="return confirm('Seguro quieres borrarlo?');" href="/article/{{article.id}}/destroy"><span class="fa fa-trash"></span></a>
     </div>
+    {{/if}}
     <div class="content">{{{article.fulltext}}}</div>
   </div>
   <div class="large-4 columns">

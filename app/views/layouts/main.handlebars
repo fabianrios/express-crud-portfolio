@@ -50,7 +50,7 @@
            <ul class="admin">
              <li><a href="/"><span class="fa fa-home fa-2x"></span> HOME</a></li>
              <li><a href="/countries_search"><span class="fa fa-map-marker fa-2x"></span> PAISES</a></li>
-             <li><a href="/blog"><span class="fa fa-file-text fa-2x"></span> BLOG</a></li>
+             <li><a href="/admin/articles"><span class="fa fa-file-text fa-2x"></span> BLOG</a></li>
              <li><a href="/contact"><span class="fa fa-user fa-2x"></span> INTERESADOS <span class="number">3</span></a></li>
              <li><a href="/contact"><span class="fa fa-phone fa-2x"></span> CONTACTO <span class="number">1</span></a></li>
            </ul>
@@ -124,16 +124,17 @@
       <div class="row">
         <div class="large-3 columns">
           <select name="know" id="know">
-            <option value="no">No</option>
-            <option value="si">Si</option>
+            <option value="no" {{no}}>No</option>
+            <option value="si" {{si}}>Si</option>
           </select>
+          <input type="text" name="where" id="where" value="{{where}}" />
         </div>
         <div class="large-3 columns">
           <input type="text" name="budget" id="budget" value="{{budget}}"/>
         </div>
         <div class="large-3 columns">
+          <span class="hide" data-travel="{{travel}}" id="travel-info"></span>
           <select name="travel" id="travel">
-            <option selected="selected" disabled="disabled">Tipo de viaje</option>
             <option value="vip">VIP</option>
             <option value="incognito">Incognito</option>
             <option value="corporativo">Corporativo</option>

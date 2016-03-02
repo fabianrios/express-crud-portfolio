@@ -1,10 +1,13 @@
 <div class="row">
   <div class="large-12 columns">
+    <br />
+    <br />
+    <br />
       <ul class="filter centerize">
-        <li><a href="#todos">TODOS</a></li>
-        <li><a href="#tips">TIPS</a></li>
-        <li><a href="#viajes">VIAJES</a></li>
-        <li><a href="#datos">DATOS</a></li>
+        <li><a href="/blog/">TODOS</a></li>
+        <li><a href="/blog/?filter=tips">TIPS</a></li>
+        <li><a href="/blog/?filter=viajes">VIAJES</a></li>
+        <li><a href="/blog/?filter=datos">DATOS</a></li>
       </ul>
       <br />
       <ul class="no-bullet posts">
@@ -21,22 +24,26 @@
           <div class="gradient">
             <h4 class="title"><a class="whitetxt" href="/article/{{this.id}}">{{this.title}}</a> </h4>
           </div>
+          {{#if user}}
           <div class="actions">
             <a href="/article/{{this.id}}/edit"><span class="fa fa-edit"></span></a> <a class="redtxt" href="/article/{{this.id}}/destroy" onclick="return confirm('Seguro quieres borrarlo?');"><span class="fa fa-trash"></span></a>
           </div>
+          {{/if}}
         </div>
         <div class="index-content"><p>{{this.text}}</p></div>
         <ul class="centerize tips">
           {{#each this.category}}
-            <li><a href="/articles/#{{this}}">{{this}}</a></li>
+            <li><a href="/blog/?filter={{this}}">{{this}}</a></li>
           {{else}}
-            <li><a href="/articles/#{{this.category}}">{{this.category}}</a></li>
+            <li><a href="/blog/?filter={{this.category}}">{{this.category}}</a></li>
           {{/each}}
         </ul>
       </li>
       {{/each}}
       </ul>
+      {{#if user}}
       <a href="/article/create" class="button medium">Crear un articulo nuevo</a>
+      {{/if}}
     </div>
 </div>
 

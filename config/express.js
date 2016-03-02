@@ -27,6 +27,9 @@ module.exports = function(app, config) {
           return options.fn(this);
         }
         return options.inverse(this);
+      },
+      upperCase: function(str) {
+        return str.toUpperCase();
       }
     }
   }));

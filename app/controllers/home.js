@@ -79,18 +79,67 @@ router.get('/', function (req, res, next) {
 
 router.post('/info', function (req, res, next) {
   var body = req.body;
-  console.log(body);
-  return res.render('map', {
-    experiences: true,
-    inlineform: true,
-    know: body.know,
-    where: body.where,
-    budget: body.budget,
-    title: 'check',
-    pageTitle: "map",
-    background: true,
-    logo: "logo_white.png"
-  });
+  //console.log("body ",body);
+  var query = [];
+  
+  function traveltype(travel){
+    if (travel == "vip"){
+        query.push({
+          vip:{$lte: body.budget}
+        },{
+          title: {$ilike: body.where+"%"} 
+        });
+    }else if (travel == "incognito"){
+        query.push({
+          incognito:{$lte: body.budget}
+        },{
+          title: {$ilike: body.where+"%"} 
+        });
+    }else if (body.travel == "corporativo"){
+        query.push({
+          corporate:{$lte: body.budget}
+        },{
+          title: {$ilike: body.where+"%"} 
+        });
+    }
+    return query;
+  }
+  
+  traveltype(body.travel);
+  
+  if (!body.where){
+    query.splice(1, 1);;
+  }
+  
+  console.log("body", body, "query", query);
+    
+  db.Country.findAll({ where: {
+      $or: query
+     } 
+   }).then(function(country) {
+    var si = "false", no = "false";
+    if (body.know == "si"){
+      si = "selected";
+    }else{
+      no = "selected";
+    }
+    //console.log("country",country);
+    return res.render('map', {
+      countries:country,
+      country:country[0],
+      experiences: true,
+      inlineform: true,
+      si: si,
+      no: no,
+      where: body.where,
+      budget: body.budget,
+      travel: body.travel,
+      title: 'check',
+      pageTitle: "map",
+      background: true,
+      logo: "logo_white.png"
+    })
+  })
 });
 
 router.get('/map', function (req, res, next) {
@@ -159,7 +208,8 @@ router.get('/country/:id/edit', authorize, function (req, res, next) {
     res.render('edit_country', {
       title: "Edición de país",
       country: country,
-      logo: "group-2.png"
+      logo: "group-2.png",
+      user: req.session.user
     });
   });
 });
@@ -167,17 +217,16 @@ router.get('/country/:id/edit', authorize, function (req, res, next) {
 router.post('/country/:id/editar', authorize, upload.single('image_upload'), function (req, res, next) {
   var id = req.params.id
   var body = req.body
-  var urlbody = friendlyUrl(body.title);
   var file = req.file;
   db.Country.findById(id).then(function (country) {
     if(typeof file !== 'undefined'){
     cloudinary.uploader.upload(file.path, function(result) {
-      country.update({ title: body.pais, text: body.texto, url: urlbody, cover: result.public_id, version: result.version, vip: body.vip, incognito: body.incognito, corporate: body.corporate, lat: body.lat, long: body.long }).then(function () {
+      country.update({ title: body.pais, text: body.texto, url: body.url, cover: result.public_id, version: result.version, vip: body.vip, incognito: body.incognito, corporate: body.corporate, lat: body.lat, long: body.long }).then(function () {
        res.redirect('/countries_search');
       });
-    },{ public_id: article.cover_version, invalidate: true });
+    },{ public_id: country.version, invalidate: true });
     } else{
-      country.update({ title: body.pais, text: body.texto, url: urlbody, vip: body.vip, incognito: body.incognito, corporate: body.corporate, lat: body.lat, long: body.long }).then(function () {
+      country.update({ title: body.pais, text: body.texto, url: body.url, vip: body.vip, incognito: body.incognito, corporate: body.corporate, lat: body.lat, long: body.long }).then(function () {
        res.redirect('/countries_search');
       });
     }
@@ -213,8 +262,48 @@ router.get('/countries_search', authorize, function (req, res, next) {
   });
 });
 
+router.post('/email_country', function(req, res, next){
+  var body = req.body;
+  //console.log(body);
+  res.sendStatus(200);
+  res.end();
+});
+
 router.get('/countries_all', function (req, res, next) {
-  db.Country.findAll().then(function (countries) {
+  var query = [], body = req.query;
+  
+  function traveltype(travel){
+    if (travel == "vip"){
+        query.push({
+          vip:{$lte: body.budget}
+        },{
+          title: {$ilike: body.where+"%"} 
+        });
+    }else if (travel == "incognito"){
+        query.push({
+          incognito:{$lte: body.budget}
+        },{
+          title: {$ilike: body.where+"%"} 
+        });
+    }else if (body.travel == "corporativo"){
+        query.push({
+          corporate:{$lte: body.budget}
+        },{
+          title: {$ilike: body.where+"%"} 
+        });
+    }
+    return query;
+  }
+  
+  traveltype(body.travel);
+  if (!body.where){
+    query.splice(1, 1);;
+  }
+  
+  db.Country.findAll({ where: {
+      $or: query
+     } 
+   }).then(function(countries){
     info = [];
     for (var i = 0; i < countries.length; i++){
       
@@ -227,6 +316,9 @@ router.get('/countries_all', function (req, res, next) {
             properties: {
               title: countries[i].title,
               description: countries[i].text,
+              corporate: countries[i].corporate,
+              url: countries[i].url,
+              vip: countries[i].vip,
               cover: countries[i].cover,
               version: countries[i].version
             } 
@@ -240,15 +332,47 @@ router.get('/countries_all', function (req, res, next) {
 });
 
 router.get('/blog', function (req, res, next) {
+  var filter = req.query.filter, art = [];
+  if (filter){
+    db.Article.findAll().then(function (articles) {
+      for(var i = 0; i < articles.length; i++){
+        //console.log(articles[i].category, articles[i].category.indexOf(filter));
+        if (articles[i].category.indexOf(filter) >= 0){
+          art.push(articles[i]);
+        }
+      }
+      res.render('blog', {
+        title: 'blog',
+        articles: art,
+        logo: "group-2.png"
+      });
+    });
+    
+  }else{
+  
+    db.Article.findAll().then(function (articles) {
+      res.render('blog', {
+        title: 'blog',
+        articles: articles,
+        logo: "group-2.png"
+      });
+    });
+    
+  }
+  
+});
+
+router.get('/admin/articles', authorize, function (req, res, next) {
   db.Article.findAll().then(function (articles) {
-    // console.log(articles);
-    res.render('blog', {
-      title: 'blog',
+    res.render('admin_articles', {
+      title: 'Admin articles',
       articles: articles,
+      user: req.session.user,
       logo: "group-2.png"
     });
   });
 });
+
 
 router.get('/article/create', authorize, function (req, res, next) {
     res.render('create', {
