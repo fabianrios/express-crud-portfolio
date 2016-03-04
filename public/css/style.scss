@@ -627,3 +627,19 @@ input[type="email"].unflashy{
     font-size: 12px;
   }
 }
+
+.spacing{
+  margin: 50px 0;
+}
+
+.dataTables_wrapper{
+  select{
+    max-width: 100px;
+    margin: 0;
+  }
+  input[type="search"]{
+    max-width: 300px;
+    display: inline-block;
+    margin-left: 30px;
+  }
+}

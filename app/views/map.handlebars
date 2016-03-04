@@ -12,6 +12,8 @@
     </div>
     <a href="{{country.url}}" class="blog">BLOG</a>
     <form action="/email_country" method="post" class="inliner" id="email_country">
+      <input type="hidden" name="country" value="{{country.title}}" />
+      <input type="hidden" name="travel" value="{{travel}}" />
       <input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/>
       <i class="fa fa-envelope fix-inline"></i>
       <input type="submit" value="ENVIARME MAS INFO" class="button full success" />

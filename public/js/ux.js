@@ -57,8 +57,8 @@
   
   $("#info").on('submit','#email_country', function(evemt){
         event.preventDefault();
-        var $form = $(this), email = $form.find( "input[name='email']" ).val(),url = $form.attr( "action" );
-        $.post(url, { email: email }, function(resp) {
+        var $form = $(this), email = $form.find( "input[name='email']" ).val(), travel = $form.find( "input[name='travel']" ).val(), country = $form.find( "input[name='country']" ).val(), url = $form.attr( "action" );
+        $.post(url, { email: email, country: country, travel: travel }, function(resp) {
             if (resp == "OK"){
               $form.find(".fa").removeClass("fa-envelope").addClass("fa-check").css({"color":"#70e8d7"});
               $(".envelope").css({"background":"#70e8d7"});
@@ -140,6 +140,17 @@
   });
   
   now();
+  
+  $(".close").click(function(e){
+    e.preventDefault();
+    $(".alert-box").remove();
+  });
+  
+  $('table').DataTable({
+      "language": {
+          "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+      }
+  });
   
 })();
  

@@ -262,12 +262,6 @@ router.get('/countries_search', authorize, function (req, res, next) {
   });
 });
 
-router.post('/email_country', function(req, res, next){
-  var body = req.body;
-  //console.log(body);
-  res.sendStatus(200);
-  res.end();
-});
 
 router.get('/countries_all', function (req, res, next) {
   var query = [], body = req.query;
@@ -362,6 +356,57 @@ router.get('/blog', function (req, res, next) {
   
 });
 
+router.post('/email_country', function (req, res, next) {
+  var body = req.body;
+  console.log(body);
+  db.Client.create({ mail: body.email, country: body.country, experience: body.travel  }).then(function () {
+    res.sendStatus(200);
+    res.end();
+  });
+});
+
+router.get('/admin/clients', authorize, function (req, res, next) {
+  db.Client.findAll({where:{flag: 0}}).then(function (clients) {
+    res.render('admin_clients', {
+      title: 'Interesados',
+      clients: clients,
+      user: req.session.user,
+      logo: "group-2.png"
+    });
+  });
+});
+
+router.post('/send_contact', function (req, res, next) {
+  var body = req.body;
+  console.log(body);
+  db.Client.create({ name: body.name, mail: body.email, country: body.country, experience: body.travel, subject: body.subject, message: body.message, flag: 1 }).then(function () {
+    res.render('contact', {
+      title: 'Contacto',
+      success: "Su mensaje ha sido enviado correctamente",
+      logo: "group-2.png"
+    });
+  });
+});
+
+router.get('/admin/contact', authorize, function (req, res, next) {
+  db.Client.findAll({where:{flag: 1}}).then(function (clients) {
+    res.render('admin_contact', {
+      title: 'Contactos',
+      clients: clients,
+      user: req.session.user,
+      logo: "group-2.png"
+    });
+  });
+});
+
+router.get('/contact', function (req, res, next) {
+    res.render('contact', {
+      title: 'Contacto',
+      logo: "group-2.png"
+    });
+});
+
+
 router.get('/admin/articles', authorize, function (req, res, next) {
   db.Article.findAll().then(function (articles) {
     res.render('admin_articles', {
@@ -390,12 +435,6 @@ router.get('/experiences', function (req, res, next) {
     });
 });
 
-router.get('/contact', function (req, res, next) {
-    res.render('contact', {
-      title: 'Contacto',
-      logo: "group-2.png"
-    });
-});
 
 router.get('/article/:id', function (req, res, next) {
   var id = req.params.id
@@ -489,4 +528,3 @@ router.get('/article/:id/destroy', authorize, function (req, res, next) {
       res.redirect('/blog');
     });
 });
-

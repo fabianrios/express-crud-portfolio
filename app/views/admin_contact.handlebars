@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="large-12">
+    <table width="100%">
+     <thead>
+       <tr>
+         <th>Nombre</th>
+         <th>Mail</th>
+         <th>Fecha</th>
+         <th>Asunto</th>
+         <th>Mensaje</th>
+       </tr>
+     </thead>
+     <tbody>
+    {{#each clients}}
+      <tr>
+        <td>{{this.name}}</td>
+        <td>{{this.mail}}</td>
+        <td>{{this.createdAt}}</td>
+        <td>{{this.subject}}</td>
+        <td>{{this.message}}</td>
+      </tr>
+    {{/each}}
+     </tbody>
+    </table>
+    </div>
+</div>
