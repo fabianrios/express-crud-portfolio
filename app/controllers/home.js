@@ -183,7 +183,13 @@ router.post('/login', function (req, res, next) {
     req.session.user = user; 
     req.session.admin = user.admin;
     var url = req.url;
-    console.log(url);
+    
+    db.Client.findAll({where:{flag: 0}}).then(function (clients) {
+      for (var i = 0; i < clients.length; i++){
+        
+      }
+    })
+    
     res.redirect('/countries_search');
     
   });
