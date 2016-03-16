@@ -58,6 +58,16 @@ module.exports = function(app, config) {
   app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
+    return res.render('404', {
+       url: req.url,
+       message: "No logramos encontrar lo que buscabas.",
+       error: err,
+       pageTitle: "404",
+       author: "Fabián Ríos",
+       description: "Aram's website",
+       logo: "group-2.png",
+       bg: "../img/404.jpg"
+    });
     next(err);
   });
   
@@ -67,7 +77,8 @@ module.exports = function(app, config) {
       res.render('error', {
         message: err.message,
         error: err,
-        title: 'error'
+        title: 'error',
+        bg: "../img/404.jpg"
       });
     });
   }
@@ -77,7 +88,8 @@ module.exports = function(app, config) {
       res.render('error', {
         message: err.message,
         error: {},
-        title: 'error'
+        title: 'error',
+        bg: "../img/404.jpg"
       });
   });
   
@@ -93,8 +105,16 @@ module.exports = function(app, config) {
     res.status(404);
     // respond with html page
     if (req.accepts('html')) {
-      res.render('404', { url: req.url });
-      return;
+      
+      return res.render('404', {
+         url: req.url,
+         pageTitle: "404",
+         author: "Fabián Ríos",
+         description: "Aram's website",
+         logo: "group-2.png",
+         bg: "404.jpg" 
+      });
+      
     }
     // respond with json
     if (req.accepts('json')) {

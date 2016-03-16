@@ -2,16 +2,22 @@
   color: #ff0000; }
 
 .whitetxt {
-  color: white; }
+  color: white !important; }
 
 .bluetxt {
   color: #0058a0; }
+
+.mb120 {
+  margin-bottom: 120px; }
+
+.metalbluetxt {
+  color: #75e7d7; }
 
 .full {
   width: 100%; }
 
 .nm {
-  margin: 0; }
+  margin: 0 !important; }
 
 .normal {
   font-weight: normal; }
@@ -62,6 +68,7 @@
     letter-spacing: 1px; }
 
 .nav {
+  position: relative;
   height: 110px;
   padding: 0 30px;
   background: white; }
@@ -359,7 +366,7 @@ ul.steps {
     position: relative; }
     ul.steps li span {
       display: block;
-      color: #70e8d7;
+      color: rgba(255, 255, 255, 0.5);
       margin-bottom: 15px; }
     ul.steps li .circle {
       width: 25px;
@@ -481,6 +488,9 @@ input[type="email"].unflashy {
 .circle.check.always {
   background: #70e8d7; }
 
+.huge {
+  font-size: 300px; }
+
 .blog {
   color: #0058a0;
   padding: 15px 10px;
@@ -518,3 +528,36 @@ input[type="email"].unflashy {
   max-width: 300px;
   display: inline-block;
   margin-left: 30px; }
+
+.profile {
+  color: lightgray; }
+
+.pics img {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  border: 2px solid #0B5A9E;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  margin-bottom: 10px; }
+.pics h5 {
+  display: inline-block;
+  font-weight: 200;
+  margin-left: 10px; }
+
+.pic_profile {
+  position: absolute;
+  bottom: 30px;
+  left: 20px; }
+  .pic_profile img {
+    display: inline-block;
+    height: 70px;
+    width: 70px;
+    border: 2px solid white;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%; }
+  .pic_profile h6 {
+    display: inline-block;
+    font-weight: 200; }

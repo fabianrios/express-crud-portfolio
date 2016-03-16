@@ -1,18 +1,12 @@
-// Example model
-
-
 module.exports = function (sequelize, DataTypes) {
 
-  var User = sequelize.define('User', {
-    username: DataTypes.STRING,
+  var Cover = sequelize.define('User', {
     name: DataTypes.STRING,
-    email: DataTypes.STRING,
-    image: DataTypes.STRING,
     version: DataTypes.STRING,
-    password: DataTypes.TEXT,
-    admin: {
+    orden: DataTypes.INTEGER,
+    publish: {
        type: DataTypes.BOOLEAN,
-       defaultValue: false,
+       defaultValue: true,
        allowNull: false
      },
   }, {
@@ -23,6 +17,6 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
-  return User;
+  return Cover;
 };
 

@@ -22,7 +22,13 @@
   </div>
   {{else}}
   <br />
-  <h6 class="subheader text-center">No encontramos una experiencia <strong>{{travel}}</strong> con ${{budget}}</h6>
+  <h6 class="subheader text-center">
+    {{#if budget}}
+      No encontramos una experiencia en <strong>{{travel}}</strong> con ${{budget}}
+    {{else}}
+      Siempre hay una experiencia para ti, navega nuestras experiencias
+    {{/if}}
+  </h6>
   <br />
   {{/if}}
 </div>

@@ -44,7 +44,7 @@
            </div>
          {{/if}}
          {{#if user}}
-            <h6 class="subheader">Bienvenido <a href="/profile" class="profile">{{user.username}}</a> <a href="/logout"><span class="fa fa-sign-out"></span></a></h6>
+            <h6 class="subheader whitetxt">Bienvenido <a href="/profile" class="profile">{{user.username}}</a> <a href="/logout"><span class="fa fa-sign-out"></span></a></h6>
          {{/if}}
          {{{body}}}
        </div>
@@ -56,7 +56,7 @@
          <div class="sidebar-menu">
            <a  href="/" class="logo"><img src="/img/logo_white.png" alt="" /></a>
            <div class="inner-padding">
-             <h6 class="subheader text-right">Bienvenido <a href="/profile" class="profile">{{user.username}}</a> <a href="/logout"><span class="fa fa-sign-out"></span></a></h6>
+             <h6 class="subheader text-right">Bienvenido <a href="/admin/users" class="profile"> <span class="fa fa-cog"></span> {{user.username}}</a> <a class="profile" href="/logout"><span class="fa fa-sign-out"></span></a></h6>
            </div>
            <ul class="admin">
              <li><a href="/"><span class="fa fa-home fa-2x"></span> HOME</a></li>
@@ -72,7 +72,11 @@
          
      {{else}}
          {{#if bg}}
-           <div class="main-body" style="background-image:url({{bg}});background-size:cover;background-color:rgb(42,64,104);background-blend-mode:color-dodge;">  
+           {{#if home}}
+             <div class="main-body" data-home="{{home}}" style="background-image:url({{bg}});background-size:cover;background-color:rgb(42,64,104);background-blend-mode:color-dodge;">  
+           {{else}}
+             <div class="main-body" data-home="{{home}}" style="background-image:url({{bg}});background-size:cover;background-color:rgb(42,64,104);">  
+           {{/if}}
          {{else}}
            <div class="main-body">  
          {{/if}}
@@ -88,9 +92,9 @@
                <li><a href="/contact">CONTACTO</a></li>
              </ul>
              <ul class="social">
-               <li><a href=""><span class="fa fa-twitter fa-large"></span></a></li>
-               <li><a href=""><span class="fa fa-facebook fa-large"></span></a></li>
-               <li><a href=""><span class="fa fa-instagram fa-large"></span></a></li>
+               <li><a href="twitter.com/@aramsvip" target="blank"><span class="fa fa-twitter fa-large"></span></a></li>
+               <li><a href="http://facebook.com/aramsvip" target="blank"><span class="fa fa-facebook fa-large"></span></a></li>
+               <li><a href="https://www.instagram.com/aramsvip/" target="blank"><span class="fa fa-instagram fa-large"></span></a></li>
              </ul>
              {{#ifCond pageTitle "articles"}}
              <div class="br_after"></div>
@@ -104,6 +108,10 @@
                      <li><a href="/articles/#{{article.category}}">{{article.category}}</a></li>
                    {{/each}}
                  </ul>
+               </div>
+               <div class="pic_profile">
+                 <img src="http://res.cloudinary.com/fabianrios/image/upload/c_crop,h_80,r_0,w_80/v1457971717/1457971692.png" alt="" />
+                 <h6 class="whitetxt">Escrito por {{author.name}}</h6>
                </div>
                <a id="like" data-id="{{article.id}}" class="whitetxt"><span class="fa fa-heart fa-2x"></span></a>
              </div>
@@ -148,7 +156,7 @@
             <option value="no" {{no}}>No</option>
             <option value="si" {{si}}>Si</option>
           </select>
-          <input type="text" name="where" id="where" value="{{where}}" />
+          <input type="text" name="where" id="where" value="{{where}}" placeholder="¿A donde?" />
         </div>
         <div class="large-3 columns">
           <input type="text" name="budget" id="budget" value="{{budget}}"/>
@@ -162,7 +170,7 @@
           </select>
         </div>
         <div class="large-3 columns">
-          <input type="submit" value="VER PAISES" class="button success full" />
+          <input type="submit" value="VER PAISES" class="button success full" id="btn-input" />
         </div>
       </div>
     </form>

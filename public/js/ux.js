@@ -116,11 +116,15 @@
     console.log(valor);
     if (valor == "si"){
       $("#where").show();
+      $(".inline-form #budget").attr('name','email').attr('placeholder','Correo electronico').attr('id','email').attr('type','email').val("");
+      $(".inline-form #btn-input").attr('value','RECIBIR INFORMACION');
       $(".inline-form #know").css({"max-width":"28%","display":"inline-block"});
       $(".inline-form #where").css({"max-width":"68%","display":"inline-block"});
       $(".plane").css({"background":"#70e8d7"});
     }else{
       $("#where").val("").hide();
+      $(".inline-form #email, .inline-form #budget").attr('name','budget').attr('placeholder','¿Que presupuesto tienes?').attr('id','budget').attr('type','text').val("");
+      $(".inline-form #btn-input").attr('value','VER LISTA DE PAISES');
       $(".plane").css({"background":"rgba(0,0,0,.3)"});
     }
   }
@@ -129,11 +133,15 @@
     var val = $(this).val();
     if (val == "si"){
       $("#where").show();
+      $("#budget").attr('name','email').attr('placeholder','Correo electronico').attr('id','email').attr('type','email').val("");
+      $("#btn-input").attr('value','RECIBIR INFORMACION');
       $(".plane").css({"background":"#70e8d7"});
       $(".inline-form #know").css({"max-width":"28%","display":"inline-block"});
       $(".inline-form #where").css({"max-width":"68%","display":"inline-block"});
     }else{
       $("#where").val("").hide();
+      $("#email").attr('name','budget').attr('placeholder','¿Que presupuesto tienes?').attr('id','budget').attr('type','text').val("");
+      $("#btn-input").attr('value','VER LISTA DE PAISES');
       $(".plane").css({"background":"rgba(0,0,0,.3)"});
       $(".inline-form #know").css({"max-width":"100%","display":"inline-block"});
     }
@@ -145,6 +153,10 @@
     e.preventDefault();
     $(".alert-box").remove();
   });
+  
+  setInterval(function() {
+    $(".alert-box").remove();
+  }, 5000);
   
   $('table').DataTable({
       "language": {

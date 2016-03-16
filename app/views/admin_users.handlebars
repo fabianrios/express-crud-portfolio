@@ -1,0 +1,68 @@
+
+<br /><br />
+<div class="row">
+  <div class="large-12">
+    <h3>{{title}}</h3>
+    <form method="post" action="/edit_user" enctype='multipart/form-data'>
+    <input type="hidden" name="id" value="{{user.id}}" />
+    <div class="row">
+      <div class="large-3 columns">
+        <label for="username">Nombre de usuario:</label>
+        <input type="text" name="username" value="{{user.username}}" required />
+      </div>
+      <div class="large-3 columns">
+        <label for="mail">Email:</label>
+        <input type="email" name="email" value="{{user.email}}" required />
+      </div>
+      <div class="large-3 columns">
+        <label for="name">Nombre completo:</label>
+        <input type="text" name="name" value="{{user.name}}" required />
+      </div>
+      <div class="large-3 columns">
+        <label for="password">Contraseña (si desea cambiarla)</label>
+        <input type="password" name="password" />
+      </div>
+    </div>
+    <input type="file" class="inline-file" name="image_upload" id="image_upload" />
+    <input type="submit" value="Actualizar" class="button success nm right" />
+    </form>
+    </div>
+    <br />
+    <br />
+    <hr />
+    <h3>Usuarios</h3>
+    <ul class="no-bullet">
+    {{#each users}}
+    <li>
+      <div class="pics">
+        <img src="http://res.cloudinary.com/fabianrios/image/upload/c_crop,h_80,r_0,w_80/v{{this.version}}/{{this.image}}.png" alt="" />
+        <h5 class="subheader dib">{{this.name}} <small>{{this.username}}</small> <a href="mailto:{{this.email}}"><span class="fa fa-envelope-o"></span></a> </h5>
+      </div>
+    </li>
+    {{/each}}
+    </ul>
+    <hr />
+    <h3>Crear Usuarios</h3>
+    <form method="post" action="/create_user" enctype='multipart/form-data'>
+      <div class="row">
+        <div class="large-3 columns">
+          <label for="username">Nombre de usuario:</label>
+          <input type="text" name="username" required />
+        </div>
+        <div class="large-3 columns">
+          <label for="mail">Email:</label>
+          <input type="email" name="email" required />
+        </div>
+        <div class="large-3 columns">
+          <label for="name">Nombre completo:</label>
+          <input type="text" name="name" required />
+        </div>
+        <div class="large-3 columns">
+          <label for="password">Contraseña</label>
+          <input type="password" name="password" required />
+        </div>
+      </div>
+      <input type="file" class="inline-file" name="image_upload" id="image_upload" />
+      <input type="submit" value="Crear usuario" class="button success nm right" />
+    </form>
+</div>

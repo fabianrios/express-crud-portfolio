@@ -29,7 +29,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   &:focus{
     @include box-shadow(0 2px 1px rgba(0,0,0,0.4));
     background: white;
-    border: 1px solid white;
+    border: 3px solid #70E8D7;
   }
 }
 textarea{

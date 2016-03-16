@@ -1,23 +1,27 @@
-      <h3>Listado de interesados</h3>
-      <br />
-      <table width="100%">
-        <thead>
-          <tr>
-            <th>Mail</th>
-            <th>Fecha</th>
-            <th>País</th>
-            <th>Tipo de vieje</th>
-          </tr>
-        </thead>
-        <tbody>
-      {{#each clients}}
-         <tr>
-           <td>{{this.mail}}</td>
-           <td>{{this.createdAt}}</td>
-           <td>{{this.country}}</td>
-           <td>{{this.experience}}</td>
-         </tr>
-      {{/each}}
-        </tbody>
-      </table>
-
+<div class="row">
+  <div class="large-12 columns">
+    <h3>Listado de interesados</h3>
+    <br />
+    <table width="100%">
+      <thead>
+        <tr>
+          <th>Mail</th>
+          <th>Fecha</th>
+          <th>País</th>
+          <th>Tipo de vieje</th>
+        </tr>
+      </thead>
+      <tbody>
+    {{#each clients}}
+       <tr>
+         <td>{{this.mail}}</td>
+         <td>{{this.createdAt}}</td>
+         <td>{{this.country}}</td>
+         <td>{{this.experience}}</td>
+       </tr>
+    {{/each}}
+      </tbody>
+    </table>
+    
+    </div>
+</div>
