@@ -17844,3 +17844,8 @@ input[type="search"].search {
 .inside-body {
   position: relative;
   min-height: 83.5vh; }
+
+.reveal-modal, dialog {
+  padding: 0; }
+  .reveal-modal img, dialog img {
+    width: 100%; }

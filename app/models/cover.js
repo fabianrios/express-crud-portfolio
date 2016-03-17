@@ -1,10 +1,10 @@
 module.exports = function (sequelize, DataTypes) {
 
-  var Cover = sequelize.define('User', {
-    name: DataTypes.STRING,
+  var Cover = sequelize.define('Cover', {
+    public_id: DataTypes.STRING,
     version: DataTypes.STRING,
     orden: DataTypes.INTEGER,
-    publish: {
+    home: {
        type: DataTypes.BOOLEAN,
        defaultValue: true,
        allowNull: false
@@ -12,6 +12,7 @@ module.exports = function (sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function (models) {
+        Cover.belongsTo(models.Article);
         // example on how to add relations
       }
     }
@@ -19,4 +20,5 @@ module.exports = function (sequelize, DataTypes) {
 
   return Cover;
 };
+
 

@@ -69,7 +69,7 @@ router.get('/', function (req, res, next) {
       pageTitle: "form",
       background: true,
       logo: "logo_white.png",
-      bg: "http://cdn.pcwallart.com/images/empty-city-street-wallpaper-3.jpg",
+      bg: "../img/bg1.jpg",
       home: true
     };
     res.render('index', {
@@ -449,26 +449,28 @@ router.get('/experiences', function (req, res, next) {
     });
 });
 
-
+ 
 router.get('/article/:id', function (req, res, next) {
   var id = req.params.id
   db.Article.findById(id).then(function (article) {
-    console.log("article", article.getUser())
+    article.getCovers().then(function(associatedCovers) {
+      article.getUser().then(function(user) {
     
-    db.User.findById(article.UserId || 2).then(function (user) {
+      res.locals = {
+        pageTitle: "articles",
+        background: true,
+        logo: "group-2.png"
+      };
     
-    res.locals = {
-      pageTitle: "articles",
-      background: true,
-      logo: "group-2.png"
-    };
+      res.render('show', {
+        title: article.title,
+        article: article,
+        logo: "logo_white.png",
+        covers: associatedCovers, 
+        author: user
+      });
     
-    res.render('show', {
-      title: article.title,
-      article: article,
-      logo: "logo_white.png",
-      author: user
-    });
+      });
     
     });
     
@@ -480,11 +482,14 @@ router.get('/article/:id', function (req, res, next) {
 router.get('/article/:id/edit', authorize, function (req, res, next) {
   var id = req.params.id
   db.Article.findById(id).then(function (article) {
-    res.render('edit', {
-      title: "Edición",
-      article: article,
-      logo: "group-2.png",
-      user: req.session.user
+    article.getCovers().then(function(associatedCovers) {
+      res.render('edit', {
+        title: "Edición",
+        article: article,
+        logo: "group-2.png",
+        covers: associatedCovers, 
+        user: req.session.user
+      });
     });
   });
 });
@@ -502,62 +507,84 @@ router.post('/article/like', function (req, res, next) {
   });
 });
 
+router.post('/delete_image', function (req, res, next) {
+  var body = req.body;
+  cloudinary.api.delete_resources(body.public_id,function(result){
+    console.log(result);
+     db.Cover.destroy({
+      where: {
+        public_id: body.public_id
+      }
+    }).then(function() {
+      res.redirect('/article/'+body.article_id+'/edit');
+    });
+    
+  });
+});
+
+function upload_multiple(files, id){
+  // console.log(files, files.length);
+  if (files.length <= 0){return}
+  for (var i = 0; i < files.length; i++) {
+      cloudinary.uploader.upload(files[i].path, function(result) {
+        var version = result.version.toString();
+        var pid = result.public_id.toString();
+        db.Cover.findOrCreate({where: {
+            version: version,
+            ArticleId: id, 
+            orden: 0,
+            public_id:pid,
+            home: false,
+          }});
+      });
+  }
+  return;
+}
 
 var cpUpload = upload.fields([{ name: 'image_upload', maxCount: 1 }, { name: 'gallery', maxCount: 8 }]);
 router.post('/articles',cpUpload, function (req, res, next) {
   var body = req.body;
   var urlbody = friendlyUrl(body.title);
-  console.log(req.files);
-  
-  // if(typeof req.files !== 'undefined'){
-  //   console.log(req.files['image_upload'][0].path, req.files['gallery']);
-  //   // cloudinary.uploader.upload(req.file.path, function(result) {
-  //   //   db.Article.create({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, cover: result.public_id, version: result.version, vip: body.vip, incognito: body.incognito, corporate: body.corporate }).then(function () {
-  //   //    res.redirect('/blog');
-  //   //   });
-  //   // });
-  // }else{
-  //   db.Article.create({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, vip: body.vip, incognito: body.incognito, corporate: body.corporate }).then(function () {
-  //    res.redirect('/blog');
-  //   });
-  // }
-});
-
-function upload_multiple(files){
-  // console.log(files, files.length);
-  if (files.length <= 0){return}
-  var images = [];
-  for (var key in files) {
-    if (files.hasOwnProperty(key)) {
-      cloudinary.uploader.upload(files[key].path, function(result) {
-        console.log(result);
-        images.push({public_id: result.public_id, version: result.version});
+  var files = req.files;
+  if(typeof req.files !== 'undefined' && typeof req.files['image_upload'] !== 'undefined'){
+    cloudinary.uploader.upload(req.files['image_upload'][0].path, function(result) {
+      db.Article.create({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, cover: result.public_id, version: result.version, vip: body.vip, incognito: body.incognito, corporate: body.corporate }).then(function (article) {
+        var id = article.id
+        if(req.files['gallery']){
+         upload_multiple(req.files['gallery'], id);
+        }
+       res.redirect('/admin/articles');
       });
-    }
+    });
+  }else{
+    db.Article.create({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, vip: body.vip, incognito: body.incognito, corporate: body.corporate }).then(function (article) {
+      var id = article.id
+      if(req.files['gallery']){
+       upload_multiple(req.files['gallery'], id);
+      }
+     res.redirect('/admin/articles');
+    });
   }
-  console.log(images);
-  return images;
-}
+});
 
 router.post('/article/:id/editar', authorize, cpUpload, function (req, res, next) {
   var id = req.params.id
   var body = req.body
   var urlbody = friendlyUrl(body.title);
   var files = req.files;
-  var imgs; 
   if(req.files['gallery']){
-    imgs = upload_multiple(req.files['gallery']);
+   upload_multiple(req.files['gallery'], id);
   }
   db.Article.findById(id).then(function (article) {
     if(typeof req.files !== 'undefined' && typeof req.files['image_upload'] !== 'undefined'){
-    cloudinary.uploader.upload(file.path, function(result) {
-      article.update({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, cover: result.public_id, version: result.version, vip: body.vip, incognito: body.incognito, corporate: body.corporate, images: imgs || {} }).then(function(){
-       res.redirect('/blog');
+    cloudinary.uploader.upload(req.files['image_upload'][0].path, function(result) {
+      article.update({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, cover: result.public_id, version: result.version, vip: body.vip, incognito: body.incognito, corporate: body.corporate }).then(function(){
+       res.redirect('/admin/articles');
       });
     },{ public_id: article.cover_version, invalidate: true });
     } else{
-      article.update({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, vip: body.vip, incognito: body.incognito, corporate: body.corporate, images: imgs || {} }).then(function () {
-       res.redirect('/blog');
+      article.update({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, vip: body.vip, incognito: body.incognito, corporate: body.corporate}).then(function () {
+       res.redirect('/admin/articles');
       });
     }
   });
@@ -569,7 +596,7 @@ router.get('/article/:id/destroy', authorize, function (req, res, next) {
         id: req.params.id
       }
     }).then(function() {
-      res.redirect('/blog');
+      res.redirect('/admin/articles');
     });
 });
 

@@ -15,15 +15,39 @@
     <p><span class="currency">{{article.incognito}}</span> a <span class="currency">{{article.vip}}</span></p>
     <h4 class="bluetxt">Presupuesto VIP</h4>
     <p><span class="currency">{{article.corporate}}</span> a <span class="currency">{{article.incognito}}</span></p>
+    <div class="quick-contact">
+      
+          <form action="/email_country" method="post" class="inliner" id="email_country">
+            <input type="hidden" name="country" value="{{article.title}}" />
+            <input type="hidden" name="travel" value="menu_lateral" />
+            <input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/>
+            <i class="fa fa-envelope fix-inline"></i>
+            <input type="submit" value="ENVIARME MAS INFO" class="button full success" />
+          </form>
+    </div>
+    <br />
     <h4 class="bluetxt"><span id="increment">{{article.like}}</span> <span class="bluetxt fa fa-heart"></span> Me gusta</h4>
   </div>
 </div>
 <div class="row">
   <div class="large-12 columns">
     <ul class="centerize sub-social">
-      <li><a href=""> <span class="fa fa-twitter fa-2x"></span> </a></li>
-      <li><a href=""> <span class="fa fa-facebook fa-2x"></span> </a></li>
-      <li><a href=""> <span class="fa fa-instagram fa-2x"></span> </a></li>
+      <li><a href="twitter.com/@aramsvip" target="_blank"> <span class="fa fa-twitter fa-2x"></span> </a></li>
+      <li><a href="http://facebook.com/aramsvip" target="_blank"> <span class="fa fa-facebook fa-2x"></span> </a></li>
+      <li><a href="https://www.instagram.com/aramsvip/" target="_blank"> <span class="fa fa-instagram fa-2x"></span> </a></li>
     </ul>
   </div>
 </div>
+{{#if covers}}
+<div class="footer-gallery">
+<div class="slider">
+  {{#each covers}}
+    <div class="slide">
+      <a data-order="{{this.order}}" data-version="{{this.version}}" data-public_id="{{this.public_id}}"><img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_107,w_200/v{{this.version}}/{{this.public_id}}" alt="" /></a>
+    </div>
+  {{/each}}
+</div>
+</div>
+<div id="modal" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+</div>
+{{/if}}

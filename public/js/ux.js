@@ -1,4 +1,5 @@
 (function() {
+  $(document).foundation();
   if ($("#fulltext").length){
     CKEDITOR.replace( 'fulltext' ); 
   }
@@ -55,7 +56,7 @@
   });
   
   
-  $("#info").on('submit','#email_country', function(evemt){
+  $("#info, .quick-contact").on('submit','#email_country', function(evemt){
         event.preventDefault();
         var $form = $(this), email = $form.find( "input[name='email']" ).val(), travel = $form.find( "input[name='travel']" ).val(), country = $form.find( "input[name='country']" ).val(), url = $form.attr( "action" );
         $.post(url, { email: email, country: country, travel: travel }, function(resp) {
@@ -105,6 +106,7 @@
     $("ul.country li").hide();
     $("ul.country li h5.country-names").each(function( index ) {
       var txt = $(this).text().toLowerCase();
+      console.log(txt,str);
       if (txt.indexOf(str) >= 0){
         $(this).parent().show();
       }
@@ -113,7 +115,6 @@
  
   function now(){
     var valor = $("#know").val();
-    console.log(valor);
     if (valor == "si"){
       $("#where").show();
       $(".inline-form #budget").attr('name','email').attr('placeholder','Correo electronico').attr('id','email').attr('type','email').val("");
@@ -156,6 +157,11 @@
   
   setInterval(function() {
     $(".alert-box").remove();
+    
+    var image = $('.main-body.home');
+    other = Math.floor(Math.random() * 4) + 1;
+    image.css("background-image", "url('../img/bg" + other + ".jpg')");
+    
   }, 5000);
   
   $('table').DataTable({
@@ -163,6 +169,23 @@
           "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
       }
   });
+  
+  if ($('.slider')){
+    $('.slider').bxSlider({
+       slideWidth: 200,
+       minSlides: 5,
+       moveSlides: 5,
+       slideMargin: 1
+     });
+   }
+   
+   
+   var modal = $('#modal');
+   $(".slide a").click(function(e){
+     e.preventDefault();
+     var resp = '<img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_407,w_600/v'+$(this).data("version")+'/'+$(this).data("public_id")+'" alt="" />  <a class="close-reveal-modal" aria-label="Close">&#215;</a>'
+     modal.html(resp).foundation('reveal', 'open');
+   });
   
 })();
  

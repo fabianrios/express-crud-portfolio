@@ -24,7 +24,8 @@ module.exports = function (sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function (models) {
-        Article.belongsTo(models.User)
+        Article.belongsTo(models.User);
+        Article.hasMany(models.Cover);
         // example on how to add relations
         // Article.hasMany(models.Comments);
       }

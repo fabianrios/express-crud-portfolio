@@ -242,9 +242,12 @@ ul.centerize {
     margin: 0 20px; }
     ul.centerize.filter li a {
       font-weight: 500; }
-  ul.centerize.country li {
-    position: relative;
-    margin: 0 10px; }
+  ul.centerize.country {
+    text-align: left; }
+    ul.centerize.country li {
+      text-align: left;
+      position: relative;
+      margin: 0 5px; }
   ul.centerize.tips li {
     margin: 0 25px;
     padding: 15px 0; }
@@ -561,3 +564,32 @@ input[type="email"].unflashy {
   .pic_profile h6 {
     display: inline-block;
     font-weight: 200; }
+
+.footer-gallery {
+  text-align: center;
+  height: 107px;
+  position: absolute;
+  bottom: 1px;
+  width: 100%; }
+  .footer-gallery .slide {
+    width: 200px !important; }
+  .footer-gallery .bx-wrapper {
+    max-width: 100% !important;
+    -webkit-box-shadow: 0 0 0 transparent;
+    box-shadow: 0 0 0 transparent;
+    border: 0 solid transparent;
+    background: transparent; }
+  .footer-gallery .bx-controls .bx-pager {
+    display: none; }
+  .footer-gallery a.right {
+    position: absolute;
+    right: 0; }
+  .footer-gallery a.left, .footer-gallery a.right {
+    display: inline-block;
+    background: #0058a0;
+    color: rgba(255, 255, 255, 0.5);
+    padding: 40px 0;
+    height: 107px;
+    width: 42px;
+    text-align: center;
+    font-size: 1.4rem; }

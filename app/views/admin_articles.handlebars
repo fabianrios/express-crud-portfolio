@@ -1,26 +1,23 @@
 <div class="row">
   <div class="large-12 columns">
+      <input placeholder="Buscar" class="search radius" type="search" name="country" id="country-search" />
       <br />
-      <ul class="no-bullet posts">
-      <li>
-        <a href="/article/create" class="button medium">Crear un articulo nuevo</a>
-      </li>
+      <ul class="no-bullet centerize country">
       {{#each articles}}
       <li class="all">
-        <div class="index-cover">
           {{#if this.cover}}
-            <img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_175,w_300/v{{this.version}}/{{this.cover}}" alt="" />
+            <img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_100,w_200/v{{this.version}}/{{this.cover}}" alt="" />
           {{else}}
             <img src="http://placehold.it/300x176/2C00BA" alt="" />
           {{/if}}
-            <h4 class="text-center">{{this.title}}</h4>
+          <h5 class="subheader text-left country-names">{{this.title}}</h5>
           <div class="actions">
-            <a href="/article/{{this.id}}/edit"><span class="fa fa-edit"></span></a> <a class="redtxt" href="/article/{{this.id}}/destroy" onclick="return confirm('Seguro quieres borrarlo?');"><span class="fa fa-trash"></span></a>
+            <a href="/article/{{this.id}}/edit"><span class="fa fa-edit whitetxt"></span></a> <a class="redtxt" href="/article/{{this.id}}/destroy" onclick="return confirm('Seguro quieres borrarlo?');"><span class="fa fa-trash"></span></a>
           </div>
-        </div>
       </li>
       {{/each}}
       </ul>
+      <a href="/article/create" class="button medium"><span class="fa fa-plus fa-round"></span> Crear un articulo nuevo</a>
     </div>
 </div>
 

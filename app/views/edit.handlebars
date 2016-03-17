@@ -1,7 +1,7 @@
 <div class="admin-form">
   <div class="row">
     <div class="large-12 columns">
-      <a href="/blog" class="button tiny"><span class="fa fa-undo"></span> Volver</a>
+      <a href="/admin/articles" class="button tiny"><span class="fa fa-undo"></span> Volver</a>
     </div>
   </div>
   <form action="/article/{{article.id}}/editar" id="articles-form" method="post" enctype='multipart/form-data'>
@@ -10,6 +10,20 @@
       <h1>{{title}}</h1>
         <input type="text" name="text" value="{{article.text}}" placeholder="texto" />
         <textarea name="fulltext" id="fulltext">{{article.fulltext}}</textarea>
+        {{#if covers}}
+        <ul class="inline-list">
+            {{#each covers}}
+            <li>
+              <img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_107,w_200/v{{this.version}}/{{this.public_id}}" alt="" />
+              <form action="/delete_image" method="post">
+                <input type="hidden" name="public_id" id="public_id" value="{{this.public_id}}" />
+                <input type="hidden" name="article_id" id="article_id" value="{{this.ArticleId}}" />
+                <button type="submit" class="tiny button alert" /><span class="fa fa-trash-o"></span></button>
+              </form>
+            </li>
+            {{/each}}
+        </ul>
+        {{/if}}
     </div>
     <div class="large-4 columns">
       <input type="submit" value="Actualizar" class="button success full" />

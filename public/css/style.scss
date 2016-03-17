@@ -310,9 +310,11 @@ ul.centerize{
     }
   }
   &.country{
+    text-align: left;
     li{
+      text-align: left;
       position: relative;
-      margin: 0 10px;
+      margin: 0 5px;
     }
   }
   &.tips{
@@ -691,5 +693,44 @@ input[type="email"].unflashy{
   h6{
     display: inline-block;
     font-weight: 200;
+  }
+}
+
+.footer-gallery{
+  text-align: center;
+  height: 107px;
+  position: absolute;
+  bottom: 1px;
+  width: 100%;
+  .slide{
+    width: 200px !important;
+  }
+  .bx-wrapper{
+    max-width: 100% !important;
+    -webkit-box-shadow: 0 0 0 transparent;
+    box-shadow: 0 0 0 transparent;
+    border: 0 solid transparent;
+    background: transparent;
+  }
+  .bx-controls{
+    .bx-pager{
+      display: none;
+    }
+  }
+  a{
+    &.right{
+      position: absolute;
+      right: 0;
+    }
+    &.left, &.right{
+      display: inline-block;
+      background: #0058a0;
+      color:rgba(255,255,255,.5);
+      padding: 40px 0;
+      height: 107px;
+      width: 42px;
+      text-align: center;
+      font-size: 1.4rem;
+    }
   }
 }
