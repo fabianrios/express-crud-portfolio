@@ -159,7 +159,7 @@
     $(".alert-box").remove();
     
     var image = $('.main-body.home');
-    other = Math.floor(Math.random() * 4) + 1;
+    other = Math.floor(Math.random() * 3) + 1;
     image.css("background-image", "url('../img/bg" + other + ".jpg')");
     
   }, 5000);
