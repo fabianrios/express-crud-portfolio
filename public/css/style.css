@@ -74,8 +74,7 @@
   background: white; }
   @media only screen and (min-width: 40em) {
     .nav {
-      height: 110px;
-      background: none; } }
+      height: 110px; } }
   .nav.map {
     background: #325595; }
     .nav.map ul li a {
@@ -120,11 +119,12 @@
     margin: 0 -30px;
     text-align: center;
     background: white;
-    min-width: 100vw; }
+    min-width: 100vw;
+    margin-bottom: 30px; }
     .nav ul.navigation li {
-      text-align: left;
+      text-align: center;
       display: inline-block;
-      margin: 5px 0;
+      margin: 10px 0;
       width: 100%;
       background: white;
       padding: 0 10px; }
@@ -136,7 +136,8 @@
         display: inline-block;
         margin: 0 20px;
         text-align: right;
-        min-width: auto; }
+        min-width: auto;
+        background: transparent; }
         .nav ul.navigation li {
           text-align: right;
           width: auto;
@@ -147,14 +148,17 @@
     list-style-type: none;
     display: inline-block;
     margin: 0;
-    text-align: right;
-    width: 100%; }
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px; }
     .nav ul.social li {
       display: inline-block;
       margin: 0 16px; }
     @media only screen and (min-width: 40em) {
       .nav ul.social {
-        width: 20%; }
+        width: 20%;
+        margin-bottom: 0;
+        text-align: right; }
         .nav ul.social li {
           margin: 0 20px; } }
 
@@ -304,7 +308,11 @@ ul.centerize {
   height: auto;
   background: white;
   right: 40px;
-  top: 40px; }
+  top: 40px;
+  display: none; }
+  @media only screen and (min-width: 40em) {
+    #info {
+      display: block; } }
 
 .footer {
   height: 56px;
@@ -441,7 +449,11 @@ ul.steps {
   padding: 40px 0;
   background: white; }
   .exp .type {
-    position: relative; }
+    position: relative;
+    margin: 20px 0; }
+    @media only screen and (min-width: 40em) {
+      .exp .type {
+        margin: 0; } }
     .exp .type:hover .inf {
       display: block; }
     .exp .type img {
@@ -677,3 +689,9 @@ table.dataTable thead tr th {
     background: url(https://datatables.net/media/images/sort_desc.png) no-repeat right 7px; }
   table.dataTable thead tr th.sorting_asc {
     background: url(https://datatables.net/media/images/sort_asc.png) no-repeat right 7px; }
+
+.inside-body #map {
+  display: none; }
+  @media only screen and (min-width: 40em) {
+    .inside-body #map {
+      display: block; } }
