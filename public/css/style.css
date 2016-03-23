@@ -74,7 +74,8 @@
   background: white; }
   @media only screen and (min-width: 40em) {
     .nav {
-      height: 110px; } }
+      height: 110px;
+      background: none; } }
   .nav.map {
     background: #325595; }
     .nav.map ul li a {
