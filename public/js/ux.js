@@ -7,7 +7,6 @@
   $('#like').click(function(e){
     e.preventDefault();
     $id = $(this).attr("data-id");
-    console.log($id);
     $.post('like/', { 'id': $id }, function(data){
       $("#increment").html(data);
     });
@@ -35,9 +34,16 @@
           // Force the popup closed.
           e.layer.closePopup();
           var feature = e.layer.feature;
-          var content = '<div class="country-post"><img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_275,w_400/v'+feature.properties.version+'/'+feature.properties.cover+'.jpg" /><div class="gradientbg"><h4 class="title-map whitetxt">' + feature.properties.title + '</h4><h6 class="whitetxt price-map">' + feature.properties.corporate + ' a ' + feature.properties.vip + '</h6></div><div class="content"><p class="nm">' + feature.properties.description + '</p></div><a href="' + feature.properties.url + '" class="blog">BLOG</a><form action="/email_country" method="post" class="inliner" id="email_country" ><input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/><i class="fa fa-envelope fix-inline"></i><input type="submit" value="ENVIARME MAS INFO" class="button full success" /></form><a class="ferme"><span>X</span></a></div>';
+          var content = '<div class="country-post"><img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_275,w_400/v'+feature.properties.version+'/'+feature.properties.cover+'.jpg" /><div class="gradientbg"><h4 class="title-map whitetxt">' + feature.properties.title + '</h4><h6 class="whitetxt price-map"><span class="cur">' + feature.properties.vip + '</span> a <span class="cur">' + feature.properties.corporate + '</span></h6></div><div class="content"><p class="nm">' + feature.properties.description + '</p></div><a href="' + feature.properties.url + '" class="blog">BLOG</a><a href="' + feature.properties.url + '/#comments" class="blog">COMENTARIOS</a><form action="/email_country" method="post" class="inliner" id="email_country" ><input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/><i class="fa fa-envelope fix-inline"></i><input type="submit" value="ENVIARME MAS INFO" class="button full success" /></form><a class="ferme"><span>X</span></a></div>';
           info.innerHTML = content;
+          $(".cur").autoNumeric('init',{
+            aSep: '.',
+            aDec: ',', 
+            aSign: '$ ',
+            mDec: '0'
+          });
       });
+      
     });
     
     map.scrollWheelZoom.disable();
@@ -46,7 +52,15 @@
   $(".currency").autoNumeric('init',{
     aSep: '.',
     aDec: ',', 
-    aSign: 'US$ '
+    aSign: 'US$ ',
+    mDec: '0'
+  });
+  
+  $(".cur").autoNumeric('init',{
+    aSep: '.',
+    aDec: ',', 
+    aSign: '$ ',
+    mDec: '0'
   });
   
   $(document).on('click', '.ferme',function(e) { 
@@ -80,8 +94,15 @@
       myLayer.on('click',function(e){
           e.layer.closePopup();
           var feature = e.layer.feature;
-          var content = '<div class="country-post"><img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_275,w_400/v'+feature.properties.version+'/'+feature.properties.cover+'.jpg" /><div class="gradientbg"><h4 class="title-map whitetxt">' + feature.properties.title + '</h4><h6 class="whitetxt price-map">' + feature.properties.corporate + ' a ' + feature.properties.vip + '</h6></div><div class="content"><p class="nm">' + feature.properties.description + '</p></div><a href="' + feature.properties.url + '" class="blog">BLOG</a><form action="/email_country" method="post" class="inliner" id="email_country" ><input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/><i class="fa fa-envelope fix-inline"></i><input type="submit" value="ENVIARME MAS INFO" class="button full success" /></form><a class="ferme"><span>X</span></a></div>';
+          var content = '<div class="country-post"><img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_275,w_400/v'+feature.properties.version+'/'+feature.properties.cover+'.jpg" /><div class="gradientbg"><h4 class="title-map whitetxt">' + feature.properties.title + '</h4><h6 class="whitetxt price-map"><span class="cur">' + feature.properties.vip + '</span> a <span class="cur">' + feature.properties.corporate + '</span></h6></div><div class="content"><p class="nm">' + feature.properties.description + '</p></div><a href="' + feature.properties.url + '" class="blog">BLOG</a><a href="' + feature.properties.url + '/#comments" class="blog">COMENTARIOS</a><form action="/email_country" method="post" class="inliner" id="email_country" ><input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/><i class="fa fa-envelope fix-inline"></i><input type="submit" value="ENVIARME MAS INFO" class="button full success" /></form><a class="ferme"><span>X</span></a></div>';
           info.innerHTML = content;
+          $(".cur").autoNumeric('init',{
+            aSep: '.',
+            aDec: ',', 
+            aSign: '$ ',
+            mDec: '0'
+          });
+          
       });
     });
   });
@@ -155,15 +176,58 @@
     $(".alert-box").remove();
   });
   
-  setInterval(function() {
-    $(".alert-box").remove();
-    
-    var image = $('.main-body.home');
-    other = Math.floor(Math.random() * 3) + 1;
-    image.css("background-image", "url('../img/bg" + other + ".jpg')");
-    
-  }, 5000);
   
+  var indirect = {
+    remote: false
+  };
+  function get_covers(){
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "/covers");
+      xhr.onreadystatechange = function(){
+          if(xhr.readyState === 4){
+              if(xhr.status === 200){
+                  indirect = JSON.parse(xhr.responseText);
+              }
+              else{
+                  console.log("Could not get the covers.");
+                  indirect.remote = false;
+              }
+          }
+      };
+      xhr.send();
+  }
+  
+  get_covers();
+  
+  var img_array = [1, 2, 3];
+  var index = 0;
+  var interval = 5000;
+  setTimeout(function() {
+    $(".alert-box").remove();
+    $('.bg-gradient, .bg-grad').animate({
+      backgroundColor: 'rgba(0, 88, 160, 0)'
+    }, 800);
+    var image = $('.main-body.home');
+    // console.log(indirect, indirect.covers.length);
+    if (indirect.covers.length > 0){
+    //console.log(indirect.covers[index++ % indirect.covers.length].public_id);
+     image.css("background-image", "url('http://res.cloudinary.com/fabianrios/image/upload/v"+indirect.covers[index++ % indirect.covers.length].version+"/"+indirect.covers[index++ % indirect.covers.length].public_id+".jpg')"); 
+    }else{
+      image.css("background-image", "url('../img/bg" + img_array[index++ % img_array.length] + ".jpg')"); 
+    }
+    $('.bg-gradient, .bg-grad').delay(3400).animate({
+      backgroundColor: 'rgba(0, 88, 160, .9)'
+    }, 800);
+    setTimeout(arguments.callee, interval);
+  }, interval);
+  
+  if(document.getElementById("category-val")){
+    var cat = $("#category-val").data("category");
+    $.each(cat.split(","), function(i,e){
+        $("#category option[value='" + e + "']").prop("selected", true);
+    });
+  }
+
   $('table').DataTable({
       "language": {
           "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
@@ -185,6 +249,13 @@
      e.preventDefault();
      var resp = '<img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_407,w_600/v'+$(this).data("version")+'/'+$(this).data("public_id")+'" alt="" />  <a class="close-reveal-modal" aria-label="Close">&#215;</a>'
      modal.html(resp).foundation('reveal', 'open');
+   });
+   
+   $(window).scroll(function() {
+      $(".footer-gallery").css({"bottom":"0"});
+      if($(window).scrollTop() + $(window).height() == $(document).height()) {
+        $(".footer-gallery").css({"bottom":"56px"});
+      }
    });
   
 })();

@@ -5,12 +5,12 @@
     <img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_275,w_400/v{{country.version}}/{{country.cover}}.jpg" />
     <div class="gradientbg">
       <h4 class="title-map whitetxt"> {{country.title}} </h4> 
-      <h6 class="whitetxt price-map">{{country.corporate}} a {{country.vip}}</h6>
+      <h6 class="whitetxt price-map"><span class="cur">{{country.vip}}</span> a <span class="cur">{{country.corporate}}</span></h6>
     </div>
     <div class="content">
       <p class="nm"> {{country.text}}</p>
     </div>
-    <a href="{{country.url}}" class="blog">BLOG</a>
+    <a href="{{country.url}}" class="blog">BLOG</a><a href="{{country.url}}#comments" class="blog">COMENTARIOS</a>
     <form action="/email_country" method="post" class="inliner" id="email_country">
       <input type="hidden" name="country" value="{{country.title}}" />
       <input type="hidden" name="travel" value="{{travel}}" />

@@ -403,7 +403,7 @@ router.post('/send_contact', function (req, res, next) {
 });
 
 router.get('/admin/contact', authorize, function (req, res, next) {
-  db.Client.findAll({where:{flag: 1}}).then(function (clients) {
+  db.Client.findAll({where:{flag: 1},order:'name DESC'}).then(function (clients) {
     res.render('admin_contact', {
       title: 'Contactos',
       clients: clients,
@@ -510,7 +510,6 @@ router.post('/article/like', function (req, res, next) {
 router.post('/delete_image', function (req, res, next) {
   var body = req.body;
   cloudinary.api.delete_resources(body.public_id,function(result){
-    console.log(result);
      db.Cover.destroy({
       where: {
         public_id: body.public_id
@@ -529,12 +528,12 @@ function upload_multiple(files, id){
       cloudinary.uploader.upload(files[i].path, function(result) {
         var version = result.version.toString();
         var pid = result.public_id.toString();
-        db.Cover.findOrCreate({where: {
-            version: version,
-            ArticleId: id, 
-            orden: 0,
-            public_id:pid,
-            home: false,
+          db.Cover.findOrCreate({where: {
+              version: version,
+              ArticleId: id, 
+              orden: 0,
+              public_id:pid,
+              home: false
           }});
       });
   }
@@ -590,6 +589,34 @@ router.post('/article/:id/editar', authorize, cpUpload, function (req, res, next
   });
 });
 
+function upload_home(files){
+  if (files.length <= 0){return}
+  for (var i = 0; i < files.length; i++) {
+      cloudinary.uploader.upload(files[i].path, function(result) {
+        var version = result.version.toString();
+        var pid = result.public_id.toString();
+          db.Cover.findOrCreate({where: {
+              version: version,
+              orden: i,
+              public_id:pid,
+              home: true
+          }});
+      });
+  }
+  return;
+}
+
+
+router.post('/home_gallery', authorize, cpUpload, function (req, res, next) {
+  var body = req.body
+  var files = req.files;
+  if(files['gallery']){
+   upload_home(files['gallery'], 0);
+   res.redirect('/admin/users');
+  }
+});
+
+
 router.get('/article/:id/destroy', authorize, function (req, res, next) {
   db.Article.destroy({
       where: {
@@ -599,6 +626,7 @@ router.get('/article/:id/destroy', authorize, function (req, res, next) {
       res.redirect('/admin/articles');
     });
 });
+
 
 
 router.post('/edit_user', authorize, upload.single('image_upload'), function (req, res, next) {
@@ -645,7 +673,6 @@ router.post('/edit_user', authorize, upload.single('image_upload'), function (re
 router.post('/create_user', authorize, upload.single('image_upload'), function (req, res, next) {
   var body = req.body;
   var file = req.file;
-  console.log(body);
   if(file){
     cloudinary.uploader.upload(file.path, function(result) {
       db.User.create({ username: body.username, email: body.email, image: result.public_id, version: result.version, name: body.name, password: encrypt(body.password), admin:true}).then(function () {
@@ -663,11 +690,28 @@ router.post('/create_user', authorize, upload.single('image_upload'), function (
 
 router.get('/admin/users', authorize, function (req, res, next) {
    db.User.findAll().then(function (users) {
-    res.render('admin_users', {
-      title: 'Mi perfil',
-      logo: "group-2.png",
-      user: req.session.user,
-      users: users
-    });
+     db.Cover.findAll({where:{home: true}}).then(function (covers) {
+       
+       res.render('admin_users', {
+         title: 'Mi perfil',
+         logo: "group-2.png",
+         user: req.session.user,
+         covers: covers,
+         users: users
+       });
+       
+     });
   });  
 });
+
+router.get('/covers', function (req, res, next) {
+  db.Cover.findAll({where:{home: true}}).then(function (covers) {
+    var return_data = {
+        covers: covers,
+        remote: true
+    };
+    res.write(JSON.stringify(return_data));
+    res.end();
+  });
+});
+

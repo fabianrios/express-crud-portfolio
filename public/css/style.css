@@ -69,16 +69,19 @@
 
 .nav {
   position: relative;
-  height: 110px;
+  height: auto;
   padding: 0 30px;
   background: white; }
+  @media only screen and (min-width: 40em) {
+    .nav {
+      height: 110px; } }
   .nav.map {
     background: #325595; }
     .nav.map ul li a {
       color: #fff; }
   .nav.form {
     background: transparent;
-    border: 1px solid #456289; }
+    border-bottom: 1px solid #456289; }
     .nav.form ul li a {
       color: #fff; }
   .nav.articles {
@@ -101,32 +104,58 @@
     .nav.articles ul li a {
       color: #fff; }
   .nav a.logo {
-    width: 20%;
+    width: 50%;
     display: inline-block;
     line-height: 110px; }
     .nav a.logo img {
       padding: 10px 0; }
+    @media only screen and (min-width: 40em) {
+      .nav a.logo {
+        width: 20%; } }
   .nav ul.navigation {
-    width: 50%;
+    width: 100%;
     list-style-type: none;
-    display: inline-block;
-    margin: 0 20px;
-    text-align: right; }
+    display: block;
+    margin: 0 -30px;
+    text-align: center;
+    background: white;
+    min-width: 100vw; }
     .nav ul.navigation li {
-      text-align: right;
+      text-align: left;
       display: inline-block;
-      margin: 0 20px; }
+      margin: 5px 0;
+      width: 100%;
+      background: white;
+      padding: 0 10px; }
       .nav ul.navigation li a {
         font-weight: 500; }
+    @media only screen and (min-width: 40em) {
+      .nav ul.navigation {
+        width: 50%;
+        display: inline-block;
+        margin: 0 20px;
+        text-align: right;
+        min-width: auto; }
+        .nav ul.navigation li {
+          text-align: right;
+          width: auto;
+          margin: 0 20px;
+          padding: 0;
+          background: transparent; } }
   .nav ul.social {
     list-style-type: none;
     display: inline-block;
     margin: 0;
     text-align: right;
-    width: 20%; }
+    width: 100%; }
     .nav ul.social li {
       display: inline-block;
       margin: 0 16px; }
+    @media only screen and (min-width: 40em) {
+      .nav ul.social {
+        width: 20%; }
+        .nav ul.social li {
+          margin: 0 20px; } }
 
 #like {
   margin: 0 auto;
@@ -151,9 +180,9 @@ ul.posts {
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
-    width: 31.5%;
+    width: 100%;
     display: inline-block;
-    margin: 10px;
+    margin: 10px 0;
     vertical-align: top; }
     ul.posts li.all .index-cover {
       width: 100%;
@@ -176,6 +205,10 @@ ul.posts {
       margin-left: 0; }
     ul.posts li.all:nth-child(3n+3) {
       margin-right: 0; }
+    @media only screen and (min-width: 40em) {
+      ul.posts li.all {
+        width: 31.5%;
+        margin: 10px; } }
 
 .gradient {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.45+100 */
@@ -466,7 +499,7 @@ input[type="email"].unflashy {
   box-shadow: 0 0 0 transparent;
   margin: 0;
   height: 55px;
-  border: 1px solid 1px solid rgba(0, 0, 0, 0.1); }
+  border: 1px solid rgba(0, 0, 0, 0.1); }
   input[type="email"].unflashy:focus {
     -webkit-box-shadow: 0 0 0 transparent;
     -moz-box-shadow: 0 0 0 transparent;
@@ -498,7 +531,7 @@ input[type="email"].unflashy {
   color: #0058a0;
   padding: 15px 10px;
   font-size: 14px;
-  display: block;
+  display: inline-block;
   font-weight: bold; }
 
 .ferme {
@@ -568,8 +601,8 @@ input[type="email"].unflashy {
 .footer-gallery {
   text-align: center;
   height: 107px;
-  position: absolute;
-  bottom: 1px;
+  position: fixed;
+  bottom: 0;
   width: 100%; }
   .footer-gallery .slide {
     width: 200px !important; }
@@ -593,3 +626,53 @@ input[type="email"].unflashy {
     width: 42px;
     text-align: center;
     font-size: 1.4rem; }
+
+.bg-grad {
+  position: absolute;
+  background: rgba(0, 88, 160, 0.8);
+  background: -moz-linear-gradient(top, rgba(0, 88, 160, 0.7) 0%, rgba(0, 88, 160, 0.8) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(0, 88, 160, 0.7) 0%, rgba(0, 88, 160, 0.8) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(0, 88, 160, 0.7) 0%, rgba(0, 88, 160, 0.8) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%; }
+
+.bg-gradient {
+  background: rgba(0, 88, 160, 0.8);
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0058a0+0,18243f+100&0.8+0,0.8+100 */
+  background: -moz-linear-gradient(top, rgba(0, 88, 160, 0.8) 0%, rgba(24, 36, 63, 0.8) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(0, 88, 160, 0.8) 0%, rgba(24, 36, 63, 0.8) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(0, 88, 160, 0.8) 0%, rgba(24, 36, 63, 0.8) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc0058a0', endColorstr='#cc18243f',GradientType=0 );
+  /* IE6-9 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%; }
+
+.inline-list > li {
+  position: relative; }
+
+.button.alert.trash {
+  position: absolute;
+  top: 0;
+  right: 0; }
+
+table.dataTable thead tr th {
+  background: url(https://datatables.net/media/images/sort_both.png) no-repeat right 7px; }
+  table.dataTable thead tr th.sorting_desc {
+    background: url(https://datatables.net/media/images/sort_desc.png) no-repeat right 7px; }
+  table.dataTable thead tr th.sorting_asc {
+    background: url(https://datatables.net/media/images/sort_asc.png) no-repeat right 7px; }
