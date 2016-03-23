@@ -387,11 +387,11 @@ ul.centerize {
         background: #70e8d7;
         line-height: 24px;
         text-align: center; }
-      .sidebar-menu ul li a:hover {
+      .sidebar-menu ul li a:hover, .sidebar-menu ul li a.active {
         color: #70e8d7; }
-        .sidebar-menu ul li a:hover span.number {
+        .sidebar-menu ul li a:hover span.number, .sidebar-menu ul li a.active span.number {
           color: #fff; }
-        .sidebar-menu ul li a:hover:before {
+        .sidebar-menu ul li a:hover:before, .sidebar-menu ul li a.active:before {
           opacity: 1; }
 
 .pos-steps {

@@ -51,6 +51,14 @@ select{
   height: 45px;
 }
 
+.inline-list.cov-list{
+  margin: 0;
+  li{
+    margin: 6px;
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+}
 
 .admin-form{
   .file{
@@ -69,6 +77,10 @@ select{
       &:focus{
         border: 1px solid #70E8D7;
       }
+    }
+    &:hover{
+       background-image: url(../img/file.png) !important; 
+       cursor: pointer;
     }
   }
   

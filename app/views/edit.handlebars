@@ -11,7 +11,7 @@
         <input type="text" name="text" value="{{article.text}}" placeholder="texto" />
         <textarea name="fulltext" id="fulltext">{{article.fulltext}}</textarea>
         {{#if covers}}
-        <ul class="inline-list">
+        <ul class="inline-list cov-list">
             {{#each covers}}
             <li>
               <img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_107,w_200/v{{this.version}}/{{this.public_id}}" alt="" />
@@ -38,11 +38,15 @@
       <input type="text" class="currency" name="incognito" value="{{article.incognito}}" placeholder="Incognito" />
       <input type="text" class="currency" name="corporate" value="{{article.corporate}}" placeholder="Corporativo" />
       <label for="image_upload">Imagen destacada</label>
-      <input type="file" class="inline-file" name="image_upload" id="image_upload" />
-      <label for="gallery">Galeria</label>
-      <div class="file">
-        <input type="file" class="inline-file" multiple="true" name="gallery" id="gallery" />
+      {{#if article.cover}}
+        <div class="file" style="background-image:url('http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_100,w_305/v{{article.version}}/{{article.cover}}.jpg')">
+      {{else}}
+        <div class="file">
+      {{/if}}
+        <input type="file" class="inline-file" name="image_upload" id="image_upload" />
       </div>
+      <label for="gallery">Galeria</label>
+      <input type="file" class="inline-file" multiple="true" name="gallery" id="gallery" />
       {{#if article.like}}
       <p>Este post tiene {{article.like}} likes</p>
       {{/if}}

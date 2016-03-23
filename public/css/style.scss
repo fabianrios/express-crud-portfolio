@@ -477,7 +477,7 @@ ul.centerize{
           line-height: 24px;
           text-align: center;
         }
-        &:hover{
+        &:hover, &.active{
           color: #70e8d7;
           span.number{
             color: #fff;

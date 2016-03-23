@@ -35,7 +35,7 @@ function decrypt(text){
 
 var authorize = function(req, res, next) {
    if (req.session && req.session.admin){
-     console.log(req.session);
+     //console.log(req.session);
      return next();
     } else{
       res.render('login', {
@@ -189,18 +189,20 @@ router.post('/login', function (req, res, next) {
          logo: "group-2.png" 
       });
     }
-    req.session.user = user; 
-    req.session.admin = user.admin;
-    var url = req.url;
     
     db.Client.findAll({where:{flag: 0}}).then(function (clients) {
-      for (var i = 0; i < clients.length; i++){
-        
-      }
+    
+      req.session.user = user; 
+      req.session.admin = user.admin;
+      var url = req.url;
+      req.session.clients = clients.length;
+      res.redirect('/countries_search');
+      
+      // for (var i = 0; i < clients.length; i++){
+      //
+      // }
+    
     })
-    
-    res.redirect('/countries_search');
-    
   });
 });
 
@@ -213,7 +215,9 @@ router.get('/country/create', authorize, function (req, res, next) {
     res.render('create_country', {
       title: 'Crear nuevo país',
       logo: "group-2.png",
-      user: req.session.user
+      qty: req.session.clients,
+      user: req.session.user,
+      countries_search: "active"
     });
 });
 
@@ -224,7 +228,9 @@ router.get('/country/:id/edit', authorize, function (req, res, next) {
       title: "Edición de país",
       country: country,
       logo: "group-2.png",
-      user: req.session.user
+      qty: req.session.clients,
+      user: req.session.user,
+      countries_search: "active"
     });
   });
 });
@@ -271,7 +277,9 @@ router.get('/countries_search', authorize, function (req, res, next) {
       title: 'Buscador de paises',
       countries: countries,
       logo: "group-2.png",
-      user: req.session.user
+      qty: req.session.clients,
+      user: req.session.user,
+      countries_search: 'active'
     });
     
   });
@@ -329,7 +337,10 @@ router.get('/countries_all', function (req, res, next) {
               url: countries[i].url,
               vip: countries[i].vip,
               cover: countries[i].cover,
-              version: countries[i].version
+              version: countries[i].version,
+              "marker-color": "#6ae9d7",
+              "marker-size": "large",
+              "marker-symbol": "circle"
             } 
       });
     }
@@ -385,7 +396,9 @@ router.get('/admin/clients', authorize, function (req, res, next) {
       title: 'Interesados',
       clients: clients,
       user: req.session.user,
-      logo: "group-2.png"
+      qty: req.session.clients,
+      logo: "group-2.png",
+      admin_clients: "active"
     });
   });
 });
@@ -408,7 +421,9 @@ router.get('/admin/contact', authorize, function (req, res, next) {
       title: 'Contactos',
       clients: clients,
       user: req.session.user,
-      logo: "group-2.png"
+      logo: "group-2.png",
+      admin_contacts: "active",
+      qty: req.session.clients
     });
   });
 });
@@ -427,7 +442,9 @@ router.get('/admin/articles', authorize, function (req, res, next) {
       title: 'Admin articles',
       articles: articles,
       user: req.session.user,
-      logo: "group-2.png"
+      logo: "group-2.png",
+      qty: req.session.clients,
+      admin_articles: "active"
     });
   });
 });
@@ -437,7 +454,9 @@ router.get('/article/create', authorize, function (req, res, next) {
     res.render('create', {
       title: 'Crear nuevo articulo',
       logo: "group-2.png",
-      user: req.session.user
+      qty: req.session.clients,
+      user: req.session.user,
+      admin_articles: "active"
     });
 });
 
@@ -487,6 +506,7 @@ router.get('/article/:id/edit', authorize, function (req, res, next) {
         title: "Edición",
         article: article,
         logo: "group-2.png",
+        qty: req.session.clients,
         covers: associatedCovers, 
         user: req.session.user
       });
@@ -665,6 +685,7 @@ router.post('/edit_user', authorize, upload.single('image_upload'), function (re
       title: 'Mi perfil',
       logo: "group-2.png",
       error: "Revise los campos ni la contraseña ni el nombre de usuario pueden estar vacios",
+      qty: req.session.clients,
       user: req.session.user,
     });
   }
@@ -696,6 +717,7 @@ router.get('/admin/users', authorize, function (req, res, next) {
          title: 'Mi perfil',
          logo: "group-2.png",
          user: req.session.user,
+         qty: req.session.clients,
          covers: covers,
          users: users
        });

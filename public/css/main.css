@@ -17773,6 +17773,13 @@ textarea {
 select {
   height: 45px; }
 
+.inline-list.cov-list {
+  margin: 0; }
+  .inline-list.cov-list li {
+    margin: 6px;
+    margin-left: 0;
+    margin-bottom: 0; }
+
 .admin-form .file {
   background: whitesmoke url(../img/file.png) center center no-repeat;
   overflow: hidden;
@@ -17788,6 +17795,9 @@ select {
     width: 100%; }
     .admin-form .file input[type="file"]:focus {
       border: 1px solid #70E8D7; }
+  .admin-form .file:hover {
+    background-image: url(../img/file.png) !important;
+    cursor: pointer; }
 .admin-form input[type="text"], .admin-form input[type="password"], .admin-form input[type="date"], .admin-form input[type="datetime"], .admin-form input[type="datetime-local"], .admin-form input[type="month"], .admin-form input[type="week"], .admin-form input[type="email"], .admin-form input[type="number"], .admin-form input[type="search"], .admin-form input[type="tel"], .admin-form input[type="time"], .admin-form input[type="url"] {
   -webkit-box-shadow: 0 0 0 transparent;
   -moz-box-shadow: 0 0 0 transparent;
