@@ -233,7 +233,7 @@
    $(window).resize(function() {
         // This will fire each time the window is resized:
         if($(window).width() >= 1024) {
-          excitement();
+          
         }else if ($(window).width() <= 720){  // movil
           $('.navigation, .social').css({"display":"none"});
         }
