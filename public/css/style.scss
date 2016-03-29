@@ -917,11 +917,8 @@ table.dataTable{
 
 .inside-body{
   position: relative;
-  min-height: 60vh;
   overflow: hidden;
-  @media only screen and (min-width: 40em){ 
-    min-height: 83.5vh;
-  }
+  min-height: 83.5vh;
   #map{
     display: none;
     @media only screen and (min-width: 40em){ 
