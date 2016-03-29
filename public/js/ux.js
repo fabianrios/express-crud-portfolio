@@ -310,6 +310,15 @@
      $(this).children("span").toggleClass("fa-bars");
      $(".navigation, .social").slideToggle();
    });
+   
+
+   var isiPhone = navigator.userAgent.toLowerCase().indexOf("iphone");
+   var isAndroid = navigator.userAgent.toLowerCase().indexOf("android");
+   if(isiPhone > -1 || isAndroid > -1){
+     $('meta[name=viewport]').attr('content','width=device-width, user-scalable=no');
+     $("#viewport").attr("content", "width=device-width, user-scalable=no");
+   }		
+   
   
 })();
  

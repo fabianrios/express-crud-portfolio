@@ -7,12 +7,25 @@ var upload = multer({dest:'./img/uploads/'});
 var friendlyUrl = require('friendly-url');
 var cloudinary = require('cloudinary');
 var dateFormat = require('dateformat');
+var nodemailer = require('nodemailer');
 
+//email
+var transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: process.env.GMAILEMAIL, // Your email id
+            pass: process.env.GMAILPASS // Your password
+        }
+    });
+// /email
+
+// cloudinary 
 cloudinary.config({ 
-  cloud_name: 'fabianrios', 
-  api_key: '993579761283834', 
-  api_secret: 'rkFGhUYg0shUm4m7Qtnb1qWSlEQ' 
+  cloud_name: process.env.CLOUDINARY_NAME, 
+  api_key: process.env.CLOUDINARY_API_KEY, 
+  api_secret: process.env.CLOUDINARY_API_SECRET 
 });
+// /cloudinary
 
 var crypto = require('crypto'),
     algorithm = 'aes-256-ctr',
@@ -81,9 +94,7 @@ router.get('/', function (req, res, next) {
 
 router.post('/info', function (req, res, next) {
   var body = req.body;
-  //console.log("body ",body);
   var query = [];
-  console.log("body", body, "query", query);
   if (!body.email){
   
   function traveltype(travel){
@@ -147,6 +158,22 @@ router.post('/info', function (req, res, next) {
    // enviar info de clientes
     db.Client.create({ mail: body.email, country: body.where, experience: body.travel  }).then(function () {
       res.redirect("/map");
+      
+      var mailOptions = {
+          from: '"arams 👥" <hola@arams.com.co>', // sender address
+          to: 'faben02@gmail.com', // list of receivers
+          subject: 'Nuevo contacto ✔', // Subject line
+          text: 'Correo: ' + body.email + '/n País: ' + body.country + '/n Tipo de viaje: ' + body.travel, // plaintext body
+          html: '📩 <b>Correo:</b> ' + body.email + '/n <b>País:</b> ' + body.country + '/n 💵<b>Tipo de viaje:</b> ' + body.travel// html body
+      };
+    
+      transporter.sendMail(mailOptions, function(error, info){
+          if(error){
+              return console.log(error);
+          }
+          console.log('Message sent: ' + info.response);
+      });
+      
     });
   }
   
@@ -397,10 +424,25 @@ router.get('/blog', function (req, res, next) {
 
 router.post('/email_country', function (req, res, next) {
   var body = req.body;
-  console.log(body);
   db.Client.create({ mail: body.email, country: body.country, experience: body.travel  }).then(function () {
     res.sendStatus(200);
     res.end();
+    
+    var mailOptions = {
+        from: '"arams 👥" <hola@arams.com.co>', // sender address
+        to: 'faben02@gmail.com', // list of receivers
+        subject: 'Nuevo contacto ✔', // Subject line
+        text: 'Correo: ' + body.email + '/n País: ' + body.country + '/n Tipo de viaje: ' + body.travel, // plaintext body
+        html: '📩 <b>Correo:</b> ' + body.email + '/n <b>País:</b> ' + body.country + '/n 💵<b>Tipo de viaje:</b> ' + body.travel// html body
+    };
+    
+    transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            return console.log(error);
+        }
+        console.log('Message sent: ' + info.response);
+    });
+    
   });
 });
 
@@ -420,13 +462,28 @@ router.get('/admin/clients', authorize, function (req, res, next) {
 
 router.post('/send_contact', function (req, res, next) {
   var body = req.body;
-  console.log(body);
   db.Client.create({ name: body.name, mail: body.email, country: body.country, experience: body.travel, subject: body.subject, message: body.message, flag: 1 }).then(function () {
     res.render('contact', {
       title: 'Contacto',
       success: "Su mensaje ha sido enviado correctamente",
       logo: "group-2.png"
     });
+    
+    var mailOptions = {
+        from: '"arams 👥" <hola@arams.com.co>', // sender address
+        to: 'faben02@gmail.com', // list of receivers
+        subject: 'Nuevo contacto ✔', // Subject line
+        text: 'Nombre: ' + body.name + '/n Correo: ' + body.email + '/n País: ' + body.country + '/n Tipo de viaje: ' + body.travel + '/n Asunto: ' + body.subject + '/n Mensaje: ' + body.message, // plaintext body
+        html: ' 🐴 <b>Nombre:</b> ' + body.name + '/n 📩 <b>Correo:</b> ' + body.email + '/n <b>País:</b> ' + body.country + '/n 💵<b>Tipo de viaje:</b> ' + body.travel + '/n 📨<b>Asunto:</b> ' + body.subject + '/n Mensaje: ' + body.message // html body
+    };
+    
+    transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            return console.log(error);
+        }
+        console.log('Message sent: ' + info.response);
+    });
+    
   });
 });
 

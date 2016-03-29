@@ -17751,7 +17751,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
     box-shadow: 0 2px 1px rgba(0, 0, 0, 0.4) 2px 2px rgba(0, 0, 0, 0.2);
     background: white; }
 
-input[type="email"]#email {
+input[type="email"]#email, input[type="text"]#name, input[type="text"]#subject {
   border: 0; }
 
 textarea {
