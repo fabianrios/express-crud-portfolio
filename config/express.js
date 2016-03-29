@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var compress = require('compression');
 var methodOverride = require('method-override');
 var exphbs  = require('express-handlebars');
+var dateFormat = require('dateformat');
 
 var session = require('express-session');
     
@@ -30,6 +31,9 @@ module.exports = function(app, config) {
       },
       upperCase: function(str) {
         return str.toUpperCase();
+      },
+      shortDate: function(str) {
+        return dateFormat(str, "dd mmmm, yyyy - h:MM");
       }
     }
   }));

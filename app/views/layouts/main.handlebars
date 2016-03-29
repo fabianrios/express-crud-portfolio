@@ -65,8 +65,8 @@
              <li><a href="/"><span class="fa fa-home fa-2x"></span> HOME</a></li>
              <li><a href="/countries_search" class="{{countries_search}}"><span class="fa fa-map-marker fa-2x"></span> PAISES</a></li>
              <li><a href="/admin/articles" class="{{admin_articles}}"><span class="fa fa-file-text fa-2x"></span> BLOG</a></li>
-             <li><a href="/admin/clients" class="{{admin_clients}}"><span class="fa fa-user fa-2x"></span> INTERESADOS <span class="number">{{qty}}</span></a></li>
-             <li><a href="/admin/contact" class="{{admin_contacts}}"><span class="fa fa-phone fa-2x"></span> CONTACTO <span class="number">1</span></a></li>
+             <li><a href="/admin/clients" class="{{admin_clients}}"><span class="fa fa-user fa-2x"></span> INTERESADOS {{#if qty}}<span class="number">{{qty}}</span>{{/if}}</a></li>
+             <li><a href="/admin/contact" class="{{admin_contacts}}"><span class="fa fa-phone fa-2x"></span> CONTACTO {{#if qty_contacts}}<span class="number">{{qty_contacts}}</span>{{/if}}</a></li>
            </ul>
          </div>
          <div class="admin-body">

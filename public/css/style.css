@@ -510,7 +510,10 @@ ul.steps {
   cursor: pointer; }
 
 .big-form {
-  padding-top: 100px; }
+  padding-top: 20px; }
+  @media only screen and (min-width: 40em) {
+    .big-form {
+      padding-top: 100px; } }
 
 #where {
   display: none; }

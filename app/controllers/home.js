@@ -6,6 +6,7 @@ var multer = require('multer');
 var upload = multer({dest:'./img/uploads/'});
 var friendlyUrl = require('friendly-url');
 var cloudinary = require('cloudinary');
+var dateFormat = require('dateformat');
 
 cloudinary.config({ 
   cloud_name: 'fabianrios', 
@@ -190,17 +191,27 @@ router.post('/login', function (req, res, next) {
       });
     }
     
-    db.Client.findAll({where:{flag: 0}}).then(function (clients) {
-    
+    db.Client.findAll().then(function (clients) {
+      
+      var clientes = 0, contacts = 0, now = new Date();
+      for (var i = 0; i < clients.length; i++){
+        console.log("week", dateFormat(clients[i].createdAt, "W"), dateFormat(clients[i].now, "W"));
+        if (dateFormat(clients[i].createdAt, "W") == dateFormat(clients[i].now, "W")){
+          if(clients[i].flag == 0){
+            clientes = clientes + 1;
+          }else {
+            contacts = contacts + 1;
+          }
+        }
+      }
+      
       req.session.user = user; 
       req.session.admin = user.admin;
       var url = req.url;
-      req.session.clients = clients.length;
+      req.session.clients = clientes;
+      req.session.contacts = contacts;
       res.redirect('/countries_search');
-      
-      // for (var i = 0; i < clients.length; i++){
-      //
-      // }
+     
     
     })
   });
@@ -216,6 +227,7 @@ router.get('/country/create', authorize, function (req, res, next) {
       title: 'Crear nuevo país',
       logo: "group-2.png",
       qty: req.session.clients,
+      qty_contacts: req.session.contacts,
       user: req.session.user,
       countries_search: "active"
     });
@@ -229,6 +241,7 @@ router.get('/country/:id/edit', authorize, function (req, res, next) {
       country: country,
       logo: "group-2.png",
       qty: req.session.clients,
+      qty_contacts: req.session.contacts,
       user: req.session.user,
       countries_search: "active"
     });
@@ -278,6 +291,7 @@ router.get('/countries_search', authorize, function (req, res, next) {
       countries: countries,
       logo: "group-2.png",
       qty: req.session.clients,
+      qty_contacts: req.session.contacts,
       user: req.session.user,
       countries_search: 'active'
     });
@@ -397,6 +411,7 @@ router.get('/admin/clients', authorize, function (req, res, next) {
       clients: clients,
       user: req.session.user,
       qty: req.session.clients,
+      qty_contacts: req.session.contacts,
       logo: "group-2.png",
       admin_clients: "active"
     });
@@ -423,7 +438,8 @@ router.get('/admin/contact', authorize, function (req, res, next) {
       user: req.session.user,
       logo: "group-2.png",
       admin_contacts: "active",
-      qty: req.session.clients
+      qty: req.session.clients,
+      qty_contacts: req.session.contacts
     });
   });
 });
@@ -444,6 +460,7 @@ router.get('/admin/articles', authorize, function (req, res, next) {
       user: req.session.user,
       logo: "group-2.png",
       qty: req.session.clients,
+      qty_contacts: req.session.contacts,
       admin_articles: "active"
     });
   });
@@ -455,6 +472,7 @@ router.get('/article/create', authorize, function (req, res, next) {
       title: 'Crear nuevo articulo',
       logo: "group-2.png",
       qty: req.session.clients,
+      qty_contacts: req.session.contacts,
       user: req.session.user,
       admin_articles: "active"
     });
@@ -507,6 +525,7 @@ router.get('/article/:id/edit', authorize, function (req, res, next) {
         article: article,
         logo: "group-2.png",
         qty: req.session.clients,
+        qty_contacts: req.session.contacts,
         covers: associatedCovers, 
         user: req.session.user
       });
@@ -686,6 +705,7 @@ router.post('/edit_user', authorize, upload.single('image_upload'), function (re
       logo: "group-2.png",
       error: "Revise los campos ni la contraseña ni el nombre de usuario pueden estar vacios",
       qty: req.session.clients,
+      qty_contacts: req.session.contacts,
       user: req.session.user,
     });
   }
@@ -718,6 +738,7 @@ router.get('/admin/users', authorize, function (req, res, next) {
          logo: "group-2.png",
          user: req.session.user,
          qty: req.session.clients,
+         qty_contacts: req.session.contacts,
          covers: covers,
          users: users
        });
