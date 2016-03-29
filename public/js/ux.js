@@ -34,7 +34,7 @@
           // Force the popup closed.
           e.layer.closePopup();
           var feature = e.layer.feature;
-          var content = '<div class="country-post"><img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_275,w_400/v'+feature.properties.version+'/'+feature.properties.cover+'.jpg" /><div class="gradientbg"><h4 class="title-map whitetxt">' + feature.properties.title + '</h4><h6 class="whitetxt price-map"><span class="cur">' + feature.properties.vip + '</span> a <span class="cur">' + feature.properties.corporate + '</span></h6></div><div class="content"><p class="nm">' + feature.properties.description + '</p></div><a href="' + feature.properties.url + '" class="blog">BLOG</a><a href="' + feature.properties.url + '/#comments" class="blog">COMENTARIOS</a><form action="/email_country" method="post" class="inliner" id="email_country" ><input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/><i class="fa fa-envelope fix-inline"></i><input type="submit" value="ENVIARME MAS INFO" class="button full success" /></form><a class="ferme"><span>X</span></a></div>';
+          var content = '<div class="country-post"><img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_275,w_400/v'+feature.properties.version+'/'+feature.properties.cover+'.jpg" /><div class="gradientbg"><h4 class="title-map whitetxt">' + feature.properties.title + '</h4><h6 class="whitetxt price-map"><span class="cur">' + feature.properties.corporate + '</span> a <span class="cur">' + feature.properties.vip + '</span></h6></div><div class="content"><p class="nm">' + feature.properties.description + '</p></div><a href="' + feature.properties.url + '" class="blog">BLOG</a><a href="' + feature.properties.url + '/#comments" class="blog">COMENTARIOS</a><form action="/email_country" method="post" class="inliner" id="email_country" ><input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/><i class="fa fa-envelope fix-inline"></i><input type="submit" value="ENVIARME MAS INFO" class="button full success" /></form><a class="ferme"><span>X</span></a></div>';
           info.innerHTML = content;
           $(".cur").autoNumeric('init',{
             aSep: '.',
@@ -94,7 +94,7 @@
       myLayer.on('click',function(e){
           e.layer.closePopup();
           var feature = e.layer.feature;
-          var content = '<div class="country-post"><img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_275,w_400/v'+feature.properties.version+'/'+feature.properties.cover+'.jpg" /><div class="gradientbg"><h4 class="title-map whitetxt">' + feature.properties.title + '</h4><h6 class="whitetxt price-map"><span class="cur">' + feature.properties.vip + '</span> a <span class="cur">' + feature.properties.corporate + '</span></h6></div><div class="content"><p class="nm">' + feature.properties.description + '</p></div><a href="' + feature.properties.url + '" class="blog">BLOG</a><a href="' + feature.properties.url + '/#comments" class="blog">COMENTARIOS</a><form action="/email_country" method="post" class="inliner" id="email_country" ><input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/><i class="fa fa-envelope fix-inline"></i><input type="submit" value="ENVIARME MAS INFO" class="button full success" /></form><a class="ferme"><span>X</span></a></div>';
+          var content = '<div class="country-post"><img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_275,w_400/v'+feature.properties.version+'/'+feature.properties.cover+'.jpg" /><div class="gradientbg"><h4 class="title-map whitetxt">' + feature.properties.title + '</h4><h6 class="whitetxt price-map"><span class="cur">' + feature.properties.corporate + '</span> a <span class="cur">' + feature.properties.vip + '</span></h6></div><div class="content"><p class="nm">' + feature.properties.description + '</p></div><a href="' + feature.properties.url + '" class="blog">BLOG</a><a href="' + feature.properties.url + '/#comments" class="blog">COMENTARIOS</a><form action="/email_country" method="post" class="inliner" id="email_country" ><input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/><i class="fa fa-envelope fix-inline"></i><input type="submit" value="ENVIARME MAS INFO" class="button full success" /></form><a class="ferme"><span>X</span></a></div>';
           info.innerHTML = content;
           $(".cur").autoNumeric('init',{
             aSep: '.',
@@ -199,27 +199,28 @@
   
   get_covers();
   
-  var img_array = [1, 2, 3];
-  var index = 0;
-  var interval = 5000;
-  setTimeout(function() {
-    $(".alert-box").remove();
-    $('.bg-gradient, .bg-grad').animate({
-      backgroundColor: 'rgba(0, 88, 160, 0)'
-    }, 800);
-    var image = $('.main-body.home');
-    // console.log(indirect, indirect.covers.length);
-    if (indirect.covers.length > 0){
-    //console.log(indirect.covers[index++ % indirect.covers.length].public_id);
-     image.css("background-image", "url('http://res.cloudinary.com/fabianrios/image/upload/v"+indirect.covers[index++ % indirect.covers.length].version+"/"+indirect.covers[index++ % indirect.covers.length].public_id+".jpg')"); 
-    }else{
-      image.css("background-image", "url('../img/bg" + img_array[index++ % img_array.length] + ".jpg')"); 
-    }
-    $('.bg-gradient, .bg-grad').delay(3400).animate({
-      backgroundColor: 'rgba(0, 88, 160, .9)'
-    }, 800);
-    setTimeout(arguments.callee, interval);
-  }, interval);
+  if($(window).width() >= 1024) {
+    var img_array = [1, 2, 3];
+    var index = 0;
+    var interval = 5000;
+    setInterval(function() {
+      $(".alert-box").remove();
+      $('.bg-gradient, .bg-grad').animate({
+        backgroundColor: 'rgba(0, 88, 160, 0)'
+      }, 800);
+    
+      var image = $('.main-body.home');  
+      if (indirect.covers.length > 0){
+
+       image.css("background-image", "url('http://res.cloudinary.com/fabianrios/image/upload/v"+indirect.covers[index++ % indirect.covers.length].version+"/"+indirect.covers[index++ % indirect.covers.length].public_id+".jpg')"); 
+      }else{
+        image.css("background-image", "url('../img/bg" + img_array[index++ % img_array.length] + ".jpg')"); 
+      }
+      $('.bg-gradient, .bg-grad').delay(3400).animate({
+        backgroundColor: 'rgba(0, 88, 160, .9)'
+      }, 800);
+    }, interval);
+  }
   
   if(document.getElementById("category-val")){
     var cat = $("#category-val").data("category");
@@ -256,6 +257,13 @@
       if($(window).scrollTop() + $(window).height() == $(document).height()) {
         $(".footer-gallery").css({"bottom":"56px"});
       }
+   });
+   
+   $(".xclose").click(function(e){
+     e.preventDefault();
+     $(this).children("span").toggleClass("fa-close");
+     $(this).children("span").toggleClass("fa-bars");
+     $(".navigation, .social").slideToggle();
    });
   
 })();

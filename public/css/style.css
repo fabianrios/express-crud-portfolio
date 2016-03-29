@@ -70,21 +70,33 @@
 .nav {
   position: relative;
   height: auto;
-  padding: 0 30px;
-  background: white; }
+  padding: 0 10px;
+  background: #0058a0; }
   @media only screen and (min-width: 40em) {
     .nav {
-      height: 110px; } }
+      height: 110px;
+      padding: 0 30px;
+      background: white; } }
   .nav.map {
     background: #325595; }
     .nav.map ul li a {
       color: #fff; }
   .nav.form {
-    background: transparent;
-    border-bottom: 1px solid #456289; }
+    border-bottom: 1px solid #456289;
+    background: #0058a0; }
+    @media only screen and (min-width: 40em) {
+      .nav.form {
+        background: transparent; } }
     .nav.form ul li a {
-      color: #fff; }
+      color: #fff;
+      width: 100%;
+      display: block; }
+      @media only screen and (min-width: 40em) {
+        .nav.form ul li a {
+          width: auto;
+          display: inline; } }
   .nav.articles {
+    position: relative;
     height: 374px;
     background: url("../img/australia-sydney.jpg") no-repeat center center;
     -webkit-background-size: cover;
@@ -93,6 +105,22 @@
     @media only screen and (min-width: 90.063em) and (max-width: 120em) {
       .nav.articles {
         height: 574px; } }
+    .nav.articles .gradient-article {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: block;
+      top: 0;
+      left: 0;
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.8+0,0+100;Neutral+Density */
+      background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+      /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+      /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+      /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#00000000',GradientType=0 );
+      /* IE6-9 */ }
     .nav.articles .br_after {
       display: block;
       height: 1px;
@@ -111,22 +139,20 @@
       padding: 10px 0; }
     @media only screen and (min-width: 40em) {
       .nav a.logo {
-        width: 20%; } }
+        width: 20%;
+        margin-left: 30px; } }
   .nav ul.navigation {
     width: 100%;
     list-style-type: none;
-    display: block;
-    margin: 0 -30px;
+    display: none;
+    margin: 0 auto;
     text-align: center;
-    background: white;
-    min-width: 100vw;
     margin-bottom: 30px; }
     .nav ul.navigation li {
       text-align: center;
       display: inline-block;
       margin: 10px 0;
       width: 100%;
-      background: white;
       padding: 0 10px; }
       .nav ul.navigation li a {
         font-weight: 500; }
@@ -146,7 +172,7 @@
           background: transparent; } }
   .nav ul.social {
     list-style-type: none;
-    display: inline-block;
+    display: none;
     margin: 0;
     text-align: center;
     width: 100%;
@@ -157,6 +183,7 @@
     @media only screen and (min-width: 40em) {
       .nav ul.social {
         width: 20%;
+        display: inline-block;
         margin-bottom: 0;
         text-align: right; }
         .nav ul.social li {
@@ -641,20 +668,24 @@ input[type="email"].unflashy {
     font-size: 1.4rem; }
 
 .bg-grad {
-  position: absolute;
-  background: rgba(0, 88, 160, 0.8);
-  background: -moz-linear-gradient(top, rgba(0, 88, 160, 0.7) 0%, rgba(0, 88, 160, 0.8) 100%);
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, rgba(0, 88, 160, 0.7) 0%, rgba(0, 88, 160, 0.8) 100%);
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, rgba(0, 88, 160, 0.7) 0%, rgba(0, 88, 160, 0.8) 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  position: relative;
+  background: #0058a0;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   width: 100%;
   height: 100%; }
+  @media only screen and (min-width: 40em) {
+    .bg-grad {
+      position: absolute;
+      background: rgba(0, 88, 160, 0.8);
+      background: -moz-linear-gradient(top, rgba(0, 88, 160, 0.7) 0%, rgba(0, 88, 160, 0.8) 100%);
+      /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, rgba(0, 88, 160, 0.7) 0%, rgba(0, 88, 160, 0.8) 100%);
+      /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, rgba(0, 88, 160, 0.7) 0%, rgba(0, 88, 160, 0.8) 100%);
+      /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ } }
 
 .bg-gradient {
   background: rgba(0, 88, 160, 0.8);
@@ -690,8 +721,31 @@ table.dataTable thead tr th {
   table.dataTable thead tr th.sorting_asc {
     background: url(https://datatables.net/media/images/sort_asc.png) no-repeat right 7px; }
 
-.inside-body #map {
-  display: none; }
+.inside-body {
+  position: relative;
+  min-height: 60vh; }
   @media only screen and (min-width: 40em) {
-    .inside-body #map {
-      display: block; } }
+    .inside-body {
+      min-height: 83.5vh; } }
+  .inside-body #map {
+    display: none; }
+    @media only screen and (min-width: 40em) {
+      .inside-body #map {
+        display: block; } }
+
+.xclose {
+  position: absolute;
+  top: 35px;
+  right: 10px;
+  display: inline-block;
+  color: white;
+  font-size: 20px; }
+  .xclose span {
+    color: #fff; }
+  .xclose:hover {
+    color: #fff; }
+    .xclose:hover span {
+      color: #fff; }
+  @media only screen and (min-width: 40em) {
+    .xclose {
+      display: none; } }

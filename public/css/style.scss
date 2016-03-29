@@ -85,10 +85,12 @@
 .nav{
   position: relative;
   height: auto;
-  padding: 0 30px;
-  background: white;
+  padding: 0 10px;
+  background: #0058a0;
   @media only screen and (min-width: 40em){ 
     height: 110px;
+    padding: 0 30px;
+    background: white;
   }
   &.map{
     background: #325595;
@@ -101,17 +103,27 @@
     }
   }
   &.form{
-    background: transparent;
     border-bottom: 1px solid rgb(69,98,137);
+    background: #0058a0;
+    @media only screen and (min-width: 40em){ 
+      background: transparent;
+    }
     ul{
       li{
         a{
           color: #fff;
+          width: 100%;
+          display: block;
+          @media only screen and (min-width: 40em){ 
+            width: auto;
+            display: inline;
+          }
         }
       }
     }
   }
   &.articles{
+    position: relative;
     height: 374px;
     @media only screen and (min-width: 90.063em) and (max-width: 120em) { 
       height: 574px;
@@ -120,6 +132,19 @@
     -webkit-background-size: cover;
     background-size: cover;
     margin-bottom: 40px;
+    .gradient-article{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: block;
+      top: 0;
+      left: 0;
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.8+0,0+100;Neutral+Density */
+      background: -moz-linear-gradient(top,  rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(top,  rgba(0,0,0,0.9) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom,  rgba(0,0,0,0.9) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+    }
     .br_after{
       display: block;
       height: 1px;
@@ -153,18 +178,15 @@
     &.navigation{
       width: 100%;
       list-style-type: none;
-      display: block;
-      margin: 0 -30px;
+      display: none;
+      margin: 0 auto;
       text-align: center;
-      background: white;
-      min-width: 100vw;
       margin-bottom: 30px;
       li{
         text-align: center;
         display: inline-block;
         margin:10px 0;
         width: 100%;
-        background: white;
         padding:0 10px;
         a{
           font-weight: 500;
@@ -188,7 +210,7 @@
     }
     &.social{
       list-style-type: none;
-      display: inline-block;
+      display: none;
       margin: 0;
       text-align: center;
       width: 100%;
@@ -199,6 +221,7 @@
       }
        @media only screen and (min-width: 40em){ 
          width: 20%;
+         display: inline-block;
          margin-bottom: 0;
          text-align: right;
          li{
@@ -785,17 +808,21 @@ input[type="email"].unflashy{
 }
 
 .bg-grad{
-  position: absolute;
-  background: rgba(0,88,160,0.8);
-  background: -moz-linear-gradient(top,  rgba(0,88,160,0.7) 0%, rgba(0,88,160,0.8) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top,  rgba(0,88,160,0.7) 0%,rgba(0,88,160,0.8) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom,  rgba(0,88,160,0.7) 0%,rgba(0,88,160,0.8) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  position: relative;
+  background: #0058a0;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   width: 100%;
   height: 100%;
+   @media only screen and (min-width: 40em){ 
+    position: absolute;
+    background: rgba(0,88,160,0.8);
+    background: -moz-linear-gradient(top,  rgba(0,88,160,0.7) 0%, rgba(0,88,160,0.8) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(0,88,160,0.7) 0%,rgba(0,88,160,0.8) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(0,88,160,0.7) 0%,rgba(0,88,160,0.8) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+   }
 }
 
 .bg-gradient{
@@ -841,10 +868,36 @@ table.dataTable{
 }
 
 .inside-body{
+  position: relative;
+  min-height: 60vh;
+  @media only screen and (min-width: 40em){ 
+    min-height: 83.5vh;
+  }
   #map{
     display: none;
     @media only screen and (min-width: 40em){ 
       display: block;
     }
+  }
+}
+
+.xclose{
+  position: absolute;
+  top: 35px;
+  right: 10px;
+  display: inline-block;
+  color: white;
+  font-size: 20px;
+  span{
+    color: #fff;
+  }
+  &:hover{
+    color: #fff;
+    span{
+      color: #fff;
+    }
+  }
+  @media only screen and (min-width: 40em){ 
+    display: none;
   }
 }

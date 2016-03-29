@@ -62,6 +62,7 @@ module.exports = function(app, config) {
        url: req.url,
        message: "No logramos encontrar lo que buscabas.",
        error: err,
+       yes404: true, 
        pageTitle: "404",
        author: "Fabián Ríos",
        description: "Aram's website",
@@ -87,7 +88,7 @@ module.exports = function(app, config) {
     res.status(err.status || 500);
       res.render('error', {
         message: err.message,
-        error: {},
+        error: err,
         title: 'error',
         bg: "../img/404.jpg"
       });

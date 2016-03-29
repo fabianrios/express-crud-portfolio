@@ -86,6 +86,7 @@
            {{#if background}}
               {{#if article.cover}}
                 <div class="nav {{pageTitle}}" style="background-image:url(http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_720,w_1920/{{article.cover}});">
+                <div class="gradient-article">
               {{else}}
                 <div class="nav {{pageTitle}}">
               {{/if}}
@@ -102,10 +103,11 @@
                <li><a href="/contact">CONTACTO</a></li>
              </ul>
              <ul class="social">
-               <li><a href="twitter.com/@aramsvip" target="_blank"><span class="fa fa-twitter fa-large"></span></a></li>
+               <li><a href="http://twitter.com/@aramsvip" target="_blank"><span class="fa fa-twitter fa-large"></span></a></li>
                <li><a href="http://facebook.com/aramsvip" target="_blank"><span class="fa fa-facebook fa-large"></span></a></li>
                <li><a href="https://www.instagram.com/aramsvip/" target="_blank"><span class="fa fa-instagram fa-large"></span></a></li>
              </ul>
+             <a href="#" class="xclose"><span class="fa fa-bars fa-lg"></span></a>
              {{#ifCond pageTitle "articles"}}
              <div class="br_after"></div>
              <div class="text-center">
@@ -126,7 +128,10 @@
                <a id="like" data-id="{{article.id}}" class="whitetxt"><span class="fa fa-heart fa-2x"></span></a>
              </div>
              {{/ifCond}}
-             {{#if home}}
+             {{#if home}} {{!-- // esta en el home y tiene que cerrar el gradient de forma fea --}}
+              </div>
+             {{/if}}
+             {{#if article.cover}} {{!-- // esta en articulos y tiene que cerrar el gradient de forma fea --}}
               </div>
              {{/if}}
            </div>
@@ -135,6 +140,8 @@
                  <div class="bg-gradient">
                {{/if}}
              {{#if error}}
+               {{#if yes404}}
+               {{else}}
                <div class="row">
                  <div class="large-8 columns large-centered">
                    <div data-alert class="alert-box alert round">
@@ -143,6 +150,7 @@
                    </div>
                  </div>
                </div>
+               {{/if}}
              {{/if}}
              {{#if success}}
                <div class="row">

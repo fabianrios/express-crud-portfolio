@@ -32,6 +32,11 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
     background: white;
   }
 }
+
+input[type="email"]#email{
+  border: 0;
+}
+
 textarea{
   @include box-shadow();
   border: 1px solid lightgray;
@@ -129,10 +134,6 @@ input[type="search"].search{
 
 .cke.cke_reset{
   margin: 20px 0;
-}
-.inside-body{
-  position: relative;;
-  min-height: 83.5vh;
 }
 
 .reveal-modal{

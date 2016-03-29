@@ -17751,6 +17751,9 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
     box-shadow: 0 2px 1px rgba(0, 0, 0, 0.4) 2px 2px rgba(0, 0, 0, 0.2);
     background: white; }
 
+input[type="email"]#email {
+  border: 0; }
+
 textarea {
   -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
@@ -17850,10 +17853,6 @@ input[type="search"].search {
 
 .cke.cke_reset {
   margin: 20px 0; }
-
-.inside-body {
-  position: relative;
-  min-height: 83.5vh; }
 
 .reveal-modal, dialog {
   padding: 0; }
