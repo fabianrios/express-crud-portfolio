@@ -763,11 +763,8 @@ table.dataTable thead tr th {
 
 .inside-body {
   position: relative;
-  min-height: 60vh;
-  overflow: hidden; }
-  @media only screen and (min-width: 40em) {
-    .inside-body {
-      min-height: 83.5vh; } }
+  overflow: hidden;
+  min-height: 83.5vh; }
   .inside-body #map {
     display: none; }
     @media only screen and (min-width: 40em) {
