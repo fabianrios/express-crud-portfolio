@@ -344,7 +344,10 @@ ul.centerize {
     display: inline-block;
     text-align: center; }
   ul.centerize.filter li {
-    margin: 0 20px; }
+    margin: 0 5px; }
+    @media only screen and (min-width: 40em) {
+      ul.centerize.filter li {
+        margin: 0 20px; } }
     ul.centerize.filter li a {
       font-weight: 500; }
   ul.centerize.country {
@@ -763,8 +766,11 @@ table.dataTable thead tr th {
 
 .inside-body {
   position: relative;
-  overflow: hidden;
-  min-height: 83.5vh; }
+  min-height: 100vh;
+  overflow: hidden; }
+  @media only screen and (min-width: 40em) {
+    .inside-body {
+      min-height: 83.5vh; } }
   .inside-body #map {
     display: none; }
     @media only screen and (min-width: 40em) {
