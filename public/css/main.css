@@ -17858,3 +17858,15 @@ input[type="search"].search {
   padding: 0; }
   .reveal-modal img, dialog img {
     width: 100%; }
+
+.accordion {
+  margin-left: 0; }
+
+.accordion .accordion-navigation > a, .accordion dd > a {
+  text-align: center;
+  color: #808080;
+  font-size: 16px; }
+
+.accordion .accordion-navigation > .content, .accordion dd > .content {
+  padding: 0;
+  position: relative; }

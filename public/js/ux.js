@@ -127,7 +127,6 @@
     $("ul.country li").hide();
     $("ul.country li h5.country-names").each(function( index ) {
       var txt = $(this).text().toLowerCase();
-      console.log(txt,str);
       if (txt.indexOf(str) >= 0){
         $(this).parent().show();
       }
@@ -199,7 +198,10 @@
   
   get_covers();
   
-  if($(window).width() >= 1024) {
+  function excitement(){
+    $('.home-form').removeClass('home-form');
+    $('.navigation, .social').css({"display":"inline-block"});
+    
     var img_array = [1, 2, 3];
     var index = 0;
     var interval = 5000;
@@ -208,7 +210,7 @@
       $('.bg-gradient, .bg-grad').animate({
         backgroundColor: 'rgba(0, 88, 160, 0)'
       }, 800);
-    
+
       var image = $('.main-body.home');  
       if (indirect.covers.length > 0){
 
@@ -221,6 +223,49 @@
       }, 800);
     }, interval);
   }
+  
+  if($(window).width() >= 1024) {
+    excitement();
+  }else if ($(window).width() <= 720){  // movil
+    $('.navigation, .social').css({"display":"none"});
+  }
+  
+   $(window).resize(function() {
+        // This will fire each time the window is resized:
+        if($(window).width() >= 1024) {
+          excitement();
+        }else if ($(window).width() <= 720){  // movil
+          $('.navigation, .social').css({"display":"none"});
+        }
+    }).resize(); // This will simulate a resize to trigger the initial run.
+  
+  
+    $('.home-form').submit(function(e){
+      e.preventDefault();
+      var know = $(this).children("#know").val(), budget = $(this).children("#budget").val(), travel = $(this).children("#travel").val(), where = $(this).children("#where").val();
+      //$(this).attr('action', '/countries_all?know='+know+'&budget='+budget+'&travel='+travel+'&where='+where);
+      $.get('/countries_all?know='+know+'&budget='+budget+'&travel='+travel+'&where='+where, function(data){
+        data = JSON.parse(data);
+        var content = "";
+        $.each(data, function(key, place){
+          var coconuts = '<div class="country-post"><img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_275,w_400/v'+place.properties.version+'/'+place.properties.cover+'.jpg" /><div class="gradientbg"><h4 class="title-map whitetxt">' + place.properties.title + '</h4><h6 class="whitetxt price-map"><span class="cur">' + place.properties.corporate + '</span> a <span class="cur">' + place.properties.vip + '</span></h6></div><div class="content"><p class="nm">' + place.properties.description + '</p></div><a href="' + place.properties.url + '" class="blog">BLOG</a><a href="' + place.properties.url + '/#comments" class="blog">COMENTARIOS</a><form action="/email_country" method="post" class="inliner" id="email_country" ><input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/><i class="fa fa-envelope fix-inline"></i><input type="submit" value="ENVIARME MAS INFO" class="button full success" /></form></div>'
+          content = content + '<li class="accordion-navigation"><a class="accordion-title" href="#panel'+key+'">' + place.properties.title + '</a><div id="panel'+key+'" class="content">'+coconuts+'</div></li>';
+        });
+        $(".exp").css({"padding":"0"}).html('<ul class="accordion" data-accordion>'+content+'</ul>');
+        $(".accordion li a.accordion-title").click(function(e){
+          e.preventDefault();
+          var href = $(this).attr("href");
+          $(".cur").autoNumeric('init',{
+            aSep: '.',
+            aDec: ',', 
+            aSign: '$ ',
+            mDec: '0'
+          });
+          $(".content").removeClass("active");
+          $(href).addClass("active");
+        });
+      });
+    });
   
   if(document.getElementById("category-val")){
     var cat = $("#category-val").data("category");

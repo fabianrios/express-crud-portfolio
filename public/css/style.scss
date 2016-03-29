@@ -86,7 +86,7 @@
   position: relative;
   height: auto;
   padding: 0 10px;
-  background: #0058a0;
+  background: white;
   @media only screen and (min-width: 40em){ 
     height: 110px;
     padding: 0 30px;
@@ -108,6 +108,26 @@
     @media only screen and (min-width: 40em){ 
       background: transparent;
     }
+    .xclose{
+      position: absolute;
+      top: 35px;
+      right: 10px;
+      display: inline-block;
+      color: white;
+      font-size: 20px;
+      span{
+        color: #fff;
+      }
+      &:hover{
+        color: #fff;
+        span{
+          color: #fff;
+        }
+      }
+      @media only screen and (min-width: 40em){ 
+        display: none;
+      }
+    }
     ul{
       li{
         a{
@@ -125,6 +145,7 @@
   &.articles{
     position: relative;
     height: 374px;
+    overflow: hidden;
     @media only screen and (min-width: 90.063em) and (max-width: 120em) { 
       height: 574px;
     }
@@ -132,7 +153,28 @@
     -webkit-background-size: cover;
     background-size: cover;
     margin-bottom: 40px;
+    .xclose{
+      position: absolute;
+      top: 35px;
+      right: 10px;
+      display: inline-block;
+      color: white;
+      font-size: 20px;
+      span{
+        color: #fff;
+      }
+      &:hover{
+        color: #fff;
+        span{
+          color: #fff;
+        }
+      }
+      @media only screen and (min-width: 40em){ 
+        display: none;
+      }
+    }
     .gradient-article{
+      padding: 0 10px;
       position: absolute;
       width: 100%;
       height: 100%;
@@ -144,6 +186,9 @@
       background: -webkit-linear-gradient(top,  rgba(0,0,0,0.9) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
       background: linear-gradient(to bottom,  rgba(0,0,0,0.9) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+      @media only screen and (min-width: 40em){ 
+        padding: 0;
+      }
     }
     .br_after{
       display: block;
@@ -234,10 +279,13 @@
 
 #like{
   margin: 0 auto;
-  display: block;
+  display: none;
   position: relative;
   text-align: center;
   top: 100px;
+  @media only screen and (min-width: 40em){ 
+    display: block;
+  }
   @media only screen and (min-width: 90.063em) and (max-width: 120em) { 
     top: 250px;
   }
@@ -579,7 +627,7 @@ ul.steps{
   background: white;
   .type{
     position: relative;
-    margin: 20px 0;
+    margin: 15px 0;
     @media only screen and (min-width: 40em){ 
       margin: 0;
     }
@@ -753,7 +801,7 @@ input[type="email"].unflashy{
 
 .pic_profile{
   position: absolute;
-  bottom: 30px;
+  bottom: 20px;
   left: 20px;
   img{
     display: inline-block;
@@ -870,6 +918,7 @@ table.dataTable{
 .inside-body{
   position: relative;
   min-height: 60vh;
+  overflow: hidden;
   @media only screen and (min-width: 40em){ 
     min-height: 83.5vh;
   }
@@ -886,15 +935,15 @@ table.dataTable{
   top: 35px;
   right: 10px;
   display: inline-block;
-  color: white;
+  color: #0058a0;
   font-size: 20px;
   span{
-    color: #fff;
+    color: #0058a0;
   }
   &:hover{
-    color: #fff;
+    color: #0058a0;
     span{
-      color: #fff;
+      color: #0058a0;
     }
   }
   @media only screen and (min-width: 40em){ 

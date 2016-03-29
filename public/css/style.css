@@ -71,7 +71,7 @@
   position: relative;
   height: auto;
   padding: 0 10px;
-  background: #0058a0; }
+  background: white; }
   @media only screen and (min-width: 40em) {
     .nav {
       height: 110px;
@@ -87,6 +87,22 @@
     @media only screen and (min-width: 40em) {
       .nav.form {
         background: transparent; } }
+    .nav.form .xclose {
+      position: absolute;
+      top: 35px;
+      right: 10px;
+      display: inline-block;
+      color: white;
+      font-size: 20px; }
+      .nav.form .xclose span {
+        color: #fff; }
+      .nav.form .xclose:hover {
+        color: #fff; }
+        .nav.form .xclose:hover span {
+          color: #fff; }
+      @media only screen and (min-width: 40em) {
+        .nav.form .xclose {
+          display: none; } }
     .nav.form ul li a {
       color: #fff;
       width: 100%;
@@ -98,6 +114,7 @@
   .nav.articles {
     position: relative;
     height: 374px;
+    overflow: hidden;
     background: url("../img/australia-sydney.jpg") no-repeat center center;
     -webkit-background-size: cover;
     background-size: cover;
@@ -105,7 +122,24 @@
     @media only screen and (min-width: 90.063em) and (max-width: 120em) {
       .nav.articles {
         height: 574px; } }
+    .nav.articles .xclose {
+      position: absolute;
+      top: 35px;
+      right: 10px;
+      display: inline-block;
+      color: white;
+      font-size: 20px; }
+      .nav.articles .xclose span {
+        color: #fff; }
+      .nav.articles .xclose:hover {
+        color: #fff; }
+        .nav.articles .xclose:hover span {
+          color: #fff; }
+      @media only screen and (min-width: 40em) {
+        .nav.articles .xclose {
+          display: none; } }
     .nav.articles .gradient-article {
+      padding: 0 10px;
       position: absolute;
       width: 100%;
       height: 100%;
@@ -121,6 +155,9 @@
       /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#00000000',GradientType=0 );
       /* IE6-9 */ }
+      @media only screen and (min-width: 40em) {
+        .nav.articles .gradient-article {
+          padding: 0; } }
     .nav.articles .br_after {
       display: block;
       height: 1px;
@@ -191,10 +228,13 @@
 
 #like {
   margin: 0 auto;
-  display: block;
+  display: none;
   position: relative;
   text-align: center;
   top: 100px; }
+  @media only screen and (min-width: 40em) {
+    #like {
+      display: block; } }
   @media only screen and (min-width: 90.063em) and (max-width: 120em) {
     #like {
       top: 250px; } }
@@ -477,7 +517,7 @@ ul.steps {
   background: white; }
   .exp .type {
     position: relative;
-    margin: 20px 0; }
+    margin: 15px 0; }
     @media only screen and (min-width: 40em) {
       .exp .type {
         margin: 0; } }
@@ -624,7 +664,7 @@ input[type="email"].unflashy {
 
 .pic_profile {
   position: absolute;
-  bottom: 30px;
+  bottom: 20px;
   left: 20px; }
   .pic_profile img {
     display: inline-block;
@@ -723,7 +763,8 @@ table.dataTable thead tr th {
 
 .inside-body {
   position: relative;
-  min-height: 60vh; }
+  min-height: 60vh;
+  overflow: hidden; }
   @media only screen and (min-width: 40em) {
     .inside-body {
       min-height: 83.5vh; } }
@@ -738,14 +779,14 @@ table.dataTable thead tr th {
   top: 35px;
   right: 10px;
   display: inline-block;
-  color: white;
+  color: #0058a0;
   font-size: 20px; }
   .xclose span {
-    color: #fff; }
+    color: #0058a0; }
   .xclose:hover {
-    color: #fff; }
+    color: #0058a0; }
     .xclose:hover span {
-      color: #fff; }
+      color: #0058a0; }
   @media only screen and (min-width: 40em) {
     .xclose {
       display: none; } }
