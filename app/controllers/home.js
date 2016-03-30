@@ -152,7 +152,7 @@ router.post('/info', function (req, res, next) {
    // enviar info de clientes
     db.Client.create({ mail: body.email, country: body.where, experience: body.travel  }).then(function () {
       var mailOptions = {
-          from: '"arams 👥" <hola@arams.com.co>', // sender address
+          from: '"arams" <hola@arams.com.co>', // sender address
           to: 'faben02@gmail.com', // list of receivers
           subject: 'Nuevo contacto 👥', // Subject line
           text: 'Correo: ' + body.email + ' País: ' + body.where + 'Tipo de viaje: ' + body.travel, // plaintext body
@@ -422,7 +422,7 @@ router.post('/email_country', function (req, res, next) {
     res.end();
     
     var mailOptions = {
-        from: '"arams 👥" <hola@arams.com.co>', // sender address
+        from: '"arams" <hola@arams.com.co>', // sender address
         to: 'faben02@gmail.com', // list of receivers
         subject: 'Nuevo contacto 👥', // Subject line
         text: 'Correo: ' + body.email + '/n País: ' + body.country + '/n Tipo de viaje: ' + body.travel, // plaintext body
@@ -463,7 +463,7 @@ router.post('/send_contact', function (req, res, next) {
     });
     
     var mailOptions = {
-        from: '"arams 👥" <hola@arams.com.co>', // sender address
+        from: '"arams" <hola@arams.com.co>', // sender address
         to: 'faben02@gmail.com', // list of receivers
         subject: 'Nuevo contacto 👥', // Subject line
         text: 'Nombre: ' + body.name + '/n Correo: ' + body.email + '/n País: ' + body.country + '/n Tipo de viaje: ' + body.travel + '/n Asunto: ' + body.subject + '/n Mensaje: ' + body.message, // plaintext body

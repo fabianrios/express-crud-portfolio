@@ -308,7 +308,7 @@ ul.centerize {
   text-align: center;
   list-style-type: none; }
   ul.centerize.sub-social {
-    margin: 50px 0 100px 0 !important; }
+    margin: 50px 0 !important; }
     ul.centerize.sub-social li {
       margin: 0 20px; }
       ul.centerize.sub-social li a {

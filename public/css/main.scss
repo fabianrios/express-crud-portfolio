@@ -157,3 +157,13 @@ input[type="search"].search{
   padding: 0;
   position: relative;
 }
+
+.reveal-modal .close-reveal-modal{
+  top: 0;
+  right: 0;
+  color: #fff;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+}

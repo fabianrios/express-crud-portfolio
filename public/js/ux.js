@@ -270,7 +270,8 @@
           $.post(url, { know: know, budget: budget, where: where, travel: travel, email: email },function(data){
             console.log("hasta aca: ",know, data);
             if(data == "success"){
-              $(".fix-inl").show();
+              console.log($(".fix-inl"));
+              $(".fix-inl").css({"display":"block"});
             }
           });
         }
