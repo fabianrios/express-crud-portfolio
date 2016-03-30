@@ -777,7 +777,11 @@ table.dataTable thead tr th {
       min-height: 83.5vh; } }
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
     .inside-body {
-      min-height: 98.5vh; } }
+      min-height: 98.5vh;
+      padding-bottom: 50px; } }
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+    .inside-body {
+      min-height: 68.5vh; } }
   .inside-body #map {
     display: none; }
     @media only screen and (min-width: 40em) {
