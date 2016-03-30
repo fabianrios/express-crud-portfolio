@@ -932,6 +932,10 @@ table.dataTable{
   @media only screen and (min-width: 40em){ 
     min-height: 83.5vh;
   }
+  @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+    min-height: 98.5vh;
+    padding-bottom:50px;
+  }
   #map{
     display: none;
     @media only screen and (min-width: 40em){ 
