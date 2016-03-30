@@ -65,7 +65,6 @@
   
   $(document).on('click', '.ferme',function(e) { 
     e.preventDefault();
-    console.log("$(this)",$(this));
     $(this).parent().html("");
   });
   
@@ -104,6 +103,28 @@
           
       });
     });
+  });
+  
+  $('input#budget, input#email').bind("change keyup input",function() { 
+     var pattern = new RegExp(/^(("[\w-+\s]+")|([\w-+]+(?:\.[\w-+]+)*)|("[\w-+\s]+")([\w-+]+(?:\.[\w-+]+)*))(@((?:[\w-+]+\.)*\w[\w-+]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][\d]\.|1[\d]{2}\.|[\d]{1,2}\.))((25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\.){2}(25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\]?$)/i);
+     if ($.isNumeric(this.value) || pattern.test(this.value)) {
+       $(".check").css({"background":"#70e8d7"});
+       var valor = $("#know").val();
+       if (valor == "no"){
+         $(".plane").css({"background":"#70e8d7"});
+       }
+      }else if(this.value == ""){
+        $(".check").css({"background":"rgba(0,0,0,.3)"});
+      }
+  });
+  
+  $("#travel").change(function(e){
+    var val = $(this).val();
+    if (val != ""){
+      $(".envelope").css({"background":"#70e8d7"});
+    }else{
+      $(".envelope").css({"background":"rgba(0,0,0,.3)"});
+    }
   });
   
   $('#articles-form').submit(function(){
@@ -193,9 +214,9 @@
       };
       xhr.send();
   }
+  get_covers();
   
   function excitement(){
-    get_covers();
     $('.navigation, .social').css({"display":"inline-block"});
     
     var img_array = [1, 2, 3];
@@ -209,7 +230,7 @@
 
       var image = $('.main-body.home');  
       if (indirect.covers.length > 0){
-        console.log(indirect.covers);
+       console.log("indirect.covers", indirect.covers, index++ % indirect.covers.length);
        image.css("background-image", "url('http://res.cloudinary.com/fabianrios/image/upload/v"+indirect.covers[index++ % indirect.covers.length].version+"/"+indirect.covers[index++ % indirect.covers.length].public_id+".jpg')"); 
       }else{
         image.css("background-image", "url('../img/bg" + img_array[index++ % img_array.length] + ".jpg')"); 
