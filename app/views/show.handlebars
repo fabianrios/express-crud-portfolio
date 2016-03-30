@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="large-8 columns">
+  <div class="large-8 medium-8 columns">
     <a href="/blog" class="button tiny"><span class="fa fa-undo"></span> Volver</a>
     {{#if user}}
     <div class="actions">
@@ -8,7 +8,7 @@
     {{/if}}
     <div class="content">{{{article.fulltext}}}</div>
   </div>
-  <div class="large-4 columns">
+  <div class="large-4 medium-4 columns">
     <h4 class="bluetxt">Presupuesto VIP</h4>
     <p><span class="currency">{{article.vip}}</span> en adelante</p>
     <h4 class="bluetxt">Presupuesto Incognito</h4>
@@ -72,6 +72,6 @@ s.setAttribute('data-timestamp', +new Date());
   {{/each}}
 </div>
 </div>
-<div id="modal" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+<div id="modal" class="reveal-modal medium" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
 </div>
 {{/if}}
