@@ -34,7 +34,7 @@
           // Force the popup closed.
           e.layer.closePopup();
           var feature = e.layer.feature;
-          var content = '<div class="country-post"><img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_275,w_400/v'+feature.properties.version+'/'+feature.properties.cover+'.jpg" /><div class="gradientbg"><h4 class="title-map whitetxt">' + feature.properties.title + '</h4><h6 class="whitetxt price-map"><span class="cur">' + feature.properties.corporate + '</span> a <span class="cur">' + feature.properties.vip + '</span></h6></div><div class="content"><p class="nm">' + feature.properties.description + '</p></div><a href="' + feature.properties.url + '" class="blog">BLOG</a><a href="' + feature.properties.url + '/#comments" class="blog">COMENTARIOS</a><form action="/email_country" method="post" class="inliner" id="email_country" ><input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/><i class="fa fa-envelope fix-inline"></i><input type="submit" value="ENVIARME MAS INFO" class="button full success" /></form><a class="ferme"><span>X</span></a></div>';
+          var content = '<div class="country-post"><img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_275,w_400/v'+feature.properties.version+'/'+feature.properties.cover+'.jpg" /><div class="gradientbg"><h4 class="title-map whitetxt">' + feature.properties.title + '</h4><h6 class="whitetxt price-map"><span class="cur">' + feature.properties.corporate + '</span> a <span class="cur">' + feature.properties.vip + '</span></h6></div><div class="content"><p class="nm">' + feature.properties.description + '</p></div><a target="_blank" href="' + feature.properties.url + '" class="blog">BLOG</a><a target="_blank" href="' + feature.properties.url + '/#comments" class="blog">COMENTARIOS</a><form action="/email_country" method="post" class="inliner" id="email_country" ><input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/><i class="fa fa-envelope fix-inline"></i><input type="submit" value="ENVIARME MAS INFO" class="button full success" /></form><a class="ferme"><span>X</span></a></div>';
           info.innerHTML = content;
           $(".cur").autoNumeric('init',{
             aSep: '.',
@@ -84,7 +84,6 @@
     });
   
   $('.inline-form form').submit(function(e){
-    console.log($(this).children("#know"));
     var know = $(".inline-form #know").val(), budget = $(".inline-form #budget").val(), travel = $(".inline-form #travel").val(), where = $(".inline-form #where").val();
     
     $.get('/countries_all?know='+know+'&budget='+budget+'&travel='+travel+'&where='+where, function(data){
@@ -94,7 +93,7 @@
       myLayer.on('click',function(e){
           e.layer.closePopup();
           var feature = e.layer.feature;
-          var content = '<div class="country-post"><img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_275,w_400/v'+feature.properties.version+'/'+feature.properties.cover+'.jpg" /><div class="gradientbg"><h4 class="title-map whitetxt">' + feature.properties.title + '</h4><h6 class="whitetxt price-map"><span class="cur">' + feature.properties.corporate + '</span> a <span class="cur">' + feature.properties.vip + '</span></h6></div><div class="content"><p class="nm">' + feature.properties.description + '</p></div><a href="' + feature.properties.url + '" class="blog">BLOG</a><a href="' + feature.properties.url + '/#comments" class="blog">COMENTARIOS</a><form action="/email_country" method="post" class="inliner" id="email_country" ><input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/><i class="fa fa-envelope fix-inline"></i><input type="submit" value="ENVIARME MAS INFO" class="button full success" /></form><a class="ferme"><span>X</span></a></div>';
+          var content = '<div class="country-post"><img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_275,w_400/v'+feature.properties.version+'/'+feature.properties.cover+'.jpg" /><div class="gradientbg"><h4 class="title-map whitetxt">' + feature.properties.title + '</h4><h6 class="whitetxt price-map"><span class="cur">' + feature.properties.corporate + '</span> a <span class="cur">' + feature.properties.vip + '</span></h6></div><div class="content"><p class="nm">' + feature.properties.description + '</p></div><a target="_blank" href="' + feature.properties.url + '" class="blog">BLOG</a><a target="_blank" href="' + feature.properties.url + '/#comments" class="blog">COMENTARIOS</a><form action="/email_country" method="post" class="inliner" id="email_country" ><input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/><i class="fa fa-envelope fix-inline"></i><input type="submit" value="ENVIARME MAS INFO" class="button full success" /></form><a class="ferme"><span>X</span></a></div>';
           info.innerHTML = content;
           $(".cur").autoNumeric('init',{
             aSep: '.',
@@ -175,7 +174,6 @@
     $(".alert-box").remove();
   });
   
-  
   var indirect = {
     remote: false
   };
@@ -196,31 +194,29 @@
       xhr.send();
   }
   
-  get_covers();
-  
   function excitement(){
-    $('.home-form').removeClass('home-form');
+    get_covers();
     $('.navigation, .social').css({"display":"inline-block"});
     
     var img_array = [1, 2, 3];
     var index = 0;
-    var interval = 5000;
+    var interval = 10000;
     setInterval(function() {
       $(".alert-box").remove();
       $('.bg-gradient, .bg-grad').animate({
         backgroundColor: 'rgba(0, 88, 160, 0)'
-      }, 800);
+      }, 1000);
 
       var image = $('.main-body.home');  
       if (indirect.covers.length > 0){
-
+        console.log(indirect.covers);
        image.css("background-image", "url('http://res.cloudinary.com/fabianrios/image/upload/v"+indirect.covers[index++ % indirect.covers.length].version+"/"+indirect.covers[index++ % indirect.covers.length].public_id+".jpg')"); 
       }else{
         image.css("background-image", "url('../img/bg" + img_array[index++ % img_array.length] + ".jpg')"); 
       }
-      $('.bg-gradient, .bg-grad').delay(3400).animate({
+      $('.bg-gradient, .bg-grad').delay(8000).animate({
         backgroundColor: 'rgba(0, 88, 160, .9)'
-      }, 800);
+      }, 1000);
     }, interval);
   }
   
@@ -242,29 +238,51 @@
   
     $('.home-form').submit(function(e){
       e.preventDefault();
-      var know = $(this).children("#know").val(), budget = $(this).children("#budget").val(), travel = $(this).children("#travel").val(), where = $(this).children("#where").val();
-      //$(this).attr('action', '/countries_all?know='+know+'&budget='+budget+'&travel='+travel+'&where='+where);
-      $.get('/countries_all?know='+know+'&budget='+budget+'&travel='+travel+'&where='+where, function(data){
-        data = JSON.parse(data);
-        var content = "";
-        $.each(data, function(key, place){
-          var coconuts = '<div class="country-post"><img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_275,w_400/v'+place.properties.version+'/'+place.properties.cover+'.jpg" /><div class="gradientbg"><h4 class="title-map whitetxt">' + place.properties.title + '</h4><h6 class="whitetxt price-map"><span class="cur">' + place.properties.corporate + '</span> a <span class="cur">' + place.properties.vip + '</span></h6></div><div class="content"><p class="nm">' + place.properties.description + '</p></div><a href="' + place.properties.url + '" class="blog">BLOG</a><a href="' + place.properties.url + '/#comments" class="blog">COMENTARIOS</a><form action="/email_country" method="post" class="inliner" id="email_country" ><input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/><i class="fa fa-envelope fix-inline"></i><input type="submit" value="ENVIARME MAS INFO" class="button full success" /></form></div>'
-          content = content + '<li class="accordion-navigation"><a class="accordion-title" href="#panel'+key+'">' + place.properties.title + '</a><div id="panel'+key+'" class="content">'+coconuts+'</div></li>';
-        });
-        $(".exp").css({"padding":"0"}).html('<ul class="accordion" data-accordion>'+content+'</ul>');
-        $(".accordion li a.accordion-title").click(function(e){
-          e.preventDefault();
-          var href = $(this).attr("href");
-          $(".cur").autoNumeric('init',{
-            aSep: '.',
-            aDec: ',', 
-            aSign: '$ ',
-            mDec: '0'
+      var url = "/info";
+      var self = this;
+      var know = $(this).children("#know").val(), email = $(this).children("#email").val(), budget = $(this).children("#budget").val(), travel = $(this).children("#travel").val(), where = $(this).children("#where").val();
+      if($(window).width() >= 1024) {
+        if(know == "no"){
+          console.log("know ",know);
+          self.submit();
+        }else{
+          $.post(url, { know: know, budget: budget, where: where, travel: travel, email: email },function(data){
+            console.log("hasta aca: ",know, data);
+            if(data == "success"){
+              $(".fix-inl").show();
+            }
           });
-          $(".content").removeClass("active");
-          $(href).addClass("active");
+        }
+      }else{
+       
+       // movil
+        $.get('/countries_all?know='+know+'&budget='+budget+'&travel='+travel+'&where='+where, function(data){
+          data = JSON.parse(data);
+          var content = "";
+          $.each(data, function(key, place){
+            var coconuts = '<div class="country-post"><div class="prefix-img"><img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_275,w_400/v'+place.properties.version+'/'+place.properties.cover+'.jpg" /><div class="gradientbg"><h4 class="title-map whitetxt">' + place.properties.title + '</h4><h6 class="whitetxt price-map"><span class="cur">' + place.properties.corporate + '</span> a <span class="cur">' + place.properties.vip + '</span></h6></div></div><div class="content"><p class="nm">' + place.properties.description + '</p></div><a target="_blank" href="' + place.properties.url + '" class="blog">BLOG</a><a target="_blank" href="' + place.properties.url + '/#comments" class="blog">COMENTARIOS</a><form action="/email_country" method="post" class="inliner" id="email_country" ><input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/><i class="fa fa-envelope fix-inline"></i><input type="submit" value="ENVIARME MAS INFO" class="button full success" /></form></div>'
+            content = content + '<li class="accordion-navigation"><a class="accordion-title" href="#panel'+key+'">' + place.properties.title + '</a><div id="panel'+key+'" class="content">'+coconuts+'</div></li>';
+          });
+          $(".exp").css({"padding":"0"}).html('<ul class="accordion" data-accordion>'+content+'</ul>');
+          // navigate to results
+          $('html, body').animate({
+                  scrollTop: $("#results").offset().top
+              }, 1000);
+          $(".accordion li a.accordion-title").click(function(){
+            var href = $(this).attr("href");
+            $(".cur").autoNumeric('init',{
+              aSep: '.',
+              aDec: ',', 
+              aSign: '$ ',
+              mDec: '0'
+            });
+            $(".content").removeClass("active");
+            $(href).addClass("active");
+          });
         });
-      });
+        
+      }
+      
     });
   
   if(document.getElementById("category-val")){
@@ -289,7 +307,6 @@
      });
    }
    
-   
    var modal = $('#modal');
    $(".slide a").click(function(e){
      e.preventDefault();
@@ -311,7 +328,6 @@
      $(".navigation, .social").slideToggle();
    });
    
-
    var isiPhone = navigator.userAgent.toLowerCase().indexOf("iphone");
    var isAndroid = navigator.userAgent.toLowerCase().indexOf("android");
    if(isiPhone > -1 || isAndroid > -1){

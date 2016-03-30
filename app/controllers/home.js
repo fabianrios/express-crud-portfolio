@@ -96,7 +96,6 @@ router.post('/info', function (req, res, next) {
   var body = req.body;
   var query = [];
   if (!body.email){
-  
   function traveltype(travel){
     if (travel == "vip"){
         query.push({
@@ -119,13 +118,10 @@ router.post('/info', function (req, res, next) {
     }
     return query;
   }
-  
   traveltype(body.travel);
-  
   if (!body.where){
     query.splice(1, 1);;
   }
-    
   db.Country.findAll({ where: {
       $or: query
      } 
@@ -136,7 +132,6 @@ router.post('/info', function (req, res, next) {
     }else{
       no = "selected";
     }
-    //console.log("country",country);
     return res.render('map', {
       countries:country,
       country:country[0],
@@ -153,27 +148,25 @@ router.post('/info', function (req, res, next) {
       logo: "logo_white.png"
     })
   })
-  
   }else{
    // enviar info de clientes
     db.Client.create({ mail: body.email, country: body.where, experience: body.travel  }).then(function () {
-      res.redirect("/map");
-      
       var mailOptions = {
           from: '"arams 👥" <hola@arams.com.co>', // sender address
           to: 'faben02@gmail.com', // list of receivers
-          subject: 'Nuevo contacto ✔', // Subject line
-          text: 'Correo: ' + body.email + '/n País: ' + body.country + '/n Tipo de viaje: ' + body.travel, // plaintext body
-          html: '📩 <b>Correo:</b> ' + body.email + '/n <b>País:</b> ' + body.country + '/n 💵<b>Tipo de viaje:</b> ' + body.travel// html body
+          subject: 'Nuevo contacto 👥', // Subject line
+          text: 'Correo: ' + body.email + ' País: ' + body.where + 'Tipo de viaje: ' + body.travel, // plaintext body
+          html: '📩 <b>Correo:</b> ' + body.email + '<br /> <b>País:</b> ' + body.where + '<br /> 💵 <b>Tipo de viaje:</b> ' + body.travel// html body
       };
-    
       transporter.sendMail(mailOptions, function(error, info){
           if(error){
               return console.log(error);
           }
           console.log('Message sent: ' + info.response);
+          var json = JSON.stringify("success");
+          res.write(json);
+          res.end();
       });
-      
     });
   }
   
@@ -431,9 +424,9 @@ router.post('/email_country', function (req, res, next) {
     var mailOptions = {
         from: '"arams 👥" <hola@arams.com.co>', // sender address
         to: 'faben02@gmail.com', // list of receivers
-        subject: 'Nuevo contacto ✔', // Subject line
+        subject: 'Nuevo contacto 👥', // Subject line
         text: 'Correo: ' + body.email + '/n País: ' + body.country + '/n Tipo de viaje: ' + body.travel, // plaintext body
-        html: '📩 <b>Correo:</b> ' + body.email + '/n <b>País:</b> ' + body.country + '/n 💵<b>Tipo de viaje:</b> ' + body.travel// html body
+        html: '📩 <b>Correo:</b> ' + body.email + '<br /> <b>País:</b> ' + body.country + '<br /> 💵 <b>Tipo de viaje:</b> ' + body.travel// html body
     };
     
     transporter.sendMail(mailOptions, function(error, info){
@@ -472,9 +465,9 @@ router.post('/send_contact', function (req, res, next) {
     var mailOptions = {
         from: '"arams 👥" <hola@arams.com.co>', // sender address
         to: 'faben02@gmail.com', // list of receivers
-        subject: 'Nuevo contacto ✔', // Subject line
+        subject: 'Nuevo contacto 👥', // Subject line
         text: 'Nombre: ' + body.name + '/n Correo: ' + body.email + '/n País: ' + body.country + '/n Tipo de viaje: ' + body.travel + '/n Asunto: ' + body.subject + '/n Mensaje: ' + body.message, // plaintext body
-        html: ' 🐴 <b>Nombre:</b> ' + body.name + '/n 📩 <b>Correo:</b> ' + body.email + '/n <b>País:</b> ' + body.country + '/n 💵<b>Tipo de viaje:</b> ' + body.travel + '/n 📨<b>Asunto:</b> ' + body.subject + '/n Mensaje: ' + body.message // html body
+        html: ' 🐴 <b>Nombre:</b> ' + body.name + '<br /> 📩 <b>Correo:</b> ' + body.email + '<br /> <b>País:</b> ' + body.country + '<br /> 💵 <b>Tipo de viaje:</b> ' + body.travel + '<br /> 📨 <b>Asunto:</b> ' + body.subject + '/n Mensaje: ' + body.message // html body
     };
     
     transporter.sendMail(mailOptions, function(error, info){

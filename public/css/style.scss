@@ -181,11 +181,7 @@
       display: block;
       top: 0;
       left: 0;
-      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.8+0,0+100;Neutral+Density */
-      background: -moz-linear-gradient(top,  rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
-      background: -webkit-linear-gradient(top,  rgba(0,0,0,0.9) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
-      background: linear-gradient(to bottom,  rgba(0,0,0,0.9) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+      background: rgba(0,0,0,0.4);
       @media only screen and (min-width: 40em){ 
         padding: 0;
       }
@@ -374,7 +370,7 @@ ul.centerize{
   text-align: center;
   list-style-type: none;
   &.sub-social{
-    margin: 50px 0 !important;
+    margin: 50px 0 100px 0 !important;
     li{
       margin: 0 20px;
       a{
@@ -944,6 +940,14 @@ table.dataTable{
   }
 }
 
+.fa.fix-inl{
+  display: none;
+  position: absolute;
+  bottom: 38px;
+  right: 32px;
+  color: white;
+}
+
 .xclose{
   position: absolute;
   top: 35px;
@@ -962,5 +966,23 @@ table.dataTable{
   }
   @media only screen and (min-width: 40em){ 
     display: none;
+  }
+}
+
+#results{
+  .accordion{
+    .country-post{
+      img{
+        width: 100%;
+      }
+    }
+  }
+}
+
+.prefix-img{
+  position: relative;
+  .gradientbg{
+    top: auto;
+    bottom:0;
   }
 }
