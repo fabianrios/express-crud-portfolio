@@ -31,16 +31,15 @@
 </div>
 <div class="row">
   <div class="large-12 columns">
-    <ul class="centerize sub-social">
-      <li><a href="twitter.com/@aramsvip" target="_blank"> <span class="fa fa-twitter fa-2x"></span> </a></li>
-      <li><a href="http://facebook.com/aramsvip" target="_blank"> <span class="fa fa-facebook fa-2x"></span> </a></li>
-      <li><a href="https://www.instagram.com/aramsvip/" target="_blank"> <span class="fa fa-instagram fa-2x"></span> </a></li>
-    </ul>
+    <div class="sub-social">
+      <div id="shareIconsCountInside"></div>
+    </div>
   </div>
 </div>
 <div class="row">
   <div class="large-12 columns">
     <div id="comments">
+      <span class="hidden" data-url="/article/{{article.id}}" data-id="{{article.id}}"></span>
       <div id="disqus_thread"></div>
       <br />
       <br />
@@ -51,6 +50,14 @@
   </div>
 </div>
 <script>
+
+var url = $("span.hidden").data("url"); 
+var identifier = $("span.hidden").data("id");
+
+$("#shareIconsCountInside").jsSocials({
+    showLabel: false,
+    shares: ["twitter", "facebook"]
+});
 // var disqus_config = function () {
 // this.page.url = /article/{{article.id}}; // Replace PAGE_URL with your page's canonical URL variable
 // this.page.identifier = {{article.id}}; // Replace PAGE_IDENTIFIER with your page's unique identifier variable

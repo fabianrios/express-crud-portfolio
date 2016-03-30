@@ -365,6 +365,11 @@ input.file{
   margin-top: 30px;
 }
 
+.sub-social{
+  margin: 50px auto;
+  text-align: center;
+}
+
 ul.centerize{
   margin:0 auto !important;
   text-align: center;
@@ -937,7 +942,7 @@ table.dataTable{
     padding-bottom:50px;
   }
   @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
-    min-height: 68.5vh;
+    min-height: 69.5vh;
   }
   #map{
     display: none;

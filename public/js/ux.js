@@ -229,11 +229,9 @@
       }, 1000);
 
       var image = $('.main-body.home');  
-      if (indirect.covers.length > 0){
+      if (indirect.covers){
        console.log("indirect.covers", indirect.covers, index++ % indirect.covers.length);
        image.css("background-image", "url('http://res.cloudinary.com/fabianrios/image/upload/v"+indirect.covers[index++ % indirect.covers.length].version+"/"+indirect.covers[index++ % indirect.covers.length].public_id+".jpg')"); 
-      }else{
-        image.css("background-image", "url('../img/bg" + img_array[index++ % img_array.length] + ".jpg')"); 
       }
       $('.bg-gradient, .bg-grad').delay(8000).animate({
         backgroundColor: 'rgba(0, 88, 160, .9)'
