@@ -853,10 +853,7 @@ input[type="email"].unflashy{
 .footer-gallery{
   text-align: center;
   height: 107px;
-  position: relative;
-  @media only screen and (min-width: 40em){ 
-    position: fixed;
-  }
+  position: fixed;
   bottom: 0;
   width: 100%;
   z-index: 9999999;
@@ -918,13 +915,22 @@ input[type="email"].unflashy{
   background: -webkit-linear-gradient(top,  rgba(0,88,160,0.8) 0%,rgba(24,36,63,0.8) 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to bottom,  rgba(0,88,160,0.8) 0%,rgba(24,36,63,0.8) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc0058a0', endColorstr='#cc18243f',GradientType=0 ); /* IE6-9 */
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: relative;
+  height: auto;
+  min-height: 100vh;
+  @media only screen and (min-width: 40em){ 
+    min-height: 83.5vh;
+  }
+  @media screen and (min-height: 500px) and (max-height: 800px) {
+    min-height: 93.5vh;
+  }
+  @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+    min-height: 98.5vh;
+  }
+  @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+    min-height: 69.5vh;
+  }
   width: 100%;
-  height: 100%;
 }
 
 .inline-list > li{
