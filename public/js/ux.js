@@ -280,7 +280,7 @@
             var coconuts = '<div class="country-post"><div class="prefix-img"><img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_275,w_400/v'+place.properties.version+'/'+place.properties.cover+'.jpg" /><div class="gradientbg"><h4 class="title-map whitetxt">' + place.properties.title + '</h4><h6 class="whitetxt price-map"><span class="cur">' + place.properties.corporate + '</span> a <span class="cur">' + place.properties.vip + '</span></h6></div></div><div class="content"><p class="nm">' + place.properties.description + '</p></div><a target="_blank" href="' + place.properties.url + '" class="blog">BLOG</a><a target="_blank" href="' + place.properties.url + '/#comments" class="blog">COMENTARIOS</a><form action="/email_country" method="post" class="inliner" id="email_country" ><input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/><i class="fa fa-envelope fix-inline"></i><input type="submit" value="ENVIARME MAS INFO" class="button full success" /></form></div>'
             content = content + '<li class="accordion-navigation"><a class="accordion-title" href="#panel'+key+'">' + place.properties.title + '</a><div id="panel'+key+'" class="content">'+coconuts+'</div></li>';
           });
-          $(".exp").css({"padding":"0"}).html('<ul class="accordion" data-accordion>'+content+'</ul>');
+          $("#results").html('<ul class="accordion" data-accordion>'+content+'</ul>');
           // navigate to results
           $('html, body').animate({
                   scrollTop: $("#results").offset().top
