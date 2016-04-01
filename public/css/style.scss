@@ -853,7 +853,10 @@ input[type="email"].unflashy{
 .footer-gallery{
   text-align: center;
   height: 107px;
-  position: fixed;
+  position: relative;
+  @media only screen and (min-width: 40em){ 
+    position: fixed;
+  }
   bottom: 0;
   width: 100%;
   z-index: 9999999;

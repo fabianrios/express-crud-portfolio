@@ -709,10 +709,13 @@ input[type="email"].unflashy {
 .footer-gallery {
   text-align: center;
   height: 107px;
-  position: fixed;
+  position: relative;
   bottom: 0;
   width: 100%;
   z-index: 9999999; }
+  @media only screen and (min-width: 40em) {
+    .footer-gallery {
+      position: fixed; } }
   .footer-gallery .slide {
     width: 200px !important; }
   .footer-gallery .bx-wrapper {
