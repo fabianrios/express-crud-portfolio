@@ -327,7 +327,7 @@
    var modal = $('#modal');
    $(".slide a").click(function(e){
      e.preventDefault();
-     var resp = '<img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_407,w_600/v'+$(this).data("version")+'/'+$(this).data("public_id")+'" alt="" />  <a class="close-reveal-modal" aria-label="Close">&#215;</a>'
+     var resp = '<img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_667,w_1000/v'+$(this).data("version")+'/'+$(this).data("public_id")+'" alt="" />  <a class="close-reveal-modal" aria-label="Close">&#215;</a>'
      modal.html(resp).foundation('reveal', 'open');
    });
    
