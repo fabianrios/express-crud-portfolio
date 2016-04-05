@@ -212,6 +212,9 @@
           margin: 0 20px;
           padding: 0;
           background: transparent; } }
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (width: 375px) and (height: 559px) and (orientation: portrait) and (color: 8) and (device-aspect-ratio: 375 / 667) and (aspect-ratio: 375 / 559) and (device-pixel-ratio: 2) and (-webkit-min-device-pixel-ratio: 2) {
+      .nav ul.navigation {
+        display: none; } }
   .nav ul.social {
     list-style-type: none;
     display: none;
@@ -774,9 +777,9 @@ input[type="email"].unflashy {
   @media only screen and (min-width: 40em) {
     .bg-gradient {
       min-height: 83.5vh; } }
-  @media screen and (min-height: 500px) and (max-height: 800px) {
+  @media screen and (min-height: 580px) and (max-height: 800px) {
     .bg-gradient {
-      min-height: 93.5vh; } }
+      min-height: 100vh; } }
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
     .bg-gradient {
       min-height: 98.5vh; } }
@@ -806,9 +809,9 @@ table.dataTable thead tr th {
   @media only screen and (min-width: 40em) {
     .inside-body {
       min-height: 83.5vh; } }
-  @media screen and (min-height: 500px) and (max-height: 800px) {
+  @media screen and (min-height: 580px) and (max-height: 800px) {
     .inside-body {
-      min-height: 93.5vh; } }
+      min-height: 100vh; } }
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
     .inside-body {
       min-height: 98.5vh;
