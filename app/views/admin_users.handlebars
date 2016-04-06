@@ -35,7 +35,7 @@
     {{#each users}}
     <li>
       <div class="pics">
-        <img src="http://res.cloudinary.com/fabianrios/image/upload/c_crop,h_80,r_0,w_80/v{{this.version}}/{{this.image}}.png" alt="" />
+        <img src="http://res.cloudinary.com/{{../cloudinary_account}}/image/upload/c_crop,h_80,r_0,w_80/v{{this.version}}/{{this.image}}.png" alt="" />
         <h5 class="subheader dib">{{this.name}} <small>{{this.username}}</small> <a href="mailto:{{this.email}}"><span class="fa fa-envelope-o"></span></a> </h5>
       </div>
     </li>
@@ -72,7 +72,7 @@
       <ul class="inline-list cov-list">
           {{#each covers}}
           <li>
-            <img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_107,w_200/v{{this.version}}/{{this.public_id}}" alt="" />
+            <img src="http://res.cloudinary.com/{{../cloudinary_account}}/image/upload/c_fill,h_107,w_200/v{{this.version}}/{{this.public_id}}" alt="" />
             <form action="/delete_image" method="post">
               <input type="hidden" name="public_id" id="public_id" value="{{this.public_id}}" />
               <input type="hidden" name="home" id="home" value="{{this.home}}" />

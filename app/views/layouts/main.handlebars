@@ -92,7 +92,7 @@
          {{/if}}
            {{#if background}}
               {{#if article.cover}}
-                <div class="nav {{pageTitle}}" style="background-image:url(http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_720,w_1920/{{article.cover}});">
+                <div class="nav {{pageTitle}}" style="background-image:url(http://res.cloudinary.com/{{cloudinary_account}}/image/upload/c_fill,h_720,w_1920/{{article.cover}});">
                 <div class="gradient-article">
               {{else}}
                 <div class="nav {{pageTitle}}">
@@ -129,7 +129,7 @@
                  </ul>
                </div>
                <div class="pic_profile">
-                 <img src="http://res.cloudinary.com/fabianrios/image/upload/c_crop,h_80,r_0,w_80/v1457971717/1457971692.png" alt="" />
+                 <img src="http://res.cloudinary.com/{{cloudinary_account}}/image/upload/c_crop,h_80,r_0,w_80/v1457971717/1457971692.png" alt="" />
                  <h6 class="whitetxt">Escrito por {{author.name}}</h6>
                </div>
                <a id="like" data-id="{{article.id}}" class="whitetxt"><span class="fa fa-heart fa-2x"></span></a>

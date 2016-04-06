@@ -104,7 +104,8 @@ router.get('/', function (req, res, next) {
       background: true,
       logo: "logo_white.png",
       bg: "../img/bg1.jpg",
-      home: true
+      home: true,
+      cloudinary_account: "fabianrios"
     };
     res.render('index', {
       experiences: true,
@@ -165,7 +166,8 @@ router.post('/info', function (req, res, next) {
       title: 'check',
       pageTitle: "map",
       background: true,
-      logo: "logo_white.png"
+      logo: "logo_white.png",
+      cloudinary_account: "fabianrios"
     })
   })
   }else{
@@ -201,7 +203,8 @@ router.get('/map', function (req, res, next) {
       inlineform: true
     };
     res.render('map', {
-      title: 'root'
+      title: 'root',
+      cloudinary_account: "fabianrios"
     });
 });
 
@@ -265,7 +268,8 @@ router.get('/country/:id/edit', authorize, notify, function (req, res, next) {
       qty: req.session.clients,
       qty_contacts: req.session.contacts,
       user: req.session.user,
-      countries_search: "active"
+      countries_search: "active",
+      cloudinary_account: "fabianrios"
     });
   });
 });
@@ -315,7 +319,8 @@ router.get('/countries_search', notify, authorize, function (req, res, next) {
       qty: req.session.clients,
       qty_contacts: req.session.contacts,
       user: req.session.user,
-      countries_search: 'active'
+      countries_search: 'active',
+      cloudinary_account: "fabianrios"
     });
     
   });
@@ -399,7 +404,8 @@ router.get('/blog', function (req, res, next) {
       res.render('blog', {
         title: 'blog',
         articles: art,
-        logo: "group-2.png"
+        logo: "group-2.png",
+        cloudinary_account: "fabianrios"
       });
     });
     
@@ -409,7 +415,8 @@ router.get('/blog', function (req, res, next) {
       res.render('blog', {
         title: 'blog',
         articles: articles,
-        logo: "group-2.png"
+        logo: "group-2.png",
+        cloudinary_account: "fabianrios"
       });
     });
     
@@ -468,8 +475,8 @@ router.post('/send_contact', function (req, res, next) {
         from: '"arams" <hola@arams.com.co>', // sender address
         to: 'hola@fabianrios.co, santiago@santiagortiz.com', // list of receivers
         subject: 'Nuevo contacto 👥', // Subject line
-        text: 'Nombre: ' + body.name + '/n Correo: ' + body.email + '/n País: ' + body.country + '/n Tipo de viaje: ' + body.travel + '/n Asunto: ' + body.subject + '/n Mensaje: ' + body.message, // plaintext body
-        html: ' 🐴 <b>Nombre:</b> ' + body.name + '<br /> 📩 <b>Correo:</b> ' + body.email + '<br /> <b>País:</b> ' + body.country + '<br /> 💵 <b>Tipo de viaje:</b> ' + body.travel + '<br /> 📨 <b>Asunto:</b> ' + body.subject + '/n Mensaje: ' + body.message // html body
+        text: ' Nombre: ' + body.name + ' Correo: ' + body.email + ' Asunto: ' + body.subject + ' Mensaje: ' + body.message, // plaintext body
+        html: ' 🐴 <b>Nombre:</b> ' + body.name + '<br /> 📩 <b>Correo:</b> ' + body.email + '<br /> 📨 <b>Asunto:</b> ' + body.subject + 'Mensaje: ' + body.message // html body
     };
     
     transporter.sendMail(mailOptions, function(error, info){
@@ -513,7 +520,8 @@ router.get('/admin/articles', notify, authorize, function (req, res, next) {
       logo: "group-2.png",
       qty: req.session.clients,
       qty_contacts: req.session.contacts,
-      admin_articles: "active"
+      admin_articles: "active",
+      cloudinary_account: "fabianrios"
     });
   });
 });
@@ -548,7 +556,8 @@ router.get('/article/:id', function (req, res, next) {
       res.locals = {
         pageTitle: "articles",
         background: true,
-        logo: "group-2.png"
+        logo: "group-2.png",
+        cloudinary_account: "fabianrios"
       };
     
       res.render('show', {
@@ -556,7 +565,8 @@ router.get('/article/:id', function (req, res, next) {
         article: article,
         logo: "logo_white.png",
         covers: associatedCovers, 
-        author: user
+        author: user,
+        cloudinary_account: "fabianrios"
       });
     
       });
@@ -579,7 +589,8 @@ router.get('/article/:id/edit', notify, authorize, function (req, res, next) {
         qty: req.session.clients,
         qty_contacts: req.session.contacts,
         covers: associatedCovers, 
-        user: req.session.user
+        user: req.session.user,
+        cloudinary_account: "fabianrios"
       });
     });
   });
@@ -758,6 +769,7 @@ router.post('/edit_user', notify, authorize, upload.single('image_upload'), func
       qty: req.session.clients,
       qty_contacts: req.session.contacts,
       user: req.session.user,
+      cloudinary_account: "fabianrios"
     });
   }
 });
@@ -791,7 +803,8 @@ router.get('/admin/users', notify, authorize, function (req, res, next) {
          qty: req.session.clients,
          qty_contacts: req.session.contacts,
          covers: covers,
-         users: users
+         users: users,
+         cloudinary_account: "fabianrios"
        });
        
      });

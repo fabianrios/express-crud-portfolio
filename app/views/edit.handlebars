@@ -15,7 +15,7 @@
         <ul class="inline-list cov-list">
             {{#each covers}}
             <li>
-              <img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_107,w_200/v{{this.version}}/{{this.public_id}}" alt="" />
+              <img src="http://res.cloudinary.com/{{../cloudinary_account}}/image/upload/c_fill,h_107,w_200/v{{this.version}}/{{this.public_id}}" alt="" />
               <form action="/delete_image" method="post">
                 <input type="hidden" name="public_id" id="public_id" value="{{this.public_id}}" />
                 <input type="hidden" name="article_id" id="article_id" value="{{this.ArticleId}}" />
@@ -40,7 +40,7 @@
       <input type="text" class="currency" name="corporate" value="{{article.corporate}}" placeholder="Corporativo" />
       <label for="image_upload">Imagen destacada</label>
       {{#if article.cover}}
-        <div class="file" style="background-image:url('http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_100,w_305/v{{article.version}}/{{article.cover}}.jpg')">
+        <div class="file" style="background-image:url('http://res.cloudinary.com/{{cloudinary_account}}/image/upload/c_fill,h_100,w_305/v{{article.version}}/{{article.cover}}.jpg')">
       {{else}}
         <div class="file">
       {{/if}}

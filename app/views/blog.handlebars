@@ -16,7 +16,7 @@
         <div class="index-cover">
           {{#if this.cover}}
             <a href="/article/{{this.id}}">
-              <img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_175,w_300/v{{this.version}}/{{this.cover}}" alt="" />
+              <img src="http://res.cloudinary.com/{{../cloudinary_account}}/image/upload/c_fill,h_175,w_300/v{{this.version}}/{{this.cover}}" alt="" />
             </a>
           {{else}}
             <a href="/article/{{this.id}}"><img src="http://placehold.it/300x176/2C00BA" alt="" /></a>

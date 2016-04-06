@@ -5,7 +5,7 @@
       <ul class="no-bullet centerize country">
       {{#each countries}}
       <li>
-        <img src="http://res.cloudinary.com/fabianrios/image/upload/c_fill,h_100,w_200/v{{this.version}}/{{this.cover}}" alt="" />
+        <img src="http://res.cloudinary.com/{{../cloudinary_account}}/image/upload/c_fill,h_100,w_200/v{{this.version}}/{{this.cover}}" alt="" />
         <h5 class="subheader text-left country-names">{{this.title}}</h5>
         <div class="actions">
           <a href="/country/{{this.id}}/edit"><span class="fa whitetxt fa-edit"></span></a> <a class="redtxt" href="/country/{{this.id}}/destroy" onclick="return confirm('Seguro quieres borrarlo?');"><span class="fa fa-trash"></span></a>
