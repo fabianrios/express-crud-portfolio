@@ -9,6 +9,7 @@
     <div class="large-8 columns">
       <h1>{{title}}</h1>
         <input type="text" name="text" value="{{article.text}}" placeholder="texto" />
+        <input type="hidden" name="user" value="{{article.UserId}}" />
         <textarea name="fulltext" id="fulltext">{{article.fulltext}}</textarea>
         {{#if covers}}
         <ul class="inline-list cov-list">

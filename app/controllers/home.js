@@ -636,7 +636,7 @@ router.post('/articles',cpUpload, function (req, res, next) {
   var files = req.files;
   if(typeof req.files !== 'undefined' && typeof req.files['image_upload'] !== 'undefined'){
     cloudinary.uploader.upload(req.files['image_upload'][0].path, function(result) {
-      db.Article.create({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, cover: result.public_id, version: result.version, vip: body.vip, incognito: body.incognito, corporate: body.corporate }).then(function (article) {
+      db.Article.create({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, cover: result.public_id, version: result.version, vip: body.vip, incognito: body.incognito, corporate: body.corporate, UserId: body.user || 1 }).then(function (article) {
         var id = article.id
         if(req.files['gallery']){
          upload_multiple(req.files['gallery'], id);
@@ -645,7 +645,7 @@ router.post('/articles',cpUpload, function (req, res, next) {
       });
     });
   }else{
-    db.Article.create({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, vip: body.vip, incognito: body.incognito, corporate: body.corporate }).then(function (article) {
+    db.Article.create({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, vip: body.vip, incognito: body.incognito, corporate: body.corporate, UserId: body.user || 1 }).then(function (article) {
       var id = article.id
       if(req.files['gallery']){
        upload_multiple(req.files['gallery'], id);
@@ -666,12 +666,12 @@ router.post('/article/:id/editar', authorize, cpUpload, function (req, res, next
   db.Article.findById(id).then(function (article) {
     if(typeof req.files !== 'undefined' && typeof req.files['image_upload'] !== 'undefined'){
     cloudinary.uploader.upload(req.files['image_upload'][0].path, function(result) {
-      article.update({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, cover: result.public_id, version: result.version, vip: body.vip, incognito: body.incognito, corporate: body.corporate }).then(function(){
+      article.update({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, cover: result.public_id, version: result.version, vip: body.vip, incognito: body.incognito, corporate: body.corporate,  UserId: body.user || 1 }).then(function(){
        res.redirect('/admin/articles');
       });
     },{ public_id: article.cover_version, invalidate: true });
     } else{
-      article.update({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, vip: body.vip, incognito: body.incognito, corporate: body.corporate}).then(function () {
+      article.update({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, vip: body.vip, incognito: body.incognito, corporate: body.corporate, UserId: body.user || 1}).then(function () {
        res.redirect('/admin/articles');
       });
     }

@@ -1,7 +1,7 @@
 <div class="admin-form">
   <div class="row">
     <div class="large-12 columns">
-      <a href="/blog" class="button tiny"><span class="fa fa-undo"></span> Volver</a>
+      <a href="/admin/articles" class="button tiny"><span class="fa fa-undo"></span> Volver</a>
     </div>
   </div>
   <form action="/articles" id="articles-form" method="post" enctype='multipart/form-data'>
@@ -22,6 +22,7 @@
       <input type="text" class="currency" id="vip" name="vip" placeholder="VIP" />
       <input type="text" class="currency" name="incognito" placeholder="Incognito" />
       <input type="text" class="currency" name="corporate" placeholder="Corporativo" />
+      <input type="hidden" name="user" value="{{user.id}}" />
       <label for="image_upload">Imagen destacada</label>
       <div class="file">
         <input type="file" class="inline-file" name="image_upload" id="image_upload" />
