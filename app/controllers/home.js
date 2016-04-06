@@ -46,10 +46,30 @@ function decrypt(text){
   return dec;
 }
 
+var notify = function(req, res, next) {
+  db.Client.findAll().then(function (clients) {
+    var clientes = 0, contacts = 0, now = new Date();
+    for (var i = 0; i < clients.length; i++){
+      if (dateFormat(clients[i].createdAt, "W") == dateFormat(clients[i].now, "W")){
+        if(clients[i].flag == 0){
+          clientes = clientes + 1;
+        }else {
+          contacts = contacts + 1;
+        }
+      }
+    }
+    req.session.clients = clientes;
+    req.session.contacts = contacts;
+    return next();
+  })
+}
+
 
 var authorize = function(req, res, next) {
    if (req.session && req.session.admin){
-     //console.log(req.session);
+     
+     notify();
+     
      return next();
     } else{
       res.render('login', {
@@ -211,29 +231,11 @@ router.post('/login', function (req, res, next) {
       });
     }
     
-    db.Client.findAll().then(function (clients) {
-      
-      var clientes = 0, contacts = 0, now = new Date();
-      for (var i = 0; i < clients.length; i++){
-        console.log("week", dateFormat(clients[i].createdAt, "W"), dateFormat(clients[i].now, "W"));
-        if (dateFormat(clients[i].createdAt, "W") == dateFormat(clients[i].now, "W")){
-          if(clients[i].flag == 0){
-            clientes = clientes + 1;
-          }else {
-            contacts = contacts + 1;
-          }
-        }
-      }
-      
-      req.session.user = user; 
-      req.session.admin = user.admin;
-      var url = req.url;
-      req.session.clients = clientes;
-      req.session.contacts = contacts;
-      res.redirect('/countries_search');
-     
+    req.session.user = user; 
+    req.session.admin = user.admin;
+    var url = req.url;
+    res.redirect('/countries_search');
     
-    })
   });
 });
 
@@ -242,7 +244,7 @@ router.get('/logout', function (req, res, next) {
    res.redirect('/');
 });
 
-router.get('/country/create', authorize, function (req, res, next) {
+router.get('/country/create', authorize, notify, function (req, res, next) {
     res.render('create_country', {
       title: 'Crear nuevo país',
       logo: "group-2.png",
@@ -253,7 +255,7 @@ router.get('/country/create', authorize, function (req, res, next) {
     });
 });
 
-router.get('/country/:id/edit', authorize, function (req, res, next) {
+router.get('/country/:id/edit', authorize, notify, function (req, res, next) {
   var id = req.params.id
   db.Country.findById(id).then(function (country) {
     res.render('edit_country', {
@@ -268,7 +270,7 @@ router.get('/country/:id/edit', authorize, function (req, res, next) {
   });
 });
 
-router.post('/country/:id/editar', authorize, upload.single('image_upload'), function (req, res, next) {
+router.post('/country/:id/editar', authorize, notify, upload.single('image_upload'), function (req, res, next) {
   var id = req.params.id
   var body = req.body
   var file = req.file;
@@ -287,7 +289,7 @@ router.post('/country/:id/editar', authorize, upload.single('image_upload'), fun
   });
 });
 
-router.post('/countries', authorize, upload.single('image_upload'), function (req, res, next) {
+router.post('/countries', authorize, notify, upload.single('image_upload'), function (req, res, next) {
   var body = req.body;
   var urlbody = friendlyUrl(body.pais);
   if(typeof req.file !== 'undefined'){
@@ -303,7 +305,7 @@ router.post('/countries', authorize, upload.single('image_upload'), function (re
   }
 });
 
-router.get('/countries_search', authorize, function (req, res, next) {
+router.get('/countries_search', notify, authorize, function (req, res, next) {
   db.Country.findAll().then(function (countries) {
     
     res.render('countries_search', {
@@ -439,7 +441,7 @@ router.post('/email_country', function (req, res, next) {
   });
 });
 
-router.get('/admin/clients', authorize, function (req, res, next) {
+router.get('/admin/clients', notify, authorize, function (req, res, next) {
   db.Client.findAll({where:{flag: 0}}).then(function (clients) {
     res.render('admin_clients', {
       title: 'Interesados',
@@ -480,7 +482,7 @@ router.post('/send_contact', function (req, res, next) {
   });
 });
 
-router.get('/admin/contact', authorize, function (req, res, next) {
+router.get('/admin/contact', notify, authorize, function (req, res, next) {
   db.Client.findAll({where:{flag: 1},order:'name DESC'}).then(function (clients) {
     res.render('admin_contact', {
       title: 'Contactos',
@@ -502,7 +504,7 @@ router.get('/contact', function (req, res, next) {
 });
 
 
-router.get('/admin/articles', authorize, function (req, res, next) {
+router.get('/admin/articles', notify, authorize, function (req, res, next) {
   db.Article.findAll().then(function (articles) {
     res.render('admin_articles', {
       title: 'Admin articles',
@@ -517,7 +519,7 @@ router.get('/admin/articles', authorize, function (req, res, next) {
 });
 
 
-router.get('/article/create', authorize, function (req, res, next) {
+router.get('/article/create', notify, authorize, function (req, res, next) {
     res.render('create', {
       title: 'Crear nuevo articulo',
       logo: "group-2.png",
@@ -566,7 +568,7 @@ router.get('/article/:id', function (req, res, next) {
 
 
 
-router.get('/article/:id/edit', authorize, function (req, res, next) {
+router.get('/article/:id/edit', notify, authorize, function (req, res, next) {
   var id = req.params.id
   db.Article.findById(id).then(function (article) {
     article.getCovers().then(function(associatedCovers) {
@@ -606,7 +608,6 @@ router.post('/delete_image', function (req, res, next) {
     }).then(function() {
       res.redirect('/article/'+body.article_id+'/edit');
     });
-    
   });
 });
 
@@ -655,7 +656,7 @@ router.post('/articles',cpUpload, function (req, res, next) {
   }
 });
 
-router.post('/article/:id/editar', authorize, cpUpload, function (req, res, next) {
+router.post('/article/:id/editar', notify, authorize, cpUpload, function (req, res, next) {
   var id = req.params.id
   var body = req.body
   var urlbody = friendlyUrl(body.title);
@@ -696,7 +697,7 @@ function upload_home(files){
 }
 
 
-router.post('/home_gallery', authorize, cpUpload, function (req, res, next) {
+router.post('/home_gallery', notify, authorize, cpUpload, function (req, res, next) {
   var body = req.body
   var files = req.files;
   if(files['gallery']){
@@ -706,7 +707,7 @@ router.post('/home_gallery', authorize, cpUpload, function (req, res, next) {
 });
 
 
-router.get('/article/:id/destroy', authorize, function (req, res, next) {
+router.get('/article/:id/destroy', notify, authorize, function (req, res, next) {
   db.Article.destroy({
       where: {
         id: req.params.id
@@ -718,7 +719,7 @@ router.get('/article/:id/destroy', authorize, function (req, res, next) {
 
 
 
-router.post('/edit_user', authorize, upload.single('image_upload'), function (req, res, next) {
+router.post('/edit_user', notify, authorize, upload.single('image_upload'), function (req, res, next) {
   var body = req.body;
   var file = req.file;
   if(!file){
@@ -761,7 +762,7 @@ router.post('/edit_user', authorize, upload.single('image_upload'), function (re
   }
 });
 
-router.post('/create_user', authorize, upload.single('image_upload'), function (req, res, next) {
+router.post('/create_user', notify, authorize, upload.single('image_upload'), function (req, res, next) {
   var body = req.body;
   var file = req.file;
   if(file){
@@ -779,7 +780,7 @@ router.post('/create_user', authorize, upload.single('image_upload'), function (
 });
 
 
-router.get('/admin/users', authorize, function (req, res, next) {
+router.get('/admin/users', notify, authorize, function (req, res, next) {
    db.User.findAll().then(function (users) {
      db.Cover.findAll({where:{home: true}}).then(function (covers) {
        
