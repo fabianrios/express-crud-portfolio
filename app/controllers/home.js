@@ -105,7 +105,7 @@ router.get('/', function (req, res, next) {
       logo: "logo_white.png",
       bg: "../img/bg1.jpg",
       home: true,
-      cloudinary_account: "fabianrios"
+      cloudinary_account: process.env.CLOUDINARY_NAME
     };
     res.render('index', {
       experiences: true,
@@ -167,7 +167,7 @@ router.post('/info', function (req, res, next) {
       pageTitle: "map",
       background: true,
       logo: "logo_white.png",
-      cloudinary_account: "fabianrios"
+      cloudinary_account: process.env.CLOUDINARY_NAME
     })
   })
   }else{
@@ -204,7 +204,7 @@ router.get('/map', function (req, res, next) {
     };
     res.render('map', {
       title: 'root',
-      cloudinary_account: "fabianrios"
+      cloudinary_account: process.env.CLOUDINARY_NAME
     });
 });
 
@@ -269,7 +269,7 @@ router.get('/country/:id/edit', authorize, notify, function (req, res, next) {
       qty_contacts: req.session.contacts,
       user: req.session.user,
       countries_search: "active",
-      cloudinary_account: "fabianrios"
+      cloudinary_account: process.env.CLOUDINARY_NAME
     });
   });
 });
@@ -320,7 +320,7 @@ router.get('/countries_search', notify, authorize, function (req, res, next) {
       qty_contacts: req.session.contacts,
       user: req.session.user,
       countries_search: 'active',
-      cloudinary_account: "fabianrios"
+      cloudinary_account: process.env.CLOUDINARY_NAME
     });
     
   });
@@ -405,7 +405,7 @@ router.get('/blog', function (req, res, next) {
         title: 'blog',
         articles: art,
         logo: "group-2.png",
-        cloudinary_account: "fabianrios"
+        cloudinary_account: process.env.CLOUDINARY_NAME
       });
     });
     
@@ -416,7 +416,7 @@ router.get('/blog', function (req, res, next) {
         title: 'blog',
         articles: articles,
         logo: "group-2.png",
-        cloudinary_account: "fabianrios"
+        cloudinary_account: process.env.CLOUDINARY_NAME
       });
     });
     
@@ -521,7 +521,7 @@ router.get('/admin/articles', notify, authorize, function (req, res, next) {
       qty: req.session.clients,
       qty_contacts: req.session.contacts,
       admin_articles: "active",
-      cloudinary_account: "fabianrios"
+      cloudinary_account: process.env.CLOUDINARY_NAME
     });
   });
 });
@@ -557,7 +557,7 @@ router.get('/article/:id', function (req, res, next) {
         pageTitle: "articles",
         background: true,
         logo: "group-2.png",
-        cloudinary_account: "fabianrios"
+        cloudinary_account: process.env.CLOUDINARY_NAME
       };
     
       res.render('show', {
@@ -566,7 +566,7 @@ router.get('/article/:id', function (req, res, next) {
         logo: "logo_white.png",
         covers: associatedCovers, 
         author: user,
-        cloudinary_account: "fabianrios"
+        cloudinary_account: process.env.CLOUDINARY_NAME
       });
     
       });
@@ -590,7 +590,7 @@ router.get('/article/:id/edit', notify, authorize, function (req, res, next) {
         qty_contacts: req.session.contacts,
         covers: associatedCovers, 
         user: req.session.user,
-        cloudinary_account: "fabianrios"
+        cloudinary_account: process.env.CLOUDINARY_NAME
       });
     });
   });
@@ -611,7 +611,10 @@ router.post('/article/like', function (req, res, next) {
 
 router.post('/delete_image', function (req, res, next) {
   var body = req.body;
+  console.log("NOMBRE:")
+  console.log(body.public_id);
   cloudinary.api.delete_resources(body.public_id,function(result){
+     console.log(result);
      db.Cover.destroy({
       where: {
         public_id: body.public_id
@@ -769,7 +772,7 @@ router.post('/edit_user', notify, authorize, upload.single('image_upload'), func
       qty: req.session.clients,
       qty_contacts: req.session.contacts,
       user: req.session.user,
-      cloudinary_account: "fabianrios"
+      cloudinary_account: process.env.CLOUDINARY_NAME
     });
   }
 });
@@ -804,7 +807,7 @@ router.get('/admin/users', notify, authorize, function (req, res, next) {
          qty_contacts: req.session.contacts,
          covers: covers,
          users: users,
-         cloudinary_account: "fabianrios"
+         cloudinary_account: process.env.CLOUDINARY_NAME
        });
        
      });

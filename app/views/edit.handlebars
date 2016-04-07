@@ -16,10 +16,11 @@
             {{#each covers}}
             <li>
               <img src="http://res.cloudinary.com/{{../cloudinary_account}}/image/upload/c_fill,h_107,w_200/v{{this.version}}/{{this.public_id}}" alt="" />
-              <form action="/delete_image" method="post">
+              <!-- other form -->
+              <form action="/delete_image" method="post" id="deleteForm">
                 <input type="hidden" name="public_id" id="public_id" value="{{this.public_id}}" />
                 <input type="hidden" name="article_id" id="article_id" value="{{this.ArticleId}}" />
-                <button type="submit" class="tiny button alert trash" /><span class="fa fa-trash-o"></span></button>
+                <button type="submit" class="tiny button alert trash" form="deleteForm" /><span class="fa fa-trash-o"></span></button>
               </form>
             </li>
             {{/each}}
@@ -27,7 +28,7 @@
         {{/if}}
     </div>
     <div class="large-4 columns">
-      <input type="submit" value="Actualizar" class="button success full" />
+      <input type="submit" value="Actualizar" form="articles-form" class="button success full" />
       <input type="text" name="title" value="{{article.title}}" />
       <span class="hide" id="category-val" data-category="{{article.category}}"></span>
       <select name="category" id="category" multiple size=3>
