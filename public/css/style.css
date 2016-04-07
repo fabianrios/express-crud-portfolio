@@ -1,3 +1,6 @@
+.alert-box.hidden {
+  display: none; }
+
 .redtxt {
   color: #ff0000; }
 
@@ -396,11 +399,13 @@ ul.centerize {
   top: 230px;
   left: 20px; }
 
+.country-post {
+  background: #fff; }
+
 #info {
   position: absolute;
   width: 400px;
   height: auto;
-  background: white;
   right: 40px;
   top: 40px;
   display: none; }
@@ -860,3 +865,6 @@ table.dataTable thead tr th {
   .prefix-img .gradientbg {
     top: auto;
     bottom: 0; }
+
+.alert-box.success {
+  background: #0058A0; }

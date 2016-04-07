@@ -9,14 +9,17 @@
     <div class="content">{{{article.fulltext}}}</div>
   </div>
   <div class="large-4 medium-4 columns">
-    <h4 class="bluetxt">Presupuesto VIP</h4>
-    <p><span class="currency">{{article.vip}}</span> en adelante</p>
     <h4 class="bluetxt">Presupuesto Incognito</h4>
-    <p><span class="currency">{{article.incognito}}</span> a <span class="currency">{{article.vip}}</span></p>
+    <p><span class="currency">{{article.incognito}}</span> en adelante x persona</p>
+    <h4 class="bluetxt">Presupuesto VIP</h4>
+    <p><span class="currency">{{article.vip}}</span> a <span class="currency">{{article.incognito}}</span> x persona</p>
     <h4 class="bluetxt">Presupuesto Corporativo</h4>
-    <p><span class="currency">{{article.corporate}}</span> a <span class="currency">{{article.incognito}}</span></p>
+    <p><span class="currency">{{article.corporate}}</span> a <span class="currency">{{article.vip}}</span> x persona</p>
     <div class="quick-contact">
-      
+      <div data-alert class="alert-box success round hidden" id="small-success">
+        Su mensaje ha sido enviado correctamente
+        <a href="#" class="close">&times;</a>
+      </div>
           <form action="/email_country" method="post" class="inliner" id="email_country">
             <input type="hidden" name="country" value="{{article.title}}" />
             <input type="hidden" name="travel" value="menu_lateral" />

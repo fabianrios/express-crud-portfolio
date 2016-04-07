@@ -1,8 +1,12 @@
 <div id='map'></div>
 <div id="info">
   {{#if country}}
+  <div data-alert class="alert-box success round hidden" id="small-success">
+    Su mensaje ha sido enviado correctamente
+    <a href="#" class="close">&times;</a>
+  </div>
   <div class="country-post">
-    <img src="http://res.cloudinary.com/{{../cloudinary_account}}/image/upload/c_fill,h_275,w_400/v{{country.version}}/{{country.cover}}.jpg" />
+    <img src="http://res.cloudinary.com/aramsvip/image/upload/c_fill,h_275,w_400/v{{country.version}}/{{country.cover}}.jpg" />
     <div class="gradientbg">
       <h4 class="title-map whitetxt"> {{country.title}} </h4> 
       <h6 class="whitetxt price-map"><span class="cur">{{country.vip}}</span> a <span class="cur">{{country.corporate}}</span></h6>

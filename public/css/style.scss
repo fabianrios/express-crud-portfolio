@@ -1,6 +1,10 @@
 @import "mixins";
 //VARIABLES
 
+
+.alert-box.hidden{
+  display: none;
+}
 .redtxt{
   color: #ff0000;
 }
@@ -485,11 +489,13 @@ ul.centerize{
   left: 20px;
 }
 
+.country-post{
+  background: #fff;
+}
 #info{
   position:absolute;
   width:400px;
   height:auto;
-  background:white;
   right:40px;
   top:40px;
   display: none;
@@ -1035,4 +1041,8 @@ table.dataTable{
     top: auto;
     bottom:0;
   }
+}
+
+.alert-box.success{
+  background: #0058A0;
 }

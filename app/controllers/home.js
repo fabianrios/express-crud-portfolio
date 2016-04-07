@@ -611,10 +611,7 @@ router.post('/article/like', function (req, res, next) {
 
 router.post('/delete_image', function (req, res, next) {
   var body = req.body;
-  console.log("NOMBRE:")
-  console.log(body.public_id);
   cloudinary.api.delete_resources(body.public_id,function(result){
-     console.log(result);
      db.Cover.destroy({
       where: {
         public_id: body.public_id
