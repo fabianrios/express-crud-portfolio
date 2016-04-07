@@ -109,7 +109,7 @@ router.get('/', function (req, res, next) {
     };
     res.render('index', {
       experiences: true,
-      title: 'root'
+      title: 'home'
     });
 });
 
@@ -203,7 +203,7 @@ router.get('/map', function (req, res, next) {
       inlineform: true
     };
     res.render('map', {
-      title: 'root',
+      title: 'Home',
       cloudinary_account: process.env.CLOUDINARY_NAME
     });
 });
