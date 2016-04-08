@@ -89,12 +89,14 @@
     if (typeof email != 'undefined'){
       $.post(url, { email: email, where: where, travel: travel }, function(resp) {
           if (resp == "OK" || "success"){
+            console.log("¿and the success?");
             $("#map-success").show();
           }else{
             console.log("fail delivering message");
           }
       });
     }else{
+      console.log("went other way")
       $.get('/countries_all?know='+know+'&budget='+budget+'&travel='+travel+'&where='+where, function(data){
         var datos = JSON.parse(data);
         var myLayer = L.mapbox.featureLayer().addTo(map);
@@ -274,8 +276,10 @@
       if($(window).width() >= 1024) {
         if(know == "no"){
           self.submit();
+          console.log("other way");
         }else{
           $.post(url, { know: know, budget: budget, where: where, travel: travel, email: email },function(data){
+            console.log("success!!");
             $(".fix-inl").show();
             $("#small-success").show();
           });
