@@ -576,6 +576,9 @@ ul.steps {
   .exp h5 {
     color: #0058a0; }
 
+#inline_form_country input.button.success {
+  padding: 5px 10px; }
+
 .inline-form {
   padding: 20px 0;
   background: #1f263c; }
@@ -865,6 +868,3 @@ table.dataTable thead tr th {
   .prefix-img .gradientbg {
     top: auto;
     bottom: 0; }
-
-.alert-box.success {
-  background: #0058A0; }

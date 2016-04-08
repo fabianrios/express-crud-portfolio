@@ -376,6 +376,7 @@ router.get('/countries_all', function (req, res, next) {
               description: countries[i].text,
               corporate: countries[i].corporate,
               url: countries[i].url,
+              incognito: countries[i].incognito,
               vip: countries[i].vip,
               cover: countries[i].cover,
               version: countries[i].version,

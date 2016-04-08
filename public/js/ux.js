@@ -83,27 +83,37 @@
         });
     });
   
-  $('.inline-form form').submit(function(e){
-    var know = $(".inline-form #know").val(), budget = $(".inline-form #budget").val(), travel = $(".inline-form #travel").val(), where = $(".inline-form #where").val();
-    
-    $.get('/countries_all?know='+know+'&budget='+budget+'&travel='+travel+'&where='+where, function(data){
-      data = JSON.parse(data);
-      var myLayer = L.mapbox.featureLayer().addTo(map);
-      myLayer.setGeoJSON(data);
-      myLayer.on('click',function(e){
-          e.layer.closePopup();
-          var feature = e.layer.feature;
-          var content = '<div class="country-post"><img src="http://res.cloudinary.com/aramsvip/image/upload/c_fill,h_275,w_400/v'+feature.properties.version+'/'+feature.properties.cover+'.jpg" /><div class="gradientbg"><h4 class="title-map whitetxt">' + feature.properties.title + '</h4><h6 class="whitetxt price-map"><span class="cur">' + feature.properties.corporate + '</span> a <span class="cur">' + feature.properties.incognito + '</span></h6></div><div class="content"><p class="nm">' + feature.properties.description + '</p></div><a target="_blank" href="' + feature.properties.url + '" class="blog">BLOG</a><a target="_blank" href="' + feature.properties.url + '/#comments" class="blog">COMENTARIOS</a><form action="/email_country" method="post" class="inliner" id="email_country" ><input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/><i class="fa fa-envelope fix-inline"></i><input type="submit" value="ENVIARME MAS INFO" class="button full success" /></form><a class="ferme"><span>X</span></a></div>';
-          info.innerHTML = content;
-          $(".cur").autoNumeric('init',{
-            aSep: '.',
-            aDec: ',', 
-            aSign: '$ ',
-            mDec: '0'
-          });
-          
+  $('.inline-form').on('submit','#inline_form_country', function(e){
+    e.preventDefault();
+    var $form = $(this), know = $form.find("#know").val(), budget = $form.find("input[name='budget']").val(), travel = $form.find("#travel").val(), where = $form.find("input[name='where']").val(), email = $form.find( "input[name='email']" ).val(), url = $form.attr( "action" );
+    if (typeof email != 'undefined'){
+      $.post(url, { email: email, where: where, travel: travel }, function(resp) {
+          if (resp == "OK" || "success"){
+            $("#map-success").show();
+          }else{
+            console.log("fail delivering message");
+          }
       });
-    });
+    }else{
+      $.get('/countries_all?know='+know+'&budget='+budget+'&travel='+travel+'&where='+where, function(data){
+        var datos = JSON.parse(data);
+        var myLayer = L.mapbox.featureLayer().addTo(map);
+        myLayer.setGeoJSON(datos);
+        myLayer.on('click',function(e){
+            e.layer.closePopup();
+            var feature = e.layer.feature;
+            var content = '<div class="country-post"><img src="http://res.cloudinary.com/aramsvip/image/upload/c_fill,h_275,w_400/v'+feature.properties.version+'/'+feature.properties.cover+'.jpg" /><div class="gradientbg"><h4 class="title-map whitetxt">' + feature.properties.title + '</h4><h6 class="whitetxt price-map"><span class="cur">' + feature.properties.corporate + '</span> a <span class="cur">' + feature.properties.incognito + '</span></h6></div><div class="content"><p class="nm">' + feature.properties.description + '</p></div><a target="_blank" href="' + feature.properties.url + '" class="blog">BLOG</a><a target="_blank" href="' + feature.properties.url + '/#comments" class="blog">COMENTARIOS</a><form action="/email_country" method="post" class="inliner" id="email_country" ><input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/><i class="fa fa-envelope fix-inline"></i><input type="submit" value="ENVIARME MAS INFO" class="button full success" /></form><a class="ferme"><span>X</span></a></div>';
+            info.innerHTML = content;
+            $(".cur").autoNumeric('init',{
+              aSep: '.',
+              aDec: ',', 
+              aSign: '$ ',
+              mDec: '0'
+            });
+          
+        });
+      }); 
+    }
   });
   
   $('input#budget, input#email').bind("change keyup input",function() { 
@@ -224,7 +234,7 @@
     var index = 0;
     var interval = 10000;
     setInterval(function() {
-      //$(".alert-box").remove();
+      $(".alert-box").remove();
       $('.bg-gradient, .bg-grad').animate({
         backgroundColor: 'rgba(0, 88, 160, 0)'
       }, 1000);

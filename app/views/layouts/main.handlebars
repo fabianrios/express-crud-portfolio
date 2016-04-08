@@ -184,7 +184,11 @@
   
   {{#if inlineform}}
   <div class="inline-form">
-    <form action="/info" method="post">
+    <div data-alert class="alert-box success round hidden" id="map-success">
+      Su mensaje ha sido enviado correctamente
+      <a href="#" class="close">&times;</a>
+    </div>
+    <form action="/info" method="post" class="inliner" id="inline_form_country">
       <div class="row">
         <div class="large-3 medium-3 columns">
           <select name="know" id="know">

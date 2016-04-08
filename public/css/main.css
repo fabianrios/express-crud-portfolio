@@ -17882,3 +17882,12 @@ input[type="search"].search {
 
 .jssocials-share-link {
   border-radius: 50%; }
+
+.alert-box.success {
+  background: #0058A0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important; }
+
+#map-success.alert-box.success {
+  max-width: 400px;
+  margin: 0 auto;
+  margin-bottom: 10px; }
