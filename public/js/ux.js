@@ -89,14 +89,12 @@
     if (typeof email != 'undefined'){
       $.post(url, { email: email, where: where, travel: travel }, function(resp) {
           if (resp == "OK" || "success"){
-            console.log("¿and the success?");
             $("#map-success").show();
           }else{
             console.log("fail delivering message");
           }
       });
     }else{
-      console.log("went other way")
       $.get('/countries_all?know='+know+'&budget='+budget+'&travel='+travel+'&where='+where, function(data){
         var datos = JSON.parse(data);
         var myLayer = L.mapbox.featureLayer().addTo(map);
@@ -236,7 +234,7 @@
     var index = 0;
     var interval = 10000;
     setInterval(function() {
-      $(".alert-box").remove();
+      $(".alert-box").hide();
       $('.bg-gradient, .bg-grad').animate({
         backgroundColor: 'rgba(0, 88, 160, 0)'
       }, 1000);
@@ -276,10 +274,8 @@
       if($(window).width() >= 1024) {
         if(know == "no"){
           self.submit();
-          console.log("other way");
         }else{
           $.post(url, { know: know, budget: budget, where: where, travel: travel, email: email },function(data){
-            console.log("success!!");
             $(".fix-inl").show();
             $("#small-success").show();
           });

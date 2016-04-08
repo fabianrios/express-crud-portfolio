@@ -175,7 +175,7 @@ router.post('/info', function (req, res, next) {
     db.Client.create({ mail: body.email, country: body.where, experience: body.travel  }).then(function () {
       var mailOptions = {
           from: '"arams" <hola@arams.com.co>', // sender address
-          to: 'hola@fabianrios.co', // list of receivers
+          to: 'hola@fabianrios.co, santiago@santiagortiz.com', // list of receivers
           subject: 'Nuevo contacto 👥', // Subject line
           text: 'Correo: ' + body.email + ' País: ' + body.where + 'Tipo de viaje: ' + body.travel, // plaintext body
           html: '📩 <b>Correo:</b> ' + body.email + '<br /> <b>País:</b> ' + body.where + '<br /> 💵 <b>Tipo de viaje:</b> ' + body.travel// html body
