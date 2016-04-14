@@ -175,7 +175,7 @@ router.post('/info', function (req, res, next) {
     db.Client.create({ mail: body.email, country: body.where, experience: body.travel  }).then(function () {
       var mailOptions = {
           from: '"arams" <hola@arams.com.co>', // sender address
-          to: 'hola@fabianrios.co, santiago@santiagortiz.com', // list of receivers
+          to: 'sensaciones@arams.com.co', // list of receivers
           subject: 'Nuevo contacto 👥', // Subject line
           text: 'Correo: ' + body.email + ' País: ' + body.where + 'Tipo de viaje: ' + body.travel, // plaintext body
           html: '📩 <b>Correo:</b> ' + body.email + '<br /> <b>País:</b> ' + body.where + '<br /> 💵 <b>Tipo de viaje:</b> ' + body.travel// html body
@@ -433,7 +433,7 @@ router.post('/email_country', function (req, res, next) {
     
     var mailOptions = {
         from: '"arams" <hola@arams.com.co>', // sender address
-        to: 'hola@fabianrios.co, santiago@santiagortiz.com', // list of receivers
+        to: 'sensaciones@arams.com.co', // list of receivers
         subject: 'Nuevo contacto 👥', // Subject line
         text: 'Correo: ' + body.email + '/n País: ' + body.country + '/n Tipo de viaje: ' + body.travel, // plaintext body
         html: '📩 <b>Correo:</b> ' + body.email + '<br /> <b>País:</b> ' + body.country + '<br /> 💵 <b>Tipo de viaje:</b> ' + body.travel// html body
@@ -474,7 +474,7 @@ router.post('/send_contact', function (req, res, next) {
     
     var mailOptions = {
         from: '"arams" <hola@arams.com.co>', // sender address
-        to: 'hola@fabianrios.co, santiago@santiagortiz.com', // list of receivers
+        to: 'sensaciones@arams.com.co', // list of receivers
         subject: 'Nuevo contacto 👥', // Subject line
         text: ' Nombre: ' + body.name + ' Correo: ' + body.email + ' Asunto: ' + body.subject + ' Mensaje: ' + body.message, // plaintext body
         html: ' 🐴 <b>Nombre:</b> ' + body.name + '<br /> 📩 <b>Correo:</b> ' + body.email + '<br /> 📨 <b>Asunto:</b> ' + body.subject + 'Mensaje: ' + body.message // html body
