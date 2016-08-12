@@ -234,7 +234,6 @@
     var index = 0;
     var interval = 10000;
     setInterval(function() {
-      $(".alert-box").hide();
       $('.bg-gradient, .bg-grad').animate({
         backgroundColor: 'rgba(0, 88, 160, 0)'
       }, 1000);
@@ -278,6 +277,7 @@
           $.post(url, { know: know, budget: budget, where: where, travel: travel, email: email },function(data){
             $(".fix-inl").show();
             $("#small-success").show();
+            setTimeout(function(){ $(".alert-box").hide(); }, 4000);
           });
         }
       }else{
