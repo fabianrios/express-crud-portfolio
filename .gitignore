@@ -3,3 +3,4 @@ public/components
 .sass-cache
 .env
 img/uploads/*
+npm-debug.log
