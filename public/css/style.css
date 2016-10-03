@@ -90,8 +90,7 @@
   background: white; }
   @media only screen and (min-width: 40em) {
     .nav {
-      height: 110px;
-      padding: 0 30px;
+      padding: 30px 30px;
       background: white; } }
   .nav.map {
     background: #325595; }
@@ -206,9 +205,11 @@
         width: 50%;
         display: inline-block;
         margin: 0 20px;
-        text-align: right;
+        text-align: left;
         min-width: auto;
-        background: transparent; }
+        background: transparent;
+        position: relative;
+        top: -30px; }
         .nav ul.navigation li {
           text-align: right;
           width: auto;
@@ -221,24 +222,6 @@
     @media only screen and (max-device-width: 640px), only screen and (max-device-width: 667px), only screen and (max-width: 480px) {
       .nav ul.navigation {
         display: none; } }
-  .nav ul.social {
-    list-style-type: none;
-    display: none;
-    margin: 0;
-    text-align: center;
-    width: 100%;
-    margin-bottom: 20px; }
-    .nav ul.social li {
-      display: inline-block;
-      margin: 0 16px; }
-    @media only screen and (min-width: 40em) {
-      .nav ul.social {
-        width: 20%;
-        display: inline-block;
-        margin-bottom: 0;
-        text-align: right; }
-        .nav ul.social li {
-          margin: 0 20px; } }
 
 #like {
   margin: 0 auto;
@@ -413,15 +396,57 @@ ul.centerize {
     #info {
       display: block; } }
 
+table.servicios {
+  width: 100%;
+  border: solid 1px #bbbbbb;
+  border-collapse: collapse;
+  border-spacing: 0; }
+  table.servicios thead {
+    background: #0058a0; }
+    table.servicios thead tr th {
+      color: rgba(255, 255, 255, 0.87);
+      line-height: 2rem;
+      font-size: 18px;
+      text-align: center;
+      border: solid 1px #bbb; }
+  table.servicios tbody tr td {
+    border: solid 1px #bbbbbb;
+    line-height: 1.8rem;
+    color: #505050;
+    font-size: 14px; }
+
 .footer {
   height: 56px;
-  background-color: #3b3b3b;
+  background-color: #0072bc;
   padding: 0 28px; }
   .footer p {
+    display: inline-block;
+    width: 50%;
     line-height: 56px;
     color: rgba(255, 255, 255, 0.5);
     font-size: 12px;
     margin: 0; }
+  .footer .social {
+    display: block;
+    list-style-type: none;
+    margin: 0;
+    text-align: center;
+    width: 100%; }
+    .footer .social li {
+      display: inline-block;
+      margin: 0 16px; }
+      .footer .social li a {
+        color: #fff; }
+    @media only screen and (min-width: 40em) {
+      .footer .social {
+        float: right;
+        line-height: 60px;
+        width: 30%;
+        display: inline-block;
+        margin-bottom: 0;
+        text-align: right; }
+        .footer .social li {
+          margin: 0 20px; } }
 
 .maxrow {
   width: 90vw; }

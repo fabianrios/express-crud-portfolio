@@ -41,7 +41,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -1129,7 +1129,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -1261,7 +1261,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -1333,8 +1333,8 @@ select {
   padding: 0.875rem 1.5rem 0.875rem 0.875rem;
   font-size: 0.8125rem;
   transition: opacity 300ms ease-out;
-  background-color: #242424;
-  border-color: #1f1f1f;
+  background-color: #505050;
+  border-color: #454545;
   color: #FFFFFF; }
   .alert-box .close {
     font-size: 1.375rem;
@@ -1418,7 +1418,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -1825,7 +1825,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -1904,11 +1904,11 @@ select {
     font-size: 0.6875rem;
     line-height: 0.6875rem;
     text-transform: uppercase;
-    color: #242424; }
+    color: #505050; }
     .breadcrumbs > *:hover a, .breadcrumbs > *:focus a {
       text-decoration: underline; }
     .breadcrumbs > * a {
-      color: #242424; }
+      color: #505050; }
     .breadcrumbs > *.current {
       cursor: default;
       color: #333333; }
@@ -1982,7 +1982,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -2086,7 +2086,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -2167,12 +2167,12 @@ button, .button {
   padding-bottom: 1.0625rem;
   padding-left: 2rem;
   font-size: 1rem;
-  background-color: #242424;
-  border-color: #1d1d1d;
+  background-color: #505050;
+  border-color: #404040;
   color: #FFFFFF;
   transition: background-color 300ms ease-out; }
   button:hover, button:focus, .button:hover, .button:focus {
-    background-color: #1d1d1d; }
+    background-color: #404040; }
   button:hover, button:focus, .button:hover, .button:focus {
     color: #FFFFFF; }
   button.secondary, .button.secondary {
@@ -2248,18 +2248,18 @@ button, .button {
   button.round, .button.round {
     border-radius: 1000px; }
   button.disabled, button[disabled], .button.disabled, .button[disabled] {
-    background-color: #242424;
-    border-color: #1d1d1d;
+    background-color: #505050;
+    border-color: #404040;
     color: #FFFFFF;
     cursor: default;
     opacity: 0.7;
     box-shadow: none; }
     button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
-      background-color: #1d1d1d; }
+      background-color: #404040; }
     button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
       color: #FFFFFF; }
     button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
-      background-color: #242424; }
+      background-color: #505050; }
     button.disabled.secondary, button[disabled].secondary, .button.disabled.secondary, .button[disabled].secondary {
       background-color: #e7e7e7;
       border-color: #b9b9b9;
@@ -2731,7 +2731,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -2812,12 +2812,12 @@ button, .button {
   padding-bottom: 1.0625rem;
   padding-left: 2rem;
   font-size: 1rem;
-  background-color: #242424;
-  border-color: #1d1d1d;
+  background-color: #505050;
+  border-color: #404040;
   color: #FFFFFF;
   transition: background-color 300ms ease-out; }
   button:hover, button:focus, .button:hover, .button:focus {
-    background-color: #1d1d1d; }
+    background-color: #404040; }
   button:hover, button:focus, .button:hover, .button:focus {
     color: #FFFFFF; }
   button.secondary, .button.secondary {
@@ -2893,18 +2893,18 @@ button, .button {
   button.round, .button.round {
     border-radius: 1000px; }
   button.disabled, button[disabled], .button.disabled, .button[disabled] {
-    background-color: #242424;
-    border-color: #1d1d1d;
+    background-color: #505050;
+    border-color: #404040;
     color: #FFFFFF;
     cursor: default;
     opacity: 0.7;
     box-shadow: none; }
     button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
-      background-color: #1d1d1d; }
+      background-color: #404040; }
     button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
       color: #FFFFFF; }
     button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
-      background-color: #242424; }
+      background-color: #505050; }
     button.disabled.secondary, button[disabled].secondary, .button.disabled.secondary, .button[disabled].secondary {
       background-color: #e7e7e7;
       border-color: #b9b9b9;
@@ -3020,7 +3020,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -3294,7 +3294,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -3632,7 +3632,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -3782,7 +3782,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -3907,7 +3907,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -4011,7 +4011,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -4092,12 +4092,12 @@ button, .button {
   padding-bottom: 1.0625rem;
   padding-left: 2rem;
   font-size: 1rem;
-  background-color: #242424;
-  border-color: #1d1d1d;
+  background-color: #505050;
+  border-color: #404040;
   color: #FFFFFF;
   transition: background-color 300ms ease-out; }
   button:hover, button:focus, .button:hover, .button:focus {
-    background-color: #1d1d1d; }
+    background-color: #404040; }
   button:hover, button:focus, .button:hover, .button:focus {
     color: #FFFFFF; }
   button.secondary, .button.secondary {
@@ -4173,18 +4173,18 @@ button, .button {
   button.round, .button.round {
     border-radius: 1000px; }
   button.disabled, button[disabled], .button.disabled, .button[disabled] {
-    background-color: #242424;
-    border-color: #1d1d1d;
+    background-color: #505050;
+    border-color: #404040;
     color: #FFFFFF;
     cursor: default;
     opacity: 0.7;
     box-shadow: none; }
     button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
-      background-color: #1d1d1d; }
+      background-color: #404040; }
     button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
       color: #FFFFFF; }
     button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
-      background-color: #242424; }
+      background-color: #505050; }
     button.disabled.secondary, button[disabled].secondary, .button.disabled.secondary, .button[disabled].secondary {
       background-color: #e7e7e7;
       border-color: #b9b9b9;
@@ -4655,7 +4655,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -4788,7 +4788,7 @@ select {
   .icon-bar > * i {
     color: #FFFFFF; }
   .icon-bar > a:hover {
-    background: #242424; }
+    background: #505050; }
     .icon-bar > a:hover label {
       color: #FFFFFF; }
     .icon-bar > a:hover i {
@@ -4887,7 +4887,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -5006,7 +5006,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -5264,7 +5264,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -5381,7 +5381,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -5455,7 +5455,7 @@ select {
   margin-bottom: auto;
   padding: 0.25rem 0.5rem 0.25rem;
   font-size: 0.6875rem;
-  background-color: #242424;
+  background-color: #505050;
   color: #FFFFFF; }
   .label.radius {
     border-radius: 3px; }
@@ -5519,7 +5519,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -5635,7 +5635,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -5971,7 +5971,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -6062,12 +6062,12 @@ ul.pagination {
     ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus, ul.pagination li.unavailable:hover button, ul.pagination li.unavailable button:focus {
       background: transparent; }
     ul.pagination li.current a, ul.pagination li.current button {
-      background: #242424;
+      background: #505050;
       color: #FFFFFF;
       font-weight: bold;
       cursor: default; }
       ul.pagination li.current a:hover, ul.pagination li.current a:focus, ul.pagination li.current button:hover, ul.pagination li.current button:focus {
-        background: #242424; }
+        background: #505050; }
   ul.pagination li {
     float: left;
     display: block; }
@@ -6121,7 +6121,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -6206,10 +6206,10 @@ select {
   .panel.callout {
     border-style: solid;
     border-width: 1px;
-    border-color: #d7d7d7;
+    border-color: #dadada;
     margin-bottom: 1.25rem;
     padding: 1.25rem;
-    background: #f2f2f2;
+    background: whitesmoke;
     color: #333333; }
     .panel.callout > :first-child {
       margin-top: 0; }
@@ -6223,9 +6223,9 @@ select {
       .panel.callout h1.subheader, .panel.callout h2.subheader, .panel.callout h3.subheader, .panel.callout h4.subheader, .panel.callout h5.subheader, .panel.callout h6.subheader {
         line-height: 1.4; }
     .panel.callout a:not(.button) {
-      color: #242424; }
+      color: #505050; }
       .panel.callout a:not(.button):hover, .panel.callout a:not(.button):focus {
-        color: #1f1f1f; }
+        color: #454545; }
   .panel.radius {
     border-radius: 3px; }
 
@@ -6271,7 +6271,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -6421,7 +6421,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -6491,7 +6491,7 @@ select {
   padding: 0.125rem;
   margin-bottom: 0.625rem; }
   .progress .meter {
-    background: #242424;
+    background: #505050;
     height: 100%;
     display: block; }
   .progress.secondary .meter {
@@ -6557,7 +6557,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -6654,28 +6654,28 @@ select {
     background: #FAFAFA;
     border-radius: 3px; }
     .range-slider.radius .range-slider-handle {
-      background: #242424;
+      background: #505050;
       border-radius: 3px; }
       .range-slider.radius .range-slider-handle:hover {
-        background: #202020; }
+        background: #464646; }
   .range-slider.round {
     background: #FAFAFA;
     border-radius: 1000px; }
     .range-slider.round .range-slider-handle {
-      background: #242424;
+      background: #505050;
       border-radius: 1000px; }
       .range-slider.round .range-slider-handle:hover {
-        background: #202020; }
+        background: #464646; }
   .range-slider.disabled, .range-slider[disabled] {
     background: #FAFAFA;
     cursor: default;
     opacity: 0.7; }
     .range-slider.disabled .range-slider-handle, .range-slider[disabled] .range-slider-handle {
-      background: #242424;
+      background: #505050;
       cursor: default;
       opacity: 0.7; }
       .range-slider.disabled .range-slider-handle:hover, .range-slider[disabled] .range-slider-handle:hover {
-        background: #202020; }
+        background: #464646; }
 
 .range-slider-active-segment {
   display: inline-block;
@@ -6694,9 +6694,9 @@ select {
   cursor: pointer;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
-  background: #242424; }
+  background: #505050; }
   .range-slider-handle:hover {
-    background: #202020; }
+    background: #464646; }
 
 meta.foundation-version {
   font-family: "/{{VERSION}}/"; }
@@ -6740,7 +6740,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -6844,7 +6844,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -8063,7 +8063,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -8138,14 +8138,14 @@ select {
     font-weight: normal; }
     .side-nav li a:not(.button) {
       display: block;
-      color: #242424;
+      color: #505050;
       margin: 0;
       padding: 0.4375rem 0.875rem; }
       .side-nav li a:not(.button):hover, .side-nav li a:not(.button):focus {
         background: rgba(0, 0, 0, 0.025);
-        color: #666666; }
+        color: #858585; }
     .side-nav li.active > a:first-child:not(.button) {
-      color: #666666;
+      color: #858585;
       font-weight: normal;
       font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif; }
     .side-nav li.divider {
@@ -8155,7 +8155,7 @@ select {
       list-style: none;
       border-top-color: white; }
     .side-nav li.heading {
-      color: #242424;
+      color: #505050;
       font-size: 0.875rem;
       font-weight: bold;
       text-transform: uppercase; }
@@ -8202,7 +8202,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -8306,7 +8306,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -8387,12 +8387,12 @@ button, .button {
   padding-bottom: 1.0625rem;
   padding-left: 2rem;
   font-size: 1rem;
-  background-color: #242424;
-  border-color: #1d1d1d;
+  background-color: #505050;
+  border-color: #404040;
   color: #FFFFFF;
   transition: background-color 300ms ease-out; }
   button:hover, button:focus, .button:hover, .button:focus {
-    background-color: #1d1d1d; }
+    background-color: #404040; }
   button:hover, button:focus, .button:hover, .button:focus {
     color: #FFFFFF; }
   button.secondary, .button.secondary {
@@ -8468,18 +8468,18 @@ button, .button {
   button.round, .button.round {
     border-radius: 1000px; }
   button.disabled, button[disabled], .button.disabled, .button[disabled] {
-    background-color: #242424;
-    border-color: #1d1d1d;
+    background-color: #505050;
+    border-color: #404040;
     color: #FFFFFF;
     cursor: default;
     opacity: 0.7;
     box-shadow: none; }
     button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
-      background-color: #1d1d1d; }
+      background-color: #404040; }
     button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
       color: #FFFFFF; }
     button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
-      background-color: #242424; }
+      background-color: #505050; }
     button.disabled.secondary, button[disabled].secondary, .button.disabled.secondary, .button[disabled].secondary {
       background-color: #e7e7e7;
       border-color: #b9b9b9;
@@ -8595,7 +8595,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -8827,7 +8827,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -8923,14 +8923,14 @@ select {
     .sub-nav li.active a {
       border-radius: 3px;
       font-weight: normal;
-      background: #242424;
+      background: #505050;
       padding: 0.1875rem 1rem;
       cursor: default;
       color: #FFFFFF; }
       .sub-nav dt.active a:hover,
       .sub-nav dd.active a:hover,
       .sub-nav li.active a:hover {
-        background: #1f1f1f; }
+        background: #454545; }
 
 meta.foundation-version {
   font-family: "/{{VERSION}}/"; }
@@ -8974,7 +8974,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -9080,7 +9080,7 @@ select {
     -moz-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0); }
   .switch input:checked + label {
-    background: #242424; }
+    background: #505050; }
   .switch input:checked + label:after {
     left: 2.25rem; }
   .switch label {
@@ -9097,7 +9097,7 @@ select {
   .switch label:after {
     background: #FFFFFF; }
   .switch input:checked + label {
-    background: #242424; }
+    background: #505050; }
   .switch.large label {
     width: 5rem;
     height: 2.5rem; }
@@ -9175,7 +9175,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -9322,7 +9322,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -9426,7 +9426,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -10596,7 +10596,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -10667,7 +10667,7 @@ select {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
   transition: all 200ms ease-out; }
   .th:hover, .th:focus {
-    box-shadow: 0 0 6px 1px rgba(36, 36, 36, 0.5); }
+    box-shadow: 0 0 6px 1px rgba(80, 80, 80, 0.5); }
   .th.radius {
     border-radius: 3px; }
 
@@ -10713,7 +10713,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -10782,8 +10782,8 @@ select {
   font-weight: bold;
   color: #333333; }
   .has-tip:hover, .has-tip:focus {
-    border-bottom: dotted 1px #101010;
-    color: #242424; }
+    border-bottom: dotted 1px #242424;
+    color: #505050; }
   .has-tip.tip-left, .has-tip.tip-right {
     float: none !important; }
 
@@ -10820,8 +10820,8 @@ select {
     .tooltip.round > .nub {
       left: 2rem; }
   .tooltip.opened {
-    color: #242424 !important;
-    border-bottom: dotted 1px #101010 !important; }
+    color: #505050 !important;
+    border-bottom: dotted 1px #242424 !important; }
 
 .tap-to-close {
   display: block;
@@ -10893,7 +10893,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -10997,7 +10997,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -12085,7 +12085,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -12166,12 +12166,12 @@ button, .button {
   padding-bottom: 1.0625rem;
   padding-left: 2rem;
   font-size: 1rem;
-  background-color: #242424;
-  border-color: #1d1d1d;
+  background-color: #505050;
+  border-color: #404040;
   color: #FFFFFF;
   transition: background-color 300ms ease-out; }
   button:hover, button:focus, .button:hover, .button:focus {
-    background-color: #1d1d1d; }
+    background-color: #404040; }
   button:hover, button:focus, .button:hover, .button:focus {
     color: #FFFFFF; }
   button.secondary, .button.secondary {
@@ -12247,18 +12247,18 @@ button, .button {
   button.round, .button.round {
     border-radius: 1000px; }
   button.disabled, button[disabled], .button.disabled, .button[disabled] {
-    background-color: #242424;
-    border-color: #1d1d1d;
+    background-color: #505050;
+    border-color: #404040;
     color: #FFFFFF;
     cursor: default;
     opacity: 0.7;
     box-shadow: none; }
     button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
-      background-color: #1d1d1d; }
+      background-color: #404040; }
     button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
       color: #FFFFFF; }
     button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
-      background-color: #242424; }
+      background-color: #505050; }
     button.disabled.secondary, button[disabled].secondary, .button.disabled.secondary, .button[disabled].secondary {
       background-color: #e7e7e7;
       border-color: #b9b9b9;
@@ -12374,7 +12374,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -12478,7 +12478,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -12559,12 +12559,12 @@ button, .button {
   padding-bottom: 1.0625rem;
   padding-left: 2rem;
   font-size: 1rem;
-  background-color: #242424;
-  border-color: #1d1d1d;
+  background-color: #505050;
+  border-color: #404040;
   color: #FFFFFF;
   transition: background-color 300ms ease-out; }
   button:hover, button:focus, .button:hover, .button:focus {
-    background-color: #1d1d1d; }
+    background-color: #404040; }
   button:hover, button:focus, .button:hover, .button:focus {
     color: #FFFFFF; }
   button.secondary, .button.secondary {
@@ -12640,18 +12640,18 @@ button, .button {
   button.round, .button.round {
     border-radius: 1000px; }
   button.disabled, button[disabled], .button.disabled, .button[disabled] {
-    background-color: #242424;
-    border-color: #1d1d1d;
+    background-color: #505050;
+    border-color: #404040;
     color: #FFFFFF;
     cursor: default;
     opacity: 0.7;
     box-shadow: none; }
     button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
-      background-color: #1d1d1d; }
+      background-color: #404040; }
     button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
       color: #FFFFFF; }
     button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
-      background-color: #242424; }
+      background-color: #505050; }
     button.disabled.secondary, button[disabled].secondary, .button.disabled.secondary, .button[disabled].secondary {
       background-color: #e7e7e7;
       border-color: #b9b9b9;
@@ -13235,11 +13235,11 @@ meta.foundation-mq-topbar {
         font-size: 0.8125rem;
         padding-right: 15px;
         padding-left: 15px;
-        background-color: #242424;
-        border-color: #1d1d1d;
+        background-color: #505050;
+        border-color: #404040;
         color: #FFFFFF; }
         .top-bar-section ul li > a.button:hover, .top-bar-section ul li > a.button:focus {
-          background-color: #1d1d1d; }
+          background-color: #404040; }
         .top-bar-section ul li > a.button:hover, .top-bar-section ul li > a.button:focus {
           color: #FFFFFF; }
       .top-bar-section ul li > a.button.secondary {
@@ -13278,11 +13278,11 @@ meta.foundation-mq-topbar {
       font-size: 0.8125rem;
       padding-right: 15px;
       padding-left: 15px;
-      background-color: #242424;
-      border-color: #1d1d1d;
+      background-color: #505050;
+      border-color: #404040;
       color: #FFFFFF; }
       .top-bar-section ul li > button:hover, .top-bar-section ul li > button:focus {
-        background-color: #1d1d1d; }
+        background-color: #404040; }
       .top-bar-section ul li > button:hover, .top-bar-section ul li > button:focus {
         color: #FFFFFF; }
       .top-bar-section ul li > button.secondary {
@@ -13322,10 +13322,10 @@ meta.foundation-mq-topbar {
       background: #333333;
       color: #FFFFFF; }
     .top-bar-section ul li.active > a {
-      background: #242424;
+      background: #505050;
       color: #FFFFFF; }
       .top-bar-section ul li.active > a:hover {
-        background: #1f1f1f;
+        background: #454545;
         color: #FFFFFF; }
   .top-bar-section .has-form {
     padding: 15px; }
@@ -13456,9 +13456,9 @@ meta.foundation-mq-topbar {
       padding: 0 15px;
       line-height: 45px;
       color: #FFFFFF;
-      background: #242424; }
+      background: #505050; }
       .top-bar-section li.active:not(.has-form) a:not(.button):hover {
-        background: #1f1f1f;
+        background: #454545;
         color: #FFFFFF; }
     .top-bar-section .has-dropdown > a {
       padding-right: 35px !important; }
@@ -13555,7 +13555,7 @@ meta.foundation-mq-topbar {
     background: #333333;
     color: #FFFFFF; }
   .no-js .top-bar-section ul li:active > a {
-    background: #242424;
+    background: #505050;
     color: #FFFFFF; }
   .no-js .top-bar-section .has-dropdown:hover > .dropdown {
     display: block;
@@ -13615,7 +13615,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -13834,11 +13834,11 @@ td {
 
 /* Default Link Styles */
 a {
-  color: #242424;
+  color: #505050;
   text-decoration: none;
   line-height: inherit; }
   a:hover, a:focus {
-    color: #1f1f1f; }
+    color: #454545; }
   a img {
     border: none; }
 
@@ -13863,14 +13863,14 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
   font-weight: bold;
   font-style: normal;
-  color: #222222;
+  color: #505050;
   text-rendering: optimizeLegibility;
   margin-top: 0.2rem;
   margin-bottom: 0.5rem;
   line-height: 1.4; }
   h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
     font-size: 60%;
-    color: #6f6f6f;
+    color: #8d8d8d;
     line-height: 0; }
 
 h1 {
@@ -13893,7 +13893,7 @@ h6 {
 
 .subheader {
   line-height: 1.4;
-  color: #6f6f6f;
+  color: #8d8d8d;
   font-weight: normal;
   margin-top: 0.2rem;
   margin-bottom: 0.5rem; }
@@ -13989,7 +13989,7 @@ abbr,
 acronym {
   text-transform: uppercase;
   font-size: 90%;
-  color: #222;
+  color: #505050;
   cursor: help; }
 
 abbr {
@@ -14005,17 +14005,17 @@ blockquote {
   blockquote cite {
     display: block;
     font-size: 0.8125rem;
-    color: #555555; }
+    color: #787878; }
     blockquote cite:before {
       content: "\2014 \0020"; }
     blockquote cite a,
     blockquote cite a:visited {
-      color: #555555; }
+      color: #787878; }
 
 blockquote,
 blockquote p {
   line-height: 1.6;
-  color: #6f6f6f; }
+  color: #8d8d8d; }
 
 /* Microformats */
 .vcard {
@@ -14173,7 +14173,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -14277,7 +14277,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -14496,11 +14496,11 @@ td {
 
 /* Default Link Styles */
 a {
-  color: #242424;
+  color: #505050;
   text-decoration: none;
   line-height: inherit; }
   a:hover, a:focus {
-    color: #1f1f1f; }
+    color: #454545; }
   a img {
     border: none; }
 
@@ -14525,14 +14525,14 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
   font-weight: bold;
   font-style: normal;
-  color: #222222;
+  color: #505050;
   text-rendering: optimizeLegibility;
   margin-top: 0.2rem;
   margin-bottom: 0.5rem;
   line-height: 1.4; }
   h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
     font-size: 60%;
-    color: #6f6f6f;
+    color: #8d8d8d;
     line-height: 0; }
 
 h1 {
@@ -14555,7 +14555,7 @@ h6 {
 
 .subheader {
   line-height: 1.4;
-  color: #6f6f6f;
+  color: #8d8d8d;
   font-weight: normal;
   margin-top: 0.2rem;
   margin-bottom: 0.5rem; }
@@ -14651,7 +14651,7 @@ abbr,
 acronym {
   text-transform: uppercase;
   font-size: 90%;
-  color: #222;
+  color: #505050;
   cursor: help; }
 
 abbr {
@@ -14667,17 +14667,17 @@ blockquote {
   blockquote cite {
     display: block;
     font-size: 0.8125rem;
-    color: #555555; }
+    color: #787878; }
     blockquote cite:before {
       content: "\2014 \0020"; }
     blockquote cite a,
     blockquote cite a:visited {
-      color: #555555; }
+      color: #787878; }
 
 blockquote,
 blockquote p {
   line-height: 1.6;
-  color: #6f6f6f; }
+  color: #8d8d8d; }
 
 /* Microformats */
 .vcard {
@@ -15251,7 +15251,7 @@ body {
 
 body {
   background: #fff;
-  color: #222;
+  color: #505050;
   padding: 0;
   margin: 0;
   font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
@@ -17833,9 +17833,45 @@ th.hide-for-touch {
   overflow: visible;
   clip: auto; }
 
+body {
+  color: #505050; }
+
 .main-client-side {
   background: #f6f6f6;
   padding: 50px 0; }
+
+.article h4 {
+  margin: 30px 0; }
+.article img {
+  margin: 10px 0; }
+
+.the_title {
+  position: relative;
+  text-align: center;
+  margin-bottom: 60px; }
+  .the_title:before {
+    height: 1px;
+    width: 150px;
+    content: ' ';
+    background: #979797;
+    display: block;
+    position: relative;
+    top: 18px; }
+  .the_title:after {
+    height: 1px;
+    width: 150px;
+    content: ' ';
+    background: #979797;
+    display: block;
+    position: absolute;
+    top: 18px;
+    right: 0; }
+
+.db {
+  display: block; }
+
+p {
+  text-align: justify; }
 
 .cke_dialog_body input[type="text"], .cke_dialog_body input[type="password"], .cke_dialog_body input[type="date"], .cke_dialog_body input[type="datetime"], .cke_dialog_body input[type="datetime-local"], .cke_dialog_body input[type="month"], .cke_dialog_body input[type="week"], .cke_dialog_body input[type="email"], .cke_dialog_body input[type="number"], .cke_dialog_body input[type="search"], .cke_dialog_body input[type="tel"], .cke_dialog_body input[type="time"], .cke_dialog_body input[type="url"] {
   height: 30px;
@@ -17966,14 +18002,28 @@ input[type="search"].search {
   -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); }
+  .button.cita {
+    font-weight: bold;
+    margin-left: 150px;
+    padding: 10px 30px;
+    position: relative;
+    top: -30px; }
 
 .cke.cke_reset {
   margin: 20px 0; }
 
 .reveal-modal, dialog {
   padding: 0; }
-  .reveal-modal img, dialog img {
-    width: 100%; }
+  .reveal-modal .button, dialog .button {
+    margin-bottom: 0; }
+  .reveal-modal img.lateral, dialog img.lateral {
+    display: inline-block;
+    width: 25%;
+    vertical-align: bottom; }
+  .reveal-modal .texto, dialog .texto {
+    width: 70%;
+    display: inline-block;
+    padding: 0 20px; }
 
 .accordion {
   margin-left: 0; }
@@ -17988,13 +18038,18 @@ input[type="search"].search {
   position: relative; }
 
 .reveal-modal .close-reveal-modal, dialog .close-reveal-modal {
-  top: 0;
-  right: 0;
+  font-weight: 200;
+  top: -15px;
+  right: -15px;
   color: #fff;
-  width: 60px;
-  height: 60px;
+  width: 35px;
+  height: 35px;
   text-align: center;
-  line-height: 60px; }
+  line-height: 30px;
+  background: #EE7672;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%; }
 
 .jssocials-share-link {
   border-radius: 50%; }

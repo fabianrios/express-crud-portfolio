@@ -107,8 +107,7 @@
   padding: 0 10px;
   background: white;
   @media only screen and (min-width: 40em){ 
-    height: 110px;
-    padding: 0 30px;
+    padding: 30px 30px;
     background: white;
   }
   &.map{
@@ -256,9 +255,11 @@
         width: 50%;
         display: inline-block;
         margin:0 20px;
-        text-align: right;;
+        text-align: left;
         min-width: auto;
         background: transparent;
+        position: relative;
+        top: -30px;
         li{
           text-align: right;
           width: auto;
@@ -274,29 +275,9 @@
          display: none;
       }
     }
-    &.social{
-      list-style-type: none;
-      display: none;
-      margin: 0;
-      text-align: center;
-      width: 100%;
-      margin-bottom: 20px;
-      li{
-        display: inline-block;
-        margin: 0 16px;
-      }
-       @media only screen and (min-width: 40em){ 
-         width: 20%;
-         display: inline-block;
-         margin-bottom: 0;
-         text-align: right;
-         li{
-           margin: 0 20px;
-         }
-       }
-    }
   }
 }
+
 
 #like{
   margin: 0 auto;
@@ -504,16 +485,73 @@ ul.centerize{
      }
 }
 
+
+table.servicios{
+  width: 100%;
+  border:solid 1px #bbbbbb;
+  border-collapse: collapse;
+  border-spacing:0;
+  thead{
+    background: #0058a0;
+    tr{
+      th{
+       color: rgba(255, 255, 255, 0.87);  
+       line-height: 2rem;
+       font-size: 18px;
+       text-align: center;
+       border: solid 1px #bbb;
+      }
+    } 
+  }
+  tbody{
+    tr{
+      td{
+        border: solid 1px #bbbbbb;
+        line-height: 1.8rem;
+        color: #505050;
+        font-size: 14px;
+      } 
+    }
+  }
+}
+
 //FOOTER
 .footer{
   height: 56px;
-  background-color: #3b3b3b;
+  background-color: #0072bc;
   padding:0 28px;
   p{
+    display: inline-block;
+    width: 50%;
     line-height: 56px;
     color: rgba(255, 255, 255, 0.5);
     font-size: 12px;
     margin: 0;
+  }
+  .social{
+    display: block;
+    list-style-type: none;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    li{
+      display: inline-block;
+      margin: 0 16px;
+      a{
+        color: #fff;
+      }
+    }
+     @media only screen and (min-width: 40em){ 
+       float: right;
+       line-height: 60px;
+       width: 30%;
+       display: inline-block;
+       margin-bottom: 0;
+       text-align: right;
+       li{
+         margin: 0 20px;
+       }
+     }
   }
 }
 

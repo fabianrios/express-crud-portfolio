@@ -473,8 +473,8 @@ router.post('/send_contact', function (req, res, next) {
     });
     
     var mailOptions = {
-        from: '"arams" <hola@arams.com.co>', // sender address
-        to: 'sensaciones@arams.com.co', // list of receivers
+        from: '"Maria bahamon" <info@mariabahamon.com>', // sender address
+        to: 'hola@fabiarnios.co', // list of receivers
         subject: 'Nuevo contacto 👥', // Subject line
         text: ' Nombre: ' + body.name + ' Correo: ' + body.email + ' Asunto: ' + body.subject + ' Mensaje: ' + body.message, // plaintext body
         html: ' 🐴 <b>Nombre:</b> ' + body.name + '<br /> 📩 <b>Correo:</b> ' + body.email + '<br /> 📨 <b>Asunto:</b> ' + body.subject + 'Mensaje: ' + body.message // html body
@@ -540,9 +540,16 @@ router.get('/article/create', notify, authorize, function (req, res, next) {
 });
 
 
-router.get('/experiences', function (req, res, next) {
-    res.render('experiences', {
-      title: 'Experiencias',
+router.get('/quienes_somos', function (req, res, next) {
+    res.render('quienes_somos', {
+      title: 'Quienes somos',
+      logo: "group-2.png"
+    });
+});
+
+router.get('/servicios', function (req, res, next) {
+    res.render('servicios', {
+      title: 'Servicios',
       logo: "group-2.png"
     });
 });

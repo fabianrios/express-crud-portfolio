@@ -69,7 +69,7 @@ module.exports = function(app, config) {
        yes404: true, 
        pageTitle: "404",
        author: "Fabián Ríos",
-       description: "Aram's website",
+       description: "María Bahamón website",
        logo: "group-2.png",
        bg: "../img/404.jpg"
     });

@@ -6,10 +6,10 @@ var config = {
   development: {
     root: rootPath,
     dialect: 'postgresql',
-    username: 'fabianrios',
-    password: '774_fab',
+    username: 'frios',
+    password: '',
     app: {
-      name: 'aram'
+      name: 'bahamon'
     },
     port: process.env.PORT || 3000,
     db: 'postgres://localhost/aram-development'
@@ -18,7 +18,7 @@ var config = {
   test: {
     root: rootPath,
     app: {
-      name: 'aram'
+      name: 'bahamon'
     },
     port: process.env.PORT || 3000,
     db: 'postgres://localhost/aram-test'
@@ -27,7 +27,7 @@ var config = {
   production: {
     root: rootPath,
     app: {
-      name: 'aram'
+      name: 'bahamon'
     },
     port: process.env.PORT || 3000,
     db: process.env.DATABASE_URL
