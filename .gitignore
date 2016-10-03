@@ -4,3 +4,4 @@ public/components
 .env
 img/uploads/*
 npm-debug.log
+img/*

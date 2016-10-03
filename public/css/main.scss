@@ -5,8 +5,11 @@
 @import "../../node_modules/font-awesome/scss/font-awesome";
 @import "mixins";
 
-
-
+$main-bg:#f6f6f6;
+.main-client-side{
+  background: $main-bg;
+  padding: 50px 0;
+}
 
 .cke_dialog_body{
   input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"]{

@@ -225,44 +225,8 @@
       };
       xhr.send();
   }
-  get_covers();
-  
-  function excitement(){
-    $('.navigation, .social').css({"display":"inline-block"});
-    
-    var img_array = [1, 2, 3];
-    var index = 0;
-    var interval = 10000;
-    setInterval(function() {
-      $('.bg-gradient, .bg-grad').animate({
-        backgroundColor: 'rgba(0, 88, 160, 0)'
-      }, 1000);
 
-      var image = $('.main-body.home');  
-      if (indirect.covers){
-       console.log("indirect.covers", indirect.covers, index++ % indirect.covers.length);
-       image.css("background-image", "url('http://res.cloudinary.com/aramsvip/image/upload/v"+indirect.covers[index++ % indirect.covers.length].version+"/"+indirect.covers[index++ % indirect.covers.length].public_id+".jpg')"); 
-      }
-      $('.bg-gradient, .bg-grad').delay(8000).animate({
-        backgroundColor: 'rgba(0, 88, 160, .9)'
-      }, 1000);
-    }, interval);
-  }
-  
-  if($(window).width() >= 1024) {
-    excitement();
-  }else if ($(window).width() <= 720){  // movil
-    $('.navigation, .social').css({"display":"none"});
-  }
-  
-   $(window).resize(function() {
-        // This will fire each time the window is resized:
-        if($(window).width() >= 1024) {
-          
-        }else if ($(window).width() <= 720){  // movil
-          $('.navigation, .social').css({"display":"none"});
-        }
-    }).resize(); // This will simulate a resize to trigger the initial run.
+ 
   
   
     $('.home-form').submit(function(e){
