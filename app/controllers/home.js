@@ -10,6 +10,24 @@ var cloudinary = require('cloudinary');
 var dateFormat = require('dateformat');
 var nodemailer = require('nodemailer');
 
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var passport = require('passport');
+var gcal     = require('google-calendar');
+ 
+
+passport.use(new GoogleStrategy({
+    clientID: "622846397355-lravjc6ecklrhpi5gkr6t1f0jt6rk5kv.apps.googleusercontent.com",
+    clientSecret: "AIzaSyDE-D6bZUVzkxn4dofQRKJnKDQGRMlBhp8",
+    callbackURL: "http://localhost:3000/auth/callback",
+    scope: ['openid', 'email', 'https://www.googleapis.com/auth/calendar'] 
+  },
+  function(accessToken, refreshToken, profile, done) {
+    profile.accessToken = accessToken;
+    return done(null, profile);
+  }
+));
+
+
 //email
 var transporter = nodemailer.createTransport({
         service: 'Gmail',
@@ -100,6 +118,13 @@ module.exports = function (app) {
 };
 
 router.get('/', function (req, res, next) {
+    
+    
+    gcal(req.session.access_token).calendarList.list(function(err, data) {
+      if(err){console.log(err);}
+      console.log(data);
+    });
+    
     res.locals = {
       pageTitle: "form",
       background: true,
