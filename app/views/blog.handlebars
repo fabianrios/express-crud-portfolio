@@ -1,45 +1,47 @@
-<div class="row">
-  <div class="large-12 columns">
-      <!-- <ul class="filter centerize">
-        <li><a href="/blog/">TODOS</a></li>
-        <li><a href="/blog/?filter=tips">TIPS</a></li>
-        <li><a href="/blog/?filter=viajes">VIAJES</a></li>
-      </ul> -->
-      <ul class="no-bullet posts">
-      {{#each articles}}
-      <li class="all">
-        <div class="index-cover">
-          {{#if this.cover}}
-            <a href="/article/{{this.id}}">
-              <img src="http://res.cloudinary.com/{{../cloudinary_account}}/image/upload/c_fill,h_210,w_300/v{{this.version}}/{{this.cover}}" alt="" />
-              <div class="index-content">
-                <h5 class="title">{{this.title}}</h5>
-                <p>{{this.text}}</p>
-                <h6 class="date">{{shortDate this.createdAt}}</h6>
-              </div>
-            </a>
-          {{else}}
-            <a href="/article/{{this.id}}">
-              <img src="http://placehold.it/300x208/70C7F3" alt="" />
-              <div class="index-content">
-                <h4 class="title">{{this.title}}</h4>
-                <p>{{this.text}}</p>
-                <h6 class="date">{{shortDate this.createdAt}}</h6>
-              </div>
-            </a>
-          {{/if}}
-          {{#if user}}
-          <div class="actions">
-            <a href="/article/{{this.id}}/edit"><span class="fa fa-edit"></span></a> <a class="redtxt" href="/article/{{this.id}}/destroy" onclick="return confirm('Seguro quieres borrarlo?');"><span class="fa fa-trash"></span></a>
+<div class="main-client-side">
+  <div class="row">
+    <div class="large-12 columns">
+        <!-- <ul class="filter centerize">
+          <li><a href="/blog/">TODOS</a></li>
+          <li><a href="/blog/?filter=tips">TIPS</a></li>
+          <li><a href="/blog/?filter=viajes">VIAJES</a></li>
+        </ul> -->
+        <ul class="no-bullet posts">
+        {{#each articles}}
+        <li class="all">
+          <div class="index-cover">
+            {{#if this.cover}}
+              <a href="/article/{{this.id}}">
+                <img src="http://res.cloudinary.com/{{../cloudinary_account}}/image/upload/c_fill,h_210,w_300/v{{this.version}}/{{this.cover}}" alt="" />
+                <div class="index-content">
+                  <h5 class="title">{{this.title}}</h5>
+                  <p>{{this.text}}</p>
+                  <h6 class="date">{{shortDate this.createdAt}}</h6>
+                </div>
+              </a>
+            {{else}}
+              <a href="/article/{{this.id}}">
+                <img src="http://placehold.it/300x208/70C7F3" alt="" />
+                <div class="index-content">
+                  <h4 class="title">{{this.title}}</h4>
+                  <p>{{this.text}}</p>
+                  <h6 class="date">{{shortDate this.createdAt}}</h6>
+                </div>
+              </a>
+            {{/if}}
+            {{#if user}}
+            <div class="actions">
+              <a href="/article/{{this.id}}/edit"><span class="fa fa-edit"></span></a> <a class="redtxt" href="/article/{{this.id}}/destroy" onclick="return confirm('Seguro quieres borrarlo?');"><span class="fa fa-trash"></span></a>
+            </div>
+            {{/if}}
           </div>
-          {{/if}}
-        </div>
-      </li>
-      {{/each}}
-      </ul>
-      {{#if user}}
-      <a href="/article/create" class="button medium">Crear un articulo nuevo</a>
-      {{/if}}
-    </div>
-</div>
-
+        </li>
+        {{/each}}
+        </ul>
+        {{#if user}}
+        <a href="/article/create" class="button medium">Crear un articulo nuevo</a>
+        {{/if}}
+      </div>
+  </div>
+  
+  </div>

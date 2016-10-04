@@ -1,4 +1,14 @@
+<div class="cover">
+  <img src="http://res.cloudinary.com/{{cloudinary_account}}/image/upload/c_crop,h_550,r_0,w_1920/v{{article.version}}/{{article.cover}}.jpg" alt="" />
+</div>
 
+<div class="metadata">
+  <div class="pic_profile">
+    <img src="http://res.cloudinary.com/{{cloudinary_account}}/image/upload/c_crop,h_80,r_0,w_80/v{{article.version}}/{{author.image}}.jpg" alt="" />
+    <h6>Escrito por {{author.name}}</h6>
+  </div>
+  <span class="date">{{shortDate article.createdAt}}</span>
+</div>
 
 <div class="row">
   <div class="large-8 medium-8 large-centered medium-centered columns">
@@ -12,10 +22,4 @@
     <div class="content">{{{article.fulltext}}}</div>
   </div>
 </div>
-<div class="row">
-  <div class="large-12 columns">
-    <div class="sub-social">
-      <div id="shareIconsCountInside"></div>
-    </div>
-  </div>
-</div>
+

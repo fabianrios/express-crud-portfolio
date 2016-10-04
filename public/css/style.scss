@@ -218,6 +218,17 @@ $main-bg:#f6f6f6;
 }
 
 
+.metadata{
+  padding: 20px 0;
+  position: relative;
+  display: block;
+  width: 100%;
+  background: #f6f6f6;
+  .date{
+    text-align: center;
+  }
+}
+
 #like{
   margin: 0 auto;
   display: none;
@@ -851,9 +862,8 @@ input[type="email"].unflashy{
 }
 
 .pic_profile{
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
+  display: inline-block;
+  width: 47%;
   img{
     display: inline-block;
     height: 70px;

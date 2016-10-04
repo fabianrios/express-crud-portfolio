@@ -310,7 +310,7 @@ router.get('/article/:id', function (req, res, next) {
       res.render('show', {
         title: article.title,
         article: article,
-        logo: "logo_white.png",
+        logo: "group-2.png",
         covers: associatedCovers, 
         author: user,
         cloudinary_account: process.env.CLOUDINARY_NAME

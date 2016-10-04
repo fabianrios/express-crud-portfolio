@@ -170,6 +170,15 @@
           padding: 0;
           background: transparent; } }
 
+.metadata {
+  padding: 20px 0;
+  position: relative;
+  display: block;
+  width: 100%;
+  background: #f6f6f6; }
+  .metadata .date {
+    text-align: center; }
+
 #like {
   margin: 0 auto;
   display: none;
@@ -689,9 +698,8 @@ input[type="email"].unflashy {
   margin-left: 10px; }
 
 .pic_profile {
-  position: absolute;
-  bottom: 20px;
-  left: 20px; }
+  display: inline-block;
+  width: 47%; }
   .pic_profile img {
     display: inline-block;
     height: 70px;
