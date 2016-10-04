@@ -31,14 +31,10 @@
       <input type="submit" value="Actualizar" form="articles-form" class="button success full" />
       <input type="text" name="title" value="{{article.title}}" />
       <span class="hide" id="category-val" data-category="{{article.category}}"></span>
-      <select name="category" id="category" multiple size=3>
-        <option value="tips">Tips</option>
-        <option value="viajes">Viajes</option>
-        <option value="datos">Datos</option>
+      <select name="category" id="category">
+        <option value="General">General</option>
+        <option value="tips">Consejos medicos</option>
       </select>
-      <input type="text" class="currency" name="incognito" value="{{article.incognito}}" placeholder="Incognito" />
-      <input type="text" class="currency" id="vip" name="vip" value="{{article.vip}}" placeholder="VIP" />
-      <input type="text" class="currency" name="corporate" value="{{article.corporate}}" placeholder="Corporativo" />
       <label for="image_upload">Imagen destacada</label>
       {{#if article.cover}}
         <div class="file" style="background-image:url('http://res.cloudinary.com/{{cloudinary_account}}/image/upload/c_fill,h_100,w_305/v{{article.version}}/{{article.cover}}.jpg')">

@@ -12,42 +12,6 @@
     });
   });
      
-  if(document.getElementById("map")){
-    // travel info selected travel dinamically
-    var travel = $("#travel-info").data("travel");
-    $("#travel").val(travel);
-    
-    L.mapbox.accessToken = 'pk.eyJ1IjoiZmFiaWFucmlvcyIsImEiOiJjaWc3ZDFhMjMwczFvdjRrcHF4bXliMzNoIn0.PTi-JKyYhEaQknlR6iGCoA';
-    var map = L.mapbox.map('map')
-    .setView([0, 0], 3);
-    
-    var info = document.getElementById('info');
-    var know = $(".inline-form #know").val(), budget = $(".inline-form #budget").val(), travel = $(".inline-form #travel").val(), where = $(".inline-form #where").val();
-    // Use styleLayer to add a Mapbox style created in Mapbox Studio
-    L.mapbox.styleLayer('mapbox://styles/fabianrios/cikqb97u2001qaplyggo25dgu').addTo(map);
-    
-    $.get('/countries_all?know='+know+'&budget='+budget+'&travel='+travel+'&where='+where, function(data){
-      data = JSON.parse(data);
-      var myLayer = L.mapbox.featureLayer().addTo(map);
-      myLayer.setGeoJSON(data);
-      myLayer.on('click',function(e) {
-          // Force the popup closed.
-          e.layer.closePopup();
-          var feature = e.layer.feature;
-          var content = '<div class="country-post"><img src="http://res.cloudinary.com/aramsvip/image/upload/c_fill,h_275,w_400/v'+feature.properties.version+'/'+feature.properties.cover+'.jpg" /><div class="gradientbg"><h4 class="title-map whitetxt">' + feature.properties.title + '</h4><h6 class="whitetxt price-map"><span class="cur">' + feature.properties.corporate + '</span> a <span class="cur">' + feature.properties.incognito + '</span></h6></div><div class="content"><p class="nm">' + feature.properties.description + '</p></div><a target="_blank" href="' + feature.properties.url + '" class="blog">BLOG</a><a target="_blank" href="' + feature.properties.url + '/#comments" class="blog">COMENTARIOS</a><form action="/email_country" method="post" class="inliner" id="email_country" ><input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/><i class="fa fa-envelope fix-inline"></i><input type="submit" value="ENVIARME MAS INFO" class="button full success" /></form><a class="ferme"><span>X</span></a></div>';
-          info.innerHTML = content;
-          $(".cur").autoNumeric('init',{
-            aSep: '.',
-            aDec: ',', 
-            aSign: '$ ',
-            mDec: '0'
-          });
-      });
-      
-    });
-    
-    map.scrollWheelZoom.disable();
-  }
      
   $(".currency").autoNumeric('init',{
     aSep: '.',
@@ -61,11 +25,6 @@
     aDec: ',', 
     aSign: '$ ',
     mDec: '0'
-  });
-  
-  $(document).on('click', '.ferme',function(e) { 
-    e.preventDefault();
-    $(this).parent().html("");
   });
   
   
@@ -83,86 +42,7 @@
         });
     });
   
-  $('.inline-form').on('submit','#inline_form_country', function(e){
-    e.preventDefault();
-    var $form = $(this), know = $form.find("#know").val(), budget = $form.find("input[name='budget']").val(), travel = $form.find("#travel").val(), where = $form.find("input[name='where']").val(), email = $form.find( "input[name='email']" ).val(), url = $form.attr( "action" );
-    if (typeof email != 'undefined'){
-      $.post(url, { email: email, where: where, travel: travel }, function(resp) {
-          if (resp == "OK" || "success"){
-            $("#map-success").show();
-          }else{
-            console.log("fail delivering message");
-          }
-      });
-    }else{
-      $.get('/countries_all?know='+know+'&budget='+budget+'&travel='+travel+'&where='+where, function(data){
-        var datos = JSON.parse(data);
-        var myLayer = L.mapbox.featureLayer().addTo(map);
-        myLayer.setGeoJSON(datos);
-        myLayer.on('click',function(e){
-            e.layer.closePopup();
-            var feature = e.layer.feature;
-            var content = '<div class="country-post"><img src="http://res.cloudinary.com/aramsvip/image/upload/c_fill,h_275,w_400/v'+feature.properties.version+'/'+feature.properties.cover+'.jpg" /><div class="gradientbg"><h4 class="title-map whitetxt">' + feature.properties.title + '</h4><h6 class="whitetxt price-map"><span class="cur">' + feature.properties.corporate + '</span> a <span class="cur">' + feature.properties.incognito + '</span></h6></div><div class="content"><p class="nm">' + feature.properties.description + '</p></div><a target="_blank" href="' + feature.properties.url + '" class="blog">BLOG</a><a target="_blank" href="' + feature.properties.url + '/#comments" class="blog">COMENTARIOS</a><form action="/email_country" method="post" class="inliner" id="email_country" ><input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/><i class="fa fa-envelope fix-inline"></i><input type="submit" value="ENVIARME MAS INFO" class="button full success" /></form><a class="ferme"><span>X</span></a></div>';
-            info.innerHTML = content;
-            $(".cur").autoNumeric('init',{
-              aSep: '.',
-              aDec: ',', 
-              aSign: '$ ',
-              mDec: '0'
-            });
-          
-        });
-      }); 
-    }
-  });
   
-  $('input#budget, input#email').bind("change keyup input",function() { 
-     var pattern = new RegExp(/^(("[\w-+\s]+")|([\w-+]+(?:\.[\w-+]+)*)|("[\w-+\s]+")([\w-+]+(?:\.[\w-+]+)*))(@((?:[\w-+]+\.)*\w[\w-+]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][\d]\.|1[\d]{2}\.|[\d]{1,2}\.))((25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\.){2}(25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\]?$)/i);
-     if ($.isNumeric(this.value) || pattern.test(this.value)) {
-       $(".check").css({"background":"#70e8d7"});
-       var valor = $("#know").val();
-       if (valor == "no"){
-         $(".plane").css({"background":"#70e8d7"});
-       }
-      }else if(this.value == ""){
-        $(".check").css({"background":"rgba(0,0,0,.3)"});
-      }
-  });
-  
-  $("#travel").change(function(e){
-    var val = $(this).val();
-    if (val != ""){
-      $(".envelope").css({"background":"#70e8d7"});
-    }else{
-      $(".envelope").css({"background":"rgba(0,0,0,.3)"});
-    }
-  });
-  
-  $('#articles-form').submit(function(){
-    var form = $(this);
-    $('input').each(function(i){
-      var self = $(this);
-      try{
-        var v = self.autoNumeric('get');
-        self.autoNumeric('destroy');
-        self.val(v);
-      }catch(err){
-        console.log("Not an autonumeric field: " + self.attr("name"));
-      }
-    });
-    return true;
-  });
-  
-  $("#country-search").keyup(function(event) {
-    var str = $(this).val().toLowerCase();
-    $("ul.country li").hide();
-    $("ul.country li h5.country-names").each(function( index ) {
-      var txt = $(this).text().toLowerCase();
-      if (txt.indexOf(str) >= 0){
-        $(this).parent().show();
-      }
-    });
-  });
  
   function now(){
     var valor = $("#know").val();

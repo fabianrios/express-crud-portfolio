@@ -1,6 +1,7 @@
 @import "mixins";
 //VARIABLES
 
+$main-bg:#f6f6f6;
 
 .alert-box.hidden{
   display: none;
@@ -64,6 +65,14 @@
   min-height: 83.5vh;
 }
 
+.main-client-side{
+  background: $main-bg;
+  padding: 50px 0;
+  min-height: 80vh;
+}
+
+
+
 #map {
    position:absolute; top:0; bottom:0; width:100%; height: 93vh;
    @media only screen and (min-width: 40em){ 
@@ -110,8 +119,8 @@
     padding: 30px 30px;
     background: white;
   }
-  &.map{
-    background: #325595;
+  &.home{
+    background: #3375BF;
     ul{
       li{
         a{
@@ -123,9 +132,6 @@
   &.form{
     border-bottom: 1px solid rgb(69,98,137);
     background: #0058a0;
-    @media only screen and (min-width: 40em){ 
-      background: transparent;
-    }
     .xclose{
       position: absolute;
       top: 35px;
@@ -156,67 +162,6 @@
             width: auto;
             display: inline;
           }
-        }
-      }
-    }
-  }
-  &.articles{
-    position: relative;
-    height: 374px;
-    overflow: hidden;
-    @media only screen and (min-width: 90.063em) and (max-width: 120em) { 
-      height: 574px;
-    }
-    background: url('../img/australia-sydney.jpg') no-repeat center center;
-    -webkit-background-size: cover;
-    background-size: cover;
-    margin-bottom: 40px;
-    .xclose{
-      position: absolute;
-      top: 35px;
-      right: 10px;
-      display: inline-block;
-      color: white;
-      font-size: 20px;
-      span{
-        color: #fff;
-      }
-      &:hover{
-        color: #fff;
-        span{
-          color: #fff;
-        }
-      }
-      @media only screen and (min-width: 40em){ 
-        display: none;
-      }
-    }
-    .gradient-article{
-      padding: 0 10px;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      display: block;
-      top: 0;
-      left: 0;
-      background: rgba(0,0,0,0.4);
-      @media only screen and (min-width: 40em){ 
-        padding: 0;
-      }
-    }
-    .br_after{
-      display: block;
-      height: 1px;
-      width: 100%;
-      position: absolute;
-      top: 110px;
-      left: 0;
-      border-bottom: 1px solid rgba(255,255,255,.5);
-    }
-    ul{
-      li{
-        a{
-          color: #fff;
         }
       }
     }
@@ -268,12 +213,6 @@
           background: transparent;
         }
       }
-      @media screen and (min-device-width : 1080px) and (max-device-width : 1920px) and (min-resolution: 401dpi) and (device-aspect-ratio:16/9) { 
-        display: none;
-      }
-      @media only screen and (max-device-width: 640px), only screen and (max-device-width: 667px), only screen and (max-width: 480px) {
-         display: none;
-      }
     }
   }
 }
@@ -303,23 +242,35 @@ ul.posts{
     .index-cover{
       width: 100%;
       position: relative;
-      .title{
-        position: absolute;
-        bottom: 10px;
-        left: 18px;
-        margin: 0;
-      }
       img{
         width: 100%;
       }
     }
+    :hover{
+      .index-content{
+        display: block;
+      }
+    }
     .index-content{
-      padding:15px 18px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding:27px 18px;
+      width: 100%;
+      background: rgba(#0072bc,0.7);
+      height: 100%;
+      .title{
+        color: #fff;
+        margin-bottom: 15px;
+      }
       p{
-        height: 45px;
-        overflow: hidden;
-        margin: 0;
+        color: #fff;
+      }
+      .date{
+        font-weight: normal;
+        float: right;
+        color: white;
       }
     }
     &:first-child, &:nth-child(4n+4){
@@ -328,9 +279,6 @@ ul.posts{
     &:nth-child(3n+3){
       margin-right: 0;
     }
-    background: white;
-    @include box-shadow();
-    @include border-radius(2px);
     width: 100%;
     display: inline-block;
     margin:10px 0;
@@ -363,8 +311,21 @@ ul.posts{
 
 .actions{
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: 0px;
+  top: 0px;
+  a{
+  background: lightslategrey;
+  height: 25px;
+  width: 25px;
+  display: inline-block;
+  line-height: 25px;
+  text-align: center;
+  &.borrar{
+    background:#EE7672;
+    float: right;
+    color: #fff;
+  }
+  }
 }
 
 input.file{

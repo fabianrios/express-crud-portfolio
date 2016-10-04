@@ -3,6 +3,9 @@
       <input placeholder="Buscar" class="search radius" type="search" name="country" id="country-search" />
       <br />
       <ul class="no-bullet centerize country">
+      <li class="neuer_artikel">
+        <a href="/article/create"><span class="fa fa-plus fa-round"></span></a>
+      </li>
       {{#each articles}}
       <li class="all">
           {{#if this.cover}}
@@ -12,12 +15,11 @@
           {{/if}}
           <h5 class="subheader text-left country-names">{{this.title}}</h5>
           <div class="actions">
-            <a href="/article/{{this.id}}/edit"><span class="fa fa-edit whitetxt"></span></a> <a class="redtxt" href="/article/{{this.id}}/destroy" onclick="return confirm('Seguro quieres borrarlo?');"><span class="fa fa-trash"></span></a>
+            <a href="/article/{{this.id}}/edit"><span class="fa fa-pencil whitetxt"></span></a> <a class="borrar" href="/article/{{this.id}}/destroy" onclick="return confirm('Seguro quieres borrarlo?');"><span class="fa fa-trash"></span></a>
           </div>
       </li>
       {{/each}}
       </ul>
-      <a href="/article/create" class="button medium"><span class="fa fa-plus fa-round"></span> Crear un articulo nuevo</a>
     </div>
 </div>
 

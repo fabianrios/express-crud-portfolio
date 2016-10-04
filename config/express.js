@@ -33,7 +33,8 @@ module.exports = function(app, config) {
         return str.toUpperCase();
       },
       shortDate: function(str) {
-        return dateFormat(str, "mmmm dd, yyyy - h:MM");
+				// return dateFormat(str, "mmmm dd, yyyy - h:MM");
+        return dateFormat(str, "dd - mm - yy");
       }
     }
   }));

@@ -89,10 +89,10 @@ if (enviroment == 'development'){
   var env = require('node-env-file');
   env(path.dirname(require.main.filename) + '/.env');
 }
-
-var AWS_ACCESS_KEY =  process.env.S3_ACCESS_KEY;
-var AWS_SECRET_KEY =process.env.S3_SECRET_ACCESS_KEY;
-var S3_BUCKET = process.env.S3_BUCKET_NAME;
+//
+// var AWS_ACCESS_KEY =  process.env.S3_ACCESS_KEY;
+// var AWS_SECRET_KEY =process.env.S3_SECRET_ACCESS_KEY;
+// var S3_BUCKET = process.env.S3_BUCKET_NAME;
 
 module.exports = function (app) {
   app.use('/', router);
@@ -102,111 +102,18 @@ router.get('/', function (req, res, next) {
     res.locals = {
       pageTitle: "form",
       background: true,
-      logo: "logo_white.png",
+      logo: "logo.png",
       bg: "../img/bg1.jpg",
       home: true,
       cloudinary_account: process.env.CLOUDINARY_NAME
     };
     res.render('index', {
       experiences: true,
-      title: 'home'
+      title: 'home',
+			layout: 'home'
     });
 });
 
-router.post('/info', function (req, res, next) {
-  var body = req.body;
-  var query = [];
-  if (!body.email){
-  function traveltype(travel){
-    if (travel == "vip"){
-        query.push({
-          vip:{$lte: body.budget}
-        },{
-          title: {$ilike: body.where+"%"} 
-        });
-    }else if (travel == "incognito"){
-        query.push({
-          incognito:{$lte: body.budget}
-        },{
-          title: {$ilike: body.where+"%"} 
-        });
-    }else if (body.travel == "corporativo"){
-        query.push({
-          corporate:{$lte: body.budget}
-        },{
-          title: {$ilike: body.where+"%"} 
-        });
-    }
-    return query;
-  }
-  traveltype(body.travel);
-  if (!body.where){
-    query.splice(1, 1);;
-  }
-  db.Country.findAll({ where: {
-      $or: query
-     } 
-   }).then(function(country) {
-    var si = "false", no = "false";
-    if (body.know == "si"){
-      si = "selected";
-    }else{
-      no = "selected";
-    }
-    return res.render('map', {
-      countries:country,
-      country:country[0],
-      experiences: true,
-      inlineform: true,
-      si: si,
-      no: no,
-      where: body.where,
-      budget: body.budget,
-      travel: body.travel,
-      title: 'check',
-      pageTitle: "map",
-      background: true,
-      logo: "logo_white.png",
-      cloudinary_account: process.env.CLOUDINARY_NAME
-    })
-  })
-  }else{
-   // enviar info de clientes
-    db.Client.create({ mail: body.email, country: body.where, experience: body.travel  }).then(function () {
-      var mailOptions = {
-          from: '"arams" <hola@arams.com.co>', // sender address
-          to: 'sensaciones@arams.com.co', // list of receivers
-          subject: 'Nuevo contacto 👥', // Subject line
-          text: 'Correo: ' + body.email + ' País: ' + body.where + 'Tipo de viaje: ' + body.travel, // plaintext body
-          html: '📩 <b>Correo:</b> ' + body.email + '<br /> <b>País:</b> ' + body.where + '<br /> 💵 <b>Tipo de viaje:</b> ' + body.travel// html body
-      };
-      transporter.sendMail(mailOptions, function(error, info){
-          if(error){
-              return console.log(error);
-          }
-          console.log('Message sent: ' + info.response);
-          var json = JSON.stringify("success");
-          res.write(json);
-          res.end();
-      });
-    });
-  }
-  
-});
-
-router.get('/map', function (req, res, next) {
-    res.locals = {
-      pageTitle: "map",
-      background: true,
-      logo: "logo_white.png",
-      experiences: true,
-      inlineform: true
-    };
-    res.render('map', {
-      title: 'Home',
-      cloudinary_account: process.env.CLOUDINARY_NAME
-    });
-});
 
 router.get(['/login', '/admin'], function (req, res, next) {
     res.render('login', {
@@ -237,7 +144,7 @@ router.post('/login', function (req, res, next) {
     req.session.user = user; 
     req.session.admin = user.admin;
     var url = req.url;
-    res.redirect('/countries_search');
+    res.redirect('/admin/articles');
     
   });
 });
@@ -247,151 +154,6 @@ router.get('/logout', function (req, res, next) {
    res.redirect('/');
 });
 
-router.get('/country/create', authorize, notify, function (req, res, next) {
-    res.render('create_country', {
-      title: 'Crear nuevo país',
-      logo: "group-2.png",
-      qty: req.session.clients,
-      qty_contacts: req.session.contacts,
-      user: req.session.user,
-      countries_search: "active"
-    });
-});
-
-router.get('/country/:id/edit', authorize, notify, function (req, res, next) {
-  var id = req.params.id
-  db.Country.findById(id).then(function (country) {
-    res.render('edit_country', {
-      title: "Edición de país",
-      country: country,
-      logo: "group-2.png",
-      qty: req.session.clients,
-      qty_contacts: req.session.contacts,
-      user: req.session.user,
-      countries_search: "active",
-      cloudinary_account: process.env.CLOUDINARY_NAME
-    });
-  });
-});
-
-router.post('/country/:id/editar', authorize, notify, upload.single('image_upload'), function (req, res, next) {
-  var id = req.params.id
-  var body = req.body
-  var file = req.file;
-  db.Country.findById(id).then(function (country) {
-    if(typeof file !== 'undefined'){
-    cloudinary.uploader.upload(file.path, function(result) {
-      country.update({ title: body.pais, text: body.texto, url: body.url, cover: result.public_id, version: result.version, vip: body.vip, incognito: body.incognito, corporate: body.corporate, lat: body.lat, long: body.long }).then(function () {
-       res.redirect('/countries_search');
-      });
-    },{ public_id: country.version, invalidate: true });
-    } else{
-      country.update({ title: body.pais, text: body.texto, url: body.url, vip: body.vip, incognito: body.incognito, corporate: body.corporate, lat: body.lat, long: body.long }).then(function () {
-       res.redirect('/countries_search');
-      });
-    }
-  });
-});
-
-router.post('/countries', authorize, notify, upload.single('image_upload'), function (req, res, next) {
-  var body = req.body;
-  var urlbody = friendlyUrl(body.pais);
-  if(typeof req.file !== 'undefined'){
-    cloudinary.uploader.upload(req.file.path, function(result) {
-      db.Country.create({ title: body.pais, text: body.texto, url: urlbody, cover: result.public_id, version: result.version, vip: body.vip, incognito: body.incognito, corporate: body.corporate }).then(function () {
-       res.redirect('/countries_search');
-      });
-    });
-  }else{
-    db.Country.create({title: body.pais, text: body.texto, url: urlbody, vip: body.vip, incognito: body.incognito, corporate: body.corporate}).then(function () {
-     res.redirect('/countries_search');
-    });
-  }
-});
-
-router.get('/countries_search', notify, authorize, function (req, res, next) {
-  db.Country.findAll().then(function (countries) {
-    
-    res.render('countries_search', {
-      title: 'Buscador de paises',
-      countries: countries,
-      logo: "group-2.png",
-      qty: req.session.clients,
-      qty_contacts: req.session.contacts,
-      user: req.session.user,
-      countries_search: 'active',
-      cloudinary_account: process.env.CLOUDINARY_NAME
-    });
-    
-  });
-});
-
-
-router.get('/countries_all', function (req, res, next) {
-  var query = [], body = req.query;
-  
-  function traveltype(travel){
-    if (travel == "vip"){
-        query.push({
-          vip:{$lte: body.budget}
-        },{
-          title: {$ilike: body.where+"%"} 
-        });
-    }else if (travel == "incognito"){
-        query.push({
-          incognito:{$lte: body.budget}
-        },{
-          title: {$ilike: body.where+"%"} 
-        });
-    }else if (body.travel == "corporativo"){
-        query.push({
-          corporate:{$lte: body.budget}
-        },{
-          title: {$ilike: body.where+"%"} 
-        });
-    }
-    return query;
-  }
-  
-  traveltype(body.travel);
-  if (!body.where){
-    query.splice(1, 1);;
-  }
-  
-  db.Country.findAll({ where: {
-      $or: query
-     } 
-   }).then(function(countries){
-    info = [];
-    for (var i = 0; i < countries.length; i++){
-      
-      info.push({
-            type: "Feature",
-            geometry: {
-              type: "Point",
-              coordinates: [countries[i].long,countries[i].lat]
-            },
-            properties: {
-              title: countries[i].title,
-              description: countries[i].text,
-              corporate: countries[i].corporate,
-              url: countries[i].url,
-              incognito: countries[i].incognito,
-              vip: countries[i].vip,
-              cover: countries[i].cover,
-              version: countries[i].version,
-              "marker-color": "#6ae9d7",
-              "marker-size": "large",
-              "marker-symbol": "circle"
-            } 
-      });
-    }
-    var json = JSON.stringify(info);
-      
-    res.write(json);
-    res.end();
-  });
-});
 
 router.get('/blog', function (req, res, next) {
   var filter = req.query.filter, art = [];
@@ -425,29 +187,6 @@ router.get('/blog', function (req, res, next) {
   
 });
 
-router.post('/email_country', function (req, res, next) {
-  var body = req.body;
-  db.Client.create({ mail: body.email, country: body.country, experience: body.travel  }).then(function () {
-    res.sendStatus(200);
-    res.end();
-    
-    var mailOptions = {
-        from: '"arams" <hola@arams.com.co>', // sender address
-        to: 'sensaciones@arams.com.co', // list of receivers
-        subject: 'Nuevo contacto 👥', // Subject line
-        text: 'Correo: ' + body.email + '/n País: ' + body.country + '/n Tipo de viaje: ' + body.travel, // plaintext body
-        html: '📩 <b>Correo:</b> ' + body.email + '<br /> <b>País:</b> ' + body.country + '<br /> 💵 <b>Tipo de viaje:</b> ' + body.travel// html body
-    };
-    
-    transporter.sendMail(mailOptions, function(error, info){
-        if(error){
-            return console.log(error);
-        }
-        console.log('Message sent: ' + info.response);
-    });
-    
-  });
-});
 
 router.get('/admin/clients', notify, authorize, function (req, res, next) {
   db.Client.findAll({where:{flag: 0}}).then(function (clients) {
@@ -687,6 +426,7 @@ router.post('/article/:id/editar', notify, authorize, cpUpload, function (req, r
     if(typeof req.files !== 'undefined' && typeof req.files['image_upload'] !== 'undefined'){
     cloudinary.uploader.upload(req.files['image_upload'][0].path, function(result) {
       article.update({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, cover: result.public_id, version: result.version, vip: body.vip, incognito: body.incognito, corporate: body.corporate,  UserId: body.user || 1 }).then(function(){
+			 console.log("updated");
        res.redirect('/admin/articles');
       });
     },{ public_id: article.cover_version, invalidate: true });

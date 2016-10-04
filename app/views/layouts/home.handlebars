@@ -12,7 +12,7 @@
   <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.1.0/jssocials.css" />
   <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.1.0/jssocials-theme-flat.css" />
   {{/ifCond}}
-  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
   {{#ifCond pageTitle "articles"}}
   <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.1.0/jssocials.min.js"></script>
@@ -29,11 +29,9 @@
 </head>
 <body>
 
-  {{> menu_content }}
+  {{> home_menu }}
   {{> alerts }}
-  <div class="main-client-side">
-    {{{body}}}
-  </div>
+  {{{body}}}
   
   <div class="footer">
     <p>Copyright © 2016 María Bahamón. Todos los derechos reservados</p>

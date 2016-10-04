@@ -1,35 +1,15 @@
+
+
 <div class="row">
-  <div class="large-8 medium-8 columns">
+  <div class="large-8 medium-8 large-centered medium-centered columns">
     <a href="/blog" class="button tiny"><span class="fa fa-undo"></span> Volver</a>
+    <h4 class="bluetxt"><span id="increment">{{article.like}}</span> <span class="bluetxt fa fa-heart"></span> Me gusta</h4>
     {{#if user}}
     <div class="actions">
       <a href="/article/{{article.id}}/edit"><span class="fa fa-edit"></span></a> <a class="redtxt" onclick="return confirm('Seguro quieres borrarlo?');" href="/article/{{article.id}}/destroy"><span class="fa fa-trash"></span></a>
     </div>
     {{/if}}
     <div class="content">{{{article.fulltext}}}</div>
-  </div>
-  <div class="large-4 medium-4 columns">
-    <h4 class="bluetxt">Presupuesto Incognito</h4>
-    <p><span class="currency">{{article.incognito}}</span> en adelante x persona</p>
-    <h4 class="bluetxt">Presupuesto VIP</h4>
-    <p><span class="currency">{{article.vip}}</span> a <span class="currency">{{article.incognito}}</span> x persona</p>
-    <h4 class="bluetxt">Presupuesto Corporativo</h4>
-    <p><span class="currency">{{article.corporate}}</span> a <span class="currency">{{article.vip}}</span> x persona</p>
-    <div class="quick-contact">
-      <div data-alert class="alert-box success round hidden" id="small-success">
-        Su mensaje ha sido enviado correctamente
-        <a href="#" class="close">&times;</a>
-      </div>
-          <form action="/email_country" method="post" class="inliner" id="email_country">
-            <input type="hidden" name="country" value="{{article.title}}" />
-            <input type="hidden" name="travel" value="menu_lateral" />
-            <input type="email" name="email" class="unflashy" placeholder="Correo Electrónico" required/>
-            <i class="fa fa-envelope fix-inline"></i>
-            <input type="submit" value="ENVIARME MAS INFO" class="button full success" />
-          </form>
-    </div>
-    <br />
-    <h4 class="bluetxt"><span id="increment">{{article.like}}</span> <span class="bluetxt fa fa-heart"></span> Me gusta</h4>
   </div>
 </div>
 <div class="row">
@@ -39,54 +19,3 @@
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="large-12 columns">
-    <div id="comments">
-      <span class="hidden" data-url="/article/{{article.id}}" data-id="{{article.id}}"></span>
-      <div id="disqus_thread"></div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-    </div>
-  </div>
-</div>
-<script>
-
-var url = $("span.hidden").data("url"); 
-var identifier = $("span.hidden").data("id");
-
-$("#shareIconsCountInside").jsSocials({
-    showLabel: false,
-    shares: ["twitter", "facebook"]
-});
-// var disqus_config = function () {
-// this.page.url = /article/{{article.id}}; // Replace PAGE_URL with your page's canonical URL variable
-// this.page.identifier = {{article.id}}; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-// };
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-
-s.src = '//aramstravel.disqus.com/embed.js';
-
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-
-{{#if covers}}
-<div class="footer-gallery">
-<div class="slider">
-  {{#each covers}}
-    <div class="slide">
-      <a data-order="{{this.order}}" data-version="{{this.version}}" data-public_id="{{this.public_id}}"><img src="http://res.cloudinary.com/{{../cloudinary_account}}/image/upload/c_fill,h_107,w_200/v{{this.version}}/{{this.public_id}}" alt="" /></a>
-    </div>
-  {{/each}}
-</div>
-</div>
-<div id="modal" class="reveal-modal medium" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-</div>
-{{/if}}

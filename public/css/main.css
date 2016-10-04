@@ -44,7 +44,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -1132,7 +1132,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -1208,7 +1208,7 @@ select {
       color: #222222;
       padding: 1rem;
       display: block;
-      font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+      font-family: "PT Sans", Helvetica, Arial, sans-serif;
       font-size: 1rem; }
       .accordion .accordion-navigation > a:hover, .accordion dd > a:hover {
         background: #e3e3e3; }
@@ -1264,7 +1264,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -1328,7 +1328,7 @@ select {
   border-width: 1px;
   display: block;
   font-weight: normal;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0;
   position: relative;
   padding: 0.875rem 1.5rem 0.875rem 0.875rem;
   font-size: 0.8125rem;
@@ -1421,7 +1421,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -1828,7 +1828,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -1985,7 +1985,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -2089,7 +2089,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -2152,7 +2152,7 @@ button, .button {
   border-style: solid;
   border-width: 0px;
   cursor: pointer;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   line-height: normal;
   margin: 0 0 1.25rem;
@@ -2734,7 +2734,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -2797,7 +2797,7 @@ button, .button {
   border-style: solid;
   border-width: 0px;
   cursor: pointer;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   line-height: normal;
   margin: 0 0 1.25rem;
@@ -3023,7 +3023,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -3297,7 +3297,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -3635,7 +3635,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -3785,7 +3785,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -3910,7 +3910,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -4014,7 +4014,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -4077,7 +4077,7 @@ button, .button {
   border-style: solid;
   border-width: 0px;
   cursor: pointer;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   line-height: normal;
   margin: 0 0 1.25rem;
@@ -4500,7 +4500,7 @@ select {
   border-color: #cccccc;
   padding: 0.5rem;
   font-size: 0.875rem;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   color: rgba(0, 0, 0, 0.75);
   line-height: normal;
   border-radius: 0;
@@ -4658,7 +4658,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -4890,7 +4890,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -5009,7 +5009,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -5267,7 +5267,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -5384,7 +5384,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -5445,7 +5445,7 @@ select {
 
 .label {
   font-weight: normal;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   text-align: center;
   text-decoration: none;
   line-height: 1;
@@ -5522,7 +5522,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -5638,7 +5638,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -5974,7 +5974,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -6124,7 +6124,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -6274,7 +6274,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -6348,7 +6348,7 @@ select {
     color: #EEEEEE;
     font-weight: normal;
     font-size: 1rem;
-    font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif; }
+    font-family: "PT Sans", Helvetica, Arial, sans-serif; }
   .pricing-table .price {
     background-color: #F6F6F6;
     padding: 0.9375rem 1.25rem;
@@ -6356,7 +6356,7 @@ select {
     color: #333333;
     font-weight: normal;
     font-size: 2rem;
-    font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif; }
+    font-family: "PT Sans", Helvetica, Arial, sans-serif; }
   .pricing-table .description {
     background-color: #FFFFFF;
     padding: 0.9375rem;
@@ -6424,7 +6424,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -6560,7 +6560,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -6743,7 +6743,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -6847,7 +6847,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -8066,7 +8066,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -8131,7 +8131,7 @@ select {
   padding: 0.875rem 0;
   list-style-type: none;
   list-style-position: outside;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif; }
+  font-family: "PT Sans", Helvetica, Arial, sans-serif; }
   .side-nav li {
     margin: 0 0 0.4375rem 0;
     font-size: 0.875rem;
@@ -8147,7 +8147,7 @@ select {
     .side-nav li.active > a:first-child:not(.button) {
       color: #858585;
       font-weight: normal;
-      font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif; }
+      font-family: "PT Sans", Helvetica, Arial, sans-serif; }
     .side-nav li.divider {
       border-top: 1px solid;
       height: 0;
@@ -8205,7 +8205,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -8309,7 +8309,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -8372,7 +8372,7 @@ button, .button {
   border-style: solid;
   border-width: 0px;
   cursor: pointer;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   line-height: normal;
   margin: 0 0 1.25rem;
@@ -8598,7 +8598,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -8830,7 +8830,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -8904,7 +8904,7 @@ select {
     display: inline;
     margin-left: 1rem;
     margin-bottom: 0;
-    font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+    font-family: "PT Sans", Helvetica, Arial, sans-serif;
     font-weight: normal;
     font-size: 0.875rem;
     color: #999999; }
@@ -8977,7 +8977,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -9178,7 +9178,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -9325,7 +9325,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -9429,7 +9429,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -10491,7 +10491,7 @@ select {
       background-color: #EFEFEF;
       color: #222222;
       padding: 1rem 2rem;
-      font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+      font-family: "PT Sans", Helvetica, Arial, sans-serif;
       font-size: 1rem; }
       .tabs dd > a:hover, .tabs .tab-title > a:hover {
         background-color: #e1e1e1; }
@@ -10599,7 +10599,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -10716,7 +10716,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -10896,7 +10896,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -11000,7 +11000,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -12088,7 +12088,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -12151,7 +12151,7 @@ button, .button {
   border-style: solid;
   border-width: 0px;
   cursor: pointer;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   line-height: normal;
   margin: 0 0 1.25rem;
@@ -12377,7 +12377,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -12481,7 +12481,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -12544,7 +12544,7 @@ button, .button {
   border-style: solid;
   border-width: 0px;
   cursor: pointer;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   line-height: normal;
   margin: 0 0 1.25rem;
@@ -12967,7 +12967,7 @@ select {
   border-color: #cccccc;
   padding: 0.5rem;
   font-size: 0.875rem;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   color: rgba(0, 0, 0, 0.75);
   line-height: normal;
   border-radius: 0;
@@ -13227,7 +13227,7 @@ meta.foundation-mq-topbar {
       color: #FFFFFF;
       padding: 12px 0 12px 0;
       padding-left: 15px;
-      font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+      font-family: "PT Sans", Helvetica, Arial, sans-serif;
       font-size: 0.8125rem;
       font-weight: normal;
       text-transform: none; }
@@ -13618,7 +13618,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -13860,7 +13860,7 @@ p {
 
 /* Default header styles */
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-style: normal;
   color: #505050;
@@ -14176,7 +14176,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -14280,7 +14280,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -14522,7 +14522,7 @@ p {
 
 /* Default header styles */
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-style: normal;
   color: #505050;
@@ -15254,7 +15254,7 @@ body {
   color: #505050;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -17836,9 +17836,29 @@ th.hide-for-touch {
 body {
   color: #505050; }
 
-.main-client-side {
-  background: #f6f6f6;
-  padding: 50px 0; }
+.neuer_artikel {
+  text-align: left;
+  position: relative;
+  margin: 0 5px;
+  width: 150px;
+  height: 100px;
+  background: #d8d8d8;
+  display: inline-block;
+  float: left; }
+  .neuer_artikel span {
+    background: #BEBEBE;
+    color: #D8D8D8;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    display: block;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    top: 35px; }
 
 .article h4 {
   margin: 30px 0; }
@@ -18003,11 +18023,12 @@ input[type="search"].search {
   -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); }
   .button.cita {
-    font-weight: bold;
+    font-weight: normal;
     margin-left: 150px;
     padding: 10px 30px;
     position: relative;
-    top: -30px; }
+    top: -30px;
+    font-size: 20px; }
 
 .cke.cke_reset {
   margin: 20px 0; }
@@ -18045,7 +18066,7 @@ input[type="search"].search {
   width: 35px;
   height: 35px;
   text-align: center;
-  line-height: 30px;
+  line-height: 36px;
   background: #EE7672;
   -webkit-border-radius: 100%;
   -moz-border-radius: 100%;
@@ -18054,9 +18075,11 @@ input[type="search"].search {
 .jssocials-share-link {
   border-radius: 50%; }
 
-.alert-box.success {
+.alert-box .success {
   background: #0058A0 !important;
   border: 1px solid rgba(255, 255, 255, 0.3) !important; }
+.alert-box.alert {
+  background: #EE7672; }
 
 #map-success.alert-box.success {
   max-width: 400px;

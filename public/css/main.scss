@@ -5,15 +5,34 @@
 @import "../../node_modules/font-awesome/scss/font-awesome";
 @import "mixins";
 
-$main-bg:#f6f6f6;
 
 body{
   color: #505050;
 }
 
-.main-client-side{
-  background: $main-bg;
-  padding: 50px 0;
+
+.neuer_artikel{
+  text-align: left;
+  position: relative;
+  margin: 0 5px;
+  width: 150px;
+  height: 100px;
+  background: #d8d8d8;
+  display: inline-block;
+  float: left;
+  span{
+    background: #BEBEBE;
+    color: #D8D8D8;
+    @include border-radius(100%);
+    display: block;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    top: 35px;
+  }
 }
 
 .article{
@@ -181,11 +200,12 @@ input[type="search"].search{
   @include border-radius(2px);
   @include box-shadow();
   &.cita{
-    font-weight: bold;
+    font-weight: normal;
     margin-left: 150px;
     padding: 10px 30px;
     position: relative;
     top: -30px;
+    font-size: 20px;
   }
 }
 
@@ -233,16 +253,23 @@ input[type="search"].search{
   width: 35px;
   height: 35px;
   text-align: center;
-  line-height: 30px;
+  line-height: 36px;
   background: #EE7672;
   @include border-radius(100%);
 }
 .jssocials-share-link { border-radius: 50%; }
 
-.alert-box.success{
-  background: #0058A0 !important;
-  border: 1px solid rgba(255,255,255,.3) !important;
+.alert-box{
+  .success{
+    background: #0058A0 !important;
+    border: 1px solid rgba(255,255,255,.3) !important;
+  }
+  &.alert{
+    background: #EE7672;
+  }
 }
+
+
 
 #map-success.alert-box.success{
   max-width: 400px;

@@ -1,46 +1,39 @@
 <div class="row">
   <div class="large-12 columns">
-    <br />    <br />    <br />
-<p>Cuando entré al ámbito laboral, tomé una decisión junto con mi esposo de conocer el mundo y verlo de cerca con otros ojos que nos permitieran disfrutar de la sensación producida por las experiencias vividas.</p>
-<p>Desde entonces, nos hemos dedicado a diseñar cada uno de nuestros viajes, y a ofrecerlos como regalo a nuestra relación, pues estamos convencidos de que éstos serán los que guardemos en nuestra memoria y corazones con el pasar de los años.</p>
-<p>Todos han sido viajes espectaculares, algunos de ellos poco conocidos, otros rápidos o extraños para algunos, pero hermosos y llenos de magia, con características únicas que siempre llevaremos con nosotros.</p>
-<p>Queremos compartir con ustedes estas experiencias de vidas que nos permitieron dar inicio a nuestra compañía Aram´s y que ahora podemos compartirles de manera personalizada a través de nuestros servicios. Estamos seguros de que ustedes después de leer los blogs, querrán también vivir esta experiencia.</p>
-    <br />
-      <ul class="filter centerize">
+      <!-- <ul class="filter centerize">
         <li><a href="/blog/">TODOS</a></li>
         <li><a href="/blog/?filter=tips">TIPS</a></li>
         <li><a href="/blog/?filter=viajes">VIAJES</a></li>
-        <li><a href="/blog/?filter=datos">DATOS</a></li>
-      </ul>
-      <br />
+      </ul> -->
       <ul class="no-bullet posts">
       {{#each articles}}
       <li class="all">
         <div class="index-cover">
           {{#if this.cover}}
             <a href="/article/{{this.id}}">
-              <img src="http://res.cloudinary.com/{{../cloudinary_account}}/image/upload/c_fill,h_175,w_300/v{{this.version}}/{{this.cover}}" alt="" />
+              <img src="http://res.cloudinary.com/{{../cloudinary_account}}/image/upload/c_fill,h_210,w_300/v{{this.version}}/{{this.cover}}" alt="" />
+              <div class="index-content">
+                <h5 class="title">{{this.title}}</h5>
+                <p>{{this.text}}</p>
+                <h6 class="date">{{shortDate this.createdAt}}</h6>
+              </div>
             </a>
           {{else}}
-            <a href="/article/{{this.id}}"><img src="http://placehold.it/300x176/2C00BA" alt="" /></a>
+            <a href="/article/{{this.id}}">
+              <img src="http://placehold.it/300x208/70C7F3" alt="" />
+              <div class="index-content">
+                <h4 class="title">{{this.title}}</h4>
+                <p>{{this.text}}</p>
+                <h6 class="date">{{shortDate this.createdAt}}</h6>
+              </div>
+            </a>
           {{/if}}
-          <div class="gradient">
-            <h4 class="title"><a class="whitetxt" href="/article/{{this.id}}">{{this.title}}</a> </h4>
-          </div>
           {{#if user}}
           <div class="actions">
             <a href="/article/{{this.id}}/edit"><span class="fa fa-edit"></span></a> <a class="redtxt" href="/article/{{this.id}}/destroy" onclick="return confirm('Seguro quieres borrarlo?');"><span class="fa fa-trash"></span></a>
           </div>
           {{/if}}
         </div>
-        <div class="index-content"><p>{{this.text}}</p></div>
-        <ul class="centerize tips">
-          {{#each this.category}}
-            <li><a href="/blog/?filter={{this}}">{{this}}</a></li>
-          {{else}}
-            <li><a href="/blog/?filter={{this.category}}">{{this.category}}</a></li>
-          {{/each}}
-        </ul>
       </li>
       {{/each}}
       </ul>
