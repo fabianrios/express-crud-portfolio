@@ -9,17 +9,20 @@
   </div>
   <span class="date">{{shortDate article.createdAt}}</span>
 </div>
-
+<br />
 <div class="row">
   <div class="large-8 medium-8 large-centered medium-centered columns">
     <a href="/blog" class="button tiny"><span class="fa fa-undo"></span> Volver</a>
-    <h4 class="bluetxt"><span id="increment">{{article.like}}</span> <span class="bluetxt fa fa-heart"></span> Me gusta</h4>
     {{#if user}}
     <div class="actions">
       <a href="/article/{{article.id}}/edit"><span class="fa fa-edit"></span></a> <a class="redtxt" onclick="return confirm('Seguro quieres borrarlo?');" href="/article/{{article.id}}/destroy"><span class="fa fa-trash"></span></a>
     </div>
     {{/if}}
-    <div class="content">{{{article.fulltext}}}</div>
+    <div class="content">
+      <h3 class="text-center">{{article.title}}</h3>
+      <br />
+      {{{article.fulltext}}}
+    </div>
   </div>
 </div>
 

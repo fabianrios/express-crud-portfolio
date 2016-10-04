@@ -193,7 +193,7 @@ $main-bg:#f6f6f6;
         width: 100%;
         padding:0 10px;
         a{
-          font-weight: 500;
+          font-weight: bold;
         }
       }
       @media only screen and (min-width: 40em){ 
@@ -218,8 +218,14 @@ $main-bg:#f6f6f6;
 }
 
 
+.article-names{
+  max-width: 150px;
+  overflow: hidden;
+  height: 20px;
+}
+
 .metadata{
-  padding: 20px 0;
+  padding: 20px 30px;
   position: relative;
   display: block;
   width: 100%;
@@ -283,6 +289,8 @@ ul.posts{
       }
       p{
         color: #fff;
+        min-height: 80px;
+        overflow: hidden;
       }
       .date{
         font-weight: normal;
@@ -337,12 +345,13 @@ ul.posts{
   display: inline-block;
   line-height: 25px;
   text-align: center;
-  &.borrar{
+  }
+}
+
+a.borrar{
     background:#EE7672;
     float: right;
     color: #fff;
-  }
-  }
 }
 
 input.file{
@@ -540,7 +549,7 @@ table.servicios{
 //admin
 
 .admin-body{
-  width: 69%;
+  width: 75%;
   background: white;
   min-height: 94vh;
   display: inline-block;
@@ -554,7 +563,7 @@ table.servicios{
   width: 30%;
   max-width: 253px;
   display: inline-block;
-  background: #0058a0;
+  background: #0072bc;
   
   .logo{
     margin: 0 auto;
@@ -837,7 +846,7 @@ input[type="email"].unflashy{
 
 .dataTables_wrapper{
   select{
-    max-width: 100px;
+    max-width: 60px;
     margin: 0;
   }
   input[type="search"]{

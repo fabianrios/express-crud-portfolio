@@ -1,0 +1,11 @@
+  <div class="sidebar-menu">
+    <a  href="/" class="logo"><img src="/img/logo.png" alt="" /></a>
+    <div class="inner-padding">
+      <h6 class="subheader text-right">Bienvenido <a href="/admin/users" class="profile"> <span class="fa fa-cog"></span> {{user.username}}</a> <a class="profile" href="/logout"><span class="fa fa-sign-out"></span></a></h6>
+    </div>
+    <ul class="admin">
+      <li><a href="/"><span class="fa fa-home fa-2x"></span> HOME</a></li>
+      <li><a href="/admin/articles" class="{{admin_articles}}"><span class="fa fa-file-text fa-2x"></span> BLOG</a></li>
+      <li><a href="/admin/contact" class="{{admin_contacts}}"><span class="fa fa-phone fa-2x"></span> CONTACTO {{#if qty_contacts}}<span class="number">{{qty_contacts}}</span>{{/if}}</a></li>
+    </ul>
+  </div>

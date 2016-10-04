@@ -152,7 +152,7 @@
       width: 100%;
       padding: 0 10px; }
       .nav ul.navigation li a {
-        font-weight: 500; }
+        font-weight: bold; }
     @media only screen and (min-width: 40em) {
       .nav ul.navigation {
         width: 50%;
@@ -170,8 +170,13 @@
           padding: 0;
           background: transparent; } }
 
+.article-names {
+  max-width: 150px;
+  overflow: hidden;
+  height: 20px; }
+
 .metadata {
-  padding: 20px 0;
+  padding: 20px 30px;
   position: relative;
   display: block;
   width: 100%;
@@ -193,6 +198,9 @@
       top: 250px; } }
   #like:hover {
     color: rgba(255, 255, 255, 0.7); }
+
+.cover img {
+  width: 100%; }
 
 ul.posts {
   padding: 0;
@@ -222,7 +230,9 @@ ul.posts {
         color: #fff;
         margin-bottom: 15px; }
       ul.posts li.all .index-content p {
-        color: #fff; }
+        color: #fff;
+        min-height: 80px;
+        overflow: hidden; }
       ul.posts li.all .index-content .date {
         font-weight: normal;
         float: right;
@@ -268,10 +278,11 @@ ul.posts {
     display: inline-block;
     line-height: 25px;
     text-align: center; }
-    .actions a.borrar {
-      background: #EE7672;
-      float: right;
-      color: #fff; }
+
+a.borrar {
+  background: #EE7672;
+  float: right;
+  color: #fff; }
 
 input.file {
   margin-top: 30px; }
@@ -420,7 +431,7 @@ table.servicios {
   width: 90vw; }
 
 .admin-body {
-  width: 69%;
+  width: 75%;
   background: white;
   min-height: 94vh;
   display: inline-block;
@@ -433,7 +444,7 @@ table.servicios {
   width: 30%;
   max-width: 253px;
   display: inline-block;
-  background: #0058a0; }
+  background: #0072bc; }
   .sidebar-menu .logo {
     margin: 0 auto;
     display: block;
@@ -673,7 +684,7 @@ input[type="email"].unflashy {
   margin: 50px 0; }
 
 .dataTables_wrapper select {
-  max-width: 100px;
+  max-width: 60px;
   margin: 0; }
 .dataTables_wrapper input[type="search"] {
   max-width: 300px;

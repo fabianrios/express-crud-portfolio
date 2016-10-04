@@ -1,7 +1,8 @@
 var express = require('express'),
   router = express.Router(),
   db = require('../models');
-  
+
+var fs = require('fs');
 var multer = require('multer');
 var upload = multer({dest:'./img/uploads/'});
 var friendlyUrl = require('friendly-url');
@@ -196,6 +197,7 @@ router.get('/admin/clients', notify, authorize, function (req, res, next) {
       user: req.session.user,
       qty: req.session.clients,
       qty_contacts: req.session.contacts,
+      layout: "admin",
       logo: "group-2.png",
       admin_clients: "active"
     });
@@ -238,6 +240,7 @@ router.get('/admin/contact', notify, authorize, function (req, res, next) {
       logo: "group-2.png",
       admin_contacts: "active",
       qty: req.session.clients,
+      layout: "admin",
       qty_contacts: req.session.contacts
     });
   });
@@ -261,6 +264,7 @@ router.get('/admin/articles', notify, authorize, function (req, res, next) {
       qty: req.session.clients,
       qty_contacts: req.session.contacts,
       admin_articles: "active",
+      layout: "admin",
       cloudinary_account: process.env.CLOUDINARY_NAME
     });
   });
@@ -274,7 +278,8 @@ router.get('/article/create', notify, authorize, function (req, res, next) {
       qty: req.session.clients,
       qty_contacts: req.session.contacts,
       user: req.session.user,
-      admin_articles: "active"
+      admin_articles: "active",
+      layout: "admin"
     });
 });
 
@@ -313,6 +318,7 @@ router.get('/article/:id', function (req, res, next) {
         logo: "group-2.png",
         covers: associatedCovers, 
         author: user,
+				layout: "admin",
         cloudinary_account: process.env.CLOUDINARY_NAME
       });
     
@@ -337,6 +343,7 @@ router.get('/article/:id/edit', notify, authorize, function (req, res, next) {
         qty_contacts: req.session.contacts,
         covers: associatedCovers, 
         user: req.session.user,
+				layout: "admin",
         cloudinary_account: process.env.CLOUDINARY_NAME
       });
     });
@@ -368,6 +375,33 @@ router.post('/delete_image', function (req, res, next) {
     });
   });
 });
+
+
+router.get('/delete_contact/:id/destroy', notify, authorize, function (req, res, next) {
+  db.Client.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function() {
+      res.redirect('/admin/contact');
+    });
+});
+
+router.get('/export', notify, authorize, function (req, res, next) {
+  db.Client.findAll({}).then(function(clients) {
+    var header="Nombre"+"\t"+" Mail"+"\t"+" Asunto"+"\t"+" Mensaje"+"\n";
+    var rows = "";
+    for (var key in clients){
+      if(clients[key].dataValues && clients[key].dataValues.message)
+        rows = rows+= clients[key].dataValues.name+"\t"+clients[key].dataValues.mail+"\t"+clients[key].dataValues.subject+"\t"+clients[key].dataValues.message.replace(/(\r\n|\n|\r)/gm,"")+"\n";
+    }
+    
+    res.attachment('public/contactos.xls');
+    var c = header + rows;
+    return res.send(c);
+    });
+});
+
 
 function upload_multiple(files, id){
   // console.log(files, files.length);
@@ -552,6 +586,7 @@ router.get('/admin/users', notify, authorize, function (req, res, next) {
          qty_contacts: req.session.contacts,
          covers: covers,
          users: users,
+         layout: "admin",
          cloudinary_account: process.env.CLOUDINARY_NAME
        });
        
