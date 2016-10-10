@@ -15,18 +15,6 @@ var passport = require('passport');
 var gcal     = require('google-calendar');
  
 
-passport.use(new GoogleStrategy({
-    clientID: "622846397355-lravjc6ecklrhpi5gkr6t1f0jt6rk5kv.apps.googleusercontent.com",
-    clientSecret: "AIzaSyDE-D6bZUVzkxn4dofQRKJnKDQGRMlBhp8",
-    callbackURL: "http://localhost:3000/auth/callback",
-    scope: ['openid', 'email', 'https://www.googleapis.com/auth/calendar'] 
-  },
-  function(accessToken, refreshToken, profile, done) {
-    profile.accessToken = accessToken;
-    return done(null, profile);
-  }
-));
-
 
 //email
 var transporter = nodemailer.createTransport({
@@ -117,11 +105,22 @@ module.exports = function (app) {
   app.use('/', router);
 };
 
-router.get('/', function (req, res, next) {
+router.get('/auth',
+  passport.authenticate('google', { session: false }));
+
+router.get('/auth/callback', 
+  passport.authenticate('google', { session: false, failureRedirect: '/login' }),
+  function(req, res) { 
+    req.session.access_token = req.user.accessToken;
+    res.redirect('/');
+  });
+
+
+router.get('/',function (req, res, next) {
     
     
-    gcal(req.session.access_token).calendarList.list(function(err, data) {
-      if(err){console.log(err);}
+    gcal(accessToken).calendarList.list(function(err, data) {
+      if(err){console.log("err", err);}
       console.log(data);
     });
     
