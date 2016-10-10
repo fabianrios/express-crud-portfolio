@@ -1,5 +1,63 @@
 (function() {
   $(document).foundation();
+  
+  
+  $('#calendar').fullCalendar({
+    dayClick: function(date, jsEvent, view) {
+      console.log('a day has been clicked!');
+      // $(this).css('background-color', 'red');
+      console.log(view, date.format());
+      
+      var modal = $('#modal-calendar');
+      var fecha = moment(date).format("LL");  
+      $('#hidden-date').html(fecha);moment(date).format("l");
+      $('#modal-date').html(fecha);
+      modal.foundation('reveal', 'open');
+      
+      $('#timepicker').timepicker({
+          timeFormat: 'hh:mm p',
+          interval: 30,
+          minTime: '9',
+          maxTime: '6:00pm',
+          defaultTime: '11',
+          startTime: '9:00',
+          dynamic: false,
+      });
+      
+    }
+  });
+  
+  $(".post-calendar").submit(function(e){
+    e.preventDefault();
+    var $inputs = $('.post-calendar :input');
+
+    // not sure if you wanted this, but I thought I'd add it.
+    // get an associative array of just the values.
+    var values = {};
+    $inputs.each(function() {
+        if (this.name == "recibir"){
+          if ($(this).is(":checked")){
+            values["recibir"] = true;
+          }else{
+            values["recibir"] = false;
+          }
+        }if (this.name == "time"){
+            var hour = $(this).val();
+            hour = hour.split(":");
+            hour = hour[0]+hour[1].split(" ")[0];
+            console.log(hour);
+            var date = moment("06/06/2015 "+hour+":"+"00").format('DD-MMM-YYYY');
+        }else{
+          values[this.name] = $(this).val();
+        }
+    });
+    console.log(values);
+    // $.post( "/events", values, function( data ) {
+    //   console.log(data);
+    // });
+  });
+  
+  
   if ($("#fulltext").length){
     CKEDITOR.replace( 'fulltext' ); 
   }

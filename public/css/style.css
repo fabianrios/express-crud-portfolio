@@ -50,6 +50,32 @@
   padding: 50px 0;
   min-height: 80vh; }
 
+.post-calendar input[type="text"], .post-calendar input[type="email"] {
+  background: #fafafa;
+  border: 0;
+  margin: 0;
+  -webkit-box-shadow: 0px 0px 0px 0px transparent;
+  -moz-box-shadow: 0px 0px 0px 0px transparent;
+  box-shadow: 0px 0px 0px 0px transparent; }
+.post-calendar #timepicker {
+  background: #fff; }
+.post-calendar label {
+  margin: 10px 0 0 0;
+  padding: 10px; }
+.post-calendar select {
+  background-color: #fafafa;
+  border: 0;
+  margin: 0; }
+  .post-calendar select span {
+    text-align: right;
+    color: rgba(80, 80, 80, 0.54); }
+
+h3#modal-date {
+  font-size: 20px;
+  background: #efefef;
+  margin: 0;
+  padding: 20px 20px 15px 20px; }
+
 #map {
   position: absolute;
   top: 0;

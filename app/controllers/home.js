@@ -10,11 +10,13 @@ var cloudinary = require('cloudinary');
 var dateFormat = require('dateformat');
 var nodemailer = require('nodemailer');
 
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-var passport = require('passport');
-var gcal     = require('google-calendar');
- 
 
+var calendar = function(req, res, next) {
+  db.Event.findAll().then(function (events) {
+    req.events = events;
+    return next();
+  })
+};
 
 //email
 var transporter = nodemailer.createTransport({
@@ -105,25 +107,9 @@ module.exports = function (app) {
   app.use('/', router);
 };
 
-router.get('/auth',
-  passport.authenticate('google', { session: false }));
 
-router.get('/auth/callback', 
-  passport.authenticate('google', { session: false, failureRedirect: '/login' }),
-  function(req, res) { 
-    req.session.access_token = req.user.accessToken;
-    res.redirect('/');
-  });
-
-
-router.get('/',function (req, res, next) {
-    
-    
-    gcal(accessToken).calendarList.list(function(err, data) {
-      if(err){console.log("err", err);}
-      console.log(data);
-    });
-    
+router.get('/', calendar, function (req, res, next) {
+    console.log("req.events",req.events);
     res.locals = {
       pageTitle: "form",
       background: true,
@@ -386,6 +372,23 @@ router.post('/article/like', function (req, res, next) {
    });
   });
 });
+
+router.post('/events', function (req, res, next) {
+  var id = req.body.id
+  var body = req.body;
+  console.log(body);
+  db.Events.create({ name: body.name, category: body.category, email: body.email, phone: body.phone, when: body.when }).then(function () {
+    res.render('contact', {
+      title: 'Contacto',
+      success: "Su mensaje ha sido enviado correctamente",
+      logo: "group-2.png"
+    });
+    if(body.confirmation){
+      console.log("sent email");
+    }
+  });
+});
+
 
 router.post('/delete_image', function (req, res, next) {
   var body = req.body;
