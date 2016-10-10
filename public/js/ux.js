@@ -2,30 +2,57 @@
   $(document).foundation();
   
   
-  $('#calendar').fullCalendar({
-    dayClick: function(date, jsEvent, view) {
-      console.log('a day has been clicked!');
-      // $(this).css('background-color', 'red');
-      console.log(view, date.format());
-      
-      var modal = $('#modal-calendar');
-      var fecha = moment(date).format("LL");  
-      $('#hidden-date').html(fecha);moment(date).format("l");
-      $('#modal-date').html(fecha);
-      modal.foundation('reveal', 'open');
-      
-      $('#timepicker').timepicker({
-          timeFormat: 'hh:mm p',
-          interval: 30,
-          minTime: '9',
-          maxTime: '6:00pm',
-          defaultTime: '11',
-          startTime: '9:00',
-          dynamic: false,
-      });
-      
+  $.get( "/events", function( data ) {
+    var result = JSON.parse(data);
+    // console.log("result", result);
+    var info = [];
+    for (var key in result) {
+        // console.log(result[key]);
+        info.push({
+            title  : result[key]["name"],
+            start  : result[key]["when"],
+            allDay : false // will make the time show
+        });
+        //console.log(key, result[key]);
     }
+    
+    var modal = $('#modal-calendar');
+    // console.log(info);
+    $('#calendar').fullCalendar({
+      events: info,
+      dayClick: function(date, jsEvent, view) {
+        // console.log('a day has been clicked!');
+        // // $(this).css('background-color', 'red');
+        // console.log(view, date.format());
+        
+        // in the pass?
+        var now = new Date();
+        now.setHours(0,0,0,0);
+        if (date < now) {
+          return 
+        }
+      
+        var fecha = moment(date).format("LL");  
+        $('#hidden-date').val(moment(date).format("l"));
+        $('#modal-date').html(fecha);
+        modal.foundation('reveal', 'open');
+      
+        $('#timepicker').timepicker({
+            timeFormat: 'hh:mm p',
+            interval: 30,
+            minTime: '9',
+            maxTime: '6:00pm',
+            defaultTime: '12',
+            startTime: '08:00',
+            dynamic: false,
+        });
+      
+      }
+    });
+    
   });
+  
+
   
   $(".post-calendar").submit(function(e){
     e.preventDefault();
@@ -41,20 +68,31 @@
           }else{
             values["recibir"] = false;
           }
-        }if (this.name == "time"){
+        }else if (this.name == "time"){
             var hour = $(this).val();
-            hour = hour.split(":");
-            hour = hour[0]+hour[1].split(" ")[0];
-            console.log(hour);
-            var date = moment("06/06/2015 "+hour+":"+"00").format('DD-MMM-YYYY');
+            hour = hour.slice(0, -3);
+            var to_parse = $("#hidden-date").val()+" "+hour+":00";
+            // console.log("to_parse",to_parse);
+            var date = new Date(Date.parse(to_parse));
+            values["time"] = date;
         }else{
           values[this.name] = $(this).val();
         }
     });
-    console.log(values);
-    // $.post( "/events", values, function( data ) {
-    //   console.log(data);
-    // });
+    // console.log(values);
+    $.post( "/events", values, function( data ) {
+      data = JSON.parse(data);
+      // console.log(data);
+      var event = [];
+      event.push({
+          title  : data.name,
+          start  : data.when,
+          allDay : false // will make the time show
+      });
+      console.log(event);
+      $('#calendar').fullCalendar('addEventSource', event );
+      modal.foundation('reveal', 'close');
+    });
   });
   
   
@@ -78,27 +116,6 @@
     $(".alert-box").remove();
   });
   
-  var indirect = {
-    remote: false
-  };
-  function get_covers(){
-      var xhr = new XMLHttpRequest();
-      xhr.open("GET", "/covers");
-      xhr.onreadystatechange = function(){
-          if(xhr.readyState === 4){
-              if(xhr.status === 200){
-                  indirect = JSON.parse(xhr.responseText);
-              }
-              else{
-                  console.log("Could not get the covers.");
-                  indirect.remote = false;
-              }
-          }
-      };
-      xhr.send();
-  }
-
-
   
   if(document.getElementById("category-val")){
     var cat = $("#category-val").data("category");

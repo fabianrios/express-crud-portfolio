@@ -374,18 +374,21 @@ router.post('/article/like', function (req, res, next) {
 });
 
 router.post('/events', function (req, res, next) {
-  var id = req.body.id
   var body = req.body;
-  console.log(body);
-  db.Events.create({ name: body.name, category: body.category, email: body.email, phone: body.phone, when: body.when }).then(function () {
-    res.render('contact', {
-      title: 'Contacto',
-      success: "Su mensaje ha sido enviado correctamente",
-      logo: "group-2.png"
-    });
-    if(body.confirmation){
+  db.Event.create({ name: body.name, category: body.category, email: body.email, phone: body.phone, when: body.time }).then(function (response) {
+    console.log("data", response["dataValues"]);
+    res.write(JSON.stringify(response["dataValues"]));
+    res.end();
+    if(body.recibir){
       console.log("sent email");
     }
+  });
+});
+
+router.get('/events', function (req, res, next) {
+  db.Event.findAll({ publish: true }).then(function (events) {
+    res.write(JSON.stringify(events));
+    res.end();
   });
 });
 
