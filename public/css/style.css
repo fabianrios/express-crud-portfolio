@@ -50,9 +50,6 @@
   padding: 50px 0;
   min-height: 80vh; }
 
-.ui-timepicker-container {
-  z-index: 9999999999999 !important; }
-
 .post-calendar input[type="text"], .post-calendar input[type="email"] {
   background: #fafafa;
   border: 0;

@@ -1,20 +1,31 @@
 (function() {
   $(document).foundation();
+  moment.tz.add("Europe/Zurich|CET CEST|-10 -20|01010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-19Lc0 11A0 1o00 11A0 1xG10 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00|38e4");
+  moment.tz.add("America/Bogota|BMT COT COST|4U.g 50 40|0121|-2eb73.I 38yo3.I 2en0|90e5");
   
-  
+  var to_remove = {};
   $.get( "/events", function( data ) {
     var result = JSON.parse(data);
-    // console.log("result", result);
+    //console.log("result", result);
     var info = [];
     for (var key in result) {
         // console.log(result[key]);
+        var este = moment(result[key]["when"]).format("L").toString();
+        var ese = moment(result[key]["when"]).format("LT").toString();
+        var mas = moment(result[key]["when"]).add(30, 'minutes').format('LT');
+        if (to_remove.hasOwnProperty(este)){
+          to_remove[este]["hours"].push([ese, mas]);
+        }else{
+          to_remove[este] = {hours: [[ese, mas]]}
+        }
         info.push({
             title  : result[key]["name"],
-            start  : result[key]["when"],
+            start  : moment.tz(result[key]["when"], "Europe/Zurich"),
             allDay : false // will make the time show
         });
         //console.log(key, result[key]);
     }
+    console.log(to_remove);
     
     var modal = $('#modal-calendar');
     // console.log(info);
@@ -31,22 +42,23 @@
         if (date < now) {
           return 
         }
-      
+         
         var fecha = moment(date).format("LL");  
         $('#hidden-date').val(moment(date).format("l"));
         $('#modal-date').html(fecha);
         modal.foundation('reveal', 'open');
-      
+        var este = moment(date).format("L").toString();
+        console.log(moment(date).format("L"), to_remove[este]);
         $('#timepicker').timepicker({
-            timeFormat: 'hh:mm p',
-            interval: 30,
-            minTime: '9',
-            maxTime: '6:00pm',
-            defaultTime: '12',
-            startTime: '08:00',
-            dynamic: false,
+            'timeFormat': 'g:i a',
+            'disableTimeRanges': to_remove[moment(date).format("L")]["hours"],
+            'interval': 30,
+            'minTime': '9',
+            'maxTime': '6:00pm',
+            'defaultTime': '9',
+            'startTime': '08:00'
         });
-      
+        
       }
     });
     
