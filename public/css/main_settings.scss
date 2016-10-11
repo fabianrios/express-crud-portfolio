@@ -1270,7 +1270,7 @@ $include-html-global-classes: $include-html-classes;
 // $include-html-table-classes: $include-html-classes;
 
 // These control the background color for the table and even rows
-// $table-bg: $white;
+   $table-bg: transparent;
 // $table-even-row-bg: $snow;
 
 // These control the table cell border style
@@ -1294,7 +1294,7 @@ $include-html-global-classes: $include-html-classes;
 // These are for controlling the layout, display and margin of tables
 // $table-layout: auto;
 // $table-display: table-cell;
-// $table-margin-bottom: rem-calc(20);
+   $table-margin-bottom: 0;
 
 // 31. Tabs
 // - - - - - - - - - - - - - - - - - - - - - - - - -

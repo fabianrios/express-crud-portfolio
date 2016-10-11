@@ -31,6 +31,10 @@
     // console.log(info);
     $('#calendar').fullCalendar({
       events: info,
+      eventBackgroundColor: '#a2bfcb',
+      textColor: 'yellow',
+      eventLimit: true,
+      dayNamesShort: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
       dayClick: function(date, jsEvent, view) {
         // console.log('a day has been clicked!');
         // // $(this).css('background-color', 'red');
@@ -48,10 +52,12 @@
         $('#modal-date').html(fecha);
         modal.foundation('reveal', 'open');
         var este = moment(date).format("L").toString();
-        console.log(moment(date).format("L"), to_remove[este]);
+        var quitar = typeof to_remove != "undefined" ? to_remove : [];
+        var lista = typeof quitar[moment(date).format("L")] != "undefined" ? quitar[moment(date).format("L")]["hours"]  : [];
+        console.log(moment(date).format("L"), lista);
         $('#timepicker').timepicker({
             'timeFormat': 'g:i a',
-            'disableTimeRanges': to_remove[moment(date).format("L")]["hours"],
+            'disableTimeRanges': lista,
             'interval': 30,
             'minTime': '9',
             'maxTime': '6:00pm',

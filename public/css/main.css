@@ -9238,8 +9238,8 @@ select {
   width: 100%; }
 
 table {
-  background: #FFFFFF;
-  margin-bottom: 1.25rem;
+  background: transparent;
+  margin-bottom: 0;
   border: solid 1px #DDDDDD;
   table-layout: auto; }
   table caption {

@@ -375,14 +375,34 @@ router.post('/article/like', function (req, res, next) {
 
 router.post('/events', function (req, res, next) {
   var body = req.body;
-  db.Event.create({ name: body.name, category: body.category, email: body.email, phone: body.phone, when: body.time }).then(function (response) {
-    console.log("data", response["dataValues"]);
-    res.write(JSON.stringify(response["dataValues"]));
-    res.end();
-    if(body.recibir){
-      console.log("sent email");
+  
+  db.Event.findAll({ publish: true }).then(function (events) {
+    
+    var invalidEntries = 0;
+
+    function filterByID(obj) {
+      console.log(obj.when, body.time);
+      if (obj.when == body.time) {
+        return true;
+      } else {
+        invalidEntries++;
+        return false;
+      }
     }
+    var arrByID = events.filter(filterByID);
+    
+    // console.log(arrByID, invalidEntries);
+      // db.Event.create({ name: body.name, category: body.category, email: body.email, phone: body.phone, when: body.time }).then(function (response) {
+      //   console.log("data", response["dataValues"]);
+      //   res.write(JSON.stringify(response["dataValues"]));
+      //   res.end();
+      //   if(body.recibir){
+      //     console.log("sent email");
+      //   }
+      // });
+    
   });
+  
 });
 
 router.get('/events', function (req, res, next) {

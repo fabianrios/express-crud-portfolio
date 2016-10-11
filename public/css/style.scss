@@ -72,6 +72,57 @@ $main-bg:#f6f6f6;
 }
 
 
+#calendar{
+  table{
+    .fc-row .fc-content-skeleton td{
+      border-color:#ddd;
+    }
+    tr{
+      th{
+        &.fc-day-header{
+         background: #fff; 
+         &.fc-sun, &.fc-sat{
+            background: #efefef;
+          }
+         span{
+           display: block;
+           padding: 13px 0;
+         }
+        }
+      }
+      td{
+        &.fc-day-top{
+          background: #fff;
+          opacity: 1;
+          span.fc-day-number{
+            color: #fff;
+            @include border-radius(100%);
+            width: 30px;
+            height: 30px;
+            background-color: #548fa7;
+            text-align: center;
+            display: inline-block;
+            line-height: 31px;
+            margin: 10px;
+            font-weight: normal;
+            font-size: 16px;
+          }
+        }
+        &.fc-day{
+          background: white;
+        }
+        &.fc-past, &.fc-sun, &.fc-sat{
+          background: #efefef;
+          span{
+            opacity: .5;
+          }
+        }
+      }
+    }
+  }
+}
+
+
 .post-calendar{
   input[type="text"],input[type="email"]{
     background: #fafafa;
