@@ -205,12 +205,16 @@ input[type="search"].search{
   @include border-radius(2px);
   @include box-shadow();
   &.cita{
+    display: none;
     font-weight: normal;
     padding: 10px 30px;
     position: relative;
     top: 20px;
     font-size: 20px;
     float: right;
+    @media only screen and (min-width: 40em){ 
+      display: inline-block;
+    }
   }
 }
 

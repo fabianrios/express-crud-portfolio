@@ -29,20 +29,22 @@
       </div>
       <div id="calendar"></div>
       <div id="modal-calendar" class="tiny reveal-modal" data-reveal aria-labelledby="calendar" aria-hidden="true" role="dialog">
-        <h3 id="modal-date"></h3>
-        <form action="/post-calendar" class="post-calendar">
-          <select name="category" id="categories">
-            <option value="acidoh">Acido hialuronico <span>$200.000 COP</span></option>
-            <option value="lipomasaje">Lipomasaje</option>
-          </select>
-          <input type="text" name="time" id="timepicker" required/>
-          <input type="hidden" name="daytime" id="hidden-date" required/>
-          <input type="text" name="name" id="name" placeholder="nombre"  required />
-          <input type="email" name="email" id="email" placeholder="correo electronico" required/>
-          <input type="text" name="phone" id="phone" placeholder="télefono" required />
-          <label for="recibir"><input type="checkbox" name="recibir" id="recibir"/> Recibir correo de confirmación</label>
-          <button href="" class="button expand success">Agendar Cita</button>
-        </form>
+        <div class="modal-body">
+          <h3 id="modal-date"></h3>
+          <form action="/post-calendar" class="post-calendar">
+            <select name="category" id="categories">
+              <option value="acidoh">Acido hialuronico <span>$200.000 COP</span></option>
+              <option value="lipomasaje">Lipomasaje</option>
+            </select>
+            <input type="text" name="time" id="timepicker" placeholder="Escoge una hora ej: 9:00am" required/>
+            <input type="hidden" name="daytime" id="hidden-date" required/>
+            <input type="text" name="name" id="name" placeholder="nombre"  required />
+            <input type="email" name="email" id="email" placeholder="correo electronico" required/>
+            <input type="text" name="phone" id="phone" placeholder="télefono" required />
+            <label for="recibir"><input type="checkbox" name="recibir" id="recibir"/> Recibir correo de confirmación</label>
+            <button href="" class="button expand success">Agendar Cita</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>

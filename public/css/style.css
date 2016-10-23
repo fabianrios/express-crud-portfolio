@@ -134,6 +134,13 @@ h3#modal-date {
   margin: 0;
   padding: 20px 20px 15px 20px; }
 
+.modal-body {
+  position: relative; }
+
+.ui-timepicker-wrapper {
+  width: 29.8% !important;
+  max-width: 62.5rem; }
+
 #map {
   position: absolute;
   top: 0;

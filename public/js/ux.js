@@ -13,9 +13,9 @@
     for (var key in result) {
         // console.log(result[key]);
         var este = moment(result[key]["when"]).format("L").toString();
-        var ese = moment.tz(result[key]["when"], "Europe/Berlin");
+        var ese = moment.tz(result[key]["when"], "America/Bogota");
         ese = moment(ese).format("LT").toString();
-        var mas = moment.tz(result[key]["when"], "Europe/Berlin");
+        var mas = moment.tz(result[key]["when"], "America/Bogota");
         mas = moment(mas).add(30, 'minutes').format('LT');
         //console.log("dia: ", este,"hora real formateada:", ese);
         if (to_remove.hasOwnProperty(este)){
@@ -25,7 +25,7 @@
         }
         info.push({
             title  : result[key]["name"],
-            start  : moment.tz(result[key]["when"], "Europe/Berlin"),
+            start  : moment.tz(result[key]["when"], "America/Bogota"),
             allDay : false // will make the time show
         });
     }
@@ -69,7 +69,7 @@
             interval: 30,
             minTime: '8',
             maxTime: '18:00',
-            defaultTime: '9',
+            defaultTime: '12',
             dynamic: true,
             dropdown: true,
             scrollbar: true,
@@ -120,7 +120,7 @@
     .done(function(data) {
       data = JSON.parse(data);
       console.log(data);
-      var event_where = moment.tz(data.when, "Europe/Berlin");
+      var event_where = moment.tz(data.when, "America/Bogota");
       var event = [];
       event.push({
           title  : data.name,

@@ -330,7 +330,7 @@ router.get('/article/:id', function (req, res, next) {
         logo: "group-2.png",
         covers: associatedCovers, 
         author: user,
-				layout: "admin",
+				layout: "main",
         cloudinary_account: process.env.CLOUDINARY_NAME
       });
     
