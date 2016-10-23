@@ -9,6 +9,8 @@ var friendlyUrl = require('friendly-url');
 var cloudinary = require('cloudinary');
 var dateFormat = require('dateformat');
 var nodemailer = require('nodemailer');
+var moment = require('moment');
+
 
 
 var calendar = function(req, res, next) {
@@ -109,7 +111,7 @@ module.exports = function (app) {
 
 
 router.get('/', calendar, function (req, res, next) {
-    console.log("req.events",req.events);
+    //console.log("req.events",req.events);
     res.locals = {
       pageTitle: "form",
       background: true,
@@ -379,10 +381,13 @@ router.post('/events', function (req, res, next) {
   db.Event.findAll({ publish: true }).then(function (events) {
     
     var invalidEntries = 0;
+    var preexisting = false;
 
     function filterByID(obj) {
-      console.log(obj.when, body.time);
-      if (obj.when == body.time) {
+      // console.log(moment(obj.when).format("lll"), moment(body.time).format("lll"));
+      if (moment(obj.when).format("lll") == moment(body.time).format("lll")) {
+        console.log(moment(obj.when).format("lll"));
+        preexisting = true;
         return true;
       } else {
         invalidEntries++;
@@ -390,16 +395,25 @@ router.post('/events', function (req, res, next) {
       }
     }
     var arrByID = events.filter(filterByID);
-    
+    console.log(preexisting);
+    // db.Event.destroy({}).then(function() {
+    //   res.redirect('/');
+    // });
     // console.log(arrByID, invalidEntries);
-      // db.Event.create({ name: body.name, category: body.category, email: body.email, phone: body.phone, when: body.time }).then(function (response) {
-      //   console.log("data", response["dataValues"]);
-      //   res.write(JSON.stringify(response["dataValues"]));
-      //   res.end();
-      //   if(body.recibir){
-      //     console.log("sent email");
-      //   }
-      // });
+    if(!preexisting){
+      db.Event.create({ name: body.name, category: body.category, email: body.email, phone: body.phone, when: body.time }).then(function (response) {
+        //console.log("data", response["dataValues"]);
+        res.write(JSON.stringify(response["dataValues"]));
+        res.end();
+        if(body.recibir){
+          console.log("sent email");
+        }
+      });
+    }else{
+      res.status(500);
+      res.write(JSON.stringify({"error":"ya existe"}));
+      res.end();
+    }
     
   });
   

@@ -2,6 +2,7 @@
   $(document).foundation();
   moment.tz.add("Europe/Zurich|CET CEST|-10 -20|01010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-19Lc0 11A0 1o00 11A0 1xG10 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00|38e4");
   moment.tz.add("America/Bogota|BMT COT COST|4U.g 50 40|0121|-2eb73.I 38yo3.I 2en0|90e5");
+  moment.tz.add("Europe/Berlin|CET CEST CEMT|-10 -20 -30|01010101010101210101210101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-2aFe0 11d0 1iO0 11A0 1o00 11A0 Qrc0 6i00 WM0 1fA0 1cM0 1cM0 1cM0 kL0 Nc0 m10 WM0 1ao0 1cp0 dX0 jz0 Dd0 1io0 17c0 1fA0 1a00 1ehA0 1a00 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00|41e5");
   
   var to_remove = {};
   $.get( "/events", function( data ) {
@@ -11,8 +12,11 @@
     for (var key in result) {
         // console.log(result[key]);
         var este = moment(result[key]["when"]).format("L").toString();
-        var ese = moment(result[key]["when"]).format("LT").toString();
-        var mas = moment(result[key]["when"]).add(30, 'minutes').format('LT');
+        var ese = moment.tz(result[key]["when"], "Europe/Berlin");
+        ese = moment(ese).format("LT").toString();
+        var mas = moment.tz(result[key]["when"], "Europe/Berlin");
+        mas = moment(mas).add(30, 'minutes').format('LT');
+        console.log("dia: ", este,"hora real formateada:", ese);
         if (to_remove.hasOwnProperty(este)){
           to_remove[este]["hours"].push([ese, mas]);
         }else{
@@ -20,12 +24,12 @@
         }
         info.push({
             title  : result[key]["name"],
-            start  : moment.tz(result[key]["when"], "Europe/Zurich"),
+            start  : moment.tz(result[key]["when"], "Europe/Berlin"),
             allDay : false // will make the time show
         });
         //console.log(key, result[key]);
     }
-    console.log(to_remove);
+    //console.log(to_remove);
     
     var modal = $('#modal-calendar');
     // console.log(info);
@@ -98,9 +102,10 @@
         }
     });
     // console.log(values);
-    $.post( "/events", values, function( data ) {
+    $.post( "/events", values, function() {})
+    .done(function(data) {
       data = JSON.parse(data);
-      // console.log(data);
+      console.log(data);
       var event = [];
       event.push({
           title  : data.name,
@@ -110,7 +115,14 @@
       console.log(event);
       $('#calendar').fullCalendar('addEventSource', event );
       modal.foundation('reveal', 'close');
-    });
+     })
+     .fail(function(err) {
+       console.log("err", err);
+       var response = JSON.parse(err.responseText).error;
+       console.log(response);
+       modal.foundation('reveal', 'close');
+       return
+     });
   });
   
   

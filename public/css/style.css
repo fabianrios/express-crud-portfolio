@@ -83,6 +83,27 @@
   #calendar table tr td.fc-past span, #calendar table tr td.fc-sun span, #calendar table tr td.fc-sat span {
     opacity: .5; }
 
+.posibilities {
+  position: absolute;
+  top: 10px;
+  left: 300px; }
+  .posibilities h5 {
+    margin: 0 10px;
+    display: inline-block; }
+    .posibilities h5 span {
+      margin-right: 10px;
+      position: relative;
+      top: 5px;
+      background: #52caf5;
+      -webkit-border-radius: 100%;
+      -moz-border-radius: 100%;
+      border-radius: 100%;
+      display: inline-block;
+      width: 20px;
+      height: 20px; }
+      .posibilities h5 span.not {
+        background: #ff6d6d; }
+
 .post-calendar input[type="text"], .post-calendar input[type="email"] {
   background: #fafafa;
   border: 0;
