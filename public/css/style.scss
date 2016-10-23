@@ -122,6 +122,24 @@ $main-bg:#f6f6f6;
   }
 }
 
+.available{
+  margin-right: 10px;
+  position: relative;
+  top: 4px;
+  text-indent: -9999px;
+  background: #52caf5;
+  @include border-radius(100%);
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  &.not{
+    background: #ff6d6d;
+  }
+  &.fc-more{
+    top: -4px;
+  }
+}
+
 .posibilities{
   position: absolute;
   top: 10px;
@@ -129,19 +147,6 @@ $main-bg:#f6f6f6;
   h5{
     margin: 0 10px;
     display: inline-block;
-    span{
-      margin-right: 10px;
-      position: relative;
-      top: 5px;
-      background: #52caf5;
-      @include border-radius(100%);
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      &.not{
-        background: #ff6d6d;
-      }
-    }
   }
 }
 

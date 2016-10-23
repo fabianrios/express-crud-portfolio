@@ -5,6 +5,7 @@
   moment.tz.add("Europe/Berlin|CET CEST CEMT|-10 -20 -30|01010101010101210101210101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-2aFe0 11d0 1iO0 11A0 1o00 11A0 Qrc0 6i00 WM0 1fA0 1cM0 1cM0 1cM0 kL0 Nc0 m10 WM0 1ao0 1cp0 dX0 jz0 Dd0 1io0 17c0 1fA0 1a00 1ehA0 1a00 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00|41e5");
   
   var to_remove = {};
+  var lista = [];
   $.get( "/events", function( data ) {
     var result = JSON.parse(data);
     //console.log("result", result);
@@ -37,6 +38,12 @@
       eventLimit: true,
       timeFormat: 'H(:mm)',
       dayNamesShort: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+      eventAfterAllRender:function( view ) {
+        if ($(".fc-more").text() == "+19 more"){
+          $(".fc-more").addClass("available").addClass("not");
+        }
+        console.log(view, $(".fc-more").text());
+      },
       dayClick: function(date, jsEvent, view) {
         $('input#timepicker').timepicker('remove');
         // in the pass?
@@ -52,11 +59,10 @@
         $('#hidden-date').val(moment(date).format("l"));
 
         var quitar = typeof to_remove != "undefined" ? to_remove : [];
-        var lista = [];
         if (typeof quitar[moment(date).format("L")] != "undefined"){
           lista = quitar[moment(date).format("L")]["hours"]; 
         }
-        console.log(moment(date).format("L"), lista);
+        console.log(moment(date).format("L"), lista, quitar);
         $('input#timepicker').timepicker({
             timeFormat: 'g:i a',
             disableTimeRanges: lista,
@@ -122,6 +128,9 @@
           allDay : false // will make the time show
       });
       console.log("event added:", event);
+      // var event_date = moment(event.start).format("LT").toString();
+      // var adding = moment(event_date).add(30, 'minutes').format('LT');
+      // lista.push([event_date, adding]);
       $('#calendar').fullCalendar('addEventSource', event );
       $('#modal-calendar').foundation('reveal', 'close');
      })
