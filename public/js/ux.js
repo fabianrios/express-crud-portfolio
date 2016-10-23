@@ -16,7 +16,7 @@
         ese = moment(ese).format("LT").toString();
         var mas = moment.tz(result[key]["when"], "Europe/Berlin");
         mas = moment(mas).add(30, 'minutes').format('LT');
-        console.log("dia: ", este,"hora real formateada:", ese);
+        //console.log("dia: ", este,"hora real formateada:", ese);
         if (to_remove.hasOwnProperty(este)){
           to_remove[este]["hours"].push([ese, mas]);
         }else{
@@ -29,7 +29,6 @@
         });
     }
     
-    var modal = $('#modal-calendar');
     //console.log(info);
     $('#calendar').fullCalendar({
       events: info,
@@ -39,7 +38,7 @@
       timeFormat: 'H(:mm)',
       dayNamesShort: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
       dayClick: function(date, jsEvent, view) {
-        $('#timepicker').fullCalendar('destroy');
+        $('input#timepicker').timepicker('remove');
         // in the pass?
         var now = new Date();
         now.setHours(0,0,0,0);
@@ -48,22 +47,30 @@
         }
          
         var fecha = moment(date).format("LL");  
-        $('#hidden-date').val(moment(date).format("l"));
         $('#modal-date').html(fecha);
-        modal.foundation('reveal', 'open');
-        var este = moment(date).format("L").toString();
+        
+        $('#hidden-date').val(moment(date).format("l"));
+
         var quitar = typeof to_remove != "undefined" ? to_remove : [];
-        var lista = typeof quitar[moment(date).format("L")] != "undefined" ? quitar[moment(date).format("L")]["hours"]  : [];
+        var lista = [];
+        if (typeof quitar[moment(date).format("L")] != "undefined"){
+          lista = quitar[moment(date).format("L")]["hours"]; 
+        }
         console.log(moment(date).format("L"), lista);
-        $('#timepicker').timepicker({
-            'timeFormat': 'g:i a',
-            'disableTimeRanges': lista,
-            'interval': 30,
-            'minTime': '08:00:00',
-            'maxTime': '18:00:00',
-            'defaultTime': '9',
-            'startTime': '08:00:00'
+        $('input#timepicker').timepicker({
+            timeFormat: 'g:i a',
+            disableTimeRanges: lista,
+            interval: 30,
+            minTime: '8',
+            maxTime: '18:00',
+            defaultTime: '9',
+            dynamic: true,
+            dropdown: true,
+            scrollbar: true,
+            startTime: '08:00'
         });
+        
+        $('#modal-calendar').foundation('reveal', 'open');
         
       }
     });
