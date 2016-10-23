@@ -27,23 +27,19 @@
             start  : moment.tz(result[key]["when"], "Europe/Berlin"),
             allDay : false // will make the time show
         });
-        //console.log(key, result[key]);
     }
-    //console.log(to_remove);
     
     var modal = $('#modal-calendar');
-    // console.log(info);
+    //console.log(info);
     $('#calendar').fullCalendar({
       events: info,
       eventBackgroundColor: '#a2bfcb',
       textColor: 'yellow',
       eventLimit: true,
+      timeFormat: 'H(:mm)',
       dayNamesShort: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
       dayClick: function(date, jsEvent, view) {
-        // console.log('a day has been clicked!');
-        // // $(this).css('background-color', 'red');
-        // console.log(view, date.format());
-        
+        $('#timepicker').fullCalendar('destroy');
         // in the pass?
         var now = new Date();
         now.setHours(0,0,0,0);
@@ -63,10 +59,10 @@
             'timeFormat': 'g:i a',
             'disableTimeRanges': lista,
             'interval': 30,
-            'minTime': '9',
-            'maxTime': '6:00pm',
+            'minTime': '08:00:00',
+            'maxTime': '18:00:00',
             'defaultTime': '9',
-            'startTime': '08:00'
+            'startTime': '08:00:00'
         });
         
       }
@@ -74,7 +70,7 @@
     
   });
   
-
+  var tf = {1:13,2:14,3:15,4:16,5:17,6:18};
   
   $(".post-calendar").submit(function(e){
     e.preventDefault();
@@ -94,33 +90,39 @@
             var hour = $(this).val();
             hour = hour.slice(0, -3);
             var to_parse = $("#hidden-date").val()+" "+hour+":00";
-            // console.log("to_parse",to_parse);
+            var fixhour = hour.split(":");
+            // for 24 hours format
+            if (fixhour[0] >= 1 && fixhour[0] <= 6)
+              to_parse = $("#hidden-date").val()+" "+tf[fixhour[0]]+":"+fixhour[1]+":00";
+            
+            //console.log("to_parse",to_parse);
             var date = new Date(Date.parse(to_parse));
             values["time"] = date;
         }else{
           values[this.name] = $(this).val();
         }
     });
-    // console.log(values);
+    //console.log(values);
     $.post( "/events", values, function() {})
     .done(function(data) {
       data = JSON.parse(data);
       console.log(data);
+      var event_where = moment.tz(data.when, "Europe/Berlin");
       var event = [];
       event.push({
           title  : data.name,
           start  : data.when,
           allDay : false // will make the time show
       });
-      console.log(event);
+      console.log("event added:", event);
       $('#calendar').fullCalendar('addEventSource', event );
-      modal.foundation('reveal', 'close');
+      $('#modal-calendar').foundation('reveal', 'close');
      })
      .fail(function(err) {
        console.log("err", err);
        var response = JSON.parse(err.responseText).error;
        console.log(response);
-       modal.foundation('reveal', 'close');
+       $('#modal-calendar').foundation('reveal', 'close');
        return
      });
   });
