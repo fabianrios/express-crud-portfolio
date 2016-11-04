@@ -1,5 +1,6 @@
 (function() {
   $(document).foundation();
+  moment.locale("es");
   moment.tz.add("Europe/Zurich|CET CEST|-10 -20|01010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-19Lc0 11A0 1o00 11A0 1xG10 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00|38e4");
   moment.tz.add("America/Bogota|BMT COT COST|4U.g 50 40|0121|-2eb73.I 38yo3.I 2en0|90e5");
   moment.tz.add("Europe/Berlin|CET CEST CEMT|-10 -20 -30|01010101010101210101210101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-2aFe0 11d0 1iO0 11A0 1o00 11A0 Qrc0 6i00 WM0 1fA0 1cM0 1cM0 1cM0 kL0 Nc0 m10 WM0 1ao0 1cp0 dX0 jz0 Dd0 1io0 17c0 1fA0 1a00 1ehA0 1a00 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00|41e5");
@@ -32,6 +33,7 @@
     
     //console.log(info);
     $('#calendar').fullCalendar({
+      lang: 'es',
       events: info,
       eventBackgroundColor: '#a2bfcb',
       textColor: 'yellow',
@@ -42,42 +44,52 @@
         if ($(".fc-more").text() == "+19 more"){
           $(".fc-more").addClass("available").addClass("not");
         }
-        console.log(view, $(".fc-more").text());
+        //console.log(view, $(".fc-more").text());
       },
       dayClick: function(date, jsEvent, view) {
-        $('input#timepicker').timepicker('remove');
-        // in the pass?
-        var now = new Date();
-        now.setHours(0,0,0,0);
-        if (date < now) {
+        var cuando = jsEvent.target.className.split(" ");
+        console.log(cuando, $.inArray("fc-past", cuando), $.inArray("fc-sun", cuando), $.inArray("fc-sat", cuando), cuando.length);
+        if ($.inArray("fc-sat", cuando) > -1 || cuando.length <= 1){
           return 
         }
-         
-        var fecha = moment(date).format("LL");  
-        $('#modal-date').html(fecha);
-        
-        $('#hidden-date').val(moment(date).format("l"));
-
-        var quitar = typeof to_remove != "undefined" ? to_remove : [];
-        if (typeof quitar[moment(date).format("L")] != "undefined"){
-          lista = quitar[moment(date).format("L")]["hours"]; 
+        if ($.inArray("fc-past", cuando) > -1 || cuando.length <= 1){
+          return
         }
-        console.log(moment(date).format("L"), lista, quitar);
-        $('input#timepicker').timepicker({
-            timeFormat: 'g:i a',
-            disableTimeRanges: lista,
-            interval: 30,
-            minTime: '8',
-            maxTime: '18:00',
-            defaultTime: '12',
-            dynamic: true,
-            dropdown: true,
-            scrollbar: true,
-            startTime: '08:00'
-        });
+        if ($.inArray("fc-sun", cuando) > -1 || cuando.length <= 1){
+          return
+        }
+          $('input#timepicker').timepicker('remove');
+          // in the pass?
+          var now    = new Date();
+          now.setHours(0,0,0,0);
+          if (date < now) {
+            return 
+          }
         
-        $('#modal-calendar').foundation('reveal', 'open');
+          var fecha  = moment(date).locale("es").format("LL");
+          $('#modal-date').html(fecha);
         
+          $('#hidden-date').val(moment(date).format("l"));
+
+          var quitar = typeof to_remove != "undefined" ? to_remove : [];
+          if (typeof quitar[moment(date).format("L")] != "undefined"){
+            lista    = quitar[moment(date).format("L")]["hours"]; 
+          }
+          //console.log(moment(date).format("L"), lista, quitar);
+          $('input#timepicker').timepicker({
+              timeFormat: 'g:i a',
+              disableTimeRanges: lista,
+              interval: 30,
+              minTime: '8',
+              maxTime: '18:00',
+              defaultTime: '12',
+              dynamic: true,
+              dropdown: true,
+              scrollbar: true,
+              startTime: '08:00'
+          });
+        
+          $('#modal-calendar').foundation('reveal', 'open');
       }
     });
     
@@ -124,7 +136,7 @@
       var event = [];
       event.push({
           title  : data.name,
-          start  : data.when,
+          start  : event_where,
           allDay : false // will make the time show
       });
       console.log("event added:", event);
@@ -207,6 +219,19 @@
      $(this).children("span").toggleClass("fa-bars");
      $(".navigation, .social").slideToggle();
    });
+   
+   var n = 1;
+   window.setInterval(function(){
+     n < 3 ? n++ : n = 1;
+     var arrayClass = ["","","second","third"];
+     var slider = "url(../img/slider"+n+".jpg)"
+     console.log(slider);
+     $(".nav.home").animate({opacity: 0}, 200, function() {
+       $(this).css({"background-image":slider}).animate({opacity: 1});
+       $(".text-banner").addClass(arrayClass[n]).removeClass(arrayClass[n-1]);
+     });
+   }, 20000);
+   
    
    var isiPhone = navigator.userAgent.toLowerCase().indexOf("iphone");
    var isAndroid = navigator.userAgent.toLowerCase().indexOf("android");

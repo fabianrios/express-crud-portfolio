@@ -403,7 +403,7 @@ router.post('/events', function (req, res, next) {
     if(!preexisting){
       db.Event.create({ name: body.name, category: body.category, email: body.email, phone: body.phone, when: body.time }).then(function (response) {
         //console.log("data", response["dataValues"]);
-        res.write(JSON.stringify(response["dataValues"]));
+        res.write(JSON.stringify(response["dataValues"], {"success":"El evento fue creado"}));
         res.end();
         if(body.recibir){
           console.log("sent email");

@@ -73,6 +73,11 @@ $main-bg:#f6f6f6;
 
 
 #calendar{
+  &.homeone{
+    .fc-title{
+      display: none;
+    }
+  }
   table{
     .fc-row .fc-content-skeleton td{
       border-color:#ddd;
@@ -109,10 +114,12 @@ $main-bg:#f6f6f6;
           }
         }
         &.fc-day{
+          cursor: pointer;
           background: white;
         }
         &.fc-past, &.fc-sun, &.fc-sat{
           background: #efefef;
+          cursor: default;
           span{
             opacity: .5;
           }
@@ -229,6 +236,45 @@ h3#modal-date{
   }
 }
 
+.text-banner{
+  padding-top: 20vh;
+  padding-left: 25px;
+  &.second{
+    .the-text{
+      @include border-radius(10px);
+      padding: 15px 25px;
+      display: table-cell;
+      background: rgba(255,255,255,.7);
+      h3,h4{
+        color: #3D70BB;
+      } 
+    }
+  }
+  &.third{
+      .the-text{
+        @include border-radius(10px);
+        padding: 15px 25px;
+        display: table-cell;
+        background:white;
+        h3,h4{
+          color: #3D70BB;
+        }
+      }
+  }
+  h3,h4{
+    font-weight: normal;
+    color: white;
+  }
+}
+
+.button.agendar{
+  margin-top: 20px;
+  color: #3D70BB;
+  text-transform: uppercase;
+  font-weight: bold;
+  background: white;
+}
+
 .nav{
   position: relative;
   height: auto;
@@ -239,7 +285,10 @@ h3#modal-date{
     background: white;
   }
   &.home{
-    background: #3375BF;
+    background: #3375BF url("../img/slider1.jpg") no-repeat center top;
+    -webkit-background-size: cover;
+    background-size: cover;
+    height: 70vh;
     ul{
       li{
         a{
@@ -612,6 +661,7 @@ table.servicios{
   tbody{
     tr{
       td{
+        cursor: pointer;
         border: solid 1px #bbbbbb;
         line-height: 1.8rem;
         color: #505050;
