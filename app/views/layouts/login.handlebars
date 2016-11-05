@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1024;initial-scale=0.75;minimum-scale=1.0;maximum-scale=1.0">
+  <title>{{title }}</title>
+  <link rel="stylesheet" href="/scripts/bxslider/dist/jquery.bxslider.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/img/16.png"/>
+  {{#ifCond pageTitle "articles"}}
+  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.1.0/jssocials.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.1.0/jssocials-theme-flat.css" />
+  {{/ifCond}}
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic' rel='stylesheet' type='text/css'>
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  {{#ifCond pageTitle "articles"}}
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.1.0/jssocials.min.js"></script>
+  {{/ifCond}}
+  <script src="/scripts/ckeditor/ckeditor.js"></script>
+  <script src="/scripts/datatables/media/js/jquery.dataTables.js"></script>
+  <script src="https://cdn.datatables.net/1.10.11/js/dataTables.foundation.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/autonumeric/1.9.43/autoNumeric.js" type="text/javascript"></script>
+  <script src="/scripts/bxslider/dist/jquery.bxslider.js" type="text/javascript"></script>
+  <script src='/scripts/fullcalendar/node_modules/moment/moment.js'></script>
+  <script src='/scripts/fullcalendar/node_modules/moment/locale/es.js'></script>
+  <script src='/scripts/moment-timezone/moment-timezone.js'></script>
+  <script src='/scripts/fullcalendar/dist/fullcalendar.js'></script>  
+  <script src='/scripts/fullcalendar/dist/locale/es.js'></script>  
+  {{#if ENV_DEVELOPMENT}}
+    <script src="http://localhost:35729/livereload.js"></script>
+  {{/if}}
+</head>
+<body>
+
+  {{> alerts }}
+  <br /><br /><br />
+  {{{body}}}
+  
+  <div class="the-login footer">
+    <p>Copyright © 2016 María Bahamón. Todos los derechos reservados</p>
+    <ul class="social">
+      <li><a href="http://twitter.com/" target="_blank"><span class="fa fa-twitter fa-large"></span></a></li>
+      <li><a href="http://facebook.com/" target="_blank"><span class="fa fa-facebook fa-large"></span></a></li>
+      <li><a href="https://www.instagram.com/" target="_blank"><span class="fa fa-instagram fa-large"></span></a></li>
+    </ul>
+  </div>
+  <script src="/scripts/zurb-foundation-5/js/foundation/foundation.js"></script>
+  <script src="/scripts/zurb-foundation-5/js/foundation/foundation.reveal.js"></script>
+  <script src="/js/ux.js"></script>
+  </body>
+</html>

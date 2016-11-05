@@ -1,5 +1,17 @@
+
+
 (function() {
+  
+
+  
   $(document).foundation();
+  
+  $(document).on('close.fndtn.reveal', '[data-reveal]', function () {
+    if ($(".fc-more").text() == "+19 más"){
+      $(".fc-more").addClass("available").addClass("not");
+    }
+  });
+  
   moment.locale("es");
   moment.tz.add("Europe/Zurich|CET CEST|-10 -20|01010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-19Lc0 11A0 1o00 11A0 1xG10 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00|38e4");
   moment.tz.add("America/Bogota|BMT COT COST|4U.g 50 40|0121|-2eb73.I 38yo3.I 2en0|90e5");
@@ -32,6 +44,18 @@
     }
     
     //console.log(info);
+    
+    function getEvents(date){
+      var events = [];
+      info.forEach(function(entry) {
+        //console.log(entry.start.format('YYYY-MM-DD'),  moment(date).format('YYYY-MM-DD'));
+          if (entry.start.format('YYYY-MM-DD') == date.format()){
+              events.push(entry);
+          }
+       });
+       return events;
+     }
+    
     $('#calendar').fullCalendar({
       lang: 'es',
       events: info,
@@ -40,15 +64,22 @@
       eventLimit: true,
       timeFormat: 'H(:mm)',
       dayNamesShort: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+      eventClick: function(calEvent, jsEvent, view) {
+          console.log('Event: ' + calEvent.title);
+          console.log('View: ' + view.name);
+          //$(this).css('border-color', 'red');
+      },
       eventAfterAllRender:function( view ) {
-        if ($(".fc-more").text() == "+19 more"){
+        //console.log($(".fc-more").parent().parent().parent().parent().parent().children("thead"));
+        if ($(".fc-more").text() == "+19 más"){
           $(".fc-more").addClass("available").addClass("not");
         }
-        //console.log(view, $(".fc-more").text());
       },
       dayClick: function(date, jsEvent, view) {
         var cuando = jsEvent.target.className.split(" ");
-        console.log(cuando, $.inArray("fc-past", cuando), $.inArray("fc-sun", cuando), $.inArray("fc-sat", cuando), cuando.length);
+        // esta ocupado
+        if (getEvents(date).length >= 21) {return}
+        //console.log(cuando, $.inArray("fc-past", cuando), $.inArray("fc-sun", cuando), $.inArray("fc-sat", cuando), cuando.length);
         if ($.inArray("fc-sat", cuando) > -1 || cuando.length <= 1){
           return 
         }
@@ -90,6 +121,9 @@
           });
         
           $('#modal-calendar').foundation('reveal', 'open');
+          if ($(".fc-more").text() == "+19 más"){
+            $(".fc-more").addClass("available").addClass("not");
+          }
       }
     });
     
@@ -104,6 +138,16 @@
     // not sure if you wanted this, but I thought I'd add it.
     // get an associative array of just the values.
     var values = {};
+    
+    // Becouse we switch to spanish
+    var convertDate = function(usDate) {
+      //console.log(usDate);
+      var dateParts = usDate.split(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+      var back = dateParts[3] + "-" + dateParts[2] + "-" + dateParts[1];
+      //console.log(back);
+      return back;
+    }
+    
     $inputs.each(function() {
         if (this.name == "recibir"){
           if ($(this).is(":checked")){
@@ -114,40 +158,50 @@
         }else if (this.name == "time"){
             var hour = $(this).val();
             hour = hour.slice(0, -3);
-            var to_parse = $("#hidden-date").val()+" "+hour+":00";
+            var hd = convertDate($("#hidden-date").val());
+            var to_parse = hd+" "+hour+":00";
             var fixhour = hour.split(":");
             // for 24 hours format
             if (fixhour[0] >= 1 && fixhour[0] <= 6)
-              to_parse = $("#hidden-date").val()+" "+tf[fixhour[0]]+":"+fixhour[1]+":00";
+              to_parse = hd+" "+tf[fixhour[0]]+":"+fixhour[1]+":00";
             
             //console.log("to_parse",to_parse);
             var date = new Date(Date.parse(to_parse));
+            //console.log("date",date);
             values["time"] = date;
         }else{
           values[this.name] = $(this).val();
         }
     });
-    //console.log(values);
+    console.log("values to post: ", values);
     $.post( "/events", values, function() {})
-    .done(function(data) {
+    .done(function(data, resp) {
       data = JSON.parse(data);
-      console.log(data);
+      //console.log(data);
       var event_where = moment.tz(data.when, "America/Bogota");
       var event = [];
+      //console.log(event_where, data.when);
       event.push({
           title  : data.name,
           start  : event_where,
           allDay : false // will make the time show
       });
-      console.log("event added:", event);
+      // console.log("event added:", event);
       // var event_date = moment(event.start).format("LT").toString();
       // var adding = moment(event_date).add(30, 'minutes').format('LT');
       // lista.push([event_date, adding]);
-      $('#calendar').fullCalendar('addEventSource', event );
+      $('#calendar').fullCalendar('addEventSource', event);
       $('#modal-calendar').foundation('reveal', 'close');
+      //console.log(data, resp);
+      if(resp == "success"){
+        console.log(resp);
+        $('#jsalert .alert-box').addClass("success").append("El evento fue creado ");
+        $('#jsalert').css({"display":"block"});
+        setTimeout(function() { $('#jsalert').hide(); }, 3000);
+      }
      })
      .fail(function(err) {
-       console.log("err", err);
+       //console.log("err", err);
        var response = JSON.parse(err.responseText).error;
        console.log(response);
        $('#modal-calendar').foundation('reveal', 'close');

@@ -271,6 +271,10 @@ h3#modal-date{
   }
 }
 
+#jsalert{
+  display: none;
+}
+
 .button.agendar{
   margin-top: 20px;
   color: #3D70BB;
@@ -680,6 +684,11 @@ table.servicios{
   height: 56px;
   background-color: #0072bc;
   padding:0 28px;
+  &.the-login{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+  }
   p{
     display: inline-block;
     width: 50%;

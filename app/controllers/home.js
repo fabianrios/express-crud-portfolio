@@ -132,6 +132,7 @@ router.get(['/login', '/admin'], function (req, res, next) {
     res.render('login', {
       title: 'Inicio de sesión',
       logo: "group-2.png",
+      layout: "login", 
       query: true
     });
 });
@@ -400,10 +401,11 @@ router.post('/events', function (req, res, next) {
     //   res.redirect('/');
     // });
     // console.log(arrByID, invalidEntries);
+    console.log(body);
     if(!preexisting){
       db.Event.create({ name: body.name, category: body.category, email: body.email, phone: body.phone, when: body.time }).then(function (response) {
-        //console.log("data", response["dataValues"]);
-        res.write(JSON.stringify(response["dataValues"], {"success":"El evento fue creado"}));
+        console.log("data", response["dataValues"]);
+        res.write(JSON.stringify(response["dataValues"],{"success":"El evento fue creado"}));
         res.end();
         if(body.recibir){
           console.log("sent email");

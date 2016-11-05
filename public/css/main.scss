@@ -222,20 +222,126 @@ input[type="search"].search{
   margin: 20px 0;
 }
 
+
+#tipoa{
+  .lateral-div{
+    background-image: url('/img/FACIAL/TOXINA-BOTULINICA.jpg');
+  }
+}
+
+
+#rejuvenecimiento{
+  .lateral-div{
+    background-image: url('/img/FACIAL/aplica-a-cualquiera1.jpg');
+  }
+}
+
+#hmfacial{
+  .lateral-div{
+    background-image: url('/img/FACIAL/facial.jpg');
+  }
+}
+
+#micro{
+  .lateral-div{
+    background-image: url('/img/FACIAL/aplica-a-cualquier-2.jpg');
+  }
+}
+
+#radio{
+  .lateral-div{
+    background-image: url('/img/FACIAL/radiofrecuencia.jpg');
+  }
+}
+
+#pixel{
+  .lateral-div{
+    background-image: url('/img/FACIAL/aplica-para-cualquiera-3.jpg');
+  }
+}
+
+#vela{
+  .lateral-div{
+    background-image: url('/img/FACIAL/aplica-para-cualquiera-3.jpg');
+  }
+}
+
+#harmony{
+  .lateral-div{
+    background-image: url('/img/FACIAL/aplica-para-cualquiera-3.jpg');
+  }
+}
+
+#body{
+  .lateral-div{
+    background-image: url('/img/CORPORAL/Spa055.JPG');
+  }
+}
+
+#lpg{
+  .lateral-div{
+    background-image: url('/img/CORPORAL/LPG.jpg');
+  }
+}
+
+#pixel-corp{
+  .lateral-div{
+    background-image: url('/img/CORPORAL/Spa086.jpg');
+  }
+}
+
+#manthus{
+  .lateral-div{
+    background-image: url('/img/CORPORAL/Spa071.jpg');
+  }
+}
+
+#futura{
+  .lateral-div{
+    background-image: url('/img/CORPORAL/Spa063.jpg');
+  }
+}
+
+#lipomax{
+  .lateral-div{
+    background-image: url('/img/CORPORAL/Spa003.JPG');
+  }
+}
+
+#colageno{
+  .lateral-div{
+    background-image: url('/img/FACIAL/radiofrecuencia.jpg');
+  }
+}
+
 .reveal-modal{
   padding: 0;
   .button{
     margin-bottom: 0;
   }
-  img.lateral{
+  .lateral-div{
+    float: left;
     display: inline-block;
-    width: 25%;
-    vertical-align: top;
+    width: 30%;
+    overflow: hidden;
+    background: white url('/img/FACIAL/ACIDO-HIALU.jpg') no-repeat center bottom;
+    height: 100%;
+    min-height: 400px;
+    -webkit-background-size: cover;
+    background-size: cover;
   }
+
   .texto{
     width: 70%;
     display: inline-block;
     padding: 0 20px;
+    float: right;
+    h4{
+      margin-top: 20px;
+    }
+    p:last-child{
+      margin-bottom: 0;
+    }
   }
 }
 
