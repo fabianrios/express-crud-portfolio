@@ -63,7 +63,10 @@
     padding: 13px 0; }
 #calendar table tr td.fc-day-top {
   background: #fff;
-  opacity: 1; }
+  opacity: 1;
+  cursor: pointer; }
+  #calendar table tr td.fc-day-top.fc-sun, #calendar table tr td.fc-day-top.fc-sat {
+    cursor: default; }
   #calendar table tr td.fc-day-top span.fc-day-number {
     color: #fff;
     -webkit-border-radius: 100%;

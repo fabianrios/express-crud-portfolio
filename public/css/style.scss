@@ -99,6 +99,10 @@ $main-bg:#f6f6f6;
         &.fc-day-top{
           background: #fff;
           opacity: 1;
+          cursor: pointer;
+          &.fc-sun, &.fc-sat{
+            cursor: default;
+          }
           span.fc-day-number{
             color: #fff;
             @include border-radius(100%);
