@@ -54,36 +54,57 @@
   display: none; }
 #calendar table .fc-row .fc-content-skeleton td {
   border-color: #ddd; }
-#calendar table tr th.fc-day-header {
-  background: #fff; }
-  #calendar table tr th.fc-day-header.fc-sun, #calendar table tr th.fc-day-header.fc-sat {
-    background: #efefef; }
-  #calendar table tr th.fc-day-header span {
-    display: block;
-    padding: 13px 0; }
+#calendar table tr th.fc-day-header.fc-sun, #calendar table tr th.fc-day-header.fc-sat {
+  background: #efefef; }
+#calendar table tr th.fc-day-header span {
+  display: block;
+  padding: 13px 0; }
 #calendar table tr td.fc-day-top {
   background: #fff;
   opacity: 1;
   cursor: pointer; }
   #calendar table tr td.fc-day-top.fc-sun, #calendar table tr td.fc-day-top.fc-sat {
     cursor: default; }
+  #calendar table tr td.fc-day-top.not-this span.fc-day-number {
+    background-color: #ff6d6d; }
   #calendar table tr td.fc-day-top span.fc-day-number {
     color: #fff;
     -webkit-border-radius: 100%;
     -moz-border-radius: 100%;
     border-radius: 100%;
-    width: 30px;
-    height: 30px;
+    width: 12px;
+    height: 12px;
     background-color: #548fa7;
     text-align: center;
     display: inline-block;
-    line-height: 31px;
-    margin: 10px;
+    line-height: 12px;
+    margin: 4px;
     font-weight: normal;
-    font-size: 16px; }
+    font-size: 12px; }
+  @media only screen and (min-width: 40em) {
+    #calendar table tr td.fc-day-top span.fc-day-number {
+      color: #fff;
+      -webkit-border-radius: 100%;
+      -moz-border-radius: 100%;
+      border-radius: 100%;
+      width: 30px;
+      height: 30px;
+      background-color: #548fa7;
+      text-align: center;
+      display: inline-block;
+      line-height: 31px;
+      margin: 10px;
+      font-weight: normal;
+      font-size: 16px; } }
 #calendar table tr td.fc-day {
   cursor: pointer;
   background: white; }
+  #calendar table tr td.fc-day.not-available {
+    cursor: default;
+    background: #efefef; }
+    #calendar table tr td.fc-day.not-available.fc-day-top {
+      cursor: default;
+      background: #efefef; }
 #calendar table tr td.fc-past, #calendar table tr td.fc-sun, #calendar table tr td.fc-sat {
   background: #efefef;
   cursor: default; }
@@ -108,9 +129,14 @@
     top: -4px; }
 
 .posibilities {
-  position: absolute;
-  top: 10px;
-  left: 300px; }
+  position: relative;
+  top: 0;
+  left: -10px; }
+  @media only screen and (min-width: 40em) {
+    .posibilities {
+      position: absolute;
+      top: 10px;
+      left: 300px; } }
   .posibilities h5 {
     margin: 0 10px;
     display: inline-block; }
@@ -187,8 +213,13 @@ h3#modal-date {
     letter-spacing: 1px; }
 
 .text-banner {
-  padding-top: 20vh;
+  padding-top: 15vh;
   padding-left: 25px; }
+  .text-banner.vcontrol {
+    padding-top: 0; }
+  @media only screen and (min-width: 40em) {
+    .text-banner {
+      padding-top: 20vh; } }
   .text-banner.second .the-text {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -224,7 +255,7 @@ h3#modal-date {
 .nav {
   position: relative;
   height: auto;
-  padding: 0 10px;
+  padding: 0;
   background: white; }
   @media only screen and (min-width: 40em) {
     .nav {
@@ -267,7 +298,8 @@ h3#modal-date {
   .nav a.logo {
     width: 50%;
     display: inline-block;
-    line-height: 110px; }
+    line-height: 110px;
+    margin-left: 10px; }
     .nav a.logo img {
       padding: 10px 0; }
     @media only screen and (min-width: 40em) {
@@ -284,10 +316,11 @@ h3#modal-date {
     .nav ul.navigation li {
       text-align: center;
       display: inline-block;
-      margin: 10px 0;
       width: 100%;
-      padding: 0 10px; }
+      margin: 0; }
       .nav ul.navigation li a {
+        display: inline-block;
+        padding: 10px;
         font-weight: bold; }
     @media only screen and (min-width: 40em) {
       .nav ul.navigation {
@@ -304,7 +337,9 @@ h3#modal-date {
           width: auto;
           margin: 0 20px;
           padding: 0;
-          background: transparent; } }
+          background: transparent; }
+          .nav ul.navigation li a {
+            padding: 0; } }
 
 .article-names {
   max-width: 150px;
@@ -990,7 +1025,7 @@ table.dataTable thead tr th {
 .xclose {
   position: absolute;
   top: 35px;
-  right: 10px;
+  right: 35px;
   display: inline-block;
   color: #0058a0;
   font-size: 20px; }

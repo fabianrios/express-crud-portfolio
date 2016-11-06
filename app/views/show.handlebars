@@ -1,13 +1,18 @@
 <div class="cover">
+  {{#if article.cover}}
   <img src="http://res.cloudinary.com/{{cloudinary_account}}/image/upload/c_crop,h_550,r_0,w_1920/v{{article.version}}/{{article.cover}}.jpg" alt="" />
+  {{else}}
+      <!-- <img src="http://placehold.it/1920x550/2F4989" alt="" /> -->
+  {{/if}}
 </div>
 
 <div class="metadata">
   <div class="pic_profile">
-    <img src="http://res.cloudinary.com/{{cloudinary_account}}/image/upload/c_crop,h_80,r_0,w_80/v{{article.version}}/{{author.image}}.jpg" alt="" />
+    <img src="http://res.cloudinary.com/{{cloudinary_account}}/image/upload/c_crop,h_80,r_0,w_80/v1477225684/{{author.image}}.jpg" alt="" />
     <h6>Escrito por {{author.name}}</h6>
   </div>
   <span class="date">{{shortDate article.createdAt}}</span>
+  <div id="share"></div>
 </div>
 <br />
 <div class="row">
@@ -21,8 +26,21 @@
     <div class="content">
       <h3 class="text-center">{{article.title}}</h3>
       <br />
-      {{{article.fulltext}}}
+      {{#each covers}}
+        <img src="http://res.cloudinary.com/{{../cloudinary_account}}/image/upload/c_fill,h_500,w_800/v{{this.version}}/{{this.public_id}}" id="cope-{{@index}}" class="covers" />
+      {{/each}}
+      <br /><br />
+      <div class="fulltext">
+        {{{article.fulltext}}}
+      </div>
     </div>
   </div>
 </div>
 
+<script>
+$("#share").jsSocials({
+    showLabel: false,
+    showCount: false,
+    shares: ["twitter", "facebook"]
+});
+</script>

@@ -317,7 +317,7 @@ router.get('/article/:id', function (req, res, next) {
   db.Article.findById(id).then(function (article) {
     article.getCovers().then(function(associatedCovers) {
       article.getUser().then(function(user) {
-    
+        
       res.locals = {
         pageTitle: "articles",
         background: true,
@@ -470,25 +470,23 @@ router.get('/export', notify, authorize, function (req, res, next) {
 
 
 function upload_multiple(files, id){
-  // console.log(files, files.length);
+  console.log("aca ", files, files.length, files[0].path,  id);
   if (files.length <= 0){return}
-  for (var i = 0; i < files.length; i++) {
-      cloudinary.uploader.upload(files[i].path, function(result) {
+      cloudinary.uploader.upload(files[0].path, function(result) {
         var version = result.version.toString();
         var pid = result.public_id.toString();
           db.Cover.findOrCreate({where: {
               version: version,
-              ArticleId: id, 
+              ArticleId: id,
               orden: 0,
               public_id:pid,
               home: false
           }});
       });
-  }
   return;
 }
 
-var cpUpload = upload.fields([{ name: 'image_upload', maxCount: 1 }, { name: 'gallery', maxCount: 8 }]);
+var cpUpload = upload.fields([{ name: 'image_upload', maxCount: 1 }, { name: 'first_upload', maxCount: 1 }, { name: 'last_upload', maxCount: 1 }]);
 router.post('/articles',cpUpload, function (req, res, next) {
   var body = req.body;
   var urlbody = friendlyUrl(body.title);
@@ -497,8 +495,11 @@ router.post('/articles',cpUpload, function (req, res, next) {
     cloudinary.uploader.upload(req.files['image_upload'][0].path, function(result) {
       db.Article.create({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, cover: result.public_id, version: result.version, vip: body.vip, incognito: body.incognito, corporate: body.corporate, UserId: body.user || 1 }).then(function (article) {
         var id = article.id
-        if(req.files['gallery']){
-         upload_multiple(req.files['gallery'], id);
+        if(req.files['first_upload']){
+         upload_multiple(req.files['first_upload'], id);
+        }
+        if(req.files['last_upload']){
+         upload_multiple(req.files['last_upload'], id);
         }
        res.redirect('/admin/articles');
       });
@@ -506,8 +507,11 @@ router.post('/articles',cpUpload, function (req, res, next) {
   }else{
     db.Article.create({ title: body.title, text: body.text, url: urlbody, fulltext: body.fulltext, category: body.category, vip: body.vip, incognito: body.incognito, corporate: body.corporate, UserId: body.user || 1 }).then(function (article) {
       var id = article.id
-      if(req.files['gallery']){
-       upload_multiple(req.files['gallery'], id);
+      if(req.files['first_upload']){
+       upload_multiple(req.files['first_upload'], id);
+      }
+      if(req.files['last_upload']){
+       upload_multiple(req.files['last_upload'], id);
       }
      res.redirect('/admin/articles');
     });
@@ -519,8 +523,11 @@ router.post('/article/:id/editar', notify, authorize, cpUpload, function (req, r
   var body = req.body
   var urlbody = friendlyUrl(body.title);
   var files = req.files;
-  if(req.files['gallery']){
-   upload_multiple(req.files['gallery'], id);
+  if(req.files['first_upload']){
+   upload_multiple(req.files['first_upload'], id);
+  }
+  if(req.files['last_upload']){
+   upload_multiple(req.files['last_upload'], id);
   }
   db.Article.findById(id).then(function (article) {
     if(typeof req.files !== 'undefined' && typeof req.files['image_upload'] !== 'undefined'){
@@ -538,22 +545,22 @@ router.post('/article/:id/editar', notify, authorize, cpUpload, function (req, r
   });
 });
 
-function upload_home(files){
-  if (files.length <= 0){return}
-  for (var i = 0; i < files.length; i++) {
-      cloudinary.uploader.upload(files[i].path, function(result) {
-        var version = result.version.toString();
-        var pid = result.public_id.toString();
-          db.Cover.findOrCreate({where: {
-              version: version,
-              orden: i,
-              public_id:pid,
-              home: true
-          }});
-      });
-  }
-  return;
-}
+// function upload_home(files){
+//   if (files.length <= 0){return}
+//   for (var i = 0; i < files.length; i++) {
+//       cloudinary.uploader.upload(files[i].path, function(result) {
+//         var version = result.version.toString();
+//         var pid = result.public_id.toString();
+//           db.Cover.findOrCreate({where: {
+//               version: version,
+//               orden: i,
+//               public_id:pid,
+//               home: true
+//           }});
+//       });
+//   }
+//   return;
+// }
 
 
 router.post('/home_gallery', notify, authorize, cpUpload, function (req, res, next) {

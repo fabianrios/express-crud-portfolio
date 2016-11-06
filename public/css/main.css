@@ -18042,49 +18042,57 @@ input[type="search"].search {
   margin: 20px 0; }
 
 #tipoa .lateral-div {
-  background-image: url("/img/FACIAL/TOXINA-BOTULINICA.jpg"); }
+  background-image: url("/img/facial/2Toxina_botulinica.jpg"); }
 
 #rejuvenecimiento .lateral-div {
-  background-image: url("/img/FACIAL/aplica-a-cualquiera1.jpg"); }
+  background-image: url("/img/facial/3Rejuvenecimiento_Plasma.jpg"); }
 
 #hmfacial .lateral-div {
-  background-image: url("/img/FACIAL/facial.jpg"); }
+  background-image: url("/img/facial/4Homeopatia_facial.jpg"); }
 
 #micro .lateral-div {
-  background-image: url("/img/FACIAL/aplica-a-cualquier-2.jpg"); }
+  background-image: url("/img/facial/5Microdermoabrasion.jpg"); }
 
 #radio .lateral-div {
-  background-image: url("/img/FACIAL/radiofrecuencia.jpg"); }
+  background-image: url("/img/facial/8radiofrecuencia.jpg"); }
 
 #pixel .lateral-div {
-  background-image: url("/img/FACIAL/aplica-para-cualquiera-3.jpg"); }
+  background-image: url("/img/corporal/2Lipomax.jpg"); }
 
 #vela .lateral-div {
-  background-image: url("/img/FACIAL/aplica-para-cualquiera-3.jpg"); }
+  background-image: url("/img/corporal/1VELASHAPE_III.jpg"); }
 
 #harmony .lateral-div {
-  background-image: url("/img/FACIAL/aplica-para-cualquiera-3.jpg"); }
+  background-image: url("/img/facial/9Harmony_Lite.jpg"); }
 
 #body .lateral-div {
-  background-image: url("/img/CORPORAL/Spa055.JPG"); }
+  background-image: url("/img/corporal/3Bodyterm_premium.jpg"); }
 
 #lpg .lateral-div {
-  background-image: url("/img/CORPORAL/LPG.jpg"); }
+  background-image: url("/img/corporal/4LPG.jpg"); }
 
 #pixel-corp .lateral-div {
-  background-image: url("/img/CORPORAL/Spa086.jpg"); }
+  background-image: url("/img/coporal/5Pixel_Coroporal.jpg"); }
 
 #manthus .lateral-div {
-  background-image: url("/img/CORPORAL/Spa071.jpg"); }
+  background-image: url("/img/corporal/6Manthus.jpg"); }
 
 #futura .lateral-div {
-  background-image: url("/img/CORPORAL/Spa063.jpg"); }
+  background-image: url("/img/corporal/7Futura.jpg"); }
 
 #lipomax .lateral-div {
-  background-image: url("/img/CORPORAL/Spa003.JPG"); }
+  background-image: url("/img/corporal/2Lipomax.jpg"); }
 
 #colageno .lateral-div {
-  background-image: url("/img/FACIAL/radiofrecuencia.jpg"); }
+  background-image: url("/img/facial/7Facial_Colageno.jpg"); }
+
+img.covers {
+  width: 100%; }
+
+#share {
+  float: right;
+  position: relative;
+  top: 5px; }
 
 .reveal-modal, dialog {
   padding: 0; }
@@ -18095,7 +18103,7 @@ input[type="search"].search {
     display: inline-block;
     width: 30%;
     overflow: hidden;
-    background: white url("/img/FACIAL/ACIDO-HIALU.jpg") no-repeat center bottom;
+    background: white url("/img/facial/1Acido_Hialuronico.jpg") no-repeat center bottom;
     height: 100%;
     min-height: 400px;
     -webkit-background-size: cover;

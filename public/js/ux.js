@@ -6,11 +6,11 @@
   
   $(document).foundation();
   
-  $(document).on('close.fndtn.reveal', '[data-reveal]', function () {
-    if ($(".fc-more").text() == "+19 más"){
-      $(".fc-more").addClass("available").addClass("not");
-    }
-  });
+  // $(document).on('close.fndtn.reveal', '[data-reveal]', function () {
+  //   if ($(".fc-more").text() == "+21 más" || $(".fc-more").text() == "+19 más"){
+  //     $(".fc-more").addClass("available").addClass("not");
+  //   }
+  // });
   
   moment.locale("es");
   moment.tz.add("Europe/Zurich|CET CEST|-10 -20|01010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-19Lc0 11A0 1o00 11A0 1xG10 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00|38e4");
@@ -47,14 +47,40 @@
     
     function getEvents(date){
       var events = [];
+      var objev = {};
       info.forEach(function(entry) {
         //console.log(entry.start.format('YYYY-MM-DD'),  moment(date).format('YYYY-MM-DD'));
           if (entry.start.format('YYYY-MM-DD') == date.format()){
               events.push(entry);
+              objev[entry.start.format('YYYY-MM-DD')] = events.push(entry);
           }
        });
+       console.log(objev);
        return events;
      }
+    
+    
+    
+     var objev = {};
+     function getFull(){
+       var events = [];
+       
+       info.forEach(function(entry) {
+           //console.log(entry.start.format('YYYY-MM-DD'));
+           if(objev.hasOwnProperty(entry.start.format('YYYY-MM-DD'))){
+             objev[entry.start.format('YYYY-MM-DD')]++;
+           }else{
+             objev[entry.start.format('YYYY-MM-DD')] = 1;
+           }
+           
+            if(objev[entry.start.format('YYYY-MM-DD')] >= 21){
+              console.log("this day is book", entry.start.format('YYYY-MM-DD'));
+            }
+        });
+        // console.log(objev, events);
+      }
+      
+       getFull(new Date());
     
     $('#calendar').fullCalendar({
       lang: 'es',
@@ -64,17 +90,27 @@
       eventLimit: true,
       timeFormat: 'H(:mm)',
       dayNamesShort: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+      dayRender: function (date, cell) {
+          if (objev[date.format()] >= 21){
+            $(".fc-day-top").each(function() {
+              if($(this).data("date") == date.format()){
+                $(this).addClass("not-this"); 
+              }
+            });
+            cell.addClass("not-available");  
+          }
+      },
       eventClick: function(calEvent, jsEvent, view) {
           console.log('Event: ' + calEvent.title);
           console.log('View: ' + view.name);
           //$(this).css('border-color', 'red');
       },
-      eventAfterAllRender:function( view ) {
-        //console.log($(".fc-more").parent().parent().parent().parent().parent().children("thead"));
-        if ($(".fc-more").text() == "+19 más"){
-          $(".fc-more").addClass("available").addClass("not");
-        }
-      },
+      // eventAfterAllRender:function( view ) {
+      //   //console.log($(".fc-more").text());
+      //   if ($(".fc-more").text() == "+21 más" || $(".fc-more").text() == "+19 más"){
+      //     $(".fc-more").addClass("available").addClass("not");
+      //   }
+      // },
       dayClick: function(date, jsEvent, view) {
         var cuando = jsEvent.target.className.split(" ");
         // esta ocupado
@@ -121,9 +157,9 @@
           });
         
           $('#modal-calendar').foundation('reveal', 'open');
-          if ($(".fc-more").text() == "+19 más"){
-            $(".fc-more").addClass("available").addClass("not");
-          }
+          // if ($(".fc-more").text() == "+21 más" || $(".fc-more").text() == "+19 más"){
+//             $(".fc-more").addClass("available").addClass("not");
+//           }
       }
     });
     
@@ -244,14 +280,19 @@
       }
   });
   
-  if ($('.slider')){
-    $('.slider').bxSlider({
-       slideWidth: 200,
-       minSlides: 5,
-       moveSlides: 5,
-       slideMargin: 1
-     });
-   }
+  if($("#cope-1")){
+    $("#cope-1").appendTo(".fulltext");
+  }
+  
+  
+  // if ($('.slider')){
+  //   $('.slider').bxSlider({
+  //      slideWidth: 200,
+  //      minSlides: 5,
+  //      moveSlides: 5,
+  //      slideMargin: 1
+  //    });
+  //  }
    
    var modal = $('#modal');
    $(".slide a").click(function(e){
@@ -272,6 +313,7 @@
      $(this).children("span").toggleClass("fa-close");
      $(this).children("span").toggleClass("fa-bars");
      $(".navigation, .social").slideToggle();
+     $(".text-banner").toggleClass("vcontrol");
    });
    
    var n = 1;

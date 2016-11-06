@@ -10,22 +10,13 @@
       <h1>{{title}}</h1>
         <input type="text" name="text" value="{{article.text}}" placeholder="texto" />
         <input type="hidden" name="user" value="{{article.UserId}}" />
+        <div class="file">
+          <input type="file" class="inline-file" name="first_upload" id="first_upload" />
+        </div>
         <textarea name="fulltext" id="fulltext">{{article.fulltext}}</textarea>
-        {{#if covers}}
-        <ul class="inline-list cov-list">
-            {{#each covers}}
-            <li>
-              <img src="http://res.cloudinary.com/{{../cloudinary_account}}/image/upload/c_fill,h_107,w_200/v{{this.version}}/{{this.public_id}}" alt="" />
-              <!-- other form -->
-              <form action="/delete_image" method="post" id="deleteForm">
-                <input type="hidden" name="public_id" id="public_id" value="{{this.public_id}}" />
-                <input type="hidden" name="article_id" id="article_id" value="{{this.ArticleId}}" />
-                <button type="submit" class="tiny button alert trash" form="deleteForm" /><span class="fa fa-trash-o"></span></button>
-              </form>
-            </li>
-            {{/each}}
-        </ul>
-        {{/if}}
+        <div class="file">
+          <input type="file" class="inline-file" name="last_upload" id="last_upload" />
+        </div>
     </div>
     <div class="large-4 columns">
       <input type="submit" value="Actualizar" form="articles-form" class="button success full" />
@@ -43,12 +34,30 @@
       {{/if}}
         <input type="file" class="inline-file" name="image_upload" id="image_upload" />
       </div>
-      <label for="gallery">Galeria</label>
-      <input type="file" class="inline-file" multiple="true" name="gallery" id="gallery" />
       {{#if article.like}}
       <p>Este post tiene {{article.like}} likes</p>
       {{/if}}
     </div>
   </div>
   </form>
+  
+  <div class="row">
+    <div class="large-12 columns">
+      {{#if covers}}
+      <ul class="inline-list cov-list">
+          {{#each covers}}
+          <li>
+            <img src="http://res.cloudinary.com/{{../cloudinary_account}}/image/upload/c_fill,h_107,w_200/v{{this.version}}/{{this.public_id}}" alt="" />
+            <form action="/delete_image" method="post" id="deleteForm">
+              <input type="hidden" name="public_id" id="public_id" value="{{this.public_id}}" />
+              <input type="hidden" name="article_id" id="article_id" value="{{this.ArticleId}}" />
+              <button type="submit" class="tiny button alert trash" form="deleteForm" /><span class="fa fa-trash-o"></span></button>
+            </form>
+          </li>
+          {{/each}}
+      </ul>
+      {{/if}}
+    </div>
+  </div>
+  
 </div>
