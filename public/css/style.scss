@@ -97,7 +97,6 @@ $main-bg:#f6f6f6;
       }
       td{
         &.fc-day-top{
-          background: #fff;
           opacity: 1;
           cursor: pointer;
           &.fc-sun, &.fc-sat{
@@ -160,6 +159,61 @@ $main-bg:#f6f6f6;
     }
   }
 }
+
+.fc-event-container{
+  .fc-event{
+    border: white;
+    &.acidoh{
+      background: #e0a356;
+    }
+    &.botox{
+      background: #98ce42;
+    }
+    &.rejuve{ 
+      background:#724e7d;
+    }
+    &.homeo{ 
+      background:#535598;
+    }
+    &.micro{ 
+      background:#3d7e9c;
+    }
+    &.radio{ 
+      background:#3d9c7e;
+    }
+    &.colageno{ 
+      background:#3db74c;
+    }
+    &.fre{ 
+      background:#95b13e;
+    }
+    &.harmony{ 
+      background:#daad2d;
+    }
+    &.vela{ 
+      background:#da5d2d;
+    }
+    &.lipomax{ 
+      background:#da452d;
+    }
+    &.bodp{ 
+      background:#dc6666;
+    }
+    &.lpg{ 
+      background:#66dcc1;
+    }
+    &.pixelco{ 
+      background:#6695dc;
+    }
+    &.manthus{ 
+      background:#957bbd;
+    }
+    &.futura{ 
+      background:#909090;
+    }
+  }
+}
+
 
 .available{
   margin-right: 10px;
@@ -1300,4 +1354,3 @@ table.dataTable{
     bottom:0;
   }
 }
-

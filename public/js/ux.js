@@ -1,5 +1,3 @@
-
-
 (function() {
   
 
@@ -11,6 +9,35 @@
   //     $(".fc-more").addClass("available").addClass("not");
   //   }
   // });
+  
+  var QueryString = function () {
+    // This function is anonymous, is executed immediately and 
+    // the return value is assigned to QueryString!
+    var query_string = {};
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i=0;i<vars.length;i++) {
+      var pair = vars[i].split("=");
+          // If first entry with this name
+      if (typeof query_string[pair[0]] === "undefined") {
+        query_string[pair[0]] = decodeURIComponent(pair[1]);
+          // If second entry with this name
+      } else if (typeof query_string[pair[0]] === "string") {
+        var arr = [ query_string[pair[0]],decodeURIComponent(pair[1]) ];
+        query_string[pair[0]] = arr;
+          // If third or later entry with this name
+      } else {
+        query_string[pair[0]].push(decodeURIComponent(pair[1]));
+      }
+    } 
+    return query_string;
+  }();
+  
+  if(QueryString.o){
+    console.log(QueryString.o);
+    $("select#categories").val(QueryString.o);
+    //$('#modal-calendar').foundation('reveal', 'open');
+  }
   
   moment.locale("es");
   moment.tz.add("Europe/Zurich|CET CEST|-10 -20|01010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-19Lc0 11A0 1o00 11A0 1xG10 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00|38e4");
@@ -38,6 +65,10 @@
         }
         info.push({
             title  : result[key]["name"],
+            email  : result[key]["email"],
+            phone  : result[key]["phone"],
+            category : result[key]["category"],
+            className : result[key]["category"],
             start  : moment.tz(result[key]["when"], "America/Bogota"),
             allDay : false // will make the time show
         });
@@ -55,7 +86,7 @@
               objev[entry.start.format('YYYY-MM-DD')] = events.push(entry);
           }
        });
-       console.log(objev);
+       //console.log(objev);
        return events;
      }
     
@@ -157,11 +188,48 @@
           });
         
           $('#modal-calendar').foundation('reveal', 'open');
-          // if ($(".fc-more").text() == "+21 más" || $(".fc-more").text() == "+19 más"){
-//             $(".fc-more").addClass("available").addClass("not");
-//           }
       }
     });
+    
+    var cat = {
+    "acidoh":"Aplicación ácido hialurónico",
+    "botox":"Aplicación toxina botulínica tipo a",
+    "rejuve":"Rejuvenecimiento facial con plasma rico en plaquetas",
+    "homeo":"Aplicación de homeopatía facial",
+    "micro":"Microdermoabrasión",
+    "radio":"thermage",
+    "colageno":"Inducción de colágeno",
+    "fre":"Radiofrecuencia",
+    "harmony":"Harmony",
+    "vela":"Velashape",
+    "lipomax":"Limopax",
+    "bodp":"Bodyterm premium",
+    "lpg":"LPG",
+    "pixelco":"Pixel corporal",
+    "manthus":"Manthus",
+    "futura":"futura"
+    }
+    if($("#events-calendar")){
+      $('#events-calendar').fullCalendar({
+      lang: 'es',
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay'
+      },
+      defaultView: 'agendaWeek',
+      events: info,
+      borderColor: "white",
+      eventLimit: true,
+      timeFormat: 'H(:mm)',
+      dayNamesShort: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+      eventClick: function(calEvent, jsEvent, view) {
+         $(".here").html("<h3>"+calEvent.title+"</h3><p><span class='fa fa-phone'> "+calEvent.phone+"</span></p>"+"<p><span class='fa fa-envelope-o'> "+calEvent.email+"</span></p>"+"<p><span class='fa fa-angle-right'> "+cat[calEvent.category]+"</span></p>");
+         $('#event-info').foundation('reveal', 'open');
+        //console.log('Event: ' + calEvent.title + calEvent.phone);
+      },
+      });
+    }
     
   });
   

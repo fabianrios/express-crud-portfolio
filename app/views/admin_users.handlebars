@@ -66,27 +66,4 @@
       <input type="submit" value="Crear usuario" class="button success nm right" />
     </form>
     <br /> <br /> <br />
-    <hr />
-    <h3>Imagenes del home</h3>
-    {{#if covers}}
-      <ul class="inline-list cov-list">
-          {{#each covers}}
-          <li>
-            <img src="http://res.cloudinary.com/{{../cloudinary_account}}/image/upload/c_fill,h_107,w_200/v{{this.version}}/{{this.public_id}}" alt="" />
-            <form action="/delete_image" method="post">
-              <input type="hidden" name="public_id" id="public_id" value="{{this.public_id}}" />
-              <input type="hidden" name="home" id="home" value="{{this.home}}" />
-              <button type="submit" class="tiny button alert trash" /><span class="fa fa-trash-o"></span></button>
-            </form>
-          </li>
-          {{/each}}
-      </ul>
-    {{/if}}
-    <form method="post" action="/home_gallery" enctype='multipart/form-data'>
-      <label for="gallery">Galeria</label>
-      <div class="file">
-        <input type="file" class="inline-file" multiple="true" name="gallery" id="gallery" />
-      </div>
-      <input type="submit" value="Actualizar imagenes" class="button success nm right" />
-    </form>
 </div>

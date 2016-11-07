@@ -158,7 +158,7 @@ router.post('/login', function (req, res, next) {
     req.session.user = user; 
     req.session.admin = user.admin;
     var url = req.url;
-    res.redirect('/admin/articles');
+    res.redirect('/admin/events');
     
   });
 });
@@ -665,6 +665,17 @@ router.get('/admin/users', notify, authorize, function (req, res, next) {
        
      });
   });  
+});
+
+router.get('/admin/events', notify, authorize, function (req, res, next) {
+  res.render('admin_events', {
+    title: 'Citas',
+    user: req.session.user,
+    qty: req.session.clients,
+    admin_events: "active",
+    layout: "admin",
+    cloudinary_account: process.env.CLOUDINARY_NAME
+  });
 });
 
 router.get('/covers', function (req, res, next) {

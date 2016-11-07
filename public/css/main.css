@@ -9248,7 +9248,7 @@ table {
     font-size: 1rem;
     font-weight: bold; }
   table thead {
-    background: #F5F5F5; }
+    background: transparent; }
     table thead tr th,
     table thead tr td {
       padding: 0.5rem 0.625rem 0.625rem;
@@ -9256,7 +9256,7 @@ table {
       font-weight: bold;
       color: #222222; }
   table tfoot {
-    background: #F5F5F5; }
+    background: transparent; }
     table tfoot tr th,
     table tfoot tr td {
       padding: 0.5rem 0.625rem 0.625rem;
@@ -9270,7 +9270,7 @@ table {
     color: #222222;
     text-align: left; }
   table tr.even, table tr.alt, table tr:nth-of-type(even) {
-    background: #F9F9F9; }
+    background: transparent; }
   table thead tr th,
   table tfoot tr th,
   table tfoot tr td,
@@ -18040,6 +18040,9 @@ input[type="search"].search {
 
 .cke.cke_reset {
   margin: 20px 0; }
+
+.here {
+  padding: 20px; }
 
 #tipoa .lateral-div {
   background-image: url("/img/facial/2Toxina_botulinica.jpg"); }

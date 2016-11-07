@@ -60,7 +60,6 @@
   display: block;
   padding: 13px 0; }
 #calendar table tr td.fc-day-top {
-  background: #fff;
   opacity: 1;
   cursor: pointer; }
   #calendar table tr td.fc-day-top.fc-sun, #calendar table tr td.fc-day-top.fc-sat {
@@ -110,6 +109,41 @@
   cursor: default; }
   #calendar table tr td.fc-past span, #calendar table tr td.fc-sun span, #calendar table tr td.fc-sat span {
     opacity: .5; }
+
+.fc-event-container .fc-event {
+  border: white; }
+  .fc-event-container .fc-event.acidoh {
+    background: #e0a356; }
+  .fc-event-container .fc-event.botox {
+    background: #98ce42; }
+  .fc-event-container .fc-event.rejuve {
+    background: #724e7d; }
+  .fc-event-container .fc-event.homeo {
+    background: #535598; }
+  .fc-event-container .fc-event.micro {
+    background: #3d7e9c; }
+  .fc-event-container .fc-event.radio {
+    background: #3d9c7e; }
+  .fc-event-container .fc-event.colageno {
+    background: #3db74c; }
+  .fc-event-container .fc-event.fre {
+    background: #95b13e; }
+  .fc-event-container .fc-event.harmony {
+    background: #daad2d; }
+  .fc-event-container .fc-event.vela {
+    background: #da5d2d; }
+  .fc-event-container .fc-event.lipomax {
+    background: #da452d; }
+  .fc-event-container .fc-event.bodp {
+    background: #dc6666; }
+  .fc-event-container .fc-event.lpg {
+    background: #66dcc1; }
+  .fc-event-container .fc-event.pixelco {
+    background: #6695dc; }
+  .fc-event-container .fc-event.manthus {
+    background: #957bbd; }
+  .fc-event-container .fc-event.futura {
+    background: #909090; }
 
 .available {
   margin-right: 10px;
