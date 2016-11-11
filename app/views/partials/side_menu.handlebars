@@ -4,9 +4,8 @@
       <h6 class="subheader text-right">Bienvenido <a href="/admin/users" class="profile"> <span class="fa fa-cog"></span> {{user.username}}</a> <a class="profile" href="/logout"><span class="fa fa-sign-out"></span></a></h6>
     </div>
     <ul class="admin">
-      <li><a href="/"><span class="fa fa-home fa-2x"></span> HOME</a></li>
-      <li><a href="/admin/articles" class="{{admin_articles}}"><span class="fa fa-file-text fa-2x"></span> BLOG</a></li>
       <li><a href="/admin/events" class="{{admin_events}}"><span class="fa fa-calendar fa-2x"></span> CITAS</a></li>
+      <li><a href="/admin/articles" class="{{admin_articles}}"><span class="fa fa-file-text fa-2x"></span> BLOG</a></li>
       <li><a href="/admin/contact" class="{{admin_contacts}}"><span class="fa fa-phone fa-2x"></span> CONTACTO {{#if qty_contacts}}<span class="number">{{qty_contacts}}</span>{{/if}}</a></li>
       <li><a href="/admin/users" class="{{admin_users}}"><span class="fa fa-users fa-2x"></span> USUARIOS</a></li>
     </ul>

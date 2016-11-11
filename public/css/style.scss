@@ -86,7 +86,7 @@ $main-bg:#f6f6f6;
       th{
         &.fc-day-header{
          //background: #fff; 
-         &.fc-sun, &.fc-sat{
+         &.fc-sun{
             background: #efefef;
           }
          span{
@@ -99,7 +99,7 @@ $main-bg:#f6f6f6;
         &.fc-day-top{
           opacity: 1;
           cursor: pointer;
-          &.fc-sun, &.fc-sat{
+          &.fc-sun{
             cursor: default;
           }
           &.not-this{
@@ -148,7 +148,7 @@ $main-bg:#f6f6f6;
             }
           }
         }
-        &.fc-past, &.fc-sun, &.fc-sat{
+        &.fc-past, &.fc-sun{
           background: #efefef;
           cursor: default;
           span{

@@ -56,7 +56,7 @@
         var ese = moment.tz(result[key]["when"], "America/Bogota");
         ese = moment(ese).format("LT").toString();
         var mas = moment.tz(result[key]["when"], "America/Bogota");
-        mas = moment(mas).add(30, 'minutes').format('LT');
+        mas = moment(mas).add(60, 'minutes').format('LT');
         //console.log("dia: ", este,"hora real formateada:", ese);
         if (to_remove.hasOwnProperty(este)){
           to_remove[este]["hours"].push([ese, mas]);
@@ -104,7 +104,7 @@
              objev[entry.start.format('YYYY-MM-DD')] = 1;
            }
            
-            if(objev[entry.start.format('YYYY-MM-DD')] >= 21){
+            if(objev[entry.start.format('YYYY-MM-DD')] >= 13){
               console.log("this day is book", entry.start.format('YYYY-MM-DD'));
             }
         });
@@ -122,7 +122,7 @@
       timeFormat: 'H(:mm)',
       dayNamesShort: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
       dayRender: function (date, cell) {
-          if (objev[date.format()] >= 21){
+          if (objev[date.format()] >= 13){
             $(".fc-day-top").each(function() {
               if($(this).data("date") == date.format()){
                 $(this).addClass("not-this"); 
@@ -145,11 +145,8 @@
       dayClick: function(date, jsEvent, view) {
         var cuando = jsEvent.target.className.split(" ");
         // esta ocupado
-        if (getEvents(date).length >= 21) {return}
-        //console.log(cuando, $.inArray("fc-past", cuando), $.inArray("fc-sun", cuando), $.inArray("fc-sat", cuando), cuando.length);
-        if ($.inArray("fc-sat", cuando) > -1 || cuando.length <= 1){
-          return 
-        }
+        if (getEvents(date).length >= 13) {return}
+        //console.log(cuando, $.inArray("fc-past", cuando), $.inArray("fc-sun", cuando), cuando.length);
         if ($.inArray("fc-past", cuando) > -1 || cuando.length <= 1){
           return
         }
@@ -173,20 +170,39 @@
           if (typeof quitar[moment(date).format("L")] != "undefined"){
             lista    = quitar[moment(date).format("L")]["hours"]; 
           }
-          //console.log(moment(date).format("L"), lista, quitar);
-          $('input#timepicker').timepicker({
-              timeFormat: 'g:i a',
-              disableTimeRanges: lista,
-              interval: 30,
-              minTime: '8',
-              maxTime: '18:00',
-              defaultTime: '12',
-              dynamic: true,
-              dropdown: true,
-              scrollbar: true,
-              startTime: '08:00'
-          });
-        
+          
+          //saturday config
+          var config;
+          if (moment(date).format("d") == 6){
+            config = {
+                timeFormat: 'g:i a',
+                disableTimeRanges: lista,
+                step: 60,
+                minTime: '8',
+                maxTime: '15:00',
+                defaultTime: '10',
+                dynamic: true,
+                dropdown: true,
+                scrollbar: true,
+                startTime: '08:00'
+            }
+          }else{
+            config = {
+                timeFormat: 'g:i a',
+                disableTimeRanges: lista,
+                step: 60,
+                minTime: '7',
+                maxTime: '20:00',
+                defaultTime: '12',
+                dynamic: true,
+                dropdown: true,
+                scrollbar: true,
+                startTime: '07:00'
+            }
+          }
+          
+          console.log(moment(date).format("L"),moment(date).format("d"), lista, quitar);
+          $('input#timepicker').timepicker(config);
           $('#modal-calendar').foundation('reveal', 'open');
       }
     });
@@ -233,7 +249,7 @@
     
   });
   
-  var tf = {1:13,2:14,3:15,4:16,5:17,6:18};
+  var tf = {1:13,2:14,3:15,4:16,5:17,6:18,7:19,8:20};
   
   $(".post-calendar").submit(function(e){
     e.preventDefault();
@@ -266,7 +282,7 @@
             var to_parse = hd+" "+hour+":00";
             var fixhour = hour.split(":");
             // for 24 hours format
-            if (fixhour[0] >= 1 && fixhour[0] <= 6)
+            if (fixhour[0] >= 1 && fixhour[0] <= 8)
               to_parse = hd+" "+tf[fixhour[0]]+":"+fixhour[1]+":00";
             
             //console.log("to_parse",to_parse);
@@ -277,7 +293,7 @@
           values[this.name] = $(this).val();
         }
     });
-    console.log("values to post: ", values);
+    //console.log("values to post: ", values);
     $.post( "/events", values, function() {})
     .done(function(data, resp) {
       data = JSON.parse(data);
@@ -299,8 +315,9 @@
       //console.log(data, resp);
       if(resp == "success"){
         console.log(resp);
-        $('#jsalert .alert-box').addClass("success").append("El evento fue creado ");
+        $('#jsalert .alert-box').addClass("success").append("tu cita fue agendada");
         $('#jsalert').css({"display":"block"});
+        $('.post-calendar input[type="text"]').val('');
         setTimeout(function() { $('#jsalert').hide(); }, 3000);
       }
      })
