@@ -17873,9 +17873,14 @@ body {
   position: relative;
   text-align: center;
   margin-bottom: 60px; }
+  .the_title.xlarge:before, .the_title.xlarge:after {
+    width: 10cw; }
+  @media only screen and (min-width: 40em) {
+    .the_title.xlarge:before, .the_title.xlarge:after {
+      width: 150px; } }
   .the_title:before {
     height: 1px;
-    width: 150px;
+    width: 30vw;
     content: ' ';
     background: #979797;
     display: block;
@@ -17883,13 +17888,16 @@ body {
     top: 18px; }
   .the_title:after {
     height: 1px;
-    width: 150px;
+    width: 30vw;
     content: ' ';
     background: #979797;
     display: block;
     position: absolute;
     top: 18px;
     right: 0; }
+  @media only screen and (min-width: 40em) {
+    .the_title:before, .the_title:after {
+      width: 150px; } }
 
 .db {
   display: block; }

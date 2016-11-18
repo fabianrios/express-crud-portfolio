@@ -53,9 +53,19 @@ body{
   position: relative;
   text-align: center;
   margin-bottom: 60px;
+  &.xlarge{
+    &:before,&:after{
+      width: 10vw;
+    }
+    @media only screen and (min-width: 40em){
+      &:before,&:after{
+        width: 150px;
+      }
+    }
+  }
   &:before{
     height: 1px;
-    width: 150px;
+    width: 30vw;
     content: ' ';
     background: #979797;
     display: block;
@@ -64,13 +74,18 @@ body{
   }
   &:after{
     height: 1px;
-    width: 150px;
+    width: 30vw;
     content: ' ';
     background: #979797;
     display: block;
     position: absolute;
     top: 18px;
     right: 0;
+  }
+  @media only screen and (min-width: 40em){
+    &:before,&:after{
+      width: 150px;
+    }
   }
 }
 

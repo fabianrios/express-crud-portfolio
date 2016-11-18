@@ -112,6 +112,11 @@
       }
       
        getFull(new Date());
+       
+    var dias = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+       dias = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
+    }
     
     $('#calendar').fullCalendar({
       lang: 'es',
@@ -120,7 +125,7 @@
       textColor: 'yellow',
       eventLimit: true,
       timeFormat: 'H(:mm)',
-      dayNamesShort: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+      dayNamesShort: dias,
       dayRender: function (date, cell) {
           if (objev[date.format()] >= 13){
             $(".fc-day-top").each(function() {
@@ -145,12 +150,23 @@
       dayClick: function(date, jsEvent, view) {
         var cuando = jsEvent.target.className.split(" ");
         // esta ocupado
-        if (getEvents(date).length >= 13) {return}
+        if (getEvents(date).length >= 13) {
+          $('#jsalert .alert-box').addClass("alert").append("Este día ya no tiene citas disponibles, intenta con los días que tienen fondo blanco.");
+          $('#jsalert').css({"display":"block"});
+          setTimeout(function() { $('#jsalert').hide(); }, 3000);
+          return
+        }
         //console.log(cuando, $.inArray("fc-past", cuando), $.inArray("fc-sun", cuando), cuando.length);
         if ($.inArray("fc-past", cuando) > -1 || cuando.length <= 1){
+          $('#jsalert .alert-box').addClass("alert").append("Esta fecha ya paso, intenta con los días que tienen fondo blanco.");
+          $('#jsalert').css({"display":"block"});
+          setTimeout(function() { $('#jsalert').hide(); }, 3000);
           return
         }
         if ($.inArray("fc-sun", cuando) > -1 || cuando.length <= 1){
+          $('#jsalert .alert-box').addClass("alert").append("Este día es domingo, intenta con los días que tienen fondo blanco.");
+          $('#jsalert').css({"display":"block"});
+          setTimeout(function() { $('#jsalert').hide(); }, 3000);
           return
         }
           $('input#timepicker').timepicker('remove');
@@ -225,6 +241,7 @@
     "manthus":"Manthus",
     "futura":"futura"
     }
+   
     if($("#events-calendar")){
       $('#events-calendar').fullCalendar({
       lang: 'es',
@@ -238,7 +255,7 @@
       borderColor: "white",
       eventLimit: true,
       timeFormat: 'H(:mm)',
-      dayNamesShort: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+      dayNamesShort: dias,
       eventClick: function(calEvent, jsEvent, view) {
          $(".here").html("<h3>"+calEvent.title+"</h3><p><span class='fa fa-phone'> "+calEvent.phone+"</span></p>"+"<p><span class='fa fa-envelope-o'> "+calEvent.email+"</span></p>"+"<p><span class='fa fa-angle-right'> "+cat[calEvent.category]+"</span></p>");
          $('#event-info').foundation('reveal', 'open');
@@ -397,21 +414,27 @@
      e.preventDefault();
      $(this).children("span").toggleClass("fa-close");
      $(this).children("span").toggleClass("fa-bars");
-     $(".navigation, .social").slideToggle();
+     $(".navigation, .social").slideToggle("fast");
      $(".text-banner").toggleClass("vcontrol");
+     $(".logo").toggleClass("opened");
    });
    
-   var n = 1;
-   window.setInterval(function(){
-     n < 3 ? n++ : n = 1;
-     var arrayClass = ["","","second","third"];
-     var slider = "url(../img/slider"+n+".jpg)"
-     console.log(slider);
-     $(".nav.home").animate({opacity: 0}, 200, function() {
-       $(this).css({"background-image":slider}).animate({opacity: 1});
-       $(".text-banner").addClass(arrayClass[n]).removeClass(arrayClass[n-1]);
-     });
-   }, 20000);
+   
+   if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+     $("body").addClass("mobile");
+   }else{
+      var n = 1;
+      window.setInterval(function(){
+        n < 3 ? n++ : n = 1;
+        var arrayClass = ["","","second","third"];
+        var slider = "url(../img/slider"+n+".jpg)"
+        console.log(slider);
+        $(".nav.home").animate({opacity: 0}, 200, function() {
+          $(this).css({"background-image":slider}).animate({opacity: 1});
+          $(".text-banner").addClass(arrayClass[n]).removeClass(arrayClass[n-1]);
+        });
+      }, 20000);
+   }
    
    
    var isiPhone = navigator.userAgent.toLowerCase().indexOf("iphone");

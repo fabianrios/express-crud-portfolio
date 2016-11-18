@@ -50,65 +50,82 @@
   padding: 50px 0;
   min-height: 80vh; }
 
+.fc td {
+  border-width: 0 !important; }
+  @media only screen and (min-width: 40em) {
+    .fc td {
+      border-width: 1px !important; } }
+
 #calendar.homeone .fc-title {
   display: none; }
-#calendar table .fc-row .fc-content-skeleton td {
-  border-color: #ddd; }
-#calendar table tr th.fc-day-header.fc-sun {
-  background: #efefef; }
-#calendar table tr th.fc-day-header span {
-  display: block;
-  padding: 13px 0; }
-#calendar table tr td.fc-day-top {
-  opacity: 1;
-  cursor: pointer; }
-  #calendar table tr td.fc-day-top.fc-sun {
-    cursor: default; }
-  #calendar table tr td.fc-day-top.not-this span.fc-day-number {
-    background-color: #ff6d6d; }
-  #calendar table tr td.fc-day-top span.fc-day-number {
-    color: #fff;
-    -webkit-border-radius: 100%;
-    -moz-border-radius: 100%;
-    border-radius: 100%;
-    width: 12px;
-    height: 12px;
-    background-color: #548fa7;
-    text-align: center;
-    display: inline-block;
-    line-height: 12px;
-    margin: 4px;
-    font-weight: normal;
-    font-size: 12px; }
+#calendar .fc-basic-view .fc-body .fc-row {
+  min-height: 45px; }
+#calendar table {
+  border: solid 0 #DDDDDD; }
   @media only screen and (min-width: 40em) {
+    #calendar table {
+      border: solid 1px #DDDDDD; } }
+  #calendar table .fc-row .fc-content-skeleton td {
+    border-color: #ddd; }
+  #calendar table tr th.fc-day-header.fc-sun {
+    background: #efefef; }
+  #calendar table tr th.fc-day-header span {
+    display: block;
+    padding: 13px 0; }
+  #calendar table tr td.fc-day-top {
+    opacity: 1;
+    cursor: pointer; }
+    #calendar table tr td.fc-day-top.fc-sun {
+      cursor: default; }
+    #calendar table tr td.fc-day-top.not-this span.fc-day-number {
+      background-color: #ff6d6d; }
     #calendar table tr td.fc-day-top span.fc-day-number {
       color: #fff;
       -webkit-border-radius: 100%;
       -moz-border-radius: 100%;
       border-radius: 100%;
-      width: 30px;
-      height: 30px;
+      width: 15px;
+      height: 15px;
       background-color: #548fa7;
       text-align: center;
       display: inline-block;
-      line-height: 31px;
-      margin: 10px;
+      line-height: 15px;
+      margin: 4px;
       font-weight: normal;
-      font-size: 16px; } }
-#calendar table tr td.fc-day {
-  cursor: pointer;
-  background: white; }
-  #calendar table tr td.fc-day.not-available {
-    cursor: default;
-    background: #efefef; }
-    #calendar table tr td.fc-day.not-available.fc-day-top {
+      font-size: 12px; }
+    @media only screen and (min-width: 40em) {
+      #calendar table tr td.fc-day-top span.fc-day-number {
+        color: #fff;
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 100%;
+        border-radius: 100%;
+        width: 30px;
+        height: 30px;
+        background-color: #548fa7;
+        text-align: center;
+        display: inline-block;
+        line-height: 31px;
+        margin: 10px;
+        font-weight: normal;
+        font-size: 16px; } }
+  #calendar table tr td.fc-day {
+    cursor: pointer;
+    background: white;
+    border-width: 0; }
+    @media only screen and (min-width: 40em) {
+      #calendar table tr td.fc-day {
+        border-width: 1px; } }
+    #calendar table tr td.fc-day.not-available {
       cursor: default;
       background: #efefef; }
-#calendar table tr td.fc-past, #calendar table tr td.fc-sun {
-  background: #efefef;
-  cursor: default; }
-  #calendar table tr td.fc-past span, #calendar table tr td.fc-sun span {
-    opacity: .5; }
+      #calendar table tr td.fc-day.not-available.fc-day-top {
+        cursor: default;
+        background: #efefef; }
+  #calendar table tr td.fc-past, #calendar table tr td.fc-sun {
+    background: #efefef;
+    cursor: default; }
+    #calendar table tr td.fc-past span, #calendar table tr td.fc-sun span {
+      opacity: .5; }
 
 .fc-event-container .fc-event {
   border: white; }
@@ -247,13 +264,33 @@ h3#modal-date {
     letter-spacing: 1px; }
 
 .text-banner {
-  padding-top: 15vh;
-  padding-left: 25px; }
+  text-align: center;
+  padding: 10vh 15px; }
   .text-banner.vcontrol {
     padding-top: 0; }
+  .text-banner .the-text {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding: 10px 15px;
+    display: table-cell;
+    background: rgba(255, 255, 255, 0.7); }
+    .text-banner .the-text h3, .text-banner .the-text h4 {
+      font-weight: normal;
+      color: #3D70BB; }
   @media only screen and (min-width: 40em) {
     .text-banner {
-      padding-top: 20vh; } }
+      padding-left: 25px;
+      padding-top: 20vh;
+      text-align: center; }
+      .text-banner .the-text {
+        text-align: left;
+        background: transparent;
+        padding: 0;
+        color: white; }
+        .text-banner .the-text h3, .text-banner .the-text h4 {
+          font-weight: normal;
+          color: white; } }
   .text-banner.second .the-text {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -272,9 +309,6 @@ h3#modal-date {
     background: white; }
     .text-banner.third .the-text h3, .text-banner.third .the-text h4 {
       color: #3D70BB; }
-  .text-banner h3, .text-banner h4 {
-    font-weight: normal;
-    color: white; }
 
 #jsalert {
   display: none; }
@@ -298,10 +332,12 @@ h3#modal-date {
   .nav.home {
     background: #3375BF url("../img/slider1.jpg") no-repeat center top;
     -webkit-background-size: cover;
-    background-size: cover;
-    height: 70vh; }
+    background-size: cover; }
     .nav.home ul li a {
       color: #fff; }
+    @media only screen and (min-width: 40em) {
+      .nav.home {
+        height: 70vh; } }
   .nav.form {
     border-bottom: 1px solid #456289;
     background: #0058a0; }
@@ -330,16 +366,20 @@ h3#modal-date {
           width: auto;
           display: inline; } }
   .nav a.logo {
-    width: 50%;
+    width: 100%;
     display: inline-block;
     line-height: 110px;
-    margin-left: 10px; }
+    padding-left: 20px; }
+    .nav a.logo.opened {
+      background: #3375BF; }
     .nav a.logo img {
-      padding: 10px 0; }
+      padding: 10px 0;
+      max-width: 190px; }
     @media only screen and (min-width: 40em) {
       .nav a.logo {
+        background: transparent;
         width: 20%;
-        margin-left: 30px; } }
+        padding-left: 30px; } }
   .nav ul.navigation {
     width: 100%;
     list-style-type: none;
@@ -351,11 +391,12 @@ h3#modal-date {
       text-align: center;
       display: inline-block;
       width: 100%;
-      margin: 0; }
+      margin: 0;
+      background: #3375BF; }
       .nav ul.navigation li a {
         display: inline-block;
         padding: 10px;
-        font-weight: bold; }
+        font-weight: normal; }
     @media only screen and (min-width: 40em) {
       .nav ul.navigation {
         width: 50%;
@@ -373,7 +414,8 @@ h3#modal-date {
           padding: 0;
           background: transparent; }
           .nav ul.navigation li a {
-            padding: 0; } }
+            padding: 0;
+            font-weight: bold; } }
 
 .article-names {
   max-width: 150px;
@@ -1062,9 +1104,22 @@ table.dataTable thead tr th {
   right: 35px;
   display: inline-block;
   color: #0058a0;
-  font-size: 20px; }
+  font-size: 20px;
+  background: #fff;
+  width: 40px;
+  height: 40px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  -webkit-box-shadow: 0px 4px 5px rgba(50, 50, 50, 0.5);
+  -moz-box-shadow: 0px 4px 5px rgba(50, 50, 50, 0.5);
+  box-shadow: 0px 4px 5px rgba(50, 50, 50, 0.5); }
   .xclose span {
-    color: #0058a0; }
+    color: #0058a0;
+    text-align: center;
+    display: block;
+    line-height: 40px;
+    margin: 0 auto; }
   .xclose:hover {
     color: #0058a0; }
     .xclose:hover span {

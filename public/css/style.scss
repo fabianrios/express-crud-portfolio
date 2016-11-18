@@ -71,6 +71,12 @@ $main-bg:#f6f6f6;
   min-height: 80vh;
 }
 
+.fc td{
+  border-width: 0 !important;
+  @media only screen and (min-width: 40em){ 
+    border-width: 1px !important;
+  }
+}
 
 #calendar{
   &.homeone{
@@ -78,7 +84,14 @@ $main-bg:#f6f6f6;
       display: none;
     }
   }
+  .fc-basic-view .fc-body .fc-row{
+    min-height: 45px;
+  }
   table{
+    border: solid 0 #DDDDDD;
+    @media only screen and (min-width: 40em){ 
+      border: solid 1px #DDDDDD;
+    }
     .fc-row .fc-content-skeleton td{
       border-color:#ddd;
     }
@@ -110,12 +123,12 @@ $main-bg:#f6f6f6;
           span.fc-day-number{
             color: #fff;
             @include border-radius(100%);
-            width: 12px;
-            height: 12px;
+            width: 15px;
+            height: 15px;
             background-color: #548fa7;
             text-align: center;
             display: inline-block;
-            line-height: 12px;
+            line-height: 15px;
             margin: 4px;
             font-weight: normal;
             font-size: 12px;
@@ -139,6 +152,10 @@ $main-bg:#f6f6f6;
         &.fc-day{
           cursor: pointer;
           background: white;
+          border-width: 0;
+          @media only screen and (min-width: 40em){ 
+            border-width: 1px;
+          }
           &.not-available{
             cursor: default;
             background: #efefef;
@@ -330,13 +347,36 @@ h3#modal-date{
 }
 
 .text-banner{
-  padding-top: 15vh;
-  padding-left: 25px;
+  text-align: center;
+  padding: 10vh 15px;
+  
   &.vcontrol{
     padding-top:0;
   }
+  .the-text{
+    @include border-radius(10px);
+    padding: 10px 15px;
+    display: table-cell;
+    background: rgba(255,255,255,.7);
+    h3,h4{
+      font-weight: normal;
+      color: #3D70BB;
+    }
+  }
   @media only screen and (min-width: 40em){
+    padding-left: 25px;
     padding-top: 20vh;
+    text-align: center;
+    .the-text{
+      text-align: left;
+      background: transparent;
+      padding: 0;
+      color: white;
+      h3,h4{
+        font-weight: normal;
+        color: white;
+      }
+    }
   }
   &.second{
     .the-text{
@@ -360,10 +400,7 @@ h3#modal-date{
         }
       }
   }
-  h3,h4{
-    font-weight: normal;
-    color: white;
-  }
+ 
 }
 
 #jsalert{
@@ -391,13 +428,15 @@ h3#modal-date{
     background: #3375BF url("../img/slider1.jpg") no-repeat center top;
     -webkit-background-size: cover;
     background-size: cover;
-    height: 70vh;
     ul{
       li{
         a{
           color: #fff;
         }
       }
+    }
+    @media only screen and (min-width: 40em){ 
+      height: 70vh;
     }
   }
   &.form{
@@ -438,16 +477,21 @@ h3#modal-date{
     }
   }
   a.logo{
-    width: 50%;
+    width: 100%;
     display: inline-block;
     line-height: 110px;
-    margin-left: 10px;
+    padding-left: 20px;
+    &.opened{
+      background: #3375BF;
+    }
     img{
       padding: 10px 0;
+      max-width: 190px;
     }
      @media only screen and (min-width: 40em){ 
+       background:transparent;
        width: 20%;
-       margin-left: 30px;
+       padding-left: 30px;
      }
   }
   ul{
@@ -463,10 +507,11 @@ h3#modal-date{
         display: inline-block;
         width: 100%;
         margin: 0;
+        background: #3375BF;
         a{
           display: inline-block;
           padding:10px;
-          font-weight: bold;
+          font-weight: normal;
         }
       }
       @media only screen and (min-width: 40em){ 
@@ -486,6 +531,7 @@ h3#modal-date{
           background: transparent;
           a{
             padding:0;
+            font-weight: bold;
           }
         }
       }
@@ -1323,8 +1369,17 @@ table.dataTable{
   display: inline-block;
   color: #0058a0;
   font-size: 20px;
+  background: #fff;
+  width: 40px;
+  height: 40px;
+  @include border-radius(100%);
+  @include box-shadow(0px, 4px, 5px, rgba(50, 50, 50, 0.5));
   span{
     color: #0058a0;
+    text-align: center;
+    display: block;
+    line-height: 40px;
+    margin: 0 auto;
   }
   &:hover{
     color: #0058a0;
