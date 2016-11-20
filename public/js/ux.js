@@ -151,22 +151,19 @@
         var cuando = jsEvent.target.className.split(" ");
         // esta ocupado
         if (getEvents(date).length >= 13) {
-          $('#jsalert .alert-box').addClass("alert").append("Este día ya no tiene citas disponibles, intenta con los días que tienen fondo blanco.");
-          $('#jsalert').css({"display":"block"});
-          setTimeout(function() { $('#jsalert').hide(); }, 3000);
+          $('#alert-info .aca').html("Este día ya no tiene citas disponibles, intenta con los días que tienen fondo blanco.");
+          $('#alert-info').foundation('reveal', 'open');
           return
         }
         //console.log(cuando, $.inArray("fc-past", cuando), $.inArray("fc-sun", cuando), cuando.length);
         if ($.inArray("fc-past", cuando) > -1 || cuando.length <= 1){
-          $('#jsalert .alert-box').addClass("alert").append("Esta fecha ya paso, intenta con los días que tienen fondo blanco.");
-          $('#jsalert').css({"display":"block"});
-          setTimeout(function() { $('#jsalert').hide(); }, 3000);
+          $('#alert-info .aca').html("Esta fecha ya paso, intenta con los días que tienen fondo blanco.");
+          $('#alert-info').foundation('reveal', 'open');
           return
         }
         if ($.inArray("fc-sun", cuando) > -1 || cuando.length <= 1){
-          $('#jsalert .alert-box').addClass("alert").append("Este día es domingo, intenta con los días que tienen fondo blanco.");
-          $('#jsalert').css({"display":"block"});
-          setTimeout(function() { $('#jsalert').hide(); }, 3000);
+          $('#alert-info .aca').html("Este día es domingo, intenta con los días que tienen fondo blanco.");
+          $('#alert-info').foundation('reveal', 'open');
           return
         }
           $('input#timepicker').timepicker('remove');
@@ -191,7 +188,7 @@
           var config;
           if (moment(date).format("d") == 6){
             config = {
-                timeFormat: 'g:i a',
+                timeFormat: 'G:i ',
                 disableTimeRanges: lista,
                 step: 60,
                 minTime: '8',
@@ -204,7 +201,7 @@
             }
           }else{
             config = {
-                timeFormat: 'g:i a',
+                timeFormat: 'G:i ',
                 disableTimeRanges: lista,
                 step: 60,
                 minTime: '7',
@@ -281,7 +278,6 @@
       //console.log(usDate);
       var dateParts = usDate.split(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
       var back = dateParts[3] + "-" + dateParts[2] + "-" + dateParts[1];
-      //console.log(back);
       return back;
     }
     
@@ -298,12 +294,13 @@
             var hd = convertDate($("#hidden-date").val());
             var to_parse = hd+" "+hour+":00";
             var fixhour = hour.split(":");
-            // for 24 hours format
-            if (fixhour[0] >= 1 && fixhour[0] <= 8)
-              to_parse = hd+" "+tf[fixhour[0]]+":"+fixhour[1]+":00";
             
+            // for 24 hours format
+            // if (fixhour[0] >= 1 && fixhour[0] <= 8)
+            //   to_parse = hd+" "+tf[fixhour[0]]+":"+fixhour[1]+":00";
             //console.log("to_parse",to_parse);
             var date = new Date(Date.parse(to_parse));
+            console.log(to_parse);
             //console.log("date",date);
             values["time"] = date;
         }else{
@@ -323,18 +320,14 @@
           start  : event_where,
           allDay : false // will make the time show
       });
-      // console.log("event added:", event);
-      // var event_date = moment(event.start).format("LT").toString();
-      // var adding = moment(event_date).add(30, 'minutes').format('LT');
-      // lista.push([event_date, adding]);
       $('#calendar').fullCalendar('addEventSource', event);
       $('#modal-calendar').foundation('reveal', 'close');
       //console.log(data, resp);
       if(resp == "success"){
         console.log(resp);
-        $('#jsalert .alert-box').addClass("success").append("tu cita fue agendada");
-        $('#jsalert').css({"display":"block"});
-        $('.post-calendar input[type="text"]').val('');
+        $('#alert-info .aca').html("tu cita fue agendada");
+        $('#alert-info').foundation('reveal', 'open');
+        $('.post-calendar :input').val('');
         setTimeout(function() { $('#jsalert').hide(); }, 3000);
       }
      })
@@ -347,6 +340,10 @@
      });
   });
   
+  
+  $('.close-reveal').click(function(){
+    $('#alert-info').foundation('reveal', 'close');
+  });
   
   if ($("#fulltext").length){
     CKEDITOR.replace( 'fulltext' ); 

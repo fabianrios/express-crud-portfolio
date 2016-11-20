@@ -56,76 +56,86 @@
     .fc td {
       border-width: 1px !important; } }
 
+#alert-info {
+  border: 0;
+  padding: 20px 30px; }
+  #alert-info .aca {
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px; }
+  #alert-info a {
+    font-weight: bold;
+    color: #4375BA;
+    text-align: right;
+    display: block; }
+
 #calendar.homeone .fc-title {
   display: none; }
 #calendar .fc-basic-view .fc-body .fc-row {
   min-height: 45px; }
-#calendar table {
-  border: solid 0 #DDDDDD; }
+#calendar table .fc-row .fc-content-skeleton td {
+  border-color: #ddd; }
+#calendar table tr th.fc-day-header.fc-sun {
+  background: #efefef; }
+#calendar table tr th.fc-day-header span {
+  display: block;
+  padding: 13px 0; }
+#calendar table tr td.fc-day-top {
+  opacity: 1;
+  cursor: pointer; }
+  #calendar table tr td.fc-day-top.fc-sun {
+    cursor: default; }
+  #calendar table tr td.fc-day-top.not-this span.fc-day-number {
+    background-color: #ff6d6d; }
+  #calendar table tr td.fc-day-top span.fc-day-number {
+    color: #fff;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    width: 15px;
+    height: 15px;
+    background-color: #548fa7;
+    text-align: center;
+    display: inline-block;
+    line-height: 15px;
+    margin: 4px;
+    font-weight: normal;
+    font-size: 12px; }
   @media only screen and (min-width: 40em) {
-    #calendar table {
-      border: solid 1px #DDDDDD; } }
-  #calendar table .fc-row .fc-content-skeleton td {
-    border-color: #ddd; }
-  #calendar table tr th.fc-day-header.fc-sun {
-    background: #efefef; }
-  #calendar table tr th.fc-day-header span {
-    display: block;
-    padding: 13px 0; }
-  #calendar table tr td.fc-day-top {
-    opacity: 1;
-    cursor: pointer; }
-    #calendar table tr td.fc-day-top.fc-sun {
-      cursor: default; }
-    #calendar table tr td.fc-day-top.not-this span.fc-day-number {
-      background-color: #ff6d6d; }
     #calendar table tr td.fc-day-top span.fc-day-number {
       color: #fff;
       -webkit-border-radius: 100%;
       -moz-border-radius: 100%;
       border-radius: 100%;
-      width: 15px;
-      height: 15px;
+      width: 30px;
+      height: 30px;
       background-color: #548fa7;
       text-align: center;
       display: inline-block;
-      line-height: 15px;
-      margin: 4px;
+      line-height: 31px;
+      margin: 10px;
       font-weight: normal;
-      font-size: 12px; }
-    @media only screen and (min-width: 40em) {
-      #calendar table tr td.fc-day-top span.fc-day-number {
-        color: #fff;
-        -webkit-border-radius: 100%;
-        -moz-border-radius: 100%;
-        border-radius: 100%;
-        width: 30px;
-        height: 30px;
-        background-color: #548fa7;
-        text-align: center;
-        display: inline-block;
-        line-height: 31px;
-        margin: 10px;
-        font-weight: normal;
-        font-size: 16px; } }
-  #calendar table tr td.fc-day {
-    cursor: pointer;
-    background: white;
-    border-width: 0; }
-    @media only screen and (min-width: 40em) {
-      #calendar table tr td.fc-day {
-        border-width: 1px; } }
-    #calendar table tr td.fc-day.not-available {
+      font-size: 16px; } }
+#calendar table tr td.fc-day {
+  cursor: pointer;
+  background: white;
+  border-width: 0; }
+  @media only screen and (min-width: 40em) {
+    #calendar table tr td.fc-day {
+      border-width: 1px; } }
+  #calendar table tr td.fc-day.not-available {
+    cursor: default;
+    background: #efefef; }
+    #calendar table tr td.fc-day.not-available.fc-day-top {
       cursor: default;
       background: #efefef; }
-      #calendar table tr td.fc-day.not-available.fc-day-top {
-        cursor: default;
-        background: #efefef; }
-  #calendar table tr td.fc-past, #calendar table tr td.fc-sun {
-    background: #efefef;
-    cursor: default; }
-    #calendar table tr td.fc-past span, #calendar table tr td.fc-sun span {
-      opacity: .5; }
+#calendar table tr td.fc-past, #calendar table tr td.fc-sun {
+  background: #efefef;
+  cursor: default; }
+  #calendar table tr td.fc-past span, #calendar table tr td.fc-sun span {
+    opacity: .5; }
 
 .fc-event-container .fc-event {
   border: white; }
@@ -282,7 +292,7 @@ h3#modal-date {
     .text-banner {
       padding-left: 25px;
       padding-top: 20vh;
-      text-align: center; }
+      text-align: left; }
       .text-banner .the-text {
         text-align: left;
         background: transparent;

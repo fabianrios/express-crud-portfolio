@@ -78,6 +78,24 @@ $main-bg:#f6f6f6;
   }
 }
 
+#alert-info{
+  border: 0;
+  padding: 20px 30px;
+  .aca{
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+  a{
+    font-weight: bold;
+    color: #4375BA;
+    text-align: right;
+    display: block;
+  }
+}
+
 #calendar{
   &.homeone{
     .fc-title{
@@ -88,9 +106,9 @@ $main-bg:#f6f6f6;
     min-height: 45px;
   }
   table{
-    border: solid 0 #DDDDDD;
+    //border: solid 0 #DDDDDD;
     @media only screen and (min-width: 40em){ 
-      border: solid 1px #DDDDDD;
+      //border: solid 1px #DDDDDD;
     }
     .fc-row .fc-content-skeleton td{
       border-color:#ddd;
@@ -366,7 +384,7 @@ h3#modal-date{
   @media only screen and (min-width: 40em){
     padding-left: 25px;
     padding-top: 20vh;
-    text-align: center;
+    text-align: left;
     .the-text{
       text-align: left;
       background: transparent;
