@@ -624,6 +624,7 @@ router.post('/edit_user', notify, authorize, upload.single('image_upload'), func
       qty: req.session.clients,
       qty_contacts: req.session.contacts,
       user: req.session.user,
+      admin_users:"active",
       cloudinary_account: process.env.CLOUDINARY_NAME
     });
   }
@@ -658,6 +659,7 @@ router.get('/admin/users', notify, authorize, function (req, res, next) {
          qty: req.session.clients,
          qty_contacts: req.session.contacts,
          covers: covers,
+         admin_users:"active",
          users: users,
          layout: "admin",
          cloudinary_account: process.env.CLOUDINARY_NAME
@@ -673,6 +675,17 @@ router.get('/admin/events', notify, authorize, function (req, res, next) {
     user: req.session.user,
     qty: req.session.clients,
     admin_events: "active",
+    layout: "admin",
+    cloudinary_account: process.env.CLOUDINARY_NAME
+  });
+});
+
+router.get('/admin/tools', notify, authorize, function (req, res, next) {
+  res.render('admin_tools', {
+    title: 'Herramientas',
+    user: req.session.user,
+    qty: req.session.clients,
+    admin_tools: "active",
     layout: "admin",
     cloudinary_account: process.env.CLOUDINARY_NAME
   });

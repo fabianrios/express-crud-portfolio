@@ -1,12 +1,11 @@
   <div class="sidebar-menu">
-    <a  href="/" class="logo"><img src="/img/logo.png" alt="" /></a>
-    <div class="inner-padding">
-      <h6 class="subheader text-right"><a href="/admin/users" class="profile"> <span class="fa fa-cog"></span> {{user.username}}</a> <a class="profile" href="/logout"><span class="fa fa-sign-out"></span></a></h6>
-    </div>
+    <a  href="/" target="_blank" class="logo"><img src="/img/logo.png" alt="" /></a>
     <ul class="admin">
       <li><a href="/admin/events" class="{{admin_events}}"><span class="fa fa-calendar fa-2x"></span> CITAS</a></li>
-      <li><a href="/admin/articles" class="{{admin_articles}}"><span class="fa fa-file-text fa-2x"></span> BLOG</a></li>
+      <li><a href="/admin/articles" class="{{admin_articles}}"><span class="fa fa-file-text fa-2x"></span> NOTICIAS</a></li>
       <li><a href="/admin/contact" class="{{admin_contacts}}"><span class="fa fa-phone fa-2x"></span> CONTACTO {{#if qty_contacts}}<span class="number">{{qty_contacts}}</span>{{/if}}</a></li>
       <li><a href="/admin/users" class="{{admin_users}}"><span class="fa fa-users fa-2x"></span> USUARIOS</a></li>
+      <li><a href="/admin/tools" class="{{admin_tools}}"><span class="fa fa-comment fa-2x"></span> HERRAMIENTAS</a></li>
+      <li><a href="/logout"><span class="fa fa-sign-out fa-2x"></span> SALIR</a></li>
     </ul>
   </div>
