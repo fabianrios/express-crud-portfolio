@@ -1,14 +1,11 @@
 (function() {
   
-
-  
   $(document).foundation();
   
-  // $(document).on('close.fndtn.reveal', '[data-reveal]', function () {
-  //   if ($(".fc-more").text() == "+21 más" || $(".fc-more").text() == "+19 más"){
-  //     $(".fc-more").addClass("available").addClass("not");
-  //   }
-  // });
+  $(".cancelar").click(function(e){
+    e.preventDefault();
+    $('#modal-calendar').foundation('reveal', 'close');
+  });
   
   var QueryString = function () {
     // This function is anonymous, is executed immediately and 
@@ -36,7 +33,6 @@
   if(QueryString.o){
     console.log(QueryString.o);
     $("select#categories").val(QueryString.o);
-    //$('#modal-calendar').foundation('reveal', 'open');
   }
   
   moment.locale("es");

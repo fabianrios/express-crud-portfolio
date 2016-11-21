@@ -17873,8 +17873,13 @@ body {
   position: relative;
   text-align: center;
   margin-bottom: 60px; }
+  .the_title.xxlarge:before, .the_title.xxlarge:after {
+    width: 5vw; }
+  @media only screen and (min-width: 40em) {
+    .the_title.xxlarge:before, .the_title.xxlarge:after {
+      width: 150px; } }
   .the_title.xlarge:before, .the_title.xlarge:after {
-    width: 10cw; }
+    width: 10vw; }
   @media only screen and (min-width: 40em) {
     .the_title.xlarge:before, .the_title.xlarge:after {
       width: 150px; } }
@@ -18110,20 +18115,31 @@ img.covers {
   .reveal-modal .button, dialog .button {
     margin-bottom: 0; }
   .reveal-modal .lateral-div, dialog .lateral-div {
-    float: left;
-    display: inline-block;
-    width: 30%;
+    float: none;
+    display: block;
+    width: 100%;
     overflow: hidden;
     background: white url("/img/Facial/1Acido_Hialuronico.jpg") no-repeat center bottom;
     height: 100%;
     min-height: 400px;
     -webkit-background-size: cover;
     background-size: cover; }
+    @media only screen and (min-width: 40em) {
+      .reveal-modal .lateral-div, dialog .lateral-div {
+        float: left;
+        display: inline-block;
+        width: 30%; } }
   .reveal-modal .texto, dialog .texto {
-    width: 70%;
-    display: inline-block;
+    width: 100%;
+    display: block;
     padding: 0 20px;
-    float: right; }
+    float: none; }
+    @media only screen and (min-width: 40em) {
+      .reveal-modal .texto, dialog .texto {
+        width: 70%;
+        display: inline-block;
+        padding: 0 20px;
+        float: right; } }
     .reveal-modal .texto h4, dialog .texto h4 {
       margin-top: 20px; }
     .reveal-modal .texto p:last-child, dialog .texto p:last-child {
@@ -18143,17 +18159,21 @@ img.covers {
 
 .reveal-modal .close-reveal-modal, dialog .close-reveal-modal {
   font-weight: 200;
-  top: -15px;
-  right: -15px;
+  top: 3px;
+  right: 3px;
   color: #fff;
   width: 35px;
   height: 35px;
   text-align: center;
-  line-height: 36px;
+  line-height: 38px;
   background: #EE7672;
   -webkit-border-radius: 100%;
   -moz-border-radius: 100%;
   border-radius: 100%; }
+  @media only screen and (min-width: 40em) {
+    .reveal-modal .close-reveal-modal, dialog .close-reveal-modal {
+      top: -15px;
+      right: -15px; } }
 
 .jssocials-share-link {
   border-radius: 50%; }

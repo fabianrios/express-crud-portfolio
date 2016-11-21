@@ -96,7 +96,28 @@ $main-bg:#f6f6f6;
   }
 }
 
+.cancelar{
+  display: block;
+  text-align: center;
+  font-size: 27px;
+  width: 30px;
+  height: 30px;
+  line-height: 32px;
+  @include border-radius(100%);
+  position: absolute;
+  right: 10px;
+  top: 16px;
+  background: lightgray;
+  color: #fff;
+}
+
 #calendar{
+   @media only screen and (max-width: 40em){ 
+  .fc-scroller {
+      height: 270px !important;
+  }
+  }
+  
   &.homeone{
     .fc-title{
       display: none;
@@ -446,11 +467,29 @@ h3#modal-date{
     background: #3375BF url("../img/slider1.jpg") no-repeat center top;
     -webkit-background-size: cover;
     background-size: cover;
-    ul{
+    .social-nav{
       li{
         a{
           color: #fff;
         }
+      }
+    }
+    ul{
+      &.navigation{
+        margin-bottom: 30px;
+      }
+      li{
+        &.main{
+          background: #3375BF;
+        }
+        a{
+          color: #fff;
+        }
+      }
+    }
+    a.logo{
+      &.opened{
+        background: #3375BF;
       }
     }
     @media only screen and (min-width: 40em){ 
@@ -500,7 +539,7 @@ h3#modal-date{
     line-height: 110px;
     padding-left: 20px;
     &.opened{
-      background: #3375BF;
+      padding-bottom: 40px;
     }
     img{
       padding: 10px 0;
@@ -510,6 +549,9 @@ h3#modal-date{
        background:transparent;
        width: 20%;
        padding-left: 30px;
+       &.opened{
+         padding-bottom: 40px;
+       }
      }
   }
   ul{
@@ -519,13 +561,11 @@ h3#modal-date{
       display: none;
       margin: 0 auto;
       text-align: center;
-      margin-bottom: 30px;
-      li{
+      li.main{
         text-align: center;
         display: inline-block;
         width: 100%;
         margin: 0;
-        background: #3375BF;
         a{
           display: inline-block;
           padding:10px;
@@ -541,7 +581,10 @@ h3#modal-date{
         background: transparent;
         position: relative;
         top: -30px;
-        li{
+        li.hided{
+          display: none;
+        }
+        li.main{
           text-align: right;
           width: auto;
           margin:0 20px;
@@ -840,6 +883,18 @@ table.servicios{
         font-size: 14px;
       } 
     }
+  }
+}
+
+.social-nav{
+  display: block;
+  list-style-type: none;
+  margin: 0;
+  text-align: center;
+  width: 100%;
+  li{
+    display: inline-block;
+    margin: 0 16px;
   }
 }
 
@@ -1380,6 +1435,7 @@ table.dataTable{
   color: white;
 }
 
+.home{
 .xclose{
   position: absolute;
   top: 35px;
@@ -1392,6 +1448,35 @@ table.dataTable{
   height: 40px;
   @include border-radius(100%);
   @include box-shadow(0px, 4px, 5px, rgba(50, 50, 50, 0.5));
+  span{
+    color: #0058a0;
+    text-align: center;
+    display: block;
+    line-height: 40px;
+    margin: 0 auto;
+  }
+  &:hover{
+    color: #0058a0;
+    span{
+      color: #0058a0;
+    }
+  }
+  @media only screen and (min-width: 40em){ 
+    display: none;
+  }
+}
+}
+
+.xclose{
+  position: absolute;
+  top: 35px;
+  right: 35px;
+  display: inline-block;
+  color: #0058a0;
+  font-size: 20px;
+  background: #fff;
+  width: 40px;
+  height: 40px;
   span{
     color: #0058a0;
     text-align: center;
