@@ -116,9 +116,6 @@
     
     $('#calendar').fullCalendar({
       lang: 'es',
-      events: info,
-      eventBackgroundColor: '#a2bfcb',
-      textColor: 'yellow',
       eventLimit: true,
       timeFormat: 'H(:mm)',
       dayNamesShort: dias,
@@ -132,17 +129,6 @@
             cell.addClass("not-available");  
           }
       },
-      eventClick: function(calEvent, jsEvent, view) {
-          console.log('Event: ' + calEvent.title);
-          console.log('View: ' + view.name);
-          //$(this).css('border-color', 'red');
-      },
-      // eventAfterAllRender:function( view ) {
-      //   //console.log($(".fc-more").text());
-      //   if ($(".fc-more").text() == "+21 más" || $(".fc-more").text() == "+19 más"){
-      //     $(".fc-more").addClass("available").addClass("not");
-      //   }
-      // },
       dayClick: function(date, jsEvent, view) {
         var cuando = jsEvent.target.className.split(" ");
         // esta ocupado
@@ -210,7 +196,7 @@
             }
           }
           
-          console.log(moment(date).format("L"),moment(date).format("d"), lista, quitar);
+          //console.log(moment(date).format("L"),moment(date).format("d"), lista, quitar);
           $('input#timepicker').timepicker(config);
           $('#modal-calendar').foundation('reveal', 'open');
       }
@@ -316,7 +302,8 @@
           start  : event_where,
           allDay : false // will make the time show
       });
-      $('#calendar').fullCalendar('addEventSource', event);
+      //dont put it there
+      //$('#calendar').fullCalendar('addEventSource', event);
       $('#modal-calendar').foundation('reveal', 'close');
       //console.log(data, resp);
       if(resp == "success"){
