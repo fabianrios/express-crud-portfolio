@@ -41,7 +41,7 @@
   moment.tz.add("Europe/Berlin|CET CEST CEMT|-10 -20 -30|01010101010101210101210101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010|-2aFe0 11d0 1iO0 11A0 1o00 11A0 Qrc0 6i00 WM0 1fA0 1cM0 1cM0 1cM0 kL0 Nc0 m10 WM0 1ao0 1cp0 dX0 jz0 Dd0 1io0 17c0 1fA0 1a00 1ehA0 1a00 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1cM0 1fA0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00 11A0 1qM0 WM0 1qM0 WM0 1qM0 WM0 1qM0 11A0 1o00 11A0 1o00|41e5");
   
   var to_remove = {};
-  var lista = [];
+  
   $.get( "/events", function( data ) {
     var result = JSON.parse(data);
     //console.log("result", result);
@@ -131,19 +131,21 @@
       },
       dayClick: function(date, jsEvent, view) {
         var cuando = jsEvent.target.className.split(" ");
+        var currentTime = new Date();
+        currentTime = moment(currentTime);
+        var lista = [];
         // esta ocupado
         if (getEvents(date).length >= 13) {
           $('#alert-info .aca').html("Este día ya no tiene citas disponibles, intenta con los días que tienen fondo blanco.");
           $('#alert-info').foundation('reveal', 'open');
           return
         }
-        //console.log(cuando, $.inArray("fc-past", cuando), $.inArray("fc-sun", cuando), cuando.length);
-        if ($.inArray("fc-past", cuando) > -1 || cuando.length <= 1){
+        if (date.diff(currentTime, 'days') < 0){
           $('#alert-info .aca').html("Esta fecha ya paso, intenta con los días que tienen fondo blanco.");
           $('#alert-info').foundation('reveal', 'open');
           return
         }
-        if ($.inArray("fc-sun", cuando) > -1 || cuando.length <= 1){
+        if (date.day() == 0){
           $('#alert-info .aca').html("Este día es domingo, intenta con los días que tienen fondo blanco.");
           $('#alert-info').foundation('reveal', 'open');
           return
@@ -163,10 +165,10 @@
 
           var quitar = typeof to_remove != "undefined" ? to_remove : [];
           if (typeof quitar[moment(date).format("L")] != "undefined"){
-            lista    = quitar[moment(date).format("L")]["hours"]; 
+            lista  = quitar[moment(date).format("L")]["hours"]; 
           }
-          
           //saturday config
+          console.log(moment(date).format("L"),"lista:", lista,"quitar", quitar);
           var config;
           if (moment(date).format("d") == 6){
             config = {
@@ -196,7 +198,6 @@
             }
           }
           
-          //console.log(moment(date).format("L"),moment(date).format("d"), lista, quitar);
           $('input#timepicker').timepicker(config);
           $('#modal-calendar').foundation('reveal', 'open');
       }
@@ -245,8 +246,6 @@
     
   });
   
-  var tf = {1:13,2:14,3:15,4:16,5:17,6:18,7:19,8:20};
-  
   $(".post-calendar").submit(function(e){
     e.preventDefault();
     var $inputs = $('.post-calendar :input');
@@ -259,7 +258,17 @@
     var convertDate = function(usDate) {
       //console.log(usDate);
       var dateParts = usDate.split(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
-      var back = dateParts[3] + "-" + dateParts[2] + "-" + dateParts[1];
+      var back = dateParts[2] + " " + dateParts[1] + " " + dateParts[3];
+      return back;
+    }
+    
+    var look_up;
+    var lookDate = function(usDate) {
+      var dateParts = usDate.split(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+      if (dateParts[1] < 10){
+        dateParts[1] = "0"+dateParts[1];
+      }
+      var back = dateParts[1] + "/" + dateParts[2] + "/" + dateParts[3];
       return back;
     }
     
@@ -274,15 +283,11 @@
             var hour = $(this).val();
             hour = hour.slice(0, -3);
             var hd = convertDate($("#hidden-date").val());
-            var to_parse = hd+" "+hour+":00";
+            look_up = lookDate($("#hidden-date").val());
+            var to_parse = hd+" "+hour+"00:00 GMT-0500";
             var fixhour = hour.split(":");
-            
-            // for 24 hours format
-            // if (fixhour[0] >= 1 && fixhour[0] <= 8)
-            //   to_parse = hd+" "+tf[fixhour[0]]+":"+fixhour[1]+":00";
-            //console.log("to_parse",to_parse);
-            var date = new Date(Date.parse(to_parse));
-            console.log(to_parse);
+            var date = new Date(to_parse);
+            // console.log(to_parse,"---", date);
             //console.log("date",date);
             values["time"] = date;
         }else{
@@ -307,11 +312,27 @@
       $('#modal-calendar').foundation('reveal', 'close');
       //console.log(data, resp);
       if(resp == "success"){
-        console.log(resp);
+        
+        var una = moment(event_where).format("LT").toString();
+        var dos = moment.tz(event_where, "America/Bogota");
+        dos = moment(dos).add(60, 'minutes').format('LT');
+        
+        
+        if (to_remove.hasOwnProperty(look_up)){
+          to_remove[look_up]["hours"].push([una, dos]);
+        }else{
+          to_remove[look_up] = {hours: [[una, dos]]}
+        }
+        
+      function alertDisplay(){ // console.log(to_remove,to_remove[look_up]);
         $('#alert-info .aca').html("tu cita fue agendada");
         $('#alert-info').foundation('reveal', 'open');
         $('.post-calendar :input').val('');
         setTimeout(function() { $('#jsalert').hide(); }, 3000);
+      }
+        
+      setTimeout(function() { alertDisplay(); }, 1000);
+        
       }
      })
      .fail(function(err) {

@@ -25,39 +25,46 @@
   <div class="row">
     <div class="large-12 columns">
       <div id="calendar" class="homeone"></div>
-      <div id="modal-calendar" class="tiny reveal-modal" data-reveal aria-labelledby="calendar" aria-hidden="true" role="dialog">
-        <div class="modal-body">
-          <h3 id="modal-date"></h3>
-          <a href="" class="cancelar bluetxt">&times;</a> 
-          <form action="/post-calendar" class="post-calendar">
-            <select name="category" id="categories">
-              <option value="botox">Aplicación toxina botulínica tipo a</option>
-              <option value="acidoh">Aplicación ácido hialurónico</option>
-              <option value="rejuve">Rejuvenecimiento facial con plasma rico en plaquetas</option>
-              <option value="homeo">Aplicación de homeopatía facial</option>
-              <option value="micro">Microdermoabrasión</option>
-              <option value="radio">Radiofrecuencia monopolar (thermage)</option>
-              <option value="colageno">Terapia facial para la inducción de colágeno</option>
-              <option value="fre">Radiofrecuencia pixel rf </option>
-              <option value="harmony">Harmony lite</option>
-              <option value="vela">Velashape iii</option>
-              <option value="lipomax">Limopax</option>
-              <option value="bodp">Bodyterm premium</option>
-              <option value="lpg">LPG</option>
-              <option value="pixelco">Pixel corporal y vshape</option>
-              <option value="manthus">MANTHUS</option>
-              <option value="futura">Futura pro</option>
-            </select>
-            <input type="text" name="time" id="timepicker" placeholder="Escoge una hora ej: 9:00am" required/>
-            <input type="hidden" name="daytime" id="hidden-date" required/>
-            <input type="text" name="name" id="name" placeholder="nombre"  required />
-            <input type="email" name="email" id="email" placeholder="correo electronico" required/>
-            <input type="text" name="phone" id="phone" placeholder="télefono" required />
-            <label for="recibir"><input type="checkbox" name="recibir" id="recibir"/> Recibir correo de confirmación</label>
-            <button href="" class="button expand success">Agendar Cita</button>
-          </form>
-        </div>
-      </div>
     </div>
   </div>
+</div>
+
+
+<div id="modal-calendar" class="tiny reveal-modal" data-reveal aria-labelledby="calendar" aria-hidden="true" role="dialog">
+ <div class="modal-body">
+   <h3 id="modal-date"></h3>
+   <a href="" class="cancelar bluetxt">&times;</a> 
+   <form action="/post-calendar" class="post-calendar">
+     <select name="category" id="categories">
+       <option value="botox">Aplicación toxina botulínica tipo a</option>
+       <option value="acidoh">Aplicación ácido hialurónico</option>
+       <option value="rejuve">Rejuvenecimiento facial con plasma rico en plaquetas</option>
+       <option value="homeo">Aplicación de homeopatía facial</option>
+       <option value="micro">Microdermoabrasión</option>
+       <option value="radio">Radiofrecuencia monopolar (thermage)</option>
+       <option value="colageno">Terapia facial para la inducción de colágeno</option>
+       <option value="fre">Radiofrecuencia pixel rf </option>
+       <option value="harmony">Harmony lite</option>
+       <option value="vela">Velashape iii</option>
+       <option value="lipomax">Limopax</option>
+       <option value="bodp">Bodyterm premium</option>
+       <option value="lpg">LPG</option>
+       <option value="pixelco">Pixel corporal y vshape</option>
+       <option value="manthus">MANTHUS</option>
+       <option value="futura">Futura pro</option>
+     </select>
+     <input type="text" name="time" id="timepicker" placeholder="Escoge una hora ej: 9:00am" required/>
+     <input type="hidden" name="daytime" id="hidden-date" required/>
+     <input type="text" name="name" id="name" placeholder="nombre"  required />
+     <input type="email" name="email" id="email" placeholder="correo electronico" required/>
+     <input type="text" name="phone" id="phone" placeholder="télefono" required />
+     <label for="recibir"><input type="checkbox" name="recibir" id="recibir"/> Recibir correo de confirmación</label>
+     <button href="" class="button expand success">Agendar Cita</button>
+   </form>
+ </div>
+</div>
+
+<div class="reveal-modal small radius" id="alert-info" data-reveal aria-labelledby="alertInfo" aria-hidden="true" role="dialog">
+  <div class="aca"></div>
+  <a class="close-reveal" aria-label="Close">OK</a>
 </div>
