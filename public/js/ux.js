@@ -173,9 +173,7 @@
           if (moment(date).format("d") == 6){
             config = {
                 timeFormat: 'G:i ',
-                disableTextInput: true,
                 disableTouchKeyboard:true,
-                stopScrollPropagation:true,
                 disableTimeRanges: lista,
                 step: 60,
                 minTime: '8',
@@ -190,9 +188,7 @@
             config = {
                 timeFormat: 'G:i ',
                 disableTimeRanges: lista,
-                disableTextInput: true,
                 disableTouchKeyboard:true,
-                stopScrollPropagation:true,
                 step: 60,
                 minTime: '7',
                 maxTime: '20:00',
