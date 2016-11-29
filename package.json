@@ -41,7 +41,7 @@
     "sequelize": "^3.5.1",
     "sequelize-cli": "^2.3.1",
     "serve-favicon": "^2.3.0",
-    "timepicker": "^1.11.5",
+    "timepicker": "^1.11.8",
     "zurb-foundation-5": "^5.4.7"
   },
   "devDependencies": {
