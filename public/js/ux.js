@@ -178,9 +178,6 @@
                 minTime: '8',
                 maxTime: '15:00',
                 defaultTime: '10',
-                dynamic: true,
-                dropdown: true,
-                scrollbar: true,
                 startTime: '08:00'
             }
           }else{
@@ -191,9 +188,6 @@
                 minTime: '7',
                 maxTime: '20:00',
                 defaultTime: '12',
-                dynamic: true,
-                dropdown: true,
-                scrollbar: true,
                 startTime: '07:00'
             }
           }
