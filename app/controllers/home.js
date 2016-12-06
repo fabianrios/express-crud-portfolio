@@ -408,7 +408,22 @@ router.post('/events', function (req, res, next) {
         res.write(JSON.stringify(response["dataValues"],{"success":"El evento fue creado"}));
         res.end();
         if(body.recibir){
-          console.log("sent email");
+          var cita = body.publish ? "presencial" : "virtual";
+          var mailOptions = {
+              from: '"Maria bahamon" <info@mariabahamon.com>', // sender address
+              to: 'hola@fabiarnios.co', // list of receivers
+              subject: 'Nueva cita 👥', // Subject line
+              text: ' Nombre: ' + body.name + ' Correo: ' + body.email + ' Asunto: ' + body.category + ' Cel: ' + body.phone+ ' Tipo: ' + cita+ ' Cuando: ' + body.time, 
+              html: ' 🐴 <b>Nombre:</b> ' + body.name + '<br /> 📩 <b>Correo:</b> ' + body.email + '<br /> 📨 <b>Asunto:</b> ' + body.category + '<b>Cel:</b> ' + body.phone + '<b>Tipo:</b> ' + cita + '<b>Cuando:</b> ' + body.time // html body
+          };
+    
+          transporter.sendMail(mailOptions, function(error, info){
+              if(error){
+                  return console.log(error);
+              }
+              console.log('Message sent: ' + info.response);
+          });
+          
         }
       });
     }else{
