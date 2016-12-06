@@ -156,6 +156,11 @@
   #calendar table tr td.fc-past span, #calendar table tr td.fc-sun span {
     opacity: .5; }
 
+body .fc-event-container .fc-event {
+  border: white; }
+  body .fc-event-container .fc-event.true {
+    background: red; }
+
 .fc-event-container .fc-event {
   border: white; }
   .fc-event-container .fc-event.acidoh {
@@ -706,6 +711,9 @@ table.servicios {
     color: rgba(255, 255, 255, 0.5);
     font-size: 12px;
     margin: 0; }
+
+#categories {
+  display: none; }
 
 .social {
   display: none;

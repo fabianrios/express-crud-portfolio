@@ -216,6 +216,17 @@ $main-bg:#f6f6f6;
   }
 }
 
+body{
+  .fc-event-container{
+    .fc-event{
+      border: white;
+      &.true{
+        background: red;
+      }
+    }
+  }  
+}
+
 .fc-event-container{
   .fc-event{
     border: white;
@@ -916,6 +927,10 @@ table.servicios{
     font-size: 12px;
     margin: 0;
   }
+}
+
+#categories{
+  display: none;
 }
 
 .social{

@@ -63,8 +63,9 @@
             title  : result[key]["name"],
             email  : result[key]["email"],
             phone  : result[key]["phone"],
+            virtual : result[key]["publish"],
             category : result[key]["category"],
-            className : result[key]["category"],
+            className : result[key]["category"]+" "+result[key]["publish"],
             start  : moment.tz(result[key]["when"], "America/Bogota"),
             allDay : false // will make the time show
         });
@@ -231,7 +232,9 @@
       timeFormat: 'H(:mm)',
       dayNamesShort: dias,
       eventClick: function(calEvent, jsEvent, view) {
-         $(".here").html("<h3>"+calEvent.title+"</h3><p><span class='fa fa-phone'> "+calEvent.phone+"</span></p>"+"<p><span class='fa fa-envelope-o'> "+calEvent.email+"</span></p>"+"<p><span class='fa fa-angle-right'> "+cat[calEvent.category]+"</span></p>");
+         var cita = calEvent.virtual ? "virtual" : "presencial";
+         console.log(calEvent.virtual, cita);
+         $(".here").html("<h3>"+calEvent.title+"</h3><p><span class='fa fa-phone'> "+calEvent.phone+"</span></p>"+"<p><span class='fa fa-envelope-o'> "+calEvent.email+"</span></p>"+"<p><span class='fa fa-angle-right'> "+cat[calEvent.category]+"</span></p>"+"<p><span class='fa fa-user'> "+ cita +"</span></p>");
          $('#event-info').foundation('reveal', 'open');
         //console.log('Event: ' + calEvent.title + calEvent.phone);
       },
@@ -438,6 +441,23 @@
      $('meta[name=viewport]').attr('content','width=device-width, user-scalable=no');
      $("#viewport").attr("content", "width=device-width, user-scalable=no");
    }		
+   
+   var pub = $("#publish").val();
+   console.log(pub);
+   if(pub == "true"){
+     $("#categories").show();
+   }else{
+     $("#categories").hide();
+   }
+   
+   $('select#publish').on('change', function() {
+     console.log(this.value);
+     if(this.value == "true"){
+       $("#categories").show();
+     }else{
+       $("#categories").hide();
+     }
+   })
    
   
 })();

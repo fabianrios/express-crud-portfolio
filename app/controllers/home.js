@@ -379,7 +379,7 @@ router.post('/article/like', function (req, res, next) {
 router.post('/events', function (req, res, next) {
   var body = req.body;
   
-  db.Event.findAll({ publish: true }).then(function (events) {
+  db.Event.findAll().then(function (events) {
     
     var invalidEntries = 0;
     var preexisting = false;
@@ -403,7 +403,7 @@ router.post('/events', function (req, res, next) {
     // console.log(arrByID, invalidEntries);
     console.log(body);
     if(!preexisting){
-      db.Event.create({ name: body.name, category: body.category, email: body.email, phone: body.phone, when: body.time }).then(function (response) {
+      db.Event.create({ name: body.name, category: body.category, email: body.email, phone: body.phone, when: body.time, publish: body.publish }).then(function (response) {
         console.log("data", response["dataValues"]);
         res.write(JSON.stringify(response["dataValues"],{"success":"El evento fue creado"}));
         res.end();
