@@ -706,27 +706,30 @@ table.servicios {
     color: rgba(255, 255, 255, 0.5);
     font-size: 12px;
     margin: 0; }
-  .footer .social {
-    display: block;
-    list-style-type: none;
-    margin: 0;
-    text-align: center;
-    width: 100%; }
-    .footer .social li {
+
+.social {
+  display: none;
+  list-style-type: none;
+  margin: 0; }
+  .social li {
+    display: inline-block;
+    margin: 0 16px; }
+    .social li a {
+      color: #fff; }
+  @media only screen and (min-width: 40em) {
+    .social {
+      position: absolute;
+      top: 15px;
+      right: 40px;
+      line-height: 20px;
+      width: 20%;
       display: inline-block;
-      margin: 0 16px; }
-      .footer .social li a {
-        color: #fff; }
-    @media only screen and (min-width: 40em) {
-      .footer .social {
-        float: right;
-        line-height: 60px;
-        width: 30%;
-        display: inline-block;
-        margin-bottom: 0;
-        text-align: right; }
-        .footer .social li {
-          margin: 0 20px; } }
+      margin-bottom: 0;
+      text-align: right; }
+      .social li {
+        margin: 0 20px; }
+        .social li:last-child {
+          margin-right: 0; } }
 
 .maxrow {
   width: 90vw; }
