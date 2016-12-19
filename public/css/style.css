@@ -150,15 +150,15 @@
     #calendar table tr td.fc-day.not-available.fc-day-top {
       cursor: default;
       background: #efefef; }
-#calendar table tr td.fc-past, #calendar table tr td.fc-sun {
+#calendar table tr td.fc-past, #calendar table tr td.fc-sun, #calendar table tr td.fc-today {
   background: #efefef;
   cursor: default; }
-  #calendar table tr td.fc-past span, #calendar table tr td.fc-sun span {
+  #calendar table tr td.fc-past span, #calendar table tr td.fc-sun span, #calendar table tr td.fc-today span {
     opacity: .5; }
 
 body .fc-event-container .fc-event {
   border: white; }
-  body .fc-event-container .fc-event.true {
+  body .fc-event-container .fc-event.false {
     background: red; }
 
 .fc-event-container .fc-event {
@@ -379,7 +379,8 @@ h3#modal-date {
       background: #3375BF; }
     @media only screen and (min-width: 40em) {
       .nav.home {
-        height: 70vh; } }
+        height: 70vh;
+        min-height: 530px; } }
   .nav.form {
     border-bottom: 1px solid #456289;
     background: #0058a0; }

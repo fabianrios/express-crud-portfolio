@@ -146,6 +146,11 @@
           $('#alert-info').foundation('reveal', 'open');
           return
         }
+        if (date.diff(currentTime, 'days') == 0){
+          $('#alert-info .aca').html("No se puede agendar citas para hoy mismo, intenta con los días que tienen fondo blanco.");
+          $('#alert-info').foundation('reveal', 'open');
+          return
+        }
         if (date.day() == 0){
           $('#alert-info .aca').html("Este día es domingo, intenta con los días que tienen fondo blanco.");
           $('#alert-info').foundation('reveal', 'open');
