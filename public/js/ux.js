@@ -236,7 +236,7 @@
       timeFormat: 'H(:mm)',
       dayNamesShort: dias,
       eventClick: function(calEvent, jsEvent, view) {
-         var cita = calEvent.virtual ? "virtual" : "presencial";
+         var cita = calEvent.virtual ? "presencial" : "virtual";
          console.log(calEvent.virtual, cita);
          $(".here").html("<h3>"+calEvent.title+"</h3><p><span class='fa fa-phone'> "+calEvent.phone+"</span></p>"+"<p><span class='fa fa-envelope-o'> "+calEvent.email+"</span></p>"+"<p><span class='fa fa-angle-right'> "+cat[calEvent.category]+"</span></p>"+"<p><span class='fa fa-user'> "+ cita +"</span></p>");
          $('#event-info').foundation('reveal', 'open');

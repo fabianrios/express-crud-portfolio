@@ -410,11 +410,11 @@ router.post('/events', function (req, res, next) {
         if(body.recibir){
           var cita = body.publish ? "presencial" : "virtual";
           var mailOptions = {
-              from: '"Maria bahamon" <info@mariabahamon.com>', // sender address
-              to: 'hola@fabiarnios.co', // list of receivers
+              from: '"Maria bahamon" <mariabahamoncon@gmail.com>', // sender address //
+              to: 'mariabahamoncon@gmail.com', // list of receivers
               subject: 'Nueva cita 👥', // Subject line
               text: ' Nombre: ' + body.name + ' Correo: ' + body.email + ' Asunto: ' + body.category + ' Cel: ' + body.phone+ ' Tipo: ' + cita+ ' Cuando: ' + body.time, 
-              html: ' 🐴 <b>Nombre:</b> ' + body.name + '<br /> 📩 <b>Correo:</b> ' + body.email + '<br /> 📨 <b>Asunto:</b> ' + body.category + '<b>Cel:</b> ' + body.phone + '<b>Tipo:</b> ' + cita + '<b>Cuando:</b> ' + body.time // html body
+              html: "Tu cita "  + cita + " para el " +body.time+  " ha sido agendada, nuestro personal se comunicará contigo en las próximas horas."
           };
     
           transporter.sendMail(mailOptions, function(error, info){
