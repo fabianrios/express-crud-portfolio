@@ -74,17 +74,15 @@
     //console.log(info);
     
     function getEvents(date){
-      var events = [];
+      var eventos = [];
       var objev = {};
       info.forEach(function(entry) {
-        //console.log(entry.start.format('YYYY-MM-DD'),  moment(date).format('YYYY-MM-DD'));
+          console.log(entry.start.format('YYYY-MM-DD'), date.format());
           if (entry.start.format('YYYY-MM-DD') == date.format()){
-              events.push(entry);
-              objev[entry.start.format('YYYY-MM-DD')] = events.push(entry);
+              objev[entry.start.format('YYYY-MM-DD')] = eventos.push(entry);
           }
        });
-       //console.log(objev);
-       return events;
+       return eventos;
      }
     
     
@@ -136,6 +134,7 @@
         currentTime = moment(currentTime);
         var lista = [];
         // esta ocupado
+        console.log("tout",date,getEvents(date).length);
         if (getEvents(date).length >= 13) {
           $('#alert-info .aca').html("Este día ya no tiene citas disponibles, intenta con los días que tienen fondo blanco.");
           $('#alert-info').foundation('reveal', 'open');
