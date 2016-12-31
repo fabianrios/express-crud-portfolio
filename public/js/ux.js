@@ -173,10 +173,16 @@
           }
           //saturday config
           console.log(moment(date).format("L"),"lista:", lista);
-          
-        	$( ".selector" ).hourSelector({
-        	  out:lista
-        	});
+          if (moment(date).format("d") == 6){
+          	$( ".selector" ).hourSelector({
+              end:15,
+          	  out:lista
+          	});
+          }else{
+          	$( ".selector" ).hourSelector({
+          	  out:lista
+          	});
+          }
           $('#modal-calendar').foundation('reveal', 'open');
       }
     });
