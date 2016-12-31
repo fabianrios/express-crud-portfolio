@@ -50,14 +50,14 @@
         // console.log(result[key]);
         var este = moment(result[key]["when"]).format("L").toString();
         var ese = moment.tz(result[key]["when"], "America/Bogota");
-        ese = moment(ese).format("LT").toString();
-        var mas = moment.tz(result[key]["when"], "America/Bogota");
-        mas = moment(mas).add(60, 'minutes').format('LT');
+        ese = moment(ese).format("H:mm").toString();
+        // var mas = moment.tz(result[key]["when"], "America/Bogota");
+        // mas = moment(mas).add(60, 'minutes').format('LT');
         //console.log("dia: ", este,"hora real formateada:", ese);
         if (to_remove.hasOwnProperty(este)){
-          to_remove[este]["hours"].push([ese, mas]);
+          to_remove[este]["hours"].push(ese);
         }else{
-          to_remove[este] = {hours: [[ese, mas]]}
+          to_remove[este] = {hours: [ese]}
         }
         info.push({
             title  : result[key]["name"],
@@ -77,7 +77,7 @@
       var eventos = [];
       var objev = {};
       info.forEach(function(entry) {
-          console.log(entry.start.format('YYYY-MM-DD'), date.format());
+          //console.log(entry.start.format('YYYY-MM-DD'), date.format());
           if (entry.start.format('YYYY-MM-DD') == date.format()){
               objev[entry.start.format('YYYY-MM-DD')] = eventos.push(entry);
           }
@@ -155,7 +155,7 @@
           $('#alert-info').foundation('reveal', 'open');
           return
         }
-          $('input#timepicker').timepicker('remove');
+          $( ".selector" ).hourSelector("destroy");
           // in the pass?
           var now    = new Date();
           now.setHours(0,0,0,0);
@@ -167,37 +167,16 @@
           $('#modal-date').html(fecha);
         
           $('#hidden-date').val(moment(date).format("l"));
-
           var quitar = typeof to_remove != "undefined" ? to_remove : [];
           if (typeof quitar[moment(date).format("L")] != "undefined"){
             lista  = quitar[moment(date).format("L")]["hours"]; 
           }
           //saturday config
-          console.log(moment(date).format("L"),"lista:", lista,"quitar", quitar);
-          var config;
-          if (moment(date).format("d") == 6){
-            config = {
-                timeFormat: 'G:i ',
-                disableTimeRanges: lista,
-                step: 60,
-                minTime: '8',
-                maxTime: '15:00',
-                defaultTime: '10',
-                startTime: '08:00'
-            }
-          }else{
-            config = {
-                timeFormat: 'G:i ',
-                disableTimeRanges: lista,
-                step: 60,
-                minTime: '7',
-                maxTime: '20:00',
-                defaultTime: '12',
-                startTime: '07:00'
-            }
-          }
+          console.log(moment(date).format("L"),"lista:", lista);
           
-          $('input#timepicker').timepicker(config);
+        	$( ".selector" ).hourSelector({
+        	  out:lista
+        	});
           $('#modal-calendar').foundation('reveal', 'open');
       }
     });
@@ -237,7 +216,7 @@
       dayNamesShort: dias,
       eventClick: function(calEvent, jsEvent, view) {
          var cita = calEvent.virtual ? "presencial" : "virtual";
-         console.log(calEvent.virtual, cita);
+         //console.log(calEvent.virtual, cita);
          $(".here").html("<h3>"+calEvent.title+"</h3><p><span class='fa fa-phone'> "+calEvent.phone+"</span></p>"+"<p><span class='fa fa-envelope-o'> "+calEvent.email+"</span></p>"+"<p><span class='fa fa-angle-right'> "+cat[calEvent.category]+"</span></p>"+"<p><span class='fa fa-user'> "+ cita +"</span></p>");
          $('#event-info').foundation('reveal', 'open');
         //console.log('Event: ' + calEvent.title + calEvent.phone);
@@ -269,6 +248,9 @@
       if (dateParts[1] < 10){
         dateParts[1] = "0"+dateParts[1];
       }
+      if (dateParts[2] < 10){
+        dateParts[2] = "0"+dateParts[2];
+      }
       var back = dateParts[1] + "/" + dateParts[2] + "/" + dateParts[3];
       return back;
     }
@@ -282,14 +264,14 @@
           }
         }else if (this.name == "time"){
             var hour = $(this).val();
-            hour = hour.slice(0, -3);
+            //hour = hour.slice(0, -3);
+            //console.log(hour);
             var hd = convertDate($("#hidden-date").val());
             look_up = lookDate($("#hidden-date").val());
-            var to_parse = hd+" "+hour+"00:00 GMT-0500";
-            var fixhour = hour.split(":");
+            var to_parse = hd+" "+hour+":00 GMT-0500";
+            //var fixhour = hour.split(":");
             var date = new Date(to_parse);
-            // console.log(to_parse,"---", date);
-            //console.log("date",date);
+            //console.log(to_parse,"---", date);
             values["time"] = date;
         }else{
           values[this.name] = $(this).val();
@@ -314,15 +296,14 @@
       //console.log(data, resp);
       if(resp == "success"){
         
-        var una = moment(event_where).format("LT").toString();
-        var dos = moment.tz(event_where, "America/Bogota");
-        dos = moment(dos).add(60, 'minutes').format('LT');
-        
+        var una = moment(event_where).format("H:mm").toString();
+        // var dos = moment.tz(event_where, "America/Bogota");
+        // dos = moment(dos).add(60, 'minutes').format('LT');
         
         if (to_remove.hasOwnProperty(look_up)){
-          to_remove[look_up]["hours"].push([una, dos]);
+          to_remove[look_up]["hours"].push(una);
         }else{
-          to_remove[look_up] = {hours: [[una, dos]]}
+          to_remove[look_up] = {hours: [una]}
         }
         
       function alertDisplay(){ // console.log(to_remove,to_remove[look_up]);
