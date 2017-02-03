@@ -162,39 +162,8 @@ body .fc-event-container .fc-event {
     background: red; }
 
 .fc-event-container .fc-event {
-  border: white; }
-  .fc-event-container .fc-event.acidoh {
-    background: #e0a356; }
-  .fc-event-container .fc-event.botox {
-    background: #98ce42; }
-  .fc-event-container .fc-event.rejuve {
-    background: #724e7d; }
-  .fc-event-container .fc-event.homeo {
-    background: #535598; }
-  .fc-event-container .fc-event.micro {
-    background: #3d7e9c; }
-  .fc-event-container .fc-event.radio {
-    background: #3d9c7e; }
-  .fc-event-container .fc-event.colageno {
-    background: #3db74c; }
-  .fc-event-container .fc-event.fre {
-    background: #95b13e; }
-  .fc-event-container .fc-event.harmony {
-    background: #daad2d; }
-  .fc-event-container .fc-event.vela {
-    background: #da5d2d; }
-  .fc-event-container .fc-event.lipomax {
-    background: #da452d; }
-  .fc-event-container .fc-event.bodp {
-    background: #dc6666; }
-  .fc-event-container .fc-event.lpg {
-    background: #66dcc1; }
-  .fc-event-container .fc-event.pixelco {
-    background: #6695dc; }
-  .fc-event-container .fc-event.manthus {
-    background: #957bbd; }
-  .fc-event-container .fc-event.futura {
-    background: #909090; }
+  border: white;
+  background: #98ce42; }
 
 .available {
   margin-right: 10px;
@@ -358,11 +327,11 @@ h3#modal-date {
   position: relative;
   height: auto;
   padding: 0;
-  background: white; }
+  background: #32599D; }
   @media only screen and (min-width: 40em) {
     .nav {
       padding: 30px 30px;
-      background: white; } }
+      background: #32599D; } }
   .nav.home {
     background: #3375BF url("../img/slider1.jpg") no-repeat center top;
     -webkit-background-size: cover;
@@ -437,15 +406,16 @@ h3#modal-date {
       width: 100%;
       margin: 0; }
       .nav ul.navigation li.main a {
+        color: #fff;
         display: inline-block;
         padding: 10px;
         font-weight: normal; }
     @media only screen and (min-width: 40em) {
       .nav ul.navigation {
-        width: 50%;
+        width: 58%;
         display: inline-block;
         margin: 0 20px;
-        text-align: left;
+        text-align: center;
         min-width: auto;
         background: transparent;
         position: relative;
@@ -697,21 +667,27 @@ table.servicios {
     display: inline-block;
     margin: 0 16px; }
 
+.fc-left h2 {
+  text-transform: capitalize; }
+
 .footer {
-  height: 56px;
   background-color: #0072bc;
-  padding: 0 28px; }
+  padding: 28px 28px 18px 28px; }
+  .footer ul.info li a {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px; }
   .footer.the-login {
     position: absolute;
     width: 100%;
     bottom: 0; }
   .footer p {
     display: inline-block;
-    width: 50%;
+    width: 100%;
     line-height: 56px;
     color: rgba(255, 255, 255, 0.5);
     font-size: 12px;
-    margin: 0; }
+    margin: 0;
+    text-align: center; }
 
 #categories {
   display: none; }

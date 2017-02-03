@@ -230,54 +230,55 @@ body{
 .fc-event-container{
   .fc-event{
     border: white;
-    &.acidoh{
-      background: #e0a356;
-    }
-    &.botox{
-      background: #98ce42;
-    }
-    &.rejuve{ 
-      background:#724e7d;
-    }
-    &.homeo{ 
-      background:#535598;
-    }
-    &.micro{ 
-      background:#3d7e9c;
-    }
-    &.radio{ 
-      background:#3d9c7e;
-    }
-    &.colageno{ 
-      background:#3db74c;
-    }
-    &.fre{ 
-      background:#95b13e;
-    }
-    &.harmony{ 
-      background:#daad2d;
-    }
-    &.vela{ 
-      background:#da5d2d;
-    }
-    &.lipomax{ 
-      background:#da452d;
-    }
-    &.bodp{ 
-      background:#dc6666;
-    }
-    &.lpg{ 
-      background:#66dcc1;
-    }
-    &.pixelco{ 
-      background:#6695dc;
-    }
-    &.manthus{ 
-      background:#957bbd;
-    }
-    &.futura{ 
-      background:#909090;
-    }
+    background: #98ce42;
+   // &.acidoh{
+//      background: #e0a356;
+//    }
+//    &.botox{
+//      background: #98ce42;
+//    }
+//    &.rejuve{
+//      background:#724e7d;
+//    }
+//    &.homeo{
+//      background:#535598;
+//    }
+//    &.micro{
+//      background:#3d7e9c;
+//    }
+//    &.radio{
+//      background:#3d9c7e;
+//    }
+//    &.colageno{
+//      background:#3db74c;
+//    }
+//    &.fre{
+//      background:#95b13e;
+//    }
+//    &.harmony{
+//      background:#daad2d;
+//    }
+//    &.vela{
+//      background:#da5d2d;
+//    }
+//    &.lipomax{
+//      background:#da452d;
+//    }
+//    &.bodp{
+//      background:#dc6666;
+//    }
+//    &.lpg{
+//      background:#66dcc1;
+//    }
+//    &.pixelco{
+//      background:#6695dc;
+//    }
+//    &.manthus{
+//      background:#957bbd;
+//    }
+//    &.futura{
+//      background:#909090;
+//    }
   }
 }
 
@@ -469,10 +470,10 @@ h3#modal-date{
   position: relative;
   height: auto;
   padding:0;
-  background: white;
+  background: #32599D;
   @media only screen and (min-width: 40em){ 
     padding: 30px 30px;
-    background: white;
+    background: #32599D;
   }
   &.home{
     background: #3375BF url("../img/slider1.jpg") no-repeat center top;
@@ -579,16 +580,17 @@ h3#modal-date{
         width: 100%;
         margin: 0;
         a{
+          color: #fff;
           display: inline-block;
           padding:10px;
           font-weight: normal;
         }
       }
       @media only screen and (min-width: 40em){ 
-        width: 50%;
+        width: 58%;
         display: inline-block;
         margin:0 20px;
-        text-align: left;
+        text-align: center;
         min-width: auto;
         background: transparent;
         position: relative;
@@ -910,11 +912,23 @@ table.servicios{
   }
 }
 
+.fc-left h2{
+  text-transform: capitalize;
+}
+
 //FOOTER
 .footer{
-  height: 56px;
+  //height: 56px;
   background-color: #0072bc;
-  padding:0 28px;
+  padding:28px 28px 18px 28px;
+  ul.info{
+    li{
+      a{
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 13px;
+      }
+    }
+  }
   &.the-login{
     position: absolute;
     width: 100%;
@@ -922,11 +936,12 @@ table.servicios{
   }
   p{
     display: inline-block;
-    width: 50%;
+    width: 100%;
     line-height: 56px;
     color: rgba(255, 255, 255, 0.5);
     font-size: 12px;
     margin: 0;
+    text-align: center;
   }
 }
 

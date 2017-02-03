@@ -85,7 +85,7 @@ var authorize = function(req, res, next) {
     } else{
       res.render('login', {
         title: 'Inicio de sesión',
-        logo: "group-2.png",
+        logo: "logo.png",
         error: "No esta autorizado inicie sesión"
       });
     }
@@ -131,7 +131,7 @@ router.get('/', calendar, function (req, res, next) {
 router.get(['/login', '/admin'], function (req, res, next) {
     res.render('login', {
       title: 'Inicio de sesión',
-      logo: "group-2.png",
+      logo: "logo.png",
       layout: "login", 
       query: true
     });
@@ -142,7 +142,7 @@ router.post('/login', function (req, res, next) {
     return res.render('login',{
        error: 'los campos no pueden estar vacios',
        title: 'Inicio de sesión',
-       logo: "group-2.png"
+       logo: "logo.png"
     });
   }
   db.User.findOne({ where: {username: req.body.username, password: encrypt(req.body.password)} }).then(function(user) {
@@ -151,7 +151,7 @@ router.post('/login', function (req, res, next) {
       return res.render("login", {
          error: "No se encontro nadie con esas credenciales.",
          title: "Inicio de sesión",
-         logo: "group-2.png" 
+         logo: "logo.png" 
       });
     }
     
@@ -181,7 +181,7 @@ router.get('/blog', function (req, res, next) {
       res.render('blog', {
         title: 'blog',
         articles: art,
-        logo: "group-2.png",
+        logo: "logo.png",
         cloudinary_account: process.env.CLOUDINARY_NAME
       });
     });
@@ -192,7 +192,7 @@ router.get('/blog', function (req, res, next) {
       res.render('blog', {
         title: 'blog',
         articles: articles,
-        logo: "group-2.png",
+        logo: "logo.png",
         cloudinary_account: process.env.CLOUDINARY_NAME
       });
     });
@@ -211,7 +211,7 @@ router.get('/admin/clients', notify, authorize, function (req, res, next) {
       qty: req.session.clients,
       qty_contacts: req.session.contacts,
       layout: "admin",
-      logo: "group-2.png",
+      logo: "logo.png",
       admin_clients: "active"
     });
   });
@@ -223,7 +223,7 @@ router.post('/send_contact', function (req, res, next) {
     res.render('contact', {
       title: 'Contacto',
       success: "Su mensaje ha sido enviado correctamente",
-      logo: "group-2.png"
+      logo: "logo.png"
     });
     
     var mailOptions = {
@@ -250,7 +250,7 @@ router.get('/admin/contact', notify, authorize, function (req, res, next) {
       title: 'Contactos',
       clients: clients,
       user: req.session.user,
-      logo: "group-2.png",
+      logo: "logo.png",
       admin_contacts: "active",
       qty: req.session.clients,
       layout: "admin",
@@ -262,7 +262,7 @@ router.get('/admin/contact', notify, authorize, function (req, res, next) {
 router.get('/contact', function (req, res, next) {
     res.render('contact', {
       title: 'Contacto',
-      logo: "group-2.png"
+      logo: "logo.png"
     });
 });
 
@@ -273,7 +273,7 @@ router.get('/admin/articles', notify, authorize, function (req, res, next) {
       title: 'Admin articles',
       articles: articles,
       user: req.session.user,
-      logo: "group-2.png",
+      logo: "logo.png",
       qty: req.session.clients,
       qty_contacts: req.session.contacts,
       admin_articles: "active",
@@ -287,7 +287,7 @@ router.get('/admin/articles', notify, authorize, function (req, res, next) {
 router.get('/article/create', notify, authorize, function (req, res, next) {
     res.render('create', {
       title: 'Crear nuevo articulo',
-      logo: "group-2.png",
+      logo: "logo.png",
       qty: req.session.clients,
       qty_contacts: req.session.contacts,
       user: req.session.user,
@@ -300,14 +300,22 @@ router.get('/article/create', notify, authorize, function (req, res, next) {
 router.get('/quienes_somos', function (req, res, next) {
     res.render('quienes_somos', {
       title: 'Quienes somos',
-      logo: "group-2.png"
+      logo: "logo.png"
     });
 });
+
+router.get('/bahamon', function (req, res, next) {
+    res.render('bahamon', {
+      title: 'Dr. María Bahamón',
+      logo: "logo.png"
+    });
+});
+
 
 router.get('/servicios', function (req, res, next) {
     res.render('servicios', {
       title: 'Servicios',
-      logo: "group-2.png"
+      logo: "logo.png"
     });
 });
 
@@ -321,14 +329,14 @@ router.get('/article/:id', function (req, res, next) {
       res.locals = {
         pageTitle: "articles",
         background: true,
-        logo: "group-2.png",
+        logo: "logo.png",
         cloudinary_account: process.env.CLOUDINARY_NAME
       };
     
       res.render('show', {
         title: article.title,
         article: article,
-        logo: "group-2.png",
+        logo: "logo.png",
         covers: associatedCovers, 
         author: user,
 				layout: "main",
@@ -351,7 +359,7 @@ router.get('/article/:id/edit', notify, authorize, function (req, res, next) {
       res.render('edit', {
         title: "Edición",
         article: article,
-        logo: "group-2.png",
+        logo: "logo.png",
         qty: req.session.clients,
         qty_contacts: req.session.contacts,
         covers: associatedCovers, 
@@ -634,7 +642,7 @@ router.post('/edit_user', notify, authorize, upload.single('image_upload'), func
   }else{
     res.render('admin_users', {
       title: 'Mi perfil',
-      logo: "group-2.png",
+      logo: "logo.png",
       error: "Revise los campos ni la contraseña ni el nombre de usuario pueden estar vacios",
       qty: req.session.clients,
       qty_contacts: req.session.contacts,
@@ -669,7 +677,7 @@ router.get('/admin/users', notify, authorize, function (req, res, next) {
        
        res.render('admin_users', {
          title: 'Mi perfil',
-         logo: "group-2.png",
+         logo: "logo.png",
          user: req.session.user,
          qty: req.session.clients,
          qty_contacts: req.session.contacts,
