@@ -327,11 +327,11 @@ h3#modal-date {
   position: relative;
   height: auto;
   padding: 0;
-  background: #32599D; }
+  background: #0072bc; }
   @media only screen and (min-width: 40em) {
     .nav {
       padding: 30px 30px;
-      background: #32599D; } }
+      background: #0072bc; } }
   .nav.home {
     background: #3375BF url("../img/slider1.jpg") no-repeat center top;
     -webkit-background-size: cover;
