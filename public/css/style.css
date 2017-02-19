@@ -268,50 +268,34 @@ h3#modal-date {
 
 .text-banner {
   text-align: center;
-  padding: 10vh 15px; }
+  padding: 0; }
   .text-banner.vcontrol {
     padding-top: 0; }
   .text-banner .the-text {
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
     padding: 10px 15px;
-    display: table-cell;
-    background: rgba(255, 255, 255, 0.7); }
-    .text-banner .the-text h3, .text-banner .the-text h4 {
+    display: block;
+    background: rgba(0, 114, 188, 0.8); }
+    .text-banner .the-text h3 {
+      font-size: 18px;
+      margin: 0;
       font-weight: normal;
-      color: #3D70BB; }
+      color: white; }
   @media only screen and (min-width: 40em) {
     .text-banner {
-      padding-left: 25px;
-      padding-top: 20vh;
-      text-align: left; }
+      text-align: center;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%; }
       .text-banner .the-text {
         text-align: left;
-        background: transparent;
+        background: rgba(0, 114, 188, 0.8);
         padding: 0;
         color: white; }
-        .text-banner .the-text h3, .text-banner .the-text h4 {
-          font-weight: normal;
-          color: white; } }
-  .text-banner.second .the-text {
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    padding: 15px 25px;
-    display: table-cell;
-    background: rgba(255, 255, 255, 0.7); }
-    .text-banner.second .the-text h3, .text-banner.second .the-text h4 {
-      color: #3D70BB; }
-  .text-banner.third .the-text {
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    padding: 15px 25px;
-    display: table-cell;
-    background: white; }
-    .text-banner.third .the-text h3, .text-banner.third .the-text h4 {
-      color: #3D70BB; }
+        .text-banner .the-text h3 {
+          font-weight: normal; }
+        .text-banner .the-text a {
+          float: right; } }
 
 #jsalert {
   display: none; }
