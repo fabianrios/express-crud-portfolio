@@ -434,7 +434,7 @@
    }		
    
    var pub = $("#publish").val();
-   console.log(pub);
+   //console.log(pub);
    if(pub == "true"){
      $("#categories").show();
    }else{
@@ -442,7 +442,7 @@
    }
    
    $('select#publish').on('change', function() {
-     console.log(this.value);
+     //console.log(this.value);
      if(this.value == "true"){
        $("#categories").show();
      }else{

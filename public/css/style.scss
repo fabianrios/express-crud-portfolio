@@ -415,21 +415,31 @@ h3#modal-date{
       font-size: 18px;
       margin: 0;
       font-weight: normal;
-      color: white;
+      color: rgba(white,.8);
+      b{
+        color: #fff;
+      }
     }
   }
   @media only screen and (min-width: 40em){
     text-align: center;
     .the-text{
-      text-align: left;
+      text-align: center;
       background: rgba(#0072bc,.8);
       padding: 0;
       color: white;
+      .el-texto{
+        display: inline-block;
+        width: 65%;
+        text-align: left;
+        position: relative;
+        top: 15px;
+      }
       h3{
-        font-weight: normal;
+        font-size: 24px;
       }
       a{
-        float: right;
+        display: inline-block;
       }
     }
   }
