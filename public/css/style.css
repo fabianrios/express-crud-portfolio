@@ -268,7 +268,11 @@ h3#modal-date {
 
 .text-banner {
   text-align: center;
-  padding: 0; }
+  padding: 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%; }
   .text-banner.vcontrol {
     padding-top: 0; }
   .text-banner .the-text {
@@ -282,11 +286,7 @@ h3#modal-date {
       color: white; }
   @media only screen and (min-width: 40em) {
     .text-banner {
-      text-align: center;
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%; }
+      text-align: center; }
       .text-banner .the-text {
         text-align: left;
         background: rgba(0, 114, 188, 0.8);
@@ -319,7 +319,8 @@ h3#modal-date {
   .nav.home {
     background: #3375BF url("../img/slider1.jpg") no-repeat center top;
     -webkit-background-size: cover;
-    background-size: cover; }
+    background-size: cover;
+    min-height: 90vh; }
     .nav.home .social-nav li a {
       color: #fff; }
     .nav.home ul.navigation {
