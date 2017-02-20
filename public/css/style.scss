@@ -937,6 +937,57 @@ table.servicios{
   }
 }
 
+.block-treatment{
+  background: #fff;
+  padding:20px 0;
+  ul{
+    list-style-type: none;
+    margin: 0;
+    li{
+      display: inline-block;
+      width: 100%;
+      margin: 10px 0;
+      @media only screen and (min-width: 40em){
+        width: 31%;
+        margin: 10px 15px;
+      }
+      &.erstemal{
+        margin-left: 0;
+      }
+      &.tthird{
+        margin-left: 0;
+      }
+      &:nth-child(3n){
+        margin-right: 0;
+      }
+      .thumb{
+        width: 35%;
+        display: inline-block;
+      }
+      .txt{
+        padding: 0 0 0 10px;
+        float: right;
+        text-align: left;
+        width: 65%;
+        display: inline-block;
+        h4{
+          cursor: pointer;
+          margin: 0;
+          color: #0072bc;
+          font-size: 18px;
+          line-height: 23px;
+        }
+        h6{
+          margin: 0;
+          color: #505050;
+          font-weight: normal;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
 #categories{
   display: none;
 }

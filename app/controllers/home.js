@@ -312,9 +312,9 @@ router.get('/bahamon', function (req, res, next) {
 });
 
 
-router.get('/servicios', function (req, res, next) {
+router.get('/tratamientos', function (req, res, next) {
     res.render('servicios', {
-      title: 'Servicios',
+      title: 'Tratamientos',
       logo: "logo.png"
     });
 });
