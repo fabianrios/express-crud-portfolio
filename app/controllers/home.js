@@ -419,7 +419,7 @@ router.post('/events', function (req, res, next) {
           var cita = body.publish ? "presencial" : "virtual";
           var mailOptions = {
               from: '"Maria bahamon" <mariabahamoncon@gmail.com>', // sender address //
-              to: 'mariabahamoncon@gmail.com', // list of receivers
+              to: 'mariabahamoncon@gmail.com, '+body.email, // list of receivers
               subject: 'Nueva cita 👥', // Subject line
               text: ' Nombre: ' + body.name + ' Correo: ' + body.email + ' Asunto: ' + body.category + ' Cel: ' + body.phone+ ' Tipo: ' + cita+ ' Cuando: ' + body.time, 
               html: "Tu cita "  + cita + " para el " +body.time+  " ha sido agendada, nuestro personal se comunicará contigo en las próximas horas."

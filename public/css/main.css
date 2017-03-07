@@ -18051,6 +18051,22 @@ input[type="search"].search {
       .button.cita {
         display: inline-block; } }
 
+button.fc-state-default {
+  border: 0;
+  text-decoration: none;
+  text-shadow: 0 0 0 transparent;
+  background-image: none;
+  background-color: #0072bc;
+  color: #fff; }
+  button.fc-state-default:hover {
+    background-color: #005389; }
+  button.fc-state-default.fc-corner-right {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px; }
+  button.fc-state-default.fc-corner-left {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px; }
+
 .cke.cke_reset {
   margin: 20px 0; }
 

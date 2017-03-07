@@ -243,6 +243,29 @@ input[type="search"].search{
   }
 }
 
+button{
+  &.fc-state-default{
+    border: 0;
+    text-decoration: none;
+    text-shadow: 0 0 0 transparent;
+    background-image: none;
+    background-color: #0072bc;
+    color: #fff;
+    &:hover{
+      background-color: darken(#0072bc,10%);
+    }
+    &.fc-corner-right{
+      border-top-right-radius: 25px;
+      border-bottom-right-radius: 25px;
+    }
+    &.fc-corner-left{
+      border-top-left-radius: 25px;
+      border-bottom-left-radius: 25px;
+    }
+  }
+}
+
+
 .cke.cke_reset{
   margin: 20px 0;
 }
