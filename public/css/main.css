@@ -17836,6 +17836,9 @@ th.hide-for-touch {
 body {
   color: #505050; }
 
+.row {
+  margin: 0 auto; }
+
 .neuer_artikel {
   text-align: left;
   position: relative;
@@ -18080,7 +18083,7 @@ button.fc-state-default {
   background-image: url("/img/Facial/3Rejuvenecimiento_Plasma.jpg"); }
 
 #hmfacial .lateral-div {
-  background-image: url("/img/Facial/7Facial_Colageno.jpg"); }
+  background-image: url("/img/Facial/4Homeopatia_facial.jpg"); }
 
 #micro .lateral-div {
   background-image: url("/img/Facial/5Microdermoabrasion.jpg"); }

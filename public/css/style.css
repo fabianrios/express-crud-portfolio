@@ -684,7 +684,8 @@ table.servicios {
 
 .block-treatment {
   background: #fff;
-  padding: 20px 0; }
+  padding: 20px 0;
+  margin: 0 auto; }
   .block-treatment ul {
     list-style-type: none;
     margin: 0; }
