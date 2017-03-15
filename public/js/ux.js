@@ -130,8 +130,7 @@
       },
       dayClick: function(date, jsEvent, view) {
         var cuando = jsEvent.target.className.split(" ");
-        var currentTime = new Date();
-        currentTime = moment(currentTime);
+        var currentTime = moment();
         var lista = [];
         // esta ocupado
         console.log("tout",date,getEvents(date).length);
@@ -276,9 +275,9 @@
             look_up = lookDate($("#hidden-date").val());
             var to_parse = hd+" "+hour+":00 GMT-0500";
             //var fixhour = hour.split(":");
-            var date = new Date(to_parse);
+            var date = moment(to_parse);
             //console.log(to_parse,"---", date);
-            values["time"] = date;
+            values["time"] = to_parse;
         }else{
           values[this.name] = $(this).val();
         }

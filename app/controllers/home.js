@@ -386,7 +386,7 @@ router.post('/article/like', function (req, res, next) {
 
 router.post('/events', function (req, res, next) {
   var body = req.body;
-  
+  console.log("body: ", body);
   db.Event.findAll().then(function (events) {
     
     var invalidEntries = 0;
@@ -408,13 +408,12 @@ router.post('/events', function (req, res, next) {
     // db.Event.destroy({}).then(function() {
     //   res.redirect('/');
     // });
-    // console.log(arrByID, invalidEntries);
-    console.log(body);
+    console.log(arrByID, invalidEntries);
     if(!preexisting){
       db.Event.create({ name: body.name, category: body.category, email: body.email, phone: body.phone, when: body.time, publish: body.publish }).then(function (response) {
         console.log("data", response["dataValues"]);
         res.write(JSON.stringify(response["dataValues"],{"success":"El evento fue creado"}));
-        res.end();
+        console.log('mariabahamoncon@gmail.com, '+body.email);
         if(body.recibir){
           var cita = body.publish ? "presencial" : "virtual";
           var mailOptions = {
@@ -422,7 +421,7 @@ router.post('/events', function (req, res, next) {
               to: 'mariabahamoncon@gmail.com, '+body.email, // list of receivers
               subject: 'Nueva cita 👥', // Subject line
               text: ' Nombre: ' + body.name + ' Correo: ' + body.email + ' Asunto: ' + body.category + ' Cel: ' + body.phone+ ' Tipo: ' + cita+ ' Cuando: ' + body.time, 
-              html: "Tu cita "  + cita + " para el " +body.time+  " ha sido agendada, nuestro personal se comunicará contigo en las próximas horas."
+              html: "Tu cita "  + cita + " para el " +moment(body.time).format("L")+" "+moment(body.time).format("LTS")+  " ha sido agendada, nuestro personal se comunicará contigo en las próximas horas."
           };
     
           transporter.sendMail(mailOptions, function(error, info){
@@ -433,6 +432,7 @@ router.post('/events', function (req, res, next) {
           });
           
         }
+        res.end();
       });
     }else{
       res.status(500);
