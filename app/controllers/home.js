@@ -496,7 +496,7 @@ function upload_multiple(files, id){
   console.log("aca ", files, files.length, files[0].path,  id);
   if (files.length <= 0){return}
       cloudinary.uploader.upload(files[0].path, function(result) {
-        var version = result.version.toString();
+        var version = typeof result.version != "undefined" ? result.version.toString() : "";
         var pid = result.public_id.toString();
           db.Cover.findOrCreate({where: {
               version: version,
