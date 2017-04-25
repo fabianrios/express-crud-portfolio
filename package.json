@@ -29,7 +29,7 @@
     "mapbox.js": "^2.3.0",
     "method-override": "^2.3.0",
     "moment": "^2.15.1",
-    "moment-timezone": "^0.5.6",
+    "moment-timezone": "^0.5.13",
     "morgan": "^1.6.1",
     "multer": "^1.1.0",
     "node-env-file": "^0.1.8",

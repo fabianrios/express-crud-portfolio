@@ -9,9 +9,9 @@ var friendlyUrl = require('friendly-url');
 var cloudinary = require('cloudinary');
 var dateFormat = require('dateformat');
 var nodemailer = require('nodemailer');
-var moment = require('moment');
+var moment = require('moment-timezone');
 
-
+moment.tz.add("America/Bogota|BMT COT COST|4U.g 50 40|0121|-2eb73.I 38yo3.I 2en0|90e5");
 
 var calendar = function(req, res, next) {
   db.Event.findAll().then(function (events) {
@@ -228,7 +228,7 @@ router.post('/send_contact', function (req, res, next) {
     
     var mailOptions = {
         from: '"Maria bahamon" <info@mariabahamon.com>', // sender address
-        to: 'hola@fabiarnios.co', // list of receivers
+        to: 'mariabahamoncon@gmail.com', // list of receivers
         subject: 'Nuevo contacto 👥', // Subject line
         text: ' Nombre: ' + body.name + ' Correo: ' + body.email + ' Asunto: ' + body.subject + ' Mensaje: ' + body.message, // plaintext body
         html: ' 🐴 <b>Nombre:</b> ' + body.name + '<br /> 📩 <b>Correo:</b> ' + body.email + '<br /> 📨 <b>Asunto:</b> ' + body.subject + 'Mensaje: ' + body.message // html body
@@ -416,15 +416,15 @@ router.post('/events', function (req, res, next) {
         console.log('mariabahamoncon@gmail.com, '+body.email);
         if(body.recibir){
           var cita = body.publish ? "presencial" : "virtual";
-          var mailOptions = {
+          var address = {
               from: '"Maria bahamon" <mariabahamoncon@gmail.com>', // sender address //
               to: 'mariabahamoncon@gmail.com, '+body.email, // list of receivers
               subject: 'Nueva cita 👥', // Subject line
               text: ' Nombre: ' + body.name + ' Correo: ' + body.email + ' Asunto: ' + body.category + ' Cel: ' + body.phone+ ' Tipo: ' + cita+ ' Cuando: ' + body.time, 
-              html: "Tu cita "  + cita + " para el " +moment(body.time).format("L")+" "+moment(body.time).format("LTS")+  " ha sido agendada, nuestro personal se comunicará contigo en las próximas horas."
+              html: "Tu cita "  + cita + " para el " +moment.tz(body.time, "America/Bogota").format("L")+" "+moment.tz(body.time, "America/Bogota").format("LTS")+  " ha sido agendada, nuestro personal se comunicará contigo en las próximas horas."
           };
     
-          transporter.sendMail(mailOptions, function(error, info){
+          transporter.sendMail(address, function(error, info){
               if(error){
                   return console.log(error);
               }
