@@ -10,8 +10,7 @@ var cloudinary = require('cloudinary');
 var dateFormat = require('dateformat');
 var nodemailer = require('nodemailer');
 var moment = require('moment-timezone');
-
-moment.tz.add("America/Bogota|BMT COT COST|4U.g 50 40|0121|-2eb73.I 38yo3.I 2en0|90e5");
+// console.log(moment.tz.names());
 
 var calendar = function(req, res, next) {
   db.Event.findAll().then(function (events) {
@@ -421,7 +420,7 @@ router.post('/events', function (req, res, next) {
               to: 'mariabahamoncon@gmail.com, '+body.email, // list of receivers
               subject: 'Nueva cita 👥', // Subject line
               text: ' Nombre: ' + body.name + ' Correo: ' + body.email + ' Asunto: ' + body.category + ' Cel: ' + body.phone+ ' Tipo: ' + cita+ ' Cuando: ' + body.time, 
-              html: "Tu cita "  + cita + " para el " +moment.tz(body.time, "America/Bogota").format("L")+" "+moment.tz(body.time, "America/Bogota").format("LTS")+  " ha sido agendada, nuestro personal se comunicará contigo en las próximas horas."
+              html: "Tu cita "  + cita + " para el " +moment.tz(body.time, "GMT+0").format("L")+" "+moment.tz(body.time, "America/Bogota").format("LTS")+  " ha sido agendada, nuestro personal se comunicará contigo en las próximas horas."
           };
     
           transporter.sendMail(address, function(error, info){
