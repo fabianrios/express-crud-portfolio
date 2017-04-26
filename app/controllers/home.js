@@ -420,7 +420,7 @@ router.post('/events', function (req, res, next) {
               to: 'mariabahamoncon@gmail.com, '+body.email, // list of receivers
               subject: 'Nueva cita 👥', // Subject line
               text: ' Nombre: ' + body.name + ' Correo: ' + body.email + ' Asunto: ' + body.category + ' Cel: ' + body.phone+ ' Tipo: ' + cita+ ' Cuando: ' + body.time, 
-              html: "Tu cita "  + cita + " para el " +moment.tz(body.time, "GMT+0").format("L")+" "+moment.tz(body.time, "America/Bogota").format("LTS")+  " ha sido agendada, nuestro personal se comunicará contigo en las próximas horas."
+              html: "Tu cita "  + cita + " para el " +moment.tz(body.time, "GMT+0").format("L")+" "+moment.tz(body.time, "GMT+0").format("LTS")+  " ha sido agendada otra hora"+moment.tz(body.time, "Greenwich").format("LTS")+", nuestro personal se otra hora"+moment.tz(body.time, "Europe/Berlin").format("LTS")+" comunicará contigo en las próximas horas."
           };
     
           transporter.sendMail(address, function(error, info){
