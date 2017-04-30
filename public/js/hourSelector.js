@@ -35,7 +35,7 @@
           var a =  document.createElement('a');
           var hourset = i % 2 == 0 ?  ":00" : ":30";
           var setclock = hour + hourset
-          console.log(setclock);
+          //console.log(setclock);
           a.dataset.hour = setclock;
           a.innerHTML = hour + hourset;
           if (i % 2 == 1){

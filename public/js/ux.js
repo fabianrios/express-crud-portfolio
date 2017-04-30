@@ -164,8 +164,7 @@
           }
         
           var fecha  = moment(date).locale("es").format("LL");
-          $('#modal-date').html(fecha);
-        
+          $('#modal-date').html(fecha).attr("data-date", moment(date).format("ll"));
           $('#hidden-date').val(moment(date).format("l"));
           var quitar = typeof to_remove != "undefined" ? to_remove : [];
           if (typeof quitar[moment(date).format("L")] != "undefined"){
@@ -184,6 +183,18 @@
           	});
           }
           $('#modal-calendar').foundation('reveal', 'open');
+      }
+    });
+    
+    $('select#categories').on('change', function() {
+      console.log("categories", this.value);
+      if(this.value == "lipomax" || this.value == "futura"){
+        $( ".selector" ).hourSelector("destroy");
+        var the_date = $('#modal-date').attr("data-date");
+        console.log("the_date", the_date);
+        // $.get( "/events/"+the_date, function( data ) {
+        //   var result = JSON.parse(data);
+        // });
       }
     });
     

@@ -451,6 +451,24 @@ router.get('/events', function (req, res, next) {
   });
 });
 
+router.get('/events/:cat/:date', function (req, res, next) {
+  var cat = req.params.cat
+  var cat = req.params.date
+  console.log("params: ", cat, date);
+  db.Event.findAll({ where:{publish: true}}).then(function (events) {
+    for(var i = 0; i < events.length; i++){
+      console.log(moment(events[i].dataValues.when).format("L"));
+      // if (events[i].category == cat && events[i].category == "lipomax"){
+      //  console.log("lipo");
+      // }else if(events[i].category == cat && events[i].category == "futura"){
+      //   console.log("futura");
+      // }
+    }
+    res.write(JSON.stringify(events));
+    res.end();
+  });
+});
+
 
 router.get('/events/:id/delete', notify, authorize, function (req, res, next) {
   db.Event.destroy({
