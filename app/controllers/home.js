@@ -453,18 +453,23 @@ router.get('/events', function (req, res, next) {
 
 router.get('/events/:cat/:date', function (req, res, next) {
   var cat = req.params.cat
-  var cat = req.params.date
+  var date = req.params.date
   console.log("params: ", cat, date);
+  var resultados = [];
   db.Event.findAll({ where:{publish: true}}).then(function (events) {
     for(var i = 0; i < events.length; i++){
-      console.log(moment(events[i].dataValues.when).format("L"));
-      // if (events[i].category == cat && events[i].category == "lipomax"){
-      //  console.log("lipo");
-      // }else if(events[i].category == cat && events[i].category == "futura"){
-      //   console.log("futura");
-      // }
+      // console.log(moment(events[i].dataValues.when).format("MM-DD-YYYY"));
+      if(moment(events[i].dataValues.when).format("MM-DD-YYYY") == date){
+        if (events[i].dataValues.category == cat && events[i].dataValues.category == "lipomax"){
+         console.log("lipo");
+         resultados.push(events[i])
+        }else if(events[i].category == cat && events[i].category == "futura"){
+          console.log("futura");
+          resultados.push(events[i])
+        }
+      }
     }
-    res.write(JSON.stringify(events));
+    res.write(JSON.stringify(resultados));
     res.end();
   });
 });

@@ -164,7 +164,7 @@
           }
         
           var fecha  = moment(date).locale("es").format("LL");
-          $('#modal-date').html(fecha).attr("data-date", moment(date).format("ll"));
+          $('#modal-date').html(fecha).attr("data-date", moment(date).format("MM-DD-YYYY"));
           $('#hidden-date').val(moment(date).format("l"));
           var quitar = typeof to_remove != "undefined" ? to_remove : [];
           if (typeof quitar[moment(date).format("L")] != "undefined"){
@@ -187,14 +187,25 @@
     });
     
     $('select#categories').on('change', function() {
-      console.log("categories", this.value);
-      if(this.value == "lipomax" || this.value == "futura"){
+      var cate = this.value;
+      if(cate == "lipomax" || cate == "futura"){
         $( ".selector" ).hourSelector("destroy");
         var the_date = $('#modal-date').attr("data-date");
-        console.log("the_date", the_date);
-        // $.get( "/events/"+the_date, function( data ) {
-        //   var result = JSON.parse(data);
-        // });
+        var url = "/events/"+cate+"/"+the_date;
+        console.log("par", the_date, cate, url);
+        $.get(url, function( data ) {
+          var result = JSON.parse(data);
+          if (moment(the_date).format("d") == 6){
+          	$( ".selector" ).hourSelector({
+              end:15,
+          	  out:result
+          	});
+          }else{
+          	$( ".selector" ).hourSelector({
+          	  out:result
+          	});
+          }
+        });
       }
     });
     
@@ -215,7 +226,8 @@
     "pixelco":"Pixel corporal",
     "manthus":"Manthus",
     "futura":"futura", 
-    "valoracion":"Valoración",
+    "valoracion-facial":"Valoración facial",
+    "valoracion-corporal":"Valoración corporal",
     "seguimiento":"Seguimiento"
     }
    
