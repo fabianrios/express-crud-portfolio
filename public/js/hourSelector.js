@@ -2,7 +2,7 @@
  
     $.fn.hourSelector = function( options ) {
         if(options == "destroy"){
-         console.log(options);
+         //console.log(options);
          this.html("");
          return this
         }
@@ -25,21 +25,28 @@
         input.setAttribute("name", "time");
         input.setAttribute("id", "time-date");
         this.append(input);
-
         //append to form element that you want .
         //document.getElementById("chells").appendChild(input);
-        
-        for(settings.ini; settings.ini <= settings.end; settings.ini+1){
+        console.log(settings);
+        var hour = settings.ini;
+        var until = settings.end+(settings.end-settings.ini);
+        for(var i = settings.ini; i < until; i++){
           var li = document.createElement('li');
           var a =  document.createElement('a');
-          a.dataset.hour = settings.ini + ":00";
+          var hourset = i % 2 == 0 ?  ":00" : ":30";
+          var setclock = hour + hourset
+          console.log(setclock);
+          a.dataset.hour = setclock;
+          a.innerHTML = hour + hourset;
+          if (i % 2 == 1){
+            hour++ 
+          }
           if (settings.out.length > 0){
             //console.log(settings.out.indexOf(parseInt(a.dataset.hour)), settings.out, a.dataset.hour);
             if (settings.out.indexOf(a.dataset.hour) > -1) {
               a.className += "out";
             }
           }
-          a.innerHTML = settings.ini++ + ":00";
           li.appendChild(a);
           ul.appendChild(li);
         }

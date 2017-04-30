@@ -134,7 +134,7 @@
         var currentTime = moment();
         var lista = [];
         // esta ocupado
-        console.log("tout",date,date.diff(currentTime,"hours"));
+        //console.log("tout",date,date.diff(currentTime,"hours"));
         if (getEvents(date).length >= 13) {
           $('#alert-info .aca').html("Este día ya no tiene citas disponibles, intenta con los días que tienen fondo blanco.");
           $('#alert-info').foundation('reveal', 'open');
@@ -172,7 +172,7 @@
             lista  = quitar[moment(date).format("L")]["hours"]; 
           }
           //saturday config
-          console.log(moment(date).format("L"),"lista:", lista);
+          //console.log(moment(date).format("L"),"lista:", lista);
           if (moment(date).format("d") == 6){
           	$( ".selector" ).hourSelector({
               end:15,
