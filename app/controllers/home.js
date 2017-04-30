@@ -137,6 +137,7 @@ router.get(['/login', '/admin'], function (req, res, next) {
 });
 
 router.post('/login', function (req, res, next) {
+  // console.log("pass", decrypt(req.body.password));
   if (!req.body.username || !req.body.password){
     return res.render('login',{
        error: 'los campos no pueden estar vacios',
@@ -450,6 +451,16 @@ router.get('/events', function (req, res, next) {
   });
 });
 
+
+router.get('/events/:id/delete', notify, authorize, function (req, res, next) {
+  db.Event.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function() {
+      res.redirect('/admin/events');
+    });
+});
 
 router.post('/delete_image', function (req, res, next) {
   var body = req.body;

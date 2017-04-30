@@ -682,6 +682,12 @@ table.servicios {
     margin: 0;
     text-align: center; }
 
+.consult span {
+  display: block;
+  margin-bottom: 20px; }
+  .consult span:before {
+    padding-right: 10px; }
+
 .block-treatment {
   background: #fff;
   padding: 20px 0;

@@ -60,6 +60,7 @@
           to_remove[este] = {hours: [ese]}
         }
         info.push({
+            id : result[key]["id"],
             title  : result[key]["name"],
             email  : result[key]["email"],
             phone  : result[key]["phone"],
@@ -202,7 +203,9 @@
     "lpg":"LPG",
     "pixelco":"Pixel corporal",
     "manthus":"Manthus",
-    "futura":"futura"
+    "futura":"futura", 
+    "valoracion":"Valoración",
+    "seguimiento":"Seguimiento"
     }
    
     if($("#events-calendar")){
@@ -221,15 +224,59 @@
       dayNamesShort: dias,
       eventClick: function(calEvent, jsEvent, view) {
          var cita = calEvent.virtual ? "presencial" : "virtual";
-         //console.log(calEvent.virtual, cita);
-         $(".here").html("<h3>"+calEvent.title+"</h3><p><span class='fa fa-phone'> "+calEvent.phone+"</span></p>"+"<p><span class='fa fa-envelope-o'> "+calEvent.email+"</span></p>"+"<p><span class='fa fa-angle-right'> "+cat[calEvent.category]+"</span></p>"+"<p><span class='fa fa-user'> "+ cita +"</span></p>");
+         console.log(calEvent);
+         var div = document.createElement('div');
+         var h3 = document.createElement('h3');
+         h3.innerText = calEvent.title;
+         var span = document.createElement('span');
+         var span2 = document.createElement('span');
+         var lacita = document.createElement('span');
+         var categoria = document.createElement('span');
+         var deleter = document.createElement('a');
+         span.setAttribute("class", "fa fa-phone");
+         div.setAttribute("class", "consult");
+         span2.setAttribute("class", "fa fa-envelope-o");
+         lacita.setAttribute("class", "fa fa-user");
+         categoria.setAttribute("class", "fa fa-angle-right");
+         deleter.setAttribute("class", "button alert tiny");
+         deleter.setAttribute("href", "/events/"+calEvent.id+"/delete");
+         span.innerText = calEvent.phone;
+         span2.innerText = calEvent.email;
+         lacita.innerText = cita;
+         deleter.innerText = "Eliminar";
+         categoria.innerText = cat[calEvent.category];
+         var thedrop = document.getElementById('eventtext');
+         div.appendChild(h3);
+         div.appendChild(span);
+         div.appendChild(span2);
+         div.appendChild(lacita);
+         div.appendChild(categoria);
+         div.appendChild(deleter);
+         thedrop.innerHTML = "";
+         thedrop.appendChild(div);
+         
+         deleter.addEventListener("click", function(e) {
+           e.preventDefault();
+           var conf = confirm ("¿Seguro quieres elliminar esta cita?");
+           if(conf){
+             console.log("target", e.target.href);
+             window.location.href = e.target.href;
+           }
+         });
+         
          $('#event-info').foundation('reveal', 'open');
-        //console.log('Event: ' + calEvent.title + calEvent.phone);
       },
       });
     }
     
   });
+  
+  $(".toconfirm").on('click', function(e) {
+    e.preventDefault();
+    console.log("esto", this);
+    confirm("¿Seguro quieres borrar esta cita?");
+  });
+  
   
   $(".post-calendar").submit(function(e){
     e.preventDefault();
