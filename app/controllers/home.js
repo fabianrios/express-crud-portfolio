@@ -456,20 +456,36 @@ router.get('/events/:cat/:date', function (req, res, next) {
   var date = req.params.date
   console.log("params: ", cat, date);
   var resultados = [];
+  var to_remove = {};
   db.Event.findAll({ where:{publish: true}}).then(function (events) {
     for(var i = 0; i < events.length; i++){
       // console.log(moment(events[i].dataValues.when).format("MM-DD-YYYY"));
       if(moment(events[i].dataValues.when).format("MM-DD-YYYY") == date){
+        var este = moment(events[i].dataValues.when).format("L").toString();
+        var ese = moment.tz(events[i].dataValues.when, "America/Bogota");
         if (events[i].dataValues.category == cat && events[i].dataValues.category == "lipomax"){
          console.log("lipo");
          resultados.push(events[i])
+         if (to_remove.hasOwnProperty(este)){
+           to_remove[este]["hours"].push(ese);
+         }else{
+           to_remove[este] = {hours: [ese]}
+         }
         }else if(events[i].category == cat && events[i].category == "futura"){
           console.log("futura");
           resultados.push(events[i])
+          if (to_remove.hasOwnProperty(este)){
+            to_remove[este]["hours"].push(ese);
+          }else{
+            to_remove[este] = {hours: [ese]}
+          }
         }
       }
     }
-    res.write(JSON.stringify(resultados));
+    
+    
+    
+    res.write(JSON.stringify(to_remove));
     res.end();
   });
 });
