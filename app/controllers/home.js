@@ -228,7 +228,7 @@ router.post('/send_contact', function (req, res, next) {
     
     var mailOptions = {
         from: '"Maria bahamon" <info@mariabahamon.com>', // sender address
-        to: 'mariabahamoncon@gmail.com', // list of receivers
+        to: 'faben02@gmail.com', // list of receivers
         subject: 'Nuevo contacto 👥', // Subject line
         text: ' Nombre: ' + body.name + ' Correo: ' + body.email + ' Asunto: ' + body.subject + ' Mensaje: ' + body.message, // plaintext body
         html: ' 🐴 <b>Nombre:</b> ' + body.name + '<br /> 📩 <b>Correo:</b> ' + body.email + '<br /> 📨 <b>Asunto:</b> ' + body.subject + 'Mensaje: ' + body.message // html body
@@ -391,13 +391,30 @@ router.post('/events', function (req, res, next) {
     
     var invalidEntries = 0;
     var preexisting = false;
-
+    
+    var futura = 0;
+    var lipo = 0;
     function filterByID(obj) {
       // console.log(moment(obj.when).format("lll"), moment(body.time).format("lll"));
       if (moment(obj.when).format("lll") == moment(body.time).format("lll")) {
-        console.log(moment(obj.when).format("lll"));
-        preexisting = true;
-        return true;
+        if(obj.category == "futura" && body.category == "futura"){
+          futura++
+        }
+        if(obj.category == "lipomax" && body.category == "lipomax"){
+          lipo++
+        }
+        console.log("lipo",lipo, moment(obj.when).format("lll"), obj.category, body.category);
+        if (obj.category == "futura" && futura < 2){
+          return false;
+        }else if(obj.category == "lipomax" && lipo < 3){
+          return false;
+        }else if(obj.category != "lipomax" && obj.category == "futura"){
+          preexisting = true;
+          return true;  
+        }else{
+          preexisting = true;
+          return true;  
+        }
       } else {
         invalidEntries++;
         return false;
@@ -408,10 +425,10 @@ router.post('/events', function (req, res, next) {
     // db.Event.destroy({}).then(function() {
     //   res.redirect('/');
     // });
-    console.log(arrByID, invalidEntries);
+    //console.log(arrByID, invalidEntries);
     if(!preexisting){
       db.Event.create({ name: body.name, category: body.category, email: body.email, phone: body.phone, when: body.time, publish: body.publish }).then(function (response) {
-        console.log("data", response["dataValues"]);
+        //console.log("data", response["dataValues"]);
         res.write(JSON.stringify(response["dataValues"],{"success":"El evento fue creado"}));
         console.log('mariabahamoncon@gmail.com, '+body.email);
         if(body.recibir){
@@ -455,30 +472,35 @@ router.get('/events/:cat/:date', function (req, res, next) {
   var cat = req.params.cat
   var date = req.params.date
   console.log("params: ", cat, date);
-  var resultados = [];
-  var to_remove = {};
+  var to_remove = {hours:[]};
   db.Event.findAll({ where:{publish: true}}).then(function (events) {
     for(var i = 0; i < events.length; i++){
       // console.log(moment(events[i].dataValues.when).format("MM-DD-YYYY"));
       if(moment(events[i].dataValues.when).format("MM-DD-YYYY") == date){
-        var este = moment(events[i].dataValues.when).format("L").toString();
         var ese = moment.tz(events[i].dataValues.when, "America/Bogota");
+        ese = moment(ese).format("H:mm").toString();
         if (events[i].dataValues.category == cat && events[i].dataValues.category == "lipomax"){
          console.log("lipo");
-         resultados.push(events[i])
-         if (to_remove.hasOwnProperty(este)){
-           to_remove[este]["hours"].push(ese);
+         if (to_remove.hasOwnProperty(ese)){
+           to_remove[ese].qt++
+           if(to_remove[ese].qt >= 2){
+             to_remove["hours"].push(ese);
+           }
          }else{
-           to_remove[este] = {hours: [ese]}
+           to_remove[ese] = {qt: 0}
          }
         }else if(events[i].category == cat && events[i].category == "futura"){
           console.log("futura");
-          resultados.push(events[i])
-          if (to_remove.hasOwnProperty(este)){
-            to_remove[este]["hours"].push(ese);
+          if (to_remove.hasOwnProperty(ese)){
+            to_remove[ese].qt++
+            if(to_remove[ese].qt >= 1){
+              to_remove["hours"].push(ese);
+            }
           }else{
-            to_remove[este] = {hours: [ese]}
+            to_remove[ese] = {qt: 0}
           }
+        }else if(events[i].category == cat ){
+          to_remove["hours"].push(ese);
         }
       }
     }

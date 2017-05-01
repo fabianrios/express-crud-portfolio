@@ -132,7 +132,6 @@
       dayClick: function(date, jsEvent, view) {
         var cuando = jsEvent.target.className.split(" ");
         var currentTime = moment();
-        var lista = [];
         // esta ocupado
         //console.log("tout",date,date.diff(currentTime,"hours"));
         if (getEvents(date).length >= 13) {
@@ -166,46 +165,51 @@
           var fecha  = moment(date).locale("es").format("LL");
           $('#modal-date').html(fecha).attr("data-date", moment(date).format("MM-DD-YYYY"));
           $('#hidden-date').val(moment(date).format("l"));
-          var quitar = typeof to_remove != "undefined" ? to_remove : [];
-          if (typeof quitar[moment(date).format("L")] != "undefined"){
-            lista  = quitar[moment(date).format("L")]["hours"]; 
-          }
           //saturday config
           //console.log(moment(date).format("L"),"lista:", lista);
-          if (moment(date).format("d") == 6){
-          	$( ".selector" ).hourSelector({
-              end:15,
-          	  out:lista
-          	});
-          }else{
-          	$( ".selector" ).hourSelector({
-          	  out:lista
-          	});
+          var cate = $('select#categories').val();
+          console.log(cate);
+          if(cate){
+            var the_date = moment(date).format("MM-DD-YYYY");
+            var url = "/events/"+cate+"/"+the_date;
+            $.get(url, function( data ) {
+              var result = JSON.parse(data);
+              if (moment(the_date).format("d") == 6){
+              	$( ".selector" ).hourSelector({
+                  end:15,
+              	  out:result.hours
+              	});
+              }else{
+              	$( ".selector" ).hourSelector({
+              	  out:result.hours
+              	});
+              }
+            });
           }
-          $('#modal-calendar').foundation('reveal', 'open');
+          $('#modal-calendar').foundation('reveal', 'open'); 
       }
     });
     
     $('select#categories').on('change', function() {
       var cate = this.value;
-      if(cate == "lipomax" || cate == "futura"){
-        $( ".selector" ).hourSelector("destroy");
-        var the_date = $('#modal-date').attr("data-date");
-        var url = "/events/"+cate+"/"+the_date;
-        console.log("par", the_date, cate, url);
-        $.get(url, function( data ) {
-          var result = JSON.parse(data);
-          if (moment(the_date).format("d") == 6){
-          	$( ".selector" ).hourSelector({
-              end:15,
-          	  out:result
-          	});
-          }else{
-          	$( ".selector" ).hourSelector({
-          	  out:result
-          	});
-          }
-        });
+      $( ".selector" ).hourSelector("destroy");
+      if(cate){
+       var the_date = $('#modal-date').attr("data-date");
+       var url = "/events/"+cate+"/"+the_date;
+       console.log("par", the_date, cate, url);
+       $.get(url, function( data ) {
+         var result = JSON.parse(data);
+         if (moment(the_date).format("d") == 6){
+         	$( ".selector" ).hourSelector({
+             end:15,
+         	  out:result.hours
+         	});
+         }else{
+         	$( ".selector" ).hourSelector({
+         	  out:result.hours
+         	});
+         }
+       });
       }
     });
     
