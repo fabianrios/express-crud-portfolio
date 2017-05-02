@@ -266,7 +266,7 @@
          lacita.setAttribute("class", "fa fa-user");
          categoria.setAttribute("class", "fa fa-angle-right");
          deleter.setAttribute("class", "button alert tiny");
-         deleter.setAttribute("href", "/events/"+calEvent.id+"/delete");
+         deleter.setAttribute("href", "/event/"+calEvent.id+"/delete");
          span.innerText = calEvent.phone;
          span2.innerText = calEvent.email;
          lacita.innerText = cita;

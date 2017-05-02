@@ -513,7 +513,7 @@ router.get('/events/:cat/:date', function (req, res, next) {
 });
 
 
-router.get('/events/:id/delete', notify, authorize, function (req, res, next) {
+router.get('/event/:id/delete', notify, authorize, function (req, res, next) {
   db.Event.destroy({
       where: {
         id: req.params.id
