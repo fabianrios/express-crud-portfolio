@@ -413,6 +413,12 @@ img.covers{
     h4{
       margin-top: 20px;
     }
+    h6{
+      text-transform: lowercase;
+      &:first-letter{
+        text-transform: capitalize;
+      }
+    }
     p:last-child{
       margin-bottom: 0;
     }

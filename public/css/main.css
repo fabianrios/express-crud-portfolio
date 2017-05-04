@@ -18161,6 +18161,10 @@ img.covers {
         float: right; } }
     .reveal-modal .texto h4, dialog .texto h4 {
       margin-top: 20px; }
+    .reveal-modal .texto h6, dialog .texto h6 {
+      text-transform: lowercase; }
+      .reveal-modal .texto h6:first-letter, dialog .texto h6:first-letter {
+        text-transform: capitalize; }
     .reveal-modal .texto p:last-child, dialog .texto p:last-child {
       margin-bottom: 0; }
 
