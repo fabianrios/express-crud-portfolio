@@ -11,7 +11,7 @@
         // This is the easiest way to have default options.
         var settings = $.extend({
             // These are the defaults.
-            ini: 8,
+            ini: 7,
             end: 20,
             out: []
         }, options );
