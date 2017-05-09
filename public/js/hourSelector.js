@@ -30,15 +30,16 @@
         console.log(settings);
         var hour = settings.ini;
         var until = settings.end+(settings.end-settings.ini);
+        var counter = 0;
         for(var i = settings.ini; i < until; i++){
           var li = document.createElement('li');
           var a =  document.createElement('a');
-          var hourset = i % 2 == 0 ?  ":00" : ":30";
+          var hourset = counter % 2 == 0 ?  ":00" : ":30";
           var setclock = hour + hourset
           //console.log(setclock);
           a.dataset.hour = setclock;
           a.innerHTML = hour + hourset;
-          if (i % 2 == 1){
+          if (counter % 2 == 1){
             hour++ 
           }
           if (settings.out.length > 0){
@@ -49,6 +50,7 @@
           }
           li.appendChild(a);
           ul.appendChild(li);
+          counter++
         }
         
         this.on('click', 'a', function(e){

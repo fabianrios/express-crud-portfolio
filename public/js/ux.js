@@ -176,11 +176,13 @@
               var result = JSON.parse(data);
               if (moment(the_date).format("d") == 6){
               	$( ".selector" ).hourSelector({
+                  ini: 8,
                   end:15,
               	  out:result.hours
               	});
               }else{
               	$( ".selector" ).hourSelector({
+                  ini: 7,
               	  out:result.hours
               	});
               }
@@ -207,6 +209,7 @@
          	});
          }else{
          	$( ".selector" ).hourSelector({
+            ini: 7,
          	  out:result.hours
          	});
          }
