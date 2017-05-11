@@ -228,7 +228,7 @@ router.post('/send_contact', function (req, res, next) {
     
     var mailOptions = {
         from: '"Maria bahamon" <info@mariabahamon.com>', // sender address
-        to: 'faben02@gmail.com', // list of receivers
+        to: 'mariabahamoncon@gmail.com', // list of receivers
         subject: 'Nuevo contacto 👥', // Subject line
         text: ' Nombre: ' + body.name + ' Correo: ' + body.email + ' Asunto: ' + body.subject + ' Mensaje: ' + body.message, // plaintext body
         html: ' 🐴 <b>Nombre:</b> ' + body.name + '<br /> 📩 <b>Correo:</b> ' + body.email + '<br /> 📨 <b>Asunto:</b> ' + body.subject + 'Mensaje: ' + body.message // html body
