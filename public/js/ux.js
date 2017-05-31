@@ -236,7 +236,12 @@
     "futura":"futura", 
     "valoracion-facial":"Valoración facial",
     "valoracion-corporal":"Valoración corporal",
-    "seguimiento":"Seguimiento"
+    "seguimiento":"Seguimiento",
+    "lfacial":"Limpieza Facial", 
+    "carboxi":"Carboxiterapia", 
+    "gmp":"GMP Gimnasia metabólica pasiva", 
+    "dream":"DREAM SHAPER", 
+    "bioregula":"Terapia biológica"
     }
    
     if($("#events-calendar")){
