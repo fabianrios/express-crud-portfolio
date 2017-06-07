@@ -228,7 +228,7 @@ router.post('/send_contact', function (req, res, next) {
     
     var mailOptions = {
         from: '"Maria bahamon" <info@mariabahamon.com>', // sender address
-        to: 'mariabahamoncon@gmail.com', // list of receivers
+        to: process.env.MAINEMAIL, // list of receivers
         subject: 'Nuevo contacto 👥', // Subject line
         text: ' Nombre: ' + body.name + ' Correo: ' + body.email + ' Asunto: ' + body.subject + ' Mensaje: ' + body.message, // plaintext body
         html: ' 🐴 <b>Nombre:</b> ' + body.name + '<br /> 📩 <b>Correo:</b> ' + body.email + '<br /> 📨 <b>Asunto:</b> ' + body.subject + 'Mensaje: ' + body.message // html body
@@ -408,12 +408,11 @@ router.post('/events', function (req, res, next) {
           return false;
         }else if(obj.category == "lipomax" && lipo < 3){
           return false;
-        }else if(obj.category != "lipomax" && obj.category == "futura"){
+        }else if(obj.category == body.category){
           preexisting = true;
-          return true;  
+          return true;
         }else{
-          preexisting = true;
-          return true;  
+          return false;
         }
       } else {
         invalidEntries++;
@@ -430,12 +429,12 @@ router.post('/events', function (req, res, next) {
       db.Event.create({ name: body.name, category: body.category, email: body.email, phone: body.phone, when: body.time, publish: body.publish }).then(function (response) {
         //console.log("data", response["dataValues"]);
         res.write(JSON.stringify(response["dataValues"],{"success":"El evento fue creado"}));
-        console.log('mariabahamoncon@gmail.com, '+body.email);
+        // console.log('mariabahamoncon@gmail.com, '+body.email);
         if(body.recibir){
           var cita = body.publish ? "presencial" : "virtual";
           var address = {
               from: '"Maria bahamon" <mariabahamoncon@gmail.com>', // sender address //
-              to: 'mariabahamoncon@gmail.com, '+body.email, // list of receivers
+              to: process.env.MAINEMAIL+', '+body.email, // list of receivers
               subject: 'Nueva cita 👥', // Subject line
               text: ' Nombre: ' + body.name + ' Correo: ' + body.email + ' Asunto: ' + body.category + ' Cel: ' + body.phone+ ' Tipo: ' + cita+ ' Cuando: ' + body.time, 
               html: "Tu cita "  + cita + " para el " +moment.tz(body.time, "GMT+0").format("L")+" "+moment.tz(body.time, "GMT+0").format("LTS")+  " ha sido agendada, nuestro personal se comunicará contigo en las próximas horas."

@@ -410,6 +410,13 @@
        var response = JSON.parse(err.responseText).error;
        console.log(response);
        $('#modal-calendar').foundation('reveal', 'close');
+       function alertDisplay(){ // console.log(to_remove,to_remove[look_up]);
+         $('#alert-info .aca').html("No esta disponible la hora");
+         $('#alert-info').foundation('reveal', 'open');
+         $('.post-calendar :input').val('');
+         setTimeout(function() { $('#jsalert').hide(); }, 3000);
+       }
+       setTimeout(function() { alertDisplay(); }, 1000);
        return
      });
   });
