@@ -131,9 +131,11 @@
       },
       dayClick: function(date, jsEvent, view) {
         var cuando = jsEvent.target.className.split(" ");
-        var currentTime = moment();
+        var currentTime = moment().tz("America/Bogota");
+        
+        //moment.tz(moment(), "America/Bogota");
         // esta ocupado
-        //console.log("tout",date,date.diff(currentTime,"hours"));
+        console.log("tout",date.format(),date.diff(currentTime,"hours"), currentTime.format());
         if (getEvents(date).length >= 13) {
           $('#alert-info .aca').html("Este día ya no tiene citas disponibles, intenta con los días que tienen fondo blanco.");
           $('#alert-info').foundation('reveal', 'open');
