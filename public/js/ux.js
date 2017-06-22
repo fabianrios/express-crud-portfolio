@@ -135,7 +135,7 @@
         
         //moment.tz(moment(), "America/Bogota");
         // esta ocupado
-        console.log("tout",date.format(),date.diff(currentTime,"hours"), currentTime.format());
+        console.log("tout",date.format(),date.diff(currentTime,"days"), currentTime.format());
         if (getEvents(date).length >= 13) {
           $('#alert-info .aca').html("Este día ya no tiene citas disponibles, intenta con los días que tienen fondo blanco.");
           $('#alert-info').foundation('reveal', 'open');
@@ -146,7 +146,7 @@
           $('#alert-info').foundation('reveal', 'open');
           return
         }
-        if (date.diff(currentTime, 'hours') <= 0){
+        if (date.diff(currentTime, 'days') == 0){
           $('#alert-info .aca').html("No se puede agendar citas para hoy mismo, intenta con los días que tienen fondo blanco.");
           $('#alert-info').foundation('reveal', 'open');
           return
