@@ -135,7 +135,7 @@
         
         //moment.tz(moment(), "America/Bogota");
         // esta ocupado
-        console.log("tout",date.format(),date.diff(currentTime,"days"), currentTime.format());
+        console.log("test",date.day(),"--", currentTime.day());
         if (getEvents(date).length >= 13) {
           $('#alert-info .aca').html("Este día ya no tiene citas disponibles, intenta con los días que tienen fondo blanco.");
           $('#alert-info').foundation('reveal', 'open');
