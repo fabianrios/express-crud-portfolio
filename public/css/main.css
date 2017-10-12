@@ -17836,6 +17836,13 @@ th.hide-for-touch {
 body {
   color: #505050; }
 
+.post-calendar label.autorizo {
+  line-height: 20px;
+  margin: 0;
+  padding-top: 0; }
+  .post-calendar label.autorizo input[type='checkbox'] {
+    margin: 0; }
+
 .row {
   margin: 0 auto; }
 
